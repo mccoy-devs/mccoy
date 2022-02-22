@@ -20,10 +20,8 @@ flowchart TB
         click RTR href "https://github.com/beast-dev/Tempest"
     end
 
-    subgraph QC["Quality control -- List of heuristics to be developed"]
-        this([this])
-        that([that])
-        other([and the other thing])
+    subgraph QC["Quality control"]
+        dummy[List of heuristics to be developed]
     end
     treeConstruction --> QC
 
