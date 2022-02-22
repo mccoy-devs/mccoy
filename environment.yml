@@ -1,0 +1,6 @@
+name: duchene-mdap-2022
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - bioconda::snakemake
