@@ -1,0 +1,5 @@
+channels:
+  - r
+dependencies:
+  - r-devtools==2.4.3
+  - r-lubridate==1.8.0

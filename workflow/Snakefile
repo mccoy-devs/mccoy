@@ -1,0 +1,16 @@
+from pathlib import Path
+REPODIR=Path(workflow.basedir).parent
+
+envvars:
+    "GISAIDR_USERNAME",
+    "GISAIDR_PASSWORD"
+
+rule query_sequences:
+    output:
+        REPODIR/"output/example_sequences.fasta"
+    conda:
+        "envs/gisaidr.yml"
+    shell:
+        "Rscript scripts/gisaidr-fetch_example.R {output}"
+
+# vim: set syntax=python:
