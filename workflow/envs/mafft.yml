@@ -1,0 +1,6 @@
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - mafft==7.471
+  - seqkit==2.1.0
