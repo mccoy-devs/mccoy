@@ -5,7 +5,8 @@ This will be updated as pieces are developed and modified.
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
 flowchart TB
-    gisaid[(GISAID)] -.-> gisaidr[GISAIDR] --> FASTA{FASTA}
+    gisaid[(GISAID)] -.-> GISAIDR --> FASTA{FASTA}
+    click GISAIDR href "https://github.com/Wytamma/GISAIDR"
 
     subgraph "Other data sources (TBD)"
         style preprocessing stroke-width: 2, stroke: grey,stroke-dasharray: 5 5
