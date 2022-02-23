@@ -15,7 +15,7 @@ flowchart TB
     preprocessing --> FASTA --> MSA
 
     subgraph treeConstruction["Tree construction"]
-        MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- Iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
+        MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
         click MSA href "https://github.com/GSLBiotech/mafft"
         click tree href "https://github.com/iqtree/iqtree2"
         click RTR href "https://github.com/beast-dev/Tempest"
@@ -32,3 +32,32 @@ flowchart TB
     click Beastiary href "https://github.com/Wytamma/beastiary"
 ```
 
+# Instructions
+
+Ensure you have [mamba](https://github.com/conda-forge/miniforge) installed (conda will work too, but mamba is strongly preferred).
+
+## Step 1 - install snakemake
+
+If you already have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed then go straight to step 2! Otherwise...
+
+In the base directory of the repo, you can create a fresh conda environment with:
+
+```bash
+mamba env create -f environment.yml
+```
+
+This only needs to be done once.
+
+You can then activate the environment using `conda activate duchene-mdap-2022`. This will need to be done for each fresh terminal you open if you want to use snakemake.
+
+## Step 2 - run the workflow
+
+The workflow is being developed such that all required software will be automatically installed for each step of the pipeline in self-contained conda environments. These environments will be cached and reused whenever possible (all handled internally by snakemake), but if you want to remove them then they can be found in `.snakemake`.
+
+Right now, there are no options for running the workflow. This will obviously change in future.
+
+To run:
+
+```bash
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' snakemake --use-conda -c 1
+```
