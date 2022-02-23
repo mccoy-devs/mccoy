@@ -1,4 +1,5 @@
 results/
-resources/
+resources/*
+!resources/reference.fasta
 logs/
 .snakemake/
