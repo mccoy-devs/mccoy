@@ -1,47 +1,21 @@
 from pathlib import Path
 
-SNAKEDIR = Path(workflow.basedir)
-OUTDIR = SNAKEDIR.parent / "output"
-LOGDIR = SNAKEDIR.parent / "logs"
+SNAKE_DIR = Path(workflow.basedir)
+RESULTS_DIR = SNAKE_DIR.parent / "results"
+RESOURCES_DIR = SNAKE_DIR.parent / "resources"
+LOG_DIR = SNAKE_DIR.parent / "logs"
+
 DOWNSAMPLE = 5
 
 envvars:
     "GISAIDR_USERNAME",
     "GISAIDR_PASSWORD"
 
+include: "rules/query.smk"
+include: "rules/align.smk"
+
 rule all:
     input:
-        OUTDIR / "omicron_sampled-full_2022-01-01-aligned.fasta"
+        RESULTS_DIR / "omicron-test-aligned.fasta"
 
-rule query_sequences:
-    output:
-        OUTDIR / "{id}-full_{to_date,[-0-9]+}.fasta",
-        OUTDIR / "{id}-before_{to_date,[-0-9]+}.fasta",
-        OUTDIR / "{id}-full_{to_date,[-0-9]+}-dates.png"
-    conda:
-        "envs/gisaidr.yml"
-    log:
-        LOGDIR / "query_sequences--{id}-{to_date}.txt"
-    params:
-        basename = lambda wildcards: OUTDIR / wildcards.id,
-    shell:
-        "Rscript {SNAKEDIR}/scripts/gisaidr-fetch_example.R {params.basename} {wildcards.to_date} {DOWNSAMPLE}"
-
-rule align:
-    # QUESTION: What about the `before` cut? Seems a waste to redo alignment for same samples...
-    input:
-        OUTDIR / "{id}-full_{to_date,[-0-9]+}.fasta"
-    output:
-        OUTDIR / "{id}-full_{to_date,[-0-9]+}-aligned.fasta"
-    conda:
-        "envs/mafft.yml"
-    log:
-        LOGDIR / "align--{id}-{to_date,[-0-9]+}.txt"
-    shell:
-        """
-        REFNAME=$(head -n1 {input} | tr -d '>')
-        mafft --6merpair --keeplength --addfragments {input} data/reference.fasta \
-            | seqkit grep -rvip "^$REFNAME" > {output}
-        """
-
-# vim: set syntax=python:
+# vim: ft=snakemake:

@@ -1,3 +1,4 @@
-output/
+results/
+resources/
 logs/
 .snakemake/
