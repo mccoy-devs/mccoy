@@ -13,9 +13,8 @@ envvars:
 
 include: "rules/query.smk"
 include: "rules/align.smk"
+include: "rules/tree.smk"
 
 rule all:
     input:
-        RESULTS_DIR / "omicron-test-aligned.fasta"
-
-# vim: ft=snakemake:
+        RESULTS_DIR / "omicron-test-aligned.fasta.treefile"

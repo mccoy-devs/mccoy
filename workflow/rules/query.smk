@@ -9,5 +9,3 @@ rule query:
         basename = lambda wildcards: RESOURCES_DIR / wildcards.id,
     shell:
         "Rscript {SNAKE_DIR}/scripts/gisaidr-fetch_example.R {params.basename} {DOWNSAMPLE}"
-
-# vim: set ft=snakemake:

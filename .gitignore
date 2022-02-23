@@ -3,3 +3,4 @@ resources/*
 !resources/reference.fasta
 logs/
 .snakemake/
+.DS_Store

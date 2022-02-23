@@ -13,5 +13,3 @@ rule align:
         mafft --6merpair --keeplength --addfragments {input} data/reference.fasta \
             | seqkit grep -rvip "^$REFNAME" > {output}
         """
-
-# vim: set ft=snakemake:
