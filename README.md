@@ -30,6 +30,12 @@ flowchart TB
     click XML href "https://github.com/Wytamma/real-time-beast-pipeline"
     click OnlineBEAST href "https://github.com/Wytamma/online-beast"
     click Beastiary href "https://github.com/Wytamma/beastiary"
+
+    style gisaid fill:#48b884
+    style GISAIDR fill:#48b884
+    style FASTA fill:#48b884
+    style MSA fill:#48b884
+    style tree fill:#48b884
 ```
 
 # Instructions
