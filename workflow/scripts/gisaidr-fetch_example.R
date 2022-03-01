@@ -1,32 +1,30 @@
 # Script adapted from original by Wytamma Wirth:
 #   https://github.com/Wytamma/real-time-beast-pipeline/blob/master/01_download_sequences_GISAIDR.R
 
+library(GISAIDR)
+library(tidyverse)
+library(yaml)
+
 args = commandArgs(trailingOnly=TRUE)
 if (length(args)!=2) {
   print(args)
-  stop("Incorrect number of arguments. Expected: <output_basename> <downsample_factor>.n", call.=FALSE)
+  stop("Incorrect number of arguments. Expected: <config_file> <output_basename>.n", call.=FALSE)
 }
-basename <- args[1]
-down_sample <- as.numeric(args[2])
-
-library(GISAIDR)
-library(tidyverse)
+conf_file <- args[1]
+basename <- args[2]
 
 username = Sys.getenv("GISAIDR_USERNAME")
 password = Sys.getenv("GISAIDR_PASSWORD")
 credentials <- login(username = username, password = password)
 
-# VOC Omicron GRA (B.1.1.529+BA.*) first detected in Botswana/Hong Kong/South Africa
-Omicron_df <- query(
-  credentials = credentials,
-  lineage = "BA.1",
-  location = "Australia / Victoria",
-  collection_date_complete = T,
-  complete = T,
-  low_coverage_excl = T,
-  load_all = T
-)
+conf <- yaml.load_file(conf_file)
+query_args = conf$gisaid
+query_args$load_all = T
+query_args$credentials = credentials
 
+Omicron_df <- do.call("query", query_args)
+
+down_sample <- conf$downsample
 Omicron_df_sampled <-
   Omicron_df %>% slice_sample(n = nrow(Omicron_df) / down_sample)
 

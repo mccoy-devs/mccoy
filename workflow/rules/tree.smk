@@ -9,6 +9,7 @@ rule tree:
         SNAKE_DIR / "envs/iqtree.yml"
     log:
         RESULTS_DIR / "logs/tree-{id}.txt"
+    params:
+        lambda wildcards: " ".join(config["tree"]["iqtree2"])
     shell:
-        "iqtree2 -s {input} -st DNA -pre {input} -nt AUTO -m HKY+G -bb 1000"
-
+        "iqtree2 -s {input} -st DNA -pre {input} {params}"
