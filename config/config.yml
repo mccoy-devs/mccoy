@@ -1,0 +1,22 @@
+id: omicron_test
+
+query:
+  gisaid:
+    lineage: "BA.1"
+    location: "Australia"
+    collection_date_complete: true
+    complete: true
+    low_coverage_excl: true
+  downsample: 5
+
+align:
+  mafft:
+  - "--6merpair"
+  - "--keeplength"
+  - "--addfragments"
+
+tree:
+  iqtree2:
+  - "-nt AUTO"
+  - "-m HKY+G"
+  - "-bb 1000"
