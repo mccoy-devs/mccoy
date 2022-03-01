@@ -9,7 +9,6 @@ CONFIG_DIR = SNAKE_DIR.parent / "config"
 LOG_DIR = SNAKE_DIR.parent / "logs"
 
 configfile: CONFIG_DIR / "config.yml"
-CONFIG_HASH = shake_256(str(config).encode()).hexdigest(6)
 
 envvars:
     "GISAIDR_USERNAME",
@@ -21,13 +20,4 @@ include: "rules/tree.smk"
 
 rule all:
     input:
-        RESULTS_DIR / f"config-{CONFIG_HASH}.yml",
-        RESULTS_DIR / f"{config['id']}-{CONFIG_HASH}-aligned.fasta.treefile"
-
-rule store_config:
-    output:
-        RESULTS_DIR / "config-{hash}.yml"
-    params:
-        lambda wildcards: yaml.dump(config)
-    shell:
-        "echo \"{params}\" > {output}"
+        RESULTS_DIR / f"{config['id']}-aligned.fasta.treefile"
