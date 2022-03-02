@@ -1,3 +1,4 @@
+import subprocess
 from pathlib import Path
 from hashlib import shake_256
 import yaml
@@ -9,7 +10,6 @@ CONFIG_DIR = SNAKE_DIR.parent / "config"
 LOG_DIR = SNAKE_DIR.parent / "logs"
 
 configfile: CONFIG_DIR / "config.yml"
-CONFIG_HASH = shake_256(str(config).encode()).hexdigest(6)
 
 envvars:
     "GISAIDR_USERNAME",
@@ -19,15 +19,30 @@ include: "rules/query.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 
+onstart:
+    # Print some environment info
+    print("Workflow directories:")
+    path_vars = (
+                'SNAKE_DIR',
+                'RESULTS_DIR',
+                'RESOURCES_DIR',
+                'CONFIG_DIR',
+                'LOG_DIR',
+            )
+    for name in path_vars:
+        print(f"\t{name:20s} ➡  {str(globals()[name])}")
+
+    print("Environment:")
+    shell = lambda cmd: subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode().rstrip()
+    print(f"\t{shell('python --version'):20s} ➡  {shell('which python')}")
+    print(f"\t{shell('conda --version'):20s} ➡  {shell('which conda')}")
+    print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
+
+    # Ensure all required directories exist
+    for name in path_vars:
+        globals()[name].mkdir(exist_ok=True)
+        assert(globals()[name].exists())
+
 rule all:
     input:
-        RESULTS_DIR / f"config-{CONFIG_HASH}.yml",
-        RESULTS_DIR / f"{config['id']}-{CONFIG_HASH}-aligned.fasta.treefile"
-
-rule store_config:
-    output:
-        RESULTS_DIR / "config-{hash}.yml"
-    params:
-        lambda wildcards: yaml.dump(config)
-    shell:
-        "echo \"{params}\" > {output}"
+        RESULTS_DIR / f"{config['id']}-aligned.fasta.treefile"
