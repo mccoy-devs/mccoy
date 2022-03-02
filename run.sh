@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
+set -euo pipefail
 
-# Not necessary if using the default config file, but this way we can override easily...
-configfile="${CONFIGFILE:-config/config.yml}"
+configfile_opt=""
+if [ -n "${CONFIGFILE-}" ]; then
+    configfile_opt="--configfile=${CONFIGFILE}"
+fi
 
-snakemake --use-conda --configfile ${configfile} $* -R `snakemake --list-params-changes --configfile ${configfile}`
+snakemake --use-conda ${configfile_opt} $* -R `snakemake --list-params-changes ${configfile_opt}`
