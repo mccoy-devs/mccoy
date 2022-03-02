@@ -1,6 +1,6 @@
 # Current workflow
 
-This will be updated as pieces are developed and modified.
+This will be updated as pieces are developed and modified. Nodes colored <span style="color: #48b884">green</span> have initial support in the workflow.
 
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
@@ -60,10 +60,16 @@ You can then activate the environment using `conda activate duchene-mdap-2022`. 
 
 The workflow is being developed such that all required software will be automatically installed for each step of the pipeline in self-contained conda environments. These environments will be cached and reused whenever possible (all handled internally by snakemake), but if you want to remove them then they can be found in `.snakemake`.
 
-Right now, there are no options for running the workflow. This will obviously change in future.
-
-To run:
+To run with the default parameters and configuration:
 
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' snakemake --use-conda -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh -c 1
+```
+
+The parameters passed to each tool in the workflow can be changed by making a copy of the default config file and modifying it appropriately:
+
+```bash
+cp config/config.yml custom-config.yml
+# modify custom-config.yml as required
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' CONFIGFILE=./custom-config.yml ./run.sh -c 1
 ```
