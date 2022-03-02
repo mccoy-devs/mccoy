@@ -4,7 +4,7 @@ rule tree:
     output:
         multiext(str(RESULTS_DIR / "{id}-aligned.fasta"),
                 ".treefile", ".bionj", ".ckp.gz", ".contree",
-                ".iqtree", ".log", ".mldist", ".splits.nex", ".uniqueseq.phy")
+                ".iqtree", ".log", ".mldist", ".splits.nex")
     conda:
         SNAKE_DIR / "envs/iqtree.yml"
     log:

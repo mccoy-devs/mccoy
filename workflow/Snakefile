@@ -1,6 +1,5 @@
 import subprocess
 from pathlib import Path
-from hashlib import shake_256
 import yaml
 
 SNAKE_DIR = Path(workflow.basedir)
