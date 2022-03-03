@@ -17,6 +17,7 @@ envvars:
 include: "rules/query.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
+include: "rules/treetime.smk"
 
 onstart:
     # Print some environment info
