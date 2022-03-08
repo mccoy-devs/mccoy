@@ -8,7 +8,7 @@ rule dates:
     log:
         LOG_DIR / "dates-{id}.txt"
     script:
-        "{SNAKE_DIR}/scripts/script.py"
+        "{SNAKE_DIR}/scripts/dates.py"
 
 rule treetime:
     input:
