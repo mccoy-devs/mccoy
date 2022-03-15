@@ -1,6 +1,10 @@
 # Current workflow
 
-This will be updated as pieces are developed and modified. Nodes colored <span style="color: #48b884">green</span> have initial support in the workflow.
+This will be updated as pieces are developed and modified.
+
+**Legend**:
+- <span style="color: #48b884">initial support in the workflow</span>
+- <span style="color: #cc8400">in progress</span>
 
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
@@ -18,11 +22,12 @@ flowchart TB
         MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
         click MSA href "https://github.com/GSLBiotech/mafft"
         click tree href "https://github.com/iqtree/iqtree2"
-        click RTR href "https://github.com/beast-dev/Tempest"
+        click RTR href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/2"
     end
 
     subgraph QC["Quality control"]
-        dummy[List of heuristics to be developed]
+        dummy[See GitLab issue]
+        click dummy href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/3"
     end
     treeConstruction --> QC
 
@@ -36,6 +41,9 @@ flowchart TB
     style FASTA fill:#48b884
     style MSA fill:#48b884
     style tree fill:#48b884
+    style RTR fill:#cc8400
+    style QC fill:#cc8400
+    style XML fill:#cc8400
 ```
 
 # Instructions
