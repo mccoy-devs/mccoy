@@ -68,7 +68,7 @@ The workflow is being developed such that all required software will be automati
 To run with the default parameters and configuration:
 
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just local -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run local -c 1
 ```
 
 The parameters passed to each tool in the workflow can be changed by making a copy of the default config file and modifying it appropriately:
@@ -76,11 +76,11 @@ The parameters passed to each tool in the workflow can be changed by making a co
 ```bash
 cp config/config.yml custom-config.yml
 # modify custom-config.yml as required
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just local -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run local -c 1
 ```
 
 On Spartan:
 
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just spartan
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run spartan
 ```
