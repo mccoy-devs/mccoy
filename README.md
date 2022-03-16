@@ -79,5 +79,11 @@ The parameters passed to each tool in the workflow can be changed by making a co
 ```bash
 cp config/config.yml custom-config.yml
 # modify custom-config.yml as required
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' CONFIGFILE=./custom-config.yml ./run.sh -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh local -c 1
+```
+
+On Spartan:
+
+```bash
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh spartan
 ```

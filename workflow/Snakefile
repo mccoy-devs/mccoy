@@ -9,7 +9,7 @@ RESOURCES_DIR = SNAKE_DIR.parent / "resources"
 CONFIG_DIR = SNAKE_DIR.parent / "config"
 LOG_DIR = SNAKE_DIR.parent / "logs"
 
-configfile: CONFIG_DIR / "config.yml"
+configfile: CONFIG_DIR / "config.yaml"
 
 envvars:
     "GISAIDR_USERNAME",

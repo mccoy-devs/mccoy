@@ -17,4 +17,4 @@ rule tree:
         mem = "16G",
         cpus = 10
     shell:
-        "iqtree2 -s {input} -st DNA -pre {input} {params}"
+        "iqtree2 -s {input} -st DNA -pre {input} {params} -ntmax {threads}"

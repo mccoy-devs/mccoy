@@ -1,5 +1,5 @@
 # Assuming that all workflow rules will require shared memory only (i.e. <= 1 node per job)
-cluster: >
+cluster: >-
   sbatch --time={resources.time}
   --mem={resources.mem}
   -c {resources.cpus}
@@ -7,3 +7,4 @@ cluster: >
 
 jobs: 50
 default-resources: [time="00:15:00", mem="4G", nodes=1, cpus=1]
+use-conda: true
