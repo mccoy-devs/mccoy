@@ -1,6 +1,7 @@
 import subprocess
 from pathlib import Path
 import yaml
+import snakemake
 
 SNAKE_DIR = Path(workflow.basedir)
 RESULTS_DIR = SNAKE_DIR.parent / "results"
@@ -17,6 +18,8 @@ envvars:
 include: "rules/query.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
+
+localrules: query
 
 onstart:
     # Print some environment info

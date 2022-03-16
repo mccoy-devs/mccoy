@@ -1,0 +1,7 @@
+cluster: >
+  sbatch --time={resources.time}
+  --mem={resources.mem}
+  -N {resources.nodes} -c {resources.cpus}
+  -o logs/{rule}_{wildcards}.out -e logs/{rule}_{wildcards}.err
+jobs: 50
+default-resources: [time=00:15:00, mem=4G, nodes=1, cpus=1]
