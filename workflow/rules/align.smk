@@ -10,11 +10,11 @@ rule align:
         LOG_DIR / "align-{id}.txt"
     params:
         lambda wildcards: " ".join(config["align"]["mafft"])
-    threads: 8
+    threads: 4
     resources:
-        time = "01:00:00",
-        mem = "16G",
-        cpus = 8
+        time = "00:10:00",
+        mem = "8G",
+        cpus = 4
     shell:
         """
         REFNAME=$(head -n1 {input.original} | tr -d '>')
