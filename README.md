@@ -71,7 +71,7 @@ The workflow is being developed such that all required software will be automati
 To run with the default parameters and configuration:
 
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh local -c 1
 ```
 
 The parameters passed to each tool in the workflow can be changed by making a copy of the default config file and modifying it appropriately:
