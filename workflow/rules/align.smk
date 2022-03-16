@@ -12,8 +12,8 @@ rule align:
         lambda wildcards: " ".join(config["align"]["mafft"])
     threads: 8
     resources:
-        time = "01:00:00"
-        mem = "16G"
+        time = "01:00:00",
+        mem = "16G",
         cpus = 8
     shell:
         """
