@@ -12,11 +12,11 @@ flowchart TB
     gisaid[(GISAID)] -.-> GISAIDR --> FASTA{FASTA}
     click GISAIDR href "https://github.com/Wytamma/GISAIDR"
 
-    subgraph "Other data sources (TBD)"
-        style preprocessing stroke-width: 2, stroke: grey,stroke-dasharray: 5 5
-        otherSources[(DB)] -.-> preprocessing
+    subgraph "Other data sources"
+        style preprocessing stroke-width: 2, stroke: grey,stroke-dasharray: 5 5, fill: #48b884
+        otherSources[(input/ directory)]
     end 
-    preprocessing --> FASTA --> MSA
+    otherSources --> FASTA --> MSA
 
     subgraph treeConstruction["Tree construction"]
         MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
