@@ -28,5 +28,5 @@ pages:
       - public
     expire_in: 30 days
   only:
-    - master
+    - main
       
