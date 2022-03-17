@@ -13,7 +13,6 @@ flowchart TB
     click GISAIDR href "https://github.com/Wytamma/GISAIDR"
 
     subgraph "Other data sources"
-        style preprocessing stroke-width: 2, stroke: grey,stroke-dasharray: 5 5, fill: #48b884
         otherSources[(input/ directory)]
     end 
     otherSources --> FASTA --> MSA
@@ -37,7 +36,7 @@ flowchart TB
     click Beastiary href "https://github.com/Wytamma/beastiary"
 
     classDef complete fill:#48b884;
-    class gisaid,GISAIDR,FASTA,MSA,tree complete;
+    class gisaid,GISAIDR,otherSources,FASTA,MSA,tree complete;
 
     classDef inProg fill:#cc8400;
     class RTR,QC,XML inProg;
