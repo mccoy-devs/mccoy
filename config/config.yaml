@@ -1,6 +1,7 @@
 id: omicron_test
 
 query:
+  enabled: true
   gisaid:
     lineage: "BA.1"
     location: "Australia"

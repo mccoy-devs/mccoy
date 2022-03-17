@@ -1,6 +1,6 @@
 rule align:
     input:
-        original = RESOURCES_DIR / "{id}-original.fasta",
+        original = RESOURCES_DIR / "{id}-combined.fasta",
         reference = RESOURCES_DIR / "reference.fasta"
     output:
         RESULTS_DIR / "{id}-aligned.fasta"

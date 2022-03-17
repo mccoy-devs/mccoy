@@ -1,5 +1,6 @@
 results/
 resources/*
+input/*
 !resources/reference.fasta
 logs/
 .snakemake/

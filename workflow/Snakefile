@@ -6,6 +6,7 @@ import snakemake
 SNAKE_DIR = Path(workflow.basedir)
 RESULTS_DIR = SNAKE_DIR.parent / "results"
 RESOURCES_DIR = SNAKE_DIR.parent / "resources"
+INPUT_DIR = SNAKE_DIR.parent / "input"
 CONFIG_DIR = SNAKE_DIR.parent / "config"
 LOG_DIR = SNAKE_DIR.parent / "logs"
 
@@ -16,6 +17,7 @@ envvars:
     "GISAIDR_PASSWORD"
 
 include: "rules/query.smk"
+include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 
@@ -28,6 +30,7 @@ onstart:
                 'SNAKE_DIR',
                 'RESULTS_DIR',
                 'RESOURCES_DIR',
+                'INPUT_DIR',
                 'CONFIG_DIR',
                 'LOG_DIR',
             )
