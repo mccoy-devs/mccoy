@@ -1,23 +1,23 @@
-id: omicron_test
+id: omicron_test # The ID of the worflow run (this name will be carried through all output files)
 
-query:
-  enabled: true
-  gisaid:
+query:           # Options for the query rule (./workflow/rules/query.smk)
+  enabled: true  # Enable this rule?
+  gisaid:        # Options passed directly to the GISAIDR query function
     lineage: "BA.1"
     location: "Australia"
     collection_date_complete: true
     complete: true
     low_coverage_excl: true
-  downsample: 5
+  downsample: 5  # Downsample factor (output_samples = total_samples / downsample)
 
-align:
-  mafft:
+align:           # Options for the query rule (./workflow/rules/align.smk)
+  mafft:         # Command line options passed directly to mafft
   - "--6merpair"
   - "--keeplength"
   - "--addfragments"
 
-tree:
-  iqtree2:
+tree:            # Options for the query rule (./workflow/rules/tree.smk)
+  iqtree2:       # Command line options passed directly to iqtree2
   - "-nt AUTO"
   - "-m HKY+G"
   - "-bb 1000"
