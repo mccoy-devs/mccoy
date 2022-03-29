@@ -1,3 +1,5 @@
+set dotenv-load := false
+
 run profile *args:
     ./snakemake --profile profiles/{{ profile }} {{ args }} -R `./snakemake --list-params-changes {{ args }}`
 
