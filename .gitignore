@@ -6,3 +6,4 @@ input/*
 logs/
 .snakemake/
 .DS_Store
+.vscode
