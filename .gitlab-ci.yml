@@ -15,7 +15,7 @@ docs:
   artifacts:
     paths:
       - docshtml/
-  
+
 pages:
   stage: deploy
   image: alpine
@@ -29,4 +29,3 @@ pages:
     expire_in: 30 days
   only:
     - main
-      
