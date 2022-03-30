@@ -6,5 +6,5 @@ cluster: >-
   -o logs/{rule}_{wildcards}.out -e logs/{rule}_{wildcards}.err
 cluster-cancel: scancel
 jobs: 50
-default-resources: ["time=00:15:00", "mem=4G", "nodes=1", "cpus=1"]
+default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "cpus=1"]
 use-conda: true
