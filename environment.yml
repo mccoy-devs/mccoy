@@ -5,3 +5,4 @@ channels:
 dependencies:
   - bioconda::snakemake
   - just
+  - pytest

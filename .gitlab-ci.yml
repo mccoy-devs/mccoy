@@ -2,6 +2,15 @@ stages:
   - build
   - deploy
 
+testing:
+  stage: build
+  image: continuumio/miniconda3:latest
+  before_script:
+    - env create -f environment.yml
+    - conda activate duchene-mdap-2022
+  script:
+    - pytest
+
 docs:
   stage: build
   image: python:3.8-slim-buster
