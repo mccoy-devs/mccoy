@@ -1,5 +1,9 @@
 # Current workflow
 
+[![Pipeline](https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/badges/main/pipeline.svg)](https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/commits/main)
+[![Documentation](https://img.shields.io/badge/docs-html-blue.svg)](https://mdap-public.pages.gitlab.unimelb.edu.au/duchene-mdap-2022/)
+
+
 This will be updated as pieces are developed and modified.
 
 **Legend**:
