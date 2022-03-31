@@ -22,14 +22,14 @@ def test_dates():
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print("results/nextstrain-dates.csv", file=sys.stderr)
+        print("results/test-dates.csv", file=sys.stderr)
 
         # Run the test job.
         sp.check_output([
             "python",
             "-m",
             "snakemake", 
-            "results/nextstrain-dates.csv",
+            "results/test-dates.csv",
             "-f", 
             "-j1",
             "--keep-target-files",

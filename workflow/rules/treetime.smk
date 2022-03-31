@@ -12,9 +12,9 @@ rule dates:
 
 rule treetime:
     input:
-        treefile = "results/{id}-aligned.fasta.treefile",
-        alignment = "results/{id}-aligned.fasta",
-        dates = "results/{id}-dates.csv"
+        treefile="results/{id}-aligned.fasta.treefile",
+        alignment="results/{id}-aligned.fasta",
+        dates="results/{id}-dates.csv",
     output:
         multiext(str("results/{id}-treetime/" ),
                 "rerooted.newick", "rtt.csv", "root_to_tip_regression.pdf")
@@ -24,5 +24,5 @@ rule treetime:
         LOG_DIR / "roottotip-{id}.txt"
     shell:
         """
-        treetime clock --tree {treefile} --dates {dates} --aln {alignment} --outdir {RESULTS_DIR/"{id}-treetime"}
+        treetime clock --tree {input.treefile} --dates {input.dates} --aln {input.alignment} --outdir {RESULTS_DIR}/{wildcards.id}-treetime
         """
