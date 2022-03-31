@@ -14,7 +14,7 @@ flowchart TB
 
     subgraph "Other data sources"
         otherSources[(input/ directory)]
-    end 
+    end
     otherSources --> FASTA --> MSA
 
     subgraph treeConstruction["Tree construction"]

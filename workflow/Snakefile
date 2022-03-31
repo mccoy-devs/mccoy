@@ -10,11 +10,14 @@ INPUT_DIR = SNAKE_DIR.parent / "input"
 CONFIG_DIR = SNAKE_DIR.parent / "config"
 LOG_DIR = SNAKE_DIR.parent / "logs"
 
+
 configfile: CONFIG_DIR / "config.yaml"
+
 
 envvars:
     "GISAIDR_USERNAME",
-    "GISAIDR_PASSWORD"
+    "GISAIDR_PASSWORD",
+
 
 include: "rules/query.smk"
 include: "rules/combine.smk"
@@ -22,19 +25,22 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/treetime.smk"
 
-localrules: query
+
+localrules:
+    query,
+
 
 onstart:
     # Print some environment info
     print("Workflow directories:")
     path_vars = (
-                'SNAKE_DIR',
-                'RESULTS_DIR',
-                'RESOURCES_DIR',
-                'INPUT_DIR',
-                'CONFIG_DIR',
-                'LOG_DIR',
-            )
+        'SNAKE_DIR',
+        'RESULTS_DIR',
+        'RESOURCES_DIR',
+        'INPUT_DIR',
+        'CONFIG_DIR',
+        'LOG_DIR',
+    )
     for name in path_vars:
         print(f"\t{name:20s} ➡  {str(globals()[name])}")
 
@@ -44,11 +50,10 @@ onstart:
     print(f"\t{shell('conda --version'):20s} ➡  {shell('which conda')}")
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
 
-    # Ensure all required directories exist
-    for name in path_vars:
-        globals()[name].mkdir(exist_ok=True)
-        assert(globals()[name].exists())
+    # Ensure log directory exists. Required for cluster job submission.
+    LOG_DIR.mkdir(exist_ok=True)
+
 
 rule all:
     input:
-        RESULTS_DIR / f"{config['id']}-aligned.fasta.treefile"
+        RESULTS_DIR / f"{config['id']}-aligned.fasta.treefile",

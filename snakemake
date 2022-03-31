@@ -1,13 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-import re
-import sys
 import os
+import re
 import stat
+import sys
 
+import snakemake.executors
 from snakemake import main
 from snakemake.logging import logger
-import snakemake.executors
 
 
 def write_jobscript(self, job, jobscript, **kwargs):

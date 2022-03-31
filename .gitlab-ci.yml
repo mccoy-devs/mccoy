@@ -26,7 +26,7 @@ docs:
   artifacts:
     paths:
       - docshtml/
-  
+
 pages:
   stage: deploy
   image: alpine
@@ -40,4 +40,6 @@ pages:
     expire_in: 30 days
   only:
     - main
-      
+
+include:
+  - remote: 'https://gitlab.com/yesolutions/gitlab-ci-templates/raw/main/templates/pre-commit-autofix.yaml'
