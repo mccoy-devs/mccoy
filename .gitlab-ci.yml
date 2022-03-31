@@ -4,10 +4,10 @@ stages:
 
 testing:
   stage: build
-  image: continuumio/miniconda3:latest
+  image: mambaorg/micromamba:0.22.0
   before_script:
-    - apt-get update -q -y
-    - apt-get install -y build-essential
+    # - apt-get update -q -y
+    # - apt-get install -y build-essential
     - conda init bash
     - conda env create -f environment.yml
     - conda activate duchene-mdap-2022
