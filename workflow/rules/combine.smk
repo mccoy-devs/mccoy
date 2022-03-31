@@ -8,5 +8,5 @@ rule combine:
         LOG_DIR / "combine-{id}.fasta",
     shell:
         """
-        cat {input.gisaidr} {input.extra} > {output}
+        cat {input.gisaidr} {input.extra} | sed s/\@/_/g > {output}
         """

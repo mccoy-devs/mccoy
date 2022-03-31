@@ -8,7 +8,7 @@ rule dates:
     log:
         LOG_DIR / "dates-{id}.txt"
     shell:
-        "python "+str(SNAKE_DIR)+"/scripts/dates.py {input} {output}"
+        "python {SNAKE_DIR}/scripts/dates.py {input} {output}"
 
 rule treetime:
     input:
@@ -16,13 +16,17 @@ rule treetime:
         alignment="results/{id}-aligned.fasta",
         dates="results/{id}-dates.csv",
     output:
-        multiext(str("results/{id}-treetime/" ),
-                "rerooted.newick", "rtt.csv", "root_to_tip_regression.pdf")
+        multiext(
+            str("results/{id}-treetime/"),
+            "rerooted.newick", 
+            "rtt.csv", 
+            "root_to_tip_regression.pdf",
+        )
     conda:
         "../envs/treetime.yml"
     log:
         LOG_DIR / "roottotip-{id}.txt"
     shell:
         """
-        treetime clock --tree {input.treefile} --dates {input.dates} --aln {input.alignment} --outdir {RESULTS_DIR}/{wildcards.id}-treetime
+        treetime clock --tree {input.treefile} --dates {input.dates} --aln {input.alignment} --outdir results/{wildcards.id}-treetime
         """

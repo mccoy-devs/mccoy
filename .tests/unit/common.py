@@ -45,4 +45,5 @@ class OutputChecker:
             )
 
     def compare_files(self, generated_file, expected_file):
-        sp.check_output(["cmp", generated_file, expected_file])
+        if generated_file.suffix != ".pdf":
+            sp.check_output(["cmp", generated_file, expected_file])
