@@ -46,5 +46,6 @@ export_fasta(
   Omicron_df,
   out_file_name = sprintf('%s-original.fasta', basename),
   export_dated_only = T,
-  date_format = '%Y-%m-%d'
+  date_format = '%Y-%m-%d',
+  
 )
