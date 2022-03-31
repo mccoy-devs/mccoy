@@ -8,6 +8,7 @@ testing:
   before_script:
     - apt-get update -q -y
     - apt-get install -y build-essential
+    - conda init bash
     - conda env create -f environment.yml
     - conda activate duchene-mdap-2022
   script:
