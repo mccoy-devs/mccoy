@@ -17,7 +17,7 @@ rule align:
         cpus=4,
     shell:
         """
-        REFNAME=$(head -n1 {input.original} | tr -d '>')
+        REFNAME=$(head -n1 {input.reference} | tr -d '>')
         mafft --thread {threads} {params} {input.original} {input.reference} \
             | seqkit grep -rvip "^$REFNAME" > {output}
         """
