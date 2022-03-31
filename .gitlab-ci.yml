@@ -6,7 +6,9 @@ testing:
   stage: build
   image: continuumio/miniconda3:latest
   before_script:
-    - env create -f environment.yml
+    - apt-get update -q -y
+    - apt-get install -y build-essential
+    - conda env create -f environment.yml
     - conda activate duchene-mdap-2022
   script:
     - pytest
