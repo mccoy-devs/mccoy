@@ -1,0 +1,32 @@
+stages:
+  - build
+  - deploy
+
+docs:
+  stage: build
+  image: python:3.8-slim-buster
+  before_script:
+    - apt-get update && apt-get install -y build-essential git pandoc
+    - pip install poetry
+    - cd docs
+    - poetry install
+  script:
+    - poetry run sphinx-build -b html . ../docshtml
+  artifacts:
+    paths:
+      - docshtml/
+  
+pages:
+  stage: deploy
+  image: alpine
+  dependencies:
+    - docs
+  script:
+    - mv docshtml/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - main
+      

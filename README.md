@@ -1,6 +1,10 @@
 # Current workflow
 
-This will be updated as pieces are developed and modified. Nodes colored <span style="color: #48b884">green</span> have initial support in the workflow.
+This will be updated as pieces are developed and modified.
+
+**Legend**:
+- <span style="color: #48b884">initial support in the workflow</span>
+- <span style="color: #cc8400">in progress</span>
 
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
@@ -8,21 +12,21 @@ flowchart TB
     gisaid[(GISAID)] -.-> GISAIDR --> FASTA{FASTA}
     click GISAIDR href "https://github.com/Wytamma/GISAIDR"
 
-    subgraph "Other data sources (TBD)"
-        style preprocessing stroke-width: 2, stroke: grey,stroke-dasharray: 5 5
-        otherSources[(DB)] -.-> preprocessing
+    subgraph "Other data sources"
+        otherSources[(input/ directory)]
     end 
-    preprocessing --> FASTA --> MSA
+    otherSources --> FASTA --> MSA
 
     subgraph treeConstruction["Tree construction"]
         MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
         click MSA href "https://github.com/GSLBiotech/mafft"
         click tree href "https://github.com/iqtree/iqtree2"
-        click RTR href "https://github.com/beast-dev/Tempest"
+        click RTR href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/2"
     end
 
     subgraph QC["Quality control"]
-        dummy[List of heuristics to be developed]
+        dummy[See GitLab issue]
+        click dummy href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/3"
     end
     treeConstruction --> QC
 
@@ -31,11 +35,11 @@ flowchart TB
     click OnlineBEAST href "https://github.com/Wytamma/online-beast"
     click Beastiary href "https://github.com/Wytamma/beastiary"
 
-    style gisaid fill:#48b884
-    style GISAIDR fill:#48b884
-    style FASTA fill:#48b884
-    style MSA fill:#48b884
-    style tree fill:#48b884
+    classDef complete fill:#48b884;
+    class gisaid,GISAIDR,otherSources,FASTA,MSA,tree complete;
+
+    classDef inProg fill:#cc8400;
+    class RTR,QC,XML inProg;
 ```
 
 # Instructions
@@ -44,7 +48,7 @@ Ensure you have [mamba](https://github.com/conda-forge/miniforge) installed (con
 
 ## Step 1 - install snakemake
 
-If you already have [snakemake](https://snakemake.readthedocs.io/en/stable/) installed then go straight to step 2! Otherwise...
+If you already have [snakemake](https://snakemake.readthedocs.io/en/stable/) and [just (a command runner)](https://github.com/casey/just) installed then go straight to step 2! Otherwise...
 
 In the base directory of the repo, you can create a fresh conda environment with:
 
@@ -63,7 +67,7 @@ The workflow is being developed such that all required software will be automati
 To run with the default parameters and configuration:
 
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' ./run.sh -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run local -c 1
 ```
 
 The parameters passed to each tool in the workflow can be changed by making a copy of the default config file and modifying it appropriately:
@@ -71,5 +75,11 @@ The parameters passed to each tool in the workflow can be changed by making a co
 ```bash
 cp config/config.yml custom-config.yml
 # modify custom-config.yml as required
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' CONFIGFILE=./custom-config.yml ./run.sh -c 1
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run local -c 1
+```
+
+On Spartan:
+
+```bash
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' just run spartan
 ```

@@ -1,6 +1,8 @@
 results/
 resources/*
+input/*
 !resources/reference.fasta
+!resources/templates
 logs/
 .snakemake/
 .DS_Store
