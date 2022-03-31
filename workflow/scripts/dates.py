@@ -1,6 +1,7 @@
 import re
 import csv
 from Bio import Phylo
+import typer
 
 def dates_from_tree(treefile:str, outfile:str):
     """
@@ -28,5 +29,6 @@ def dates_from_tree(treefile:str, outfile:str):
                     writer.writerow([node.name, match.group(0)])    
                     break
 
-if "snakemake" in locals():
-    dates_from_tree(snakemake.input[0], snakemake.output[0])
+
+if __name__ == "__main__":
+    typer.run(dates_from_tree)

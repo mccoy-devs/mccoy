@@ -1,4 +1,10 @@
+name: treetime
 channels:
-  - bioconda
+  - conda-forge
 dependencies:
-  - treetime==0.8.6
+  - python=3.9
+  - pip
+  - pip:
+    - click==8.0.4
+    - typer==0.4.1
+    - phylo-treetime==0.8.6

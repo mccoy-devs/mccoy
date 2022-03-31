@@ -1,25 +1,25 @@
 rule dates:
     input:
-        RESULTS_DIR / "{id}-aligned.fasta.treefile",
+        "results/{id}-aligned.fasta.treefile",
     output:
-        RESULTS_DIR / "{id}-dates.csv"
+        "results/{id}-dates.csv"
     conda:
-        SNAKE_DIR / "envs/treetime.yml"
+        "../envs/treetime.yml"
     log:
         LOG_DIR / "dates-{id}.txt"
-    script:
-        "{SNAKE_DIR}/scripts/dates.py"
+    shell:
+        "python "+str(SNAKE_DIR)+"/scripts/dates.py {input} {output}"
 
 rule treetime:
     input:
-        treefile = RESULTS_DIR / "{id}-aligned.fasta.treefile",
-        alignment = RESULTS_DIR / "{id}-aligned.fasta",
-        dates = RESULTS_DIR / "{id}-dates.csv"
+        treefile = "results/{id}-aligned.fasta.treefile",
+        alignment = "results/{id}-aligned.fasta",
+        dates = "results/{id}-dates.csv"
     output:
-        multiext(str(RESULTS_DIR / "{id}-treetime/" ),
+        multiext(str("results/{id}-treetime/" ),
                 "rerooted.newick", "rtt.csv", "root_to_tip_regression.pdf")
     conda:
-        SNAKE_DIR / "envs/treetime.yml"
+        "../envs/treetime.yml"
     log:
         LOG_DIR / "roottotip-{id}.txt"
     shell:
