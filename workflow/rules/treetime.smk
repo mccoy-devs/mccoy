@@ -2,13 +2,14 @@ rule dates:
     input:
         "results/{id}-aligned.fasta.treefile",
     output:
-        "results/{id}-dates.csv"
+        "results/{id}-dates.csv",
     conda:
         "../envs/treetime.yml"
     log:
-        LOG_DIR / "dates-{id}.txt"
+        LOG_DIR / "dates-{id}.txt",
     shell:
         "python {SNAKE_DIR}/scripts/dates.py {input} {output}"
+
 
 rule treetime:
     input:
@@ -18,14 +19,14 @@ rule treetime:
     output:
         multiext(
             str("results/{id}-treetime/"),
-            "rerooted.newick", 
-            "rtt.csv", 
+            "rerooted.newick",
+            "rtt.csv",
             "root_to_tip_regression.pdf",
-        )
+        ),
     conda:
         "../envs/treetime.yml"
     log:
-        LOG_DIR / "roottotip-{id}.txt"
+        LOG_DIR / "roottotip-{id}.txt",
     shell:
         """
         treetime clock --tree {input.treefile} --dates {input.dates} --aln {input.alignment} --outdir results/{wildcards.id}-treetime

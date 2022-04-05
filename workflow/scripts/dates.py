@@ -1,9 +1,11 @@
-import re
 import csv
-from Bio import Phylo
-import typer
+import re
 
-def dates_from_tree(treefile:str, outfile:str):
+import typer
+from Bio import Phylo
+
+
+def dates_from_tree(treefile: str, outfile: str):
     """
     Parses dates from the names of tips in a tree (expressed in Newick format) and outputs them as a CSV file.
 
@@ -21,12 +23,12 @@ def dates_from_tree(treefile:str, outfile:str):
     patterns = [re.compile(pattern_string) for pattern_string in pattern_strings]
     with open(outfile, 'w') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['name', 'date'])    
+        writer.writerow(['name', 'date'])
         for node in tree.find_elements(terminal=True):
             for pattern in patterns:
                 match = pattern.search(node.name)
                 if match:
-                    writer.writerow([node.name, match.group(0)])    
+                    writer.writerow([node.name, match.group(0)])
                     break
 
 

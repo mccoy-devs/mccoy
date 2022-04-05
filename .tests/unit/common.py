@@ -2,9 +2,9 @@
 Common code for unit testing of rules generated with Snakemake 7.3.2.
 """
 
-from pathlib import Path
-import subprocess as sp
 import os
+import subprocess as sp
+from pathlib import Path
 
 
 class OutputChecker:
@@ -38,11 +38,7 @@ class OutputChecker:
                 else:
                     unexpected_files.add(f)
         if unexpected_files:
-            raise ValueError(
-                "Unexpected files:\n{}".format(
-                    "\n".join(sorted(map(str, unexpected_files)))
-                )
-            )
+            raise ValueError("Unexpected files:\n{}".format("\n".join(sorted(map(str, unexpected_files)))))
 
     def compare_files(self, generated_file, expected_file):
         if generated_file.suffix != ".pdf":
