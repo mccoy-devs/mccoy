@@ -2,21 +2,23 @@ import subprocess
 from pathlib import Path
 import yaml
 import snakemake
+import pathlib
+
 
 SNAKE_DIR = Path(workflow.basedir)
-RESULTS_DIR = SNAKE_DIR.parent / "results"
-RESOURCES_DIR = SNAKE_DIR.parent / "resources"
-INPUT_DIR = SNAKE_DIR.parent / "input"
-CONFIG_DIR = SNAKE_DIR.parent / "config"
-LOG_DIR = SNAKE_DIR.parent / "logs"
+RESOURCES_DIR = config['project_path'] / "resources"
+run_path = config['project_path'] / "runs" / config['run_dir']
+RESULTS_DIR = run_path / "results"
+INPUT_DATA = config['data'] 
+DATA_DIR = run_path / "data"
+LOG_DIR = run_path / "logs"
 
+# overwrite config
+configfile: config['project_path'] / "config.yaml"
 
-configfile: CONFIG_DIR / "config.yaml"
-
-
-envvars:
-    "GISAIDR_USERNAME",
-    "GISAIDR_PASSWORD",
+# envvars:
+#     "GISAIDR_USERNAME",
+#     "GISAIDR_PASSWORD",
 
 
 include: "rules/query.smk"
@@ -32,13 +34,14 @@ localrules:
 
 onstart:
     # Print some environment info
+    print("Input data:")
+    for path in INPUT_DATA:
+        print(f"- {path}")
     print("Workflow directories:")
     path_vars = (
         'SNAKE_DIR',
         'RESULTS_DIR',
         'RESOURCES_DIR',
-        'INPUT_DIR',
-        'CONFIG_DIR',
         'LOG_DIR',
     )
     for name in path_vars:
