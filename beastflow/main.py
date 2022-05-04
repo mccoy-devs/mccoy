@@ -1,10 +1,11 @@
-from glob import glob
 import os
-from typing import List, Optional
-import typer
-import snakemake
-from pathlib import Path
 import shutil
+from glob import glob
+from pathlib import Path
+from typing import List, Optional
+
+import snakemake
+import typer
 
 app = typer.Typer()
 
@@ -17,6 +18,7 @@ def create_project(project_name, reference: Path, xml_template: Path):
     shutil.copyfile(reference, f"{project_name}/resources/reference.fasta")
     shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
     os.mkdir(f'{project_name}/runs')
+
 
 def create_run(project_dir: Path):
     runs = [int(run.split("_")[1]) for run in glob(f"{project_dir}/runs/*") if Path(run).is_dir()]
@@ -38,9 +40,10 @@ def callback():
 
 @app.command()
 def create(
-    project: Path = typer.Argument(..., file_okay=False, dir_okay=True), 
-    reference: Path = typer.Option(...,  exists=True, file_okay=True, dir_okay=False), 
-    template: Path = typer.Option(...,  exists=True, file_okay=True, dir_okay=False),):
+    project: Path = typer.Argument(..., file_okay=False, dir_okay=True),
+    reference: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
+    template: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
+):
     """
     Create a beastflow project
     """
@@ -51,12 +54,12 @@ def create(
     create_project(project, reference, template)
 
 
-
 @app.command()
 def run(
-    project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True), 
-    data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False), 
-    inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True)):
+    project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
+    data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
+    inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
+):
     """
     Run beastflow
     """
@@ -67,19 +70,15 @@ def run(
         inherit_data = glob(f"{inherit}/data/*-combined.fasta")
         data.append(inherit_data)
     config = {
-        'id':f"{project_id}-{run_id}", 
-        "project_id":project_id, 
-        "project_path": project, 
-        "run_id": run_id, 
-        "run_dir":f"run_{run_id}", 
+        'id': f"{project_id}-{run_id}",
+        "project_id": project_id,
+        "project_path": project,
+        "run_id": run_id,
+        "run_dir": f"run_{run_id}",
         "workflow_dir": f"{Path(snakefile).parent}",
-        "data": data
+        "data": data,
     }
     typer.echo(f"Running workflow: {run_id}")
     status = snakemake.snakemake(
-        snakefile = snakefile, 
-        use_conda=True,
-        config=config,
-        configfiles=[f"{project}/config.yaml"]
+        snakefile=snakefile, use_conda=True, config=config, configfiles=[f"{project}/config.yaml"]
     )
-    

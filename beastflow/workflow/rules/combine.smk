@@ -9,5 +9,5 @@ rule combine:
         LOG_DIR / "combine-{id}.fasta",
     shell:
         """
-        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output} 
+        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output}
         """

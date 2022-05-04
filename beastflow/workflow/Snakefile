@@ -9,12 +9,14 @@ SNAKE_DIR = Path(workflow.basedir)
 RESOURCES_DIR = config['project_path'] / "resources"
 run_path = config['project_path'] / "runs" / config['run_dir']
 RESULTS_DIR = run_path / "results"
-INPUT_DATA = config['data'] 
+INPUT_DATA = config['data']
 DATA_DIR = run_path / "data"
 LOG_DIR = run_path / "logs"
 
+
 # overwrite config
 configfile: config['project_path'] / "config.yaml"
+
 
 # envvars:
 #     "GISAIDR_USERNAME",
