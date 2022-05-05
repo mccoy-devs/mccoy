@@ -6,12 +6,13 @@ import pathlib
 
 
 SNAKE_DIR = Path(workflow.basedir)
-RESOURCES_DIR = config['project_path'] / "resources"
-run_path = config['project_path'] / "runs" / config['run_dir']
-RESULTS_DIR = run_path / "results"
+PROJECT_DIR = SNAKE_DIR.parent
+RESOURCES_DIR = PROJECT_DIR / "resources"
+RUN_DIR = PROJECT_DIR / "runs" / config['run_name']
+RESULTS_DIR = RUN_DIR / "results"
 INPUT_DATA = config['data']
-DATA_DIR = run_path / "data"
-LOG_DIR = run_path / "logs"
+DATA_DIR = RUN_DIR / "data"
+LOG_DIR = RUN_DIR / "logs"
 
 
 # overwrite config
@@ -41,9 +42,11 @@ onstart:
         print(f"- {path}")
     print("Workflow directories:")
     path_vars = (
+        'PROJECT_DIR',
         'SNAKE_DIR',
-        'RESULTS_DIR',
         'RESOURCES_DIR',
+        'RUN_DIR',
+        'RESULTS_DIR',
         'LOG_DIR',
     )
     for name in path_vars:
