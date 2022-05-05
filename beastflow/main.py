@@ -20,11 +20,13 @@ def create_project(project_name, reference: Path, xml_template: Path):
     shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
     os.mkdir(f'{project_name}/runs')
 
+
 def get_last_run_id(project_path):
     runs = [int(run.split("_")[1]) for run in glob(f"{project_path}/runs/*") if Path(run).is_dir()]
     if runs:
         return max(runs)
     return None
+
 
 def create_run(project_path: Path):
     last_run_id = get_last_run_id(project_path)
@@ -42,6 +44,7 @@ def callback():
     """
     Beastflow CLI
     """
+
 
 @app.command()
 def create(
