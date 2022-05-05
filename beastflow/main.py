@@ -19,17 +19,21 @@ def create_project(project_name, reference: Path, xml_template: Path):
     shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
     os.mkdir(f'{project_name}/runs')
 
-
-def create_run(project_dir: Path):
-    runs = [int(run.split("_")[1]) for run in glob(f"{project_dir}/runs/*") if Path(run).is_dir()]
+def get_last_run_id(project_path):
+    runs = [int(run.split("_")[1]) for run in glob(f"{project_path}/runs/*") if Path(run).is_dir()]
     if runs:
-        run_id = max(runs) + 1
+        return max(runs)
+    return None
+
+def create_run(project_path: Path):
+    last_run_id = get_last_run_id(project_path)
+    if last_run_id:
+        run_id = last_run_id + 1
     else:
         run_id = 1
-    run_dir = f'{project_dir}/runs/run_{run_id}'
+    run_dir = f'{project_path}/runs/run_{run_id}'
     os.mkdir(run_dir)
     return run_id
-
 
 @app.callback()
 def callback():
@@ -59,6 +63,7 @@ def run(
     project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
     data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
+    inherit_last: Optional[bool] = typer.Option(False),
 ):
     """
     Run beastflow
@@ -66,7 +71,11 @@ def run(
     project_id = project.name
     run_id = create_run(project)
     snakefile = f"{Path(__file__).parent.resolve()}/workflow/Snakefile"
-    if inherit:
+    if inherit_last:
+        last_run_id = run_id - 1
+        inherit_data = glob(f"{project}/runs/run_{last_run_id}/data/*-combined.fasta")
+        data.append(inherit_data)
+    elif inherit:
         inherit_data = glob(f"{inherit}/data/*-combined.fasta")
         data.append(inherit_data)
     config = {
