@@ -11,7 +11,7 @@ query:
     low_coverage_excl: true
     to: "2022-01-01"
     from: "2021-11-01"
-  downsample: 40
+  downsample: 20
 
 align:
   mafft:

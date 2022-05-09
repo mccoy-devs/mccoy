@@ -1,7 +1,11 @@
 set dotenv-load := false
 
 run profile *args:
-    snakemake --profile profiles/{{ profile }} {{ args }} -R `./snakemake --list-params-changes {{ args }}`
+    snakemake --profile profiles/{{ profile }} {{ args }} -R `snakemake --list-params-changes {{ args }}`
+
+test *args:
+    args="{{ args }} -c1 --configfile config/test.yaml" && \
+           snakemake --profile profiles/local ${args} -R `snakemake --list-params-changes ${args}`
 
 clean profile:
     #!/usr/bin/env sh
