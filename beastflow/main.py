@@ -41,7 +41,7 @@ def create_run(project_path: Path):
 
 
 @app.callback()
-def callback():
+def callback(ctx: typer.Context):
     """
     Beastflow CLI
     """
@@ -63,16 +63,29 @@ def create(
     create_project(project, reference, template)
 
 
-@app.command(context_settings={"allow_extra_args": True, "ignore_unknown_options": True})
+def _print_snakemake_help(value: bool):
+    if value:
+        snakemake.main("-h")
+
+
+@app.command(
+    context_settings={"allow_extra_args": True, "ignore_unknown_options": True, "help_option_names": ["-h", "--help"]}
+)
 def run(
     ctx: typer.Context,
     project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
     data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
-    inherit_last: Optional[bool] = typer.Option(False),
+    inherit_last: Optional[bool] = False,
+    help_snakemake: Optional[bool] = typer.Option(
+        False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
+    ),
 ):
     """
-    Run beastflow
+    Run beastflow.
+
+    All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
+    all available snakemake arguments.
     """
     project_id = project.name
     run_id = create_run(project)
