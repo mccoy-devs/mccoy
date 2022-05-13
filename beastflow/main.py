@@ -77,6 +77,7 @@ def run(
     data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
     inherit_last: Optional[bool] = False,
+    cores: Optional[int] = typer.Option(1, "--cores", "-c", help="Number of cores to request for the workflow"),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -107,10 +108,12 @@ def run(
     }
 
     config_strs = (f"{k}={v}" for k, v in config.items())
+
     args = [
         f"--snakefile={snakefile}",
         "--use-conda",
         f"--configfile={project}/config.yaml",
+        f"--cores={cores}",
         "--config",
         *config_strs,
         *ctx.args,
