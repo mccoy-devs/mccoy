@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 from glob import glob
 from pathlib import Path
 from typing import List, Optional
@@ -62,8 +63,9 @@ def create(
     create_project(project, reference, template)
 
 
-@app.command()
+@app.command(context_settings={"allow_extra_args": True, "ignore_unknown_options": True})
 def run(
+    ctx: typer.Context,
     project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
     data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
@@ -88,9 +90,21 @@ def run(
         "project_path": project,
         "run_id": run_id,
         "run_name": f"run_{run_id}",
-        "data": data,
+        "data": [str(d) for d in data],
     }
+
+    config_strs = (f"{k}={v}" for k, v in config.items())
+    args = [
+        f"--snakefile={snakefile}",
+        "--use-conda",
+        f"--configfile={project}/config.yaml",
+        "--config",
+        *config_strs,
+        *ctx.args,
+    ]
+
     typer.echo(f"Running workflow: {run_id}")
-    status = snakemake.snakemake(
-        snakefile=snakefile, use_conda=True, config=config, configfiles=[f"{project}/config.yaml"]
-    )
+    typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.BLACK)
+    status = snakemake.main(args)
+
+    sys.exit(0 if status else 1)

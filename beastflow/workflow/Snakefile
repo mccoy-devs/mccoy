@@ -16,7 +16,7 @@ LOG_DIR = RUN_DIR / "logs"
 
 
 # overwrite config
-configfile: config['project_path'] / "config.yaml"
+configfile: Path(config['project_path']) / "config.yaml"
 
 
 # envvars:
