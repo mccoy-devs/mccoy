@@ -8,3 +8,5 @@ logs/
 .snakemake/
 .DS_Store
 .vscode
+test/
+*.pyc

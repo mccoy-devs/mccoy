@@ -1,7 +1,5 @@
-id: omicron_test # The ID of the worflow run (this name will be carried through all output files)
-
 query:           # Options for the query rule (./workflow/rules/query.smk)
-  enabled: true  # Enable this rule?
+  enabled: false  # Enable this rule?
   gisaid:        # Options passed directly to the GISAIDR query function
     lineage: "BA.1"
     location: "Australia"

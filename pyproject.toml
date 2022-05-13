@@ -1,3 +1,25 @@
+[tool.poetry]
+name = "beastflow"
+version = "0.1.0"
+description = ""
+authors = ["Wytamma Wirth <wytamma.wirth@me.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+beastflow = "beastflow.main:app"
+
+[tool.poetry.dependencies]
+python = ">3.9"
+typer = "^0.4.1"
+snakemake = "^7.5.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 120
 skip_string_normalization = true
