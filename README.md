@@ -52,7 +52,9 @@ Ensure you have [mamba](https://github.com/conda-forge/miniforge) (conda will wo
 
 ## Step 1 - install the workflow
 
+```bash
 poetry install
+```
 
 ## Step 2 - run the workflow
 
