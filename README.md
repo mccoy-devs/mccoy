@@ -58,6 +58,8 @@ poetry install
 
 The workflow is being developed such that all required software will be automatically installed for each step of the pipeline in self-contained conda environments. These environments will be cached and reused whenever possible (all handled internally by snakemake), but if you want to remove them then they can be found in `.snakemake`.
 
+> Note that you can remove the need for `poetry run` everywhere below by first running `poetry shell` to start a new shell with the beastflow poetry project loaded.
+
 First begin by creating a new Beastflow project (called `test` in this example):
 
 ```bash
