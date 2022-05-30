@@ -13,9 +13,9 @@ app = typer.Typer()
 
 def create_project(project_name, reference: Path, xml_template: Path):
     os.mkdir(f'{project_name}')
-    beastflow_dir = Path(__file__).parent.resolve()
-    shutil.copyfile(f"{beastflow_dir}/config/config.yaml", f"{project_name}/config.yaml")
-    shutil.copytree(f"{beastflow_dir}/workflow", f"{project_name}/workflow")
+    mccoy_dir = Path(__file__).parent.resolve()
+    shutil.copyfile(f"{mccoy_dir}/config/config.yaml", f"{project_name}/config.yaml")
+    shutil.copytree(f"{mccoy_dir}/workflow", f"{project_name}/workflow")
     os.mkdir(f'{project_name}/resources')
     shutil.copyfile(reference, f"{project_name}/resources/reference.fasta")
     shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
@@ -54,7 +54,7 @@ def create(
     template: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
 ):
     """
-    Create a beastflow project
+    Create a mccoy project
     """
     if project.exists():
         typer.echo(f"Project already exists: '{project}'")
@@ -83,7 +83,7 @@ def run(
     ),
 ):
     """
-    Run beastflow.
+    Run mccoy.
 
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.

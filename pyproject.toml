@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "beastflow"
+name = "mccoy"
 version = "0.1.0"
 description = ""
-authors = ["Wytamma Wirth <wytamma.wirth@me.com>"]
+authors = ["Wytamma Wirth <wytamma.wirth@me.com>", "Simon Mutch <smutch@unimelb.edu.au>", "Rob Turnbull <robert.turnbull@unimelb.edu.au>"]
 readme = "README.md"
 
 [tool.poetry.scripts]
-beastflow = "beastflow.main:app"
+mccoy = "mccoy.main:app"
 
 [tool.poetry.dependencies]
 python = ">3.9"
@@ -14,7 +14,7 @@ typer = "^0.4.1"
 snakemake = "^7.5.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -36,3 +36,7 @@ max-line-length = "120"
 [tool.snakefmt]
 line_length = 120
 include = '\.smk$|^Snakefile$'
+
+[tool.pytest]
+minversion = "6.0"
+testpaths = [".tests"]

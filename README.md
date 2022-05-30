@@ -1,6 +1,6 @@
 # Current workflow
 
-[![Pipeline](https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/badges/main/pipeline.svg)](https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/commits/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smutch/mccoy/main.svg)](https://results.pre-commit.ci/latest/github/smutch/mccoy/main)
 [![Documentation](https://img.shields.io/badge/docs-html-blue.svg)](https://mdap-public.pages.gitlab.unimelb.edu.au/duchene-mdap-2022/)
 
 
@@ -60,12 +60,12 @@ poetry install
 
 The workflow is being developed such that all required software will be automatically installed for each step of the pipeline in self-contained conda environments. These environments will be cached and reused whenever possible (all handled internally by snakemake), but if you want to remove them then they can be found in `.snakemake`.
 
-> Note that you can remove the need for `poetry run` everywhere below by first running `poetry shell` to start a new shell with the beastflow poetry project loaded.
+> Note that you can remove the need for `poetry run` everywhere below by first running `poetry shell` to start a new shell with the mccoy poetry project loaded.
 
 First begin by creating a new Beastflow project (called `test` in this example):
 
 ```bash
-poetry run beastflow create test --reference beastflow/resources/reference.fasta --template beastflow/resources/templates/CoV_CE_fixed_clock_template.xml
+poetry run mccoy create test --reference mccoy/resources/reference.fasta --template mccoy/resources/templates/CoV_CE_fixed_clock_template.xml
 ```
 
 The config for this project can be altered by editing the newly created file `test/config.yaml`.
@@ -73,14 +73,14 @@ The config for this project can be altered by editing the newly created file `te
 To run the newly created project:
 
 ```bash
-poetry run beastflow run test --data beastflow/resources/omicron_test-original.fasta
+poetry run mccoy run test --data mccoy/resources/omicron_test-original.fasta
 ```
 
-This will create a new directory in `test/runs` with the workflow results and output. Subsequent calls to `poetry run beastflow run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `poetry run beastflow run --help` for more information.
+This will create a new directory in `test/runs` with the workflow results and output. Subsequent calls to `poetry run mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `poetry run mccoy run --help` for more information.
 
 As well as directly altering a project's `config.yaml`, config variables can be overridden on the command line. e.g.:
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' poetry run beasflow run --data beastflow/resources/omicron_test-original.fasta --config query.enabled=true
+GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' poetry run mccoy run --data mccoy/resources/omicron_test-original.fasta --config query.enabled=true
 ```
 
-Any options passed to `poetry run beastflow run` that are not listed in `poetry run beastflow run --help` will be directly forwarded on to snakemake. See `poetry run beastflow run --help-snakemake` for a list of all available options.
+Any options passed to `poetry run mccoy run` that are not listed in `poetry run mccoy run --help` will be directly forwarded on to snakemake. See `poetry run mccoy run --help-snakemake` for a list of all available options.
