@@ -1,7 +1,7 @@
 # Current workflow
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smutch/mccoy/main.svg)](https://results.pre-commit.ci/latest/github/smutch/mccoy/main)
-[![Documentation](https://img.shields.io/badge/docs-html-blue.svg)](https://mdap-public.pages.gitlab.unimelb.edu.au/duchene-mdap-2022/)
+[![docs](https://github.com/smutch/mccoy/actions/workflows/docs.yaml/badge.svg?event=push)](https://github.com/smutch/mccoy/actions/workflows/docs.yaml)
 
 
 This will be updated as pieces are developed and modified.
