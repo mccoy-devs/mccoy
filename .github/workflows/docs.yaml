@@ -15,7 +15,7 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - uses: actions/setup-python@v3
       with:
-        python-version: "3.10"
+        python-version: "3.9"
     - name: Install and configure Poetry
       uses: snok/install-poetry@v1
       with:
@@ -31,10 +31,14 @@ jobs:
     - name: Install dependencies
       run: poetry install
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-    - name: Build and Commit
-      uses: sphinx-notes/pages@v2
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+    - name: Build docs
+      run: |
+        mkdir gh-pages
+        touch gh-pages/.nojekyll
+        poetry run sphinx-build -b html docs gh-pages
+    - name: Deploy documentation
+      if: ${{ github.event_name == 'push' }}
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
+        folder: gh-pages
