@@ -10,3 +10,4 @@ logs/
 .vscode
 test/
 *.pyc
+docs/_build

@@ -19,20 +19,10 @@ LOG_DIR = RUN_DIR / "logs"
 configfile: Path(config['project_path']) / "config.yaml"
 
 
-# envvars:
-#     "GISAIDR_USERNAME",
-#     "GISAIDR_PASSWORD",
-
-
-include: "rules/query.smk"
 include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/treetime.smk"
-
-
-localrules:
-    query,
 
 
 onstart:
