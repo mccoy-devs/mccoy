@@ -16,4 +16,4 @@ def style(session):
 
 @nox.session
 def docs(session):
-    session.run("poetry", "run", "sphinx-build", "docs/source", "docs/build/html", external=True)
+    session.run("poetry", "run", "sphinx-build", "docs", "docs/_build/html", external=True)
