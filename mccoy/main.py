@@ -2,6 +2,7 @@ import os
 import shutil
 import sys
 from glob import glob
+from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
@@ -87,12 +88,15 @@ def run(
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
     inherit_last: Optional[bool] = False,
     cores: Optional[int] = typer.Option(1, "--cores", "-c", help="Number of cores to request for the workflow"),
+    config: Optional[List[str]] = typer.Option(
+        [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
+    ),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
 ):
     """
-    Run mccoy.
+    Run McCoy.
 
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
@@ -107,7 +111,7 @@ def run(
     elif inherit:
         inherit_data = glob(f"{inherit}/data/*-combined.fasta")
         data.append(inherit_data)
-    config = {
+    mccoy_config = {
         'id': f"{project_id}-{run_id}",
         "project_id": project_id,
         "project_path": project,
@@ -116,7 +120,7 @@ def run(
         "data": [str(d) for d in data],
     }
 
-    config_strs = (f"{k}={v}" for k, v in config.items())
+    config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
 
     args = [
         f"--snakefile={snakefile}",
