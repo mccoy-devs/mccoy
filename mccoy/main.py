@@ -23,7 +23,7 @@ def create_project(project_name, reference: Path, xml_template: Path):
 
 
 def get_last_run_id(project_path):
-    runs = [int(run.split("_")[1]) for run in glob(f"{project_path}/runs/*") if Path(run).is_dir()]
+    runs = [int(run.split("_")[-1]) for run in glob(f"{project_path}/runs/*") if Path(run).is_dir()]
     if runs:
         return max(runs)
     return None
