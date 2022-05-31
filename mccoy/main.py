@@ -43,7 +43,16 @@ def create_run(project_path: Path):
 @app.callback()
 def callback(ctx: typer.Context):
     """
-    Beastflow CLI
+    \b
+    The
+      __  __       _____
+     |  \/  |     / ____|
+     | \  / | ___| |     ___  _   _
+     | |\/| |/ __| |    / _ \| | | |
+     | |  | | (__| |___| (_) | |_| |
+     |_|  |_|\___|\_____\___/ \__, |
+                               __/ |
+                              |___/   CLI
     """
 
 
@@ -54,7 +63,7 @@ def create(
     template: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
 ):
     """
-    Create a mccoy project
+    Create a McCoy project
     """
     if project.exists():
         typer.echo(f"Project already exists: '{project}'")
