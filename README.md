@@ -13,26 +13,17 @@ This will be updated as pieces are developed and modified.
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
 flowchart TB
-    gisaid[(GISAID)] -.-> GISAIDR --> FASTA{FASTA}
-    click GISAIDR href "https://github.com/Wytamma/GISAIDR"
+    sources[(fasta files)]
+    sources --> combine --> MSA
 
-    subgraph "Other data sources"
-        otherSources[(input/ directory)]
-    end
-    otherSources --> FASTA --> MSA
-
-    subgraph treeConstruction["Tree construction"]
-        MSA[multiple sequence alignment<br/>-- MAFFT] --> tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression<br/>-- TempEst]
-        click MSA href "https://github.com/GSLBiotech/mafft"
-        click tree href "https://github.com/iqtree/iqtree2"
-        click RTR href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/2"
-    end
+    MSA[multiple sequence alignment<br/>-- MAFFT] --> tree
+    click MSA href "https://github.com/GSLBiotech/mafft"
 
     subgraph QC["Quality control"]
-        dummy[See GitLab issue]
-        click dummy href "https://gitlab.unimelb.edu.au/mdap-public/duchene-mdap-2022/-/issues/3"
+        otherQC[other checks]
+        tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression]
+        click tree href "https://github.com/iqtree/iqtree2"
     end
-    treeConstruction --> QC
 
     MSA --> XML[Beast XML generation<br/>-- Wytamma's scripts + templates + FEAST] --> OnlineBEAST[run, pause & update BEAST analysis<br/>-- Online BEAST] --> Beastiary[monitor running BEAST jobs<br/>-- Beastiary]
     click XML href "https://github.com/Wytamma/real-time-beast-pipeline"
@@ -40,10 +31,10 @@ flowchart TB
     click Beastiary href "https://github.com/Wytamma/beastiary"
 
     classDef complete fill:#48b884;
-    class gisaid,GISAIDR,otherSources,FASTA,MSA,tree complete;
+    class gisaid,GISAIDR,sources,combine,MSA,tree,RTR complete;
 
     classDef inProg fill:#cc8400;
-    class RTR,QC,XML inProg;
+    class QC,XML inProg;
 ```
 
 # Instructions
@@ -56,31 +47,41 @@ Ensure you have [mamba](https://github.com/conda-forge/miniforge) (conda will wo
 poetry install
 ```
 
-## Step 2 - run the workflow
+To start using McCoy, you can either spawn a new shell with the McCoy Poetry environment enabled:
+
+```bash
+poetry shell
+```
+
+**or** you can replace every instance of `mccoy` in the commands below with `poetry run mccoy`.
 
 The workflow is being developed such that all required software will be automatically installed for each step of the pipeline in self-contained conda environments. These environments will be cached and reused whenever possible (all handled internally by snakemake), but if you want to remove them then they can be found in `.snakemake`.
 
-> Note that you can remove the need for `poetry run` everywhere below by first running `poetry shell` to start a new shell with the mccoy poetry project loaded.
+## Step 2 - Create a McCoy project
 
-First begin by creating a new Beastflow project (called `test` in this example):
+First begin by creating a new McCoy project (called `test` in this example):
 
 ```bash
-poetry run mccoy create test --reference mccoy/resources/reference.fasta --template mccoy/resources/templates/CoV_CE_fixed_clock_template.xml
+mccoy create test --reference mccoy/resources/reference.fasta --template mccoy/resources/templates/CoV_CE_fixed_clock_template.xml
 ```
 
+The `reference` and `template` options are required. At the moment we are distributing these reference and template files, however, once we reach v1.0, these will be removed and the useer will have to ensure they have appropriate reference and template files available.
+
 The config for this project can be altered by editing the newly created file `test/config.yaml`.
+
+## Step 3 - Run the project!
 
 To run the newly created project:
 
 ```bash
-poetry run mccoy run test --data mccoy/resources/omicron_test-original.fasta
+mccoy run test --data mccoy/resources/omicron_test-original.fasta
 ```
 
-This will create a new directory in `test/runs` with the workflow results and output. Subsequent calls to `poetry run mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `poetry run mccoy run --help` for more information.
+Again, the `data` option here is required. This command will create a new directory in `test/runs` with the workflow results and output. Subsequent calls to `mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `mccoy run --help` for more information.
 
 As well as directly altering a project's `config.yaml`, config variables can be overridden on the command line. e.g.:
 ```bash
-GISAIDR_USERNAME='_YOUR_USERNAME_' GISAIDR_PASSWORD='_YOUR_PASSWORD_' poetry run mccoy run --data mccoy/resources/omicron_test-original.fasta --config query.enabled=true
+mccoy run --data mccoy/resources/omicron_test-original.fasta --config align='{mafft: ["--6merpair", "--addfragments"]}'
 ```
 
-Any options passed to `poetry run mccoy run` that are not listed in `poetry run mccoy run --help` will be directly forwarded on to snakemake. See `poetry run mccoy run --help-snakemake` for a list of all available options.
+Any options passed to `mccoy run` that are not listed in `mccoy run --help` will be directly forwarded on to Snakemake. See `mccoy run --help-snakemake` for a list of all available options.
