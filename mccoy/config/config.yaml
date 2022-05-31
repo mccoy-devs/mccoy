@@ -1,13 +1,3 @@
-query:           # Options for the query rule (./workflow/rules/query.smk)
-  enabled: false  # Enable this rule?
-  gisaid:        # Options passed directly to the GISAIDR query function
-    lineage: "BA.1"
-    location: "Australia"
-    collection_date_complete: true
-    complete: true
-    low_coverage_excl: true
-  downsample: 5  # Downsample factor (output_samples = total_samples / downsample)
-
 align:           # Options for the query rule (./workflow/rules/align.smk)
   mafft:         # Command line options passed directly to mafft
   - "--6merpair"
