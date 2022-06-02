@@ -25,6 +25,7 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/treetime.smk"
 include: "rules/dynamicbeast.smk"
+include: "rules/beast.smk"
 print(RESOURCES_DIR)
 
 onstart:
