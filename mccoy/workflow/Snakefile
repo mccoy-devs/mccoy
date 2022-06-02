@@ -13,6 +13,7 @@ RESULTS_DIR = RUN_DIR / "results"
 INPUT_DATA = config['data']
 DATA_DIR = RUN_DIR / "data"
 LOG_DIR = RUN_DIR / "logs"
+ENVS_DIR = SNAKE_DIR/"envs"
 
 
 # overwrite config
@@ -24,6 +25,9 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
 
+include: "rules/treetime.smk"
+include: "rules/dynamicbeast.smk"
+print(RESOURCES_DIR)
 
 onstart:
     # Print some environment info
@@ -38,6 +42,7 @@ onstart:
         'RUN_DIR',
         'RESULTS_DIR',
         'LOG_DIR',
+        'ENVS_DIR',
     )
     for name in path_vars:
         print(f"\t{name:20s} ➡  {str(globals()[name])}")

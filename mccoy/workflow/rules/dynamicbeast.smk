@@ -1,16 +1,13 @@
 rule dynamicbeast:
     input:
-        template=RESOURCES_DIR/templates/"CoV_CE_fixed_clock_template.xml"
+        template="resources/template.xml"
     output:
-        RESOURCES_DIR/templates/ "dynamic_{template}.xml",
+        "resources/dynamic_beast_input.xml",
     conda:
-        SNAKE_DIR / "envs/dynamicbeastfiles.yml"
+        ENVS_DIR / "dynamicbeast.yml"
     log:
-        LOG_DIR / "dynamic_{id}.log",
-    params:
-        lambda wildcards: " ".join(config["dynamicbeastfiles"]["dynamicbeast"]),
+        LOG_DIR / "dynamic_beast.log",
     shell:
-
         """
-        dynamicbeast {input.template} > {output}
+        dynamic-beast {input.template} > {output}
         """
