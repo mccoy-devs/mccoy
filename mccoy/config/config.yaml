@@ -10,12 +10,11 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
   - "-m HKY+G"
   - "-bb 1000"
 
-  beast:            # Options for the query rule (./workflow/rules/phylogenetics.smk)
-    beast2:       # Command line options passed directly to beast
-  - D "chainLength=100000000"
-  - D "ePopSize=0.3"
-  - D "mutationRate=1.0"
-  - D "mcmc.threads=6"
-  - D "mcmmc.chainLength=40000"
-  - D "treelog.logEvery=1000"
+beast:            # Options for the query rule (./workflow/rules/beast.smk)
+  #- "chainLength=1000"
+  - "ePopSize=0.3"
+  - "mutationRate=1.0"
+  - "mcmc.threads=6"
+  - "mcmc.chainLength=10000"
+  - "treelog.logEvery=1000"
   
