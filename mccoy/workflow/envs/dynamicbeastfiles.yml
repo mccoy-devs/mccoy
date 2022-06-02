@@ -1,0 +1,4 @@
+channels:
+  - pip
+dependencies:
+  - dynamic-beast
