@@ -29,7 +29,8 @@ def test_sequence(sequence: Sequence):
 
 def test_tree(tree: Tree):
     """
-    Write tree tests here e.g.
+    Write tree tests here.
+
     For example:
         tree.assert_is_bifurcating()
 
