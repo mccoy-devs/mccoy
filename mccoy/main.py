@@ -20,6 +20,7 @@ def create_project(project_name, reference: Path, xml_template: Path):
     os.mkdir(f'{project_name}/resources')
     shutil.copyfile(reference, f"{project_name}/resources/reference.fasta")
     shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
+    shutil.copyfile(f"{mccoy_dir}/tests.py", f"{project_name}/tests.py")
     os.mkdir(f'{project_name}/runs')
 
 

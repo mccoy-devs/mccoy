@@ -22,6 +22,7 @@ configfile: Path(config['project_path']) / "config.yaml"
 include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
+include: "rules/phytest.smk"
 
 
 onstart:
@@ -53,4 +54,4 @@ onstart:
 
 rule all:
     input:
-        RESULTS_DIR / f"{config['id']}-aligned.fasta.treefile",
+        RESULTS_DIR / f"{config['id']}-phytest.html",
