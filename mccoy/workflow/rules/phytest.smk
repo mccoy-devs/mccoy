@@ -1,8 +1,8 @@
 rule phytest:
     input:
-        alignment = RESULTS_DIR / "{id}-aligned.fasta",
-        tree = RESULTS_DIR / "{id}-aligned.fasta.treefile",
-        phytest_file = PROJECT_DIR / "tests.py",
+        alignment=RESULTS_DIR / "{id}-aligned.fasta",
+        tree=RESULTS_DIR / "{id}-aligned.fasta.treefile",
+        phytest_file=PROJECT_DIR / "tests.py",
     output:
         RESULTS_DIR / "{id}-phytest.html",
     conda:
@@ -14,4 +14,3 @@ rule phytest:
         phytest {input.phytest_file} -a {input.alignment} -t {input.tree} --report > {log}
         mv report.html {output}
         """
-

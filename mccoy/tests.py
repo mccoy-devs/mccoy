@@ -1,5 +1,6 @@
 from phytest import Alignment, Sequence, Tree
 
+
 def test_alignment(alignment: Alignment):
     """
     Write alignment tests here.
@@ -12,6 +13,7 @@ def test_alignment(alignment: Alignment):
     """
     pass
 
+
 def test_sequence(sequence: Sequence):
     """
     Write sequence tests here.
@@ -23,6 +25,7 @@ def test_sequence(sequence: Sequence):
     https://phytest-devs.github.io/phytest/reference.html#sequence
     """
     pass
+
 
 def test_tree(tree: Tree):
     """
