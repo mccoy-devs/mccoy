@@ -22,7 +22,6 @@ configfile: Path(config['project_path']) / "config.yaml"
 include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
-include: "rules/treetime.smk"
 
 
 onstart:
