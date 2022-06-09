@@ -131,7 +131,6 @@ def run(
         *ctx.args,
         "--config",
         *config_strs,
-        
     ]
 
     typer.echo(f"Running workflow: {run_id}")

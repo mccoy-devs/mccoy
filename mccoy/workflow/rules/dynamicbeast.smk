@@ -1,6 +1,6 @@
 rule dynamicbeast:
     input:
-        template="resources/template.xml"
+        template="resources/template.xml",
     output:
         "resources/dynamic_beast_input.xml",
     conda:

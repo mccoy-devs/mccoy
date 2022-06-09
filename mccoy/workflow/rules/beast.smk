@@ -1,7 +1,7 @@
 rule beast:
     input:
         alignment=rules.align.output,
-        template= rules.dynamicbeast.output,
+        template=rules.dynamicbeast.output,
     output:
         "results/{id}.trees",
         "results/{id}.log",
