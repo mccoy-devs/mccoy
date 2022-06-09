@@ -18,4 +18,3 @@ beast:            # Options for the query rule (./workflow/rules/beast.smk)
   - "mcmc.threads=6"
   - "mcmc.chainLength=10000"
   - "treelog.logEvery=1000"
-
