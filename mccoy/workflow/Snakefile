@@ -24,7 +24,6 @@ include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
-include: "rules/treetime.smk"
 include: "rules/dynamicbeast.smk"
 include: "rules/beast.smk"
 
@@ -43,6 +42,7 @@ onstart:
         'SNAKE_DIR',
         'RESOURCES_DIR',
         'RUN_DIR',
+        'DATA_DIR',
         'RESULTS_DIR',
         'LOG_DIR',
         'ENVS_DIR',
