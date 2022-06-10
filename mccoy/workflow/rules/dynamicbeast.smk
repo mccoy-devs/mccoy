@@ -1,8 +1,8 @@
 rule dynamicbeast:
     input:
-        template="resources/template.xml",
+        template=RESOURCES_DIR / "template.xml",
     output:
-        "results/dynamic_beast_input.xml",
+        RESULTS_DIR / "dynamic_beast_input.xml",
     conda:
         ENVS_DIR / "dynamicbeast.yml"
     log:
