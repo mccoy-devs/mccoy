@@ -11,3 +11,4 @@ logs/
 test/
 *.pyc
 docs/_build
+test_project/

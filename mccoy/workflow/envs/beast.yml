@@ -1,0 +1,4 @@
+channels:
+  - bioconda
+dependencies:
+  - beast2==2.6.3

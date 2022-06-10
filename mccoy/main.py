@@ -128,9 +128,9 @@ def run(
         "--use-conda",
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
+        *ctx.args,
         "--config",
         *config_strs,
-        *ctx.args,
     ]
 
     typer.echo(f"Running workflow: {run_id}")
