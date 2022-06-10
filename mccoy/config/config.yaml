@@ -13,7 +13,8 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 beast:            # Options for the query rule (./workflow/rules/beast.smk)
   #- "chainLength=1000"
   - "ePopSize=0.3"
-  - "Date.dateFormat=YYYY-MM-DD"
+  - "Date.dateFormat=yyyy-MM-dd"
+  - "Date.delimiter=_"
   - "mutationRate=1.0"
   - "mcmc.threads=6"
   - "mcmc.chainLength=10000"
