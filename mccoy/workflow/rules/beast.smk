@@ -3,8 +3,8 @@ rule beast:
         alignment=rules.align.output,
         template=rules.dynamicbeast.output,
     output:
-        "results/{id}.trees",
-        "results/{id}.log",
+        treelog="results/{id}-treelog.txt",
+        tracelog="results/{id}-tracelog.txt",
     conda:
         ENVS_DIR / "beast.yml"
     log:
@@ -13,5 +13,5 @@ rule beast:
         lambda wildcards: ",".join(config["beast"]),
     shell:
         """
-        beast -D 'alignment={input.alignment},{params}' {input.template}
+        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},{params}' {input.template}
         """
