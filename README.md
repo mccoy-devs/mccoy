@@ -6,35 +6,32 @@
 
 This will be updated as pieces are developed and modified.
 
-**Legend**:
-- <span style="color: #48b884">initial support in the workflow</span>
-- <span style="color: #cc8400">in progress</span>
-
 ```mermaid
 %%{init: { 'theme':'neutral' } }%%
 flowchart TB
     sources[(fasta files)]
     sources --> combine --> MSA
+    click combine href "https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/combine.smk"
 
-    MSA[multiple sequence alignment<br/>-- MAFFT] --> tree
-    click MSA href "https://github.com/GSLBiotech/mafft"
+    MSA[multiple sequence alignment<br/>-- MAFFT] --> QC
+    click MSA href "https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/align.smk"
 
     subgraph QC["Quality control"]
-        otherQC[other checks]
         tree[L_max tree<br/>-- iqtree2] --> RTR[root-tip regression]
-        click tree href "https://github.com/iqtree/iqtree2"
+        click tree href "https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/tree.smk"
+        otherQC[other checks]
     end
 
-    MSA --> XML[Beast XML generation<br/>-- Wytamma's scripts + templates + FEAST] --> OnlineBEAST[run, pause & update BEAST analysis<br/>-- Online BEAST] --> Beastiary[monitor running BEAST jobs<br/>-- Beastiary]
-    click XML href "https://github.com/Wytamma/real-time-beast-pipeline"
+    QC --> XML[Beast XML generation<br/>-- Wytamma's scripts + templates + FEAST] --> OnlineBEAST[run, pause & update BEAST analysis<br/>-- Online BEAST] .-> Beastiary[monitor running BEAST jobs<br/>-- Beastiary]
+    click XML href "https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/beast.smk"
     click OnlineBEAST href "https://github.com/Wytamma/online-beast"
     click Beastiary href "https://github.com/Wytamma/beastiary"
 
     classDef complete fill:#48b884;
-    class gisaid,GISAIDR,sources,combine,MSA,tree,RTR complete;
+    class gisaid,GISAIDR,sources,combine,MSA,tree,RTR,XML complete;
 
     classDef inProg fill:#cc8400;
-    class QC,XML inProg;
+    class otherQC inProg;
 ```
 
 # Instructions
