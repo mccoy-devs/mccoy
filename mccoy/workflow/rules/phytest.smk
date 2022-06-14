@@ -11,6 +11,5 @@ rule phytest:
         LOG_DIR / "phytest-{id}.log",
     shell:
         """
-        phytest {input.phytest_file} -a {input.alignment} -t {input.tree} --report > {log}
-        mv report.html {output}
+        phytest {input.phytest_file} -a {input.alignment} -t {input.tree} --report {output} -v > {log}
         """
