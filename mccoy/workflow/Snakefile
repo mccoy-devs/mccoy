@@ -13,6 +13,7 @@ RESULTS_DIR = RUN_DIR / "results"
 INPUT_DATA = config['data']
 DATA_DIR = RUN_DIR / "data"
 LOG_DIR = RUN_DIR / "logs"
+ENVS_DIR = SNAKE_DIR / "envs"
 
 
 # overwrite config
@@ -23,6 +24,11 @@ include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
+include: "rules/dynamicbeast.smk"
+include: "rules/beast.smk"
+
+
+print(RESOURCES_DIR)
 
 
 onstart:
@@ -36,8 +42,10 @@ onstart:
         'SNAKE_DIR',
         'RESOURCES_DIR',
         'RUN_DIR',
+        'DATA_DIR',
         'RESULTS_DIR',
         'LOG_DIR',
+        'ENVS_DIR',
     )
     for name in path_vars:
         print(f"\t{name:20s} ➡  {str(globals()[name])}")
@@ -54,4 +62,4 @@ onstart:
 
 rule all:
     input:
-        RESULTS_DIR / f"{config['id']}-phytest.html",
+        expand(rules.beast.output, id="omicron_test"),
