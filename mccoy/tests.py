@@ -45,4 +45,4 @@ def test_root_to_tip(tree: Tree):
     Test the tree for temporal signal with a root-to-tip regression. 
     https://phytest-devs.github.io/phytest/reference.html#phytest.bio.tree.Tree.assert_root_to_tip
     """
-    tree.assert_root_to_tip(min_r_squared=0.1)
+    tree.assert_root_to_tip(min_r_squared=0)  # ensure RTTR is positive 
