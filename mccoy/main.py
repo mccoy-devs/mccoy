@@ -61,8 +61,8 @@ def callback(ctx: typer.Context):
 @app.command()
 def create(
     project: Path = typer.Argument(..., file_okay=False, dir_okay=True),
-    reference: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
-    template: Path = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
+    reference: Path = typer.Option(..., "--reference", "-r", exists=True, file_okay=True, dir_okay=False),
+    template: Path = typer.Option(..., "--template", "-t", exists=True, file_okay=True, dir_okay=False),
 ):
     """
     Create a McCoy project
@@ -102,7 +102,8 @@ def run(
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
     """
-
+    if str(project) == '.':
+        project = Path(os.getcwd())
     run_id = create_run(project)
     project_id = project.name
     if inherit_last:
