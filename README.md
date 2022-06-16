@@ -74,7 +74,15 @@ To run the newly created project:
 mccoy run test --data mccoy/resources/omicron_test-original.fasta
 ```
 
-Again, the `data` option here is required. This command will create a new directory in `test/runs` with the workflow results and output. Subsequent calls to `mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `mccoy run --help` for more information.
+Again, the `data` option here is required. This command will create a new directory in `test/runs` with the workflow results and output.
+
+## Step 4 - Add new data
+
+Subsequent calls to `mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `mccoy run --help` for more information. Inheriting from a previous run will use the data and MCMC state as a starting point for the new data.
+
+```bash
+mccoy run test --data mccoy/resources/omicron_test-extra.fasta --inherit-last
+```
 
 As well as directly altering a project's `config.yaml`, config variables can be overridden on the command line. e.g.:
 ```bash

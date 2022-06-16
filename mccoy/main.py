@@ -102,16 +102,24 @@ def run(
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
     """
-    project_id = project.name
+
     run_id = create_run(project)
-    snakefile = f"{project}/workflow/Snakefile"
+    project_id = project.name
     if inherit_last:
         last_run_id = run_id - 1
-        inherit_data = glob(f"{project}/runs/run_{last_run_id}/data/*-combined.fasta")
-        data.append(inherit_data)
-    elif inherit:
+        inherit = f"{project}/runs/run_{last_run_id}"
+    if inherit:
         inherit_data = glob(f"{inherit}/data/*-combined.fasta")
-        data.append(inherit_data)
+        data = inherit_data + data
+        # copy state file
+        try:
+            inherit_state_file_path = glob(f"{inherit}/results/*.state")[0]
+        except IndexError:
+            raise ValueError("Could not find state file.")
+        run_path = f"{project}/runs/run_{run_id}"
+        os.mkdir(f"{run_path}/data/")
+        shutil.copyfile(inherit_state_file_path, f"{run_path}/data/{project_id}-{run_id}-beast.xml.state")
+
     mccoy_config = {
         'id': f"{project_id}-{run_id}",
         "project_id": project_id,
@@ -119,10 +127,11 @@ def run(
         "run_id": run_id,
         "run_name": f"run_{run_id}",
         "data": [str(d) for d in data],
+        "inherit": inherit,
     }
 
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
-
+    snakefile = f"{project}/workflow/Snakefile"
     args = [
         f"--snakefile={snakefile}",
         "--use-conda",

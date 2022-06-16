@@ -25,7 +25,16 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
 include: "rules/dynamicbeast.smk"
-include: "rules/beast.smk"
+
+
+if config['inherit'] == 'None':
+
+    include: "rules/beast.smk"
+
+
+else:
+
+    include: "rules/onlinebeast.smk"
 
 
 print(RESOURCES_DIR)
@@ -62,4 +71,4 @@ onstart:
 
 rule all:
     input:
-        expand(rules.beast.output, id="omicron_test"),
+        expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
