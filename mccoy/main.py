@@ -115,24 +115,23 @@ def run(
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
     """
-    if str(project) == '.':
-        project = Path(os.getcwd())
     run_id = create_run(project)
     project_id = project.name
+    run_dir = project / f"runs/run_{run_id}"
     if inherit_last:
         last_run_id = run_id - 1
-        inherit = f"{project}/runs/run_{last_run_id}"
+        inherit = project / f"runs/run_{last_run_id}"
     if inherit:
-        inherit_data = glob(f"{inherit}/data/*-combined.fasta")
+        inherit_data = list(inherit.glob("data/*-combined.fasta"))
         data = inherit_data + data
         # copy state file
         try:
-            inherit_state_file_path = glob(f"{inherit}/results/*.state")[0]
+            inherit_state_file_path = list((inherit / "results").glob("*.state"))[0]
         except IndexError:
             raise ValueError("Could not find state file.")
-        run_path = f"{project}/runs/run_{run_id}"
-        os.mkdir(f"{run_path}/data/")
-        shutil.copyfile(inherit_state_file_path, f"{run_path}/data/{project_id}-{run_id}-beast.xml.state")
+        data_dir = run_dir / "data"
+        data_dir.mkdir()
+        shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
 
     mccoy_config = {
         'id': f"{project_id}-{run_id}",
@@ -148,6 +147,7 @@ def run(
     snakefile = f"{project}/workflow/Snakefile"
     args = [
         f"--snakefile={snakefile}",
+        f"--directory={run_dir}",
         "--use-conda",
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
