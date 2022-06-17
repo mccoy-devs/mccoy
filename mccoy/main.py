@@ -144,7 +144,11 @@ def run(
     }
 
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
-    snakefile = f"{project}/workflow/Snakefile"
+    workflow_dir = project / "workflow"
+    if workflow_dir.exists():
+        snakefile = workflow_dir / "Snakefile"
+    else:
+        snakefile = Path(__file__).parent / "workflow/Snakefile"
     args = [
         f"--snakefile={snakefile}",
         f"--directory={run_dir}",
