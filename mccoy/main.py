@@ -1,4 +1,3 @@
-import os
 import shutil
 import sys
 from glob import glob
@@ -49,9 +48,9 @@ def create_run(project_path: Path):
         run_id = last_run_id + 1
     else:
         run_id = 1
-    run_dir = f'{project_path}/runs/run_{run_id}'
-    os.mkdir(run_dir)
-    return run_id
+    run_dir = project_path / f'runs/run_{run_id}'
+    run_dir.mkdir()
+    return run_id, run_dir
 
 
 @app.callback()
@@ -134,9 +133,8 @@ def run(
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
     """
-    run_id = create_run(project)
+    run_id, run_dir = create_run(project)
     project_id = project.name
-    run_dir = project / f"runs/run_{run_id}"
     if inherit_last:
         last_run_id = run_id - 1
         inherit = project / f"runs/run_{last_run_id}"
