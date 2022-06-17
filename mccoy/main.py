@@ -108,6 +108,7 @@ def run(
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
+    verbose: Optional[bool] = typer.Option(False, "--verbose"),
 ):
     """
     Run McCoy.
@@ -159,9 +160,11 @@ def run(
         "--config",
         *config_strs,
     ]
+    if verbose:
+        args.insert(0, "--verbose")
+        typer.secho(f"Running workflow: {run_id}", fg=typer.colors.BLUE)
+        typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.BLUE)
 
-    typer.echo(f"Running workflow: {run_id}")
-    typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.BLACK)
     status = snakemake.main(args)
 
     sys.exit(0 if status else 1)
