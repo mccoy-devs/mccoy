@@ -12,16 +12,26 @@ import typer
 app = typer.Typer()
 
 
-def create_project(project_name, reference: Path, xml_template: Path):
-    os.mkdir(f'{project_name}')
+def create_project(project_name, reference: Path, xml_template: Path, copy_workflow: bool = False):
+    project_dir = Path(f'{project_name}')
     mccoy_dir = Path(__file__).parent.resolve()
+
+    try:
+        project_dir.mkdir(exist_ok=False)
+    except FileExistsError as err:
+        raise Exception("Project directory already exists!") from err
+
     shutil.copyfile(f"{mccoy_dir}/config/config.yaml", f"{project_name}/config.yaml")
-    shutil.copytree(f"{mccoy_dir}/workflow", f"{project_name}/workflow")
-    os.mkdir(f'{project_name}/resources')
-    shutil.copyfile(reference, f"{project_name}/resources/reference.fasta")
-    shutil.copyfile(xml_template, f"{project_name}/resources/template.xml")
-    shutil.copyfile(f"{mccoy_dir}/tests.py", f"{project_name}/tests.py")
-    os.mkdir(f'{project_name}/runs')
+
+    if copy_workflow:
+        shutil.copytree(f"{mccoy_dir}/workflow", f"{project_name}/workflow")
+
+    resources_dir = project_dir / "resources"
+    shutil.copyfile(reference, resources_dir / "reference.fasta")
+    shutil.copyfile(xml_template, resources_dir / "template.xml")
+
+    shutil.copyfile(mccoy_dir / "tests.py", project_dir / "tests.py")
+    (project_dir / 'runs').mkdir()
 
 
 def get_last_run_id(project_path):
@@ -63,6 +73,9 @@ def create(
     project: Path = typer.Argument(..., file_okay=False, dir_okay=True),
     reference: Path = typer.Option(..., "--reference", "-r", exists=True, file_okay=True, dir_okay=False),
     template: Path = typer.Option(..., "--template", "-t", exists=True, file_okay=True, dir_okay=False),
+    copy_workflow: bool = typer.Option(
+        False, "--copy-workflow", "-c", help="Copy the workflow into the project for customisation."
+    ),
 ):
     """
     Create a McCoy project
@@ -71,7 +84,7 @@ def create(
         typer.echo(f"Project already exists: '{project}'")
         raise typer.Exit(1)
     typer.echo(f"Creating new project: {project}")
-    create_project(project, reference, template)
+    create_project(project, reference, template, copy_workflow=copy_workflow)
 
 
 def _print_snakemake_help(value: bool):
