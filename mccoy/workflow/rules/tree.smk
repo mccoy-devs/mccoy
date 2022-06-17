@@ -25,5 +25,5 @@ rule tree:
         **config['tree']['resources'],
     shell:
         """
-        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} -ntmax {threads}
+        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} -ntmax {threads} 2>&1 > {log}
         """

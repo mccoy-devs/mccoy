@@ -9,5 +9,5 @@ rule combine:
         "../envs/combine.yml"
     shell:
         """
-        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output}
+        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output} 2> {log}
         """
