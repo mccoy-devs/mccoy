@@ -1,9 +1,9 @@
 rule tree:
     input:
-        RESULTS_DIR / "aligned/{id}.fasta",
+        "results/aligned/{id}.fasta",
     output:
         multiext(
-            str(RESULTS_DIR / "tree/{id}.fasta"),
+            "results/tree/{id}.fasta",
             ".treefile",
             ".bionj",
             ".ckp.gz",
@@ -13,10 +13,10 @@ rule tree:
             ".mldist",
             ".splits.nex",
         ),
-    conda:
-        SNAKE_DIR / "envs/iqtree.yml"
     log:
-        RESULTS_DIR / "logs/tree-{id}.txt",
+        "results/logs/tree-{id}.txt",
+    conda:
+        "envs/iqtree.yml"
     params:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),

@@ -3,13 +3,13 @@ rule beast:
         alignment=rules.align.output,
         template=rules.dynamicbeast.output,
     output:
-        treelog=RESULTS_DIR / "beast/{id}-tree.log",
-        tracelog=RESULTS_DIR / "beast/{id}-trace.log",
-        statefile=RESULTS_DIR / "beast/{id}-beast.xml.state",
-    conda:
-        ENVS_DIR / "beast.yml"
+        treelog="results/beast/{id}-tree.log",
+        tracelog="results/beast/{id}-trace.log",
+        statefile="results/beast/{id}-beast.xml.state",
     log:
-        LOG_DIR / "{id}_beast.log",
+        "logs/{id}_beast.log",
+    conda:
+        "envs/beast.yml"
     params:
         beast=lambda wildcards: ",".join(config["beast"]),
     shell:

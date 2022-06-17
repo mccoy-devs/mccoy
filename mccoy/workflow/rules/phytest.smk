@@ -1,14 +1,14 @@
 rule phytest:
     input:
-        alignment=RESULTS_DIR / "aligned/{id}.fasta",
-        tree=RESULTS_DIR / "tree/{id}.fasta.treefile",
+        alignment="results/aligned/{id}.fasta",
+        tree="results/tree/{id}.fasta.treefile",
         phytest_file=PROJECT_DIR / "tests.py",
     output:
-        RESULTS_DIR / "{id}-phytest.html",
-    conda:
-        SNAKE_DIR / "envs/phytest.yml"
+        "results/{id}-phytest.html",
     log:
-        LOG_DIR / "phytest-{id}.log",
+        "logs/phytest-{id}.log",
+    conda:
+        "envs/phytest.yml"
     shell:
         """
         phytest {input.phytest_file} -a {input.alignment} -t {input.tree} --report {output} -v > {log}

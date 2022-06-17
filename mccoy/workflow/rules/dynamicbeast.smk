@@ -1,13 +1,13 @@
 rule dynamicbeast:
     input:
         template=RESOURCES_DIR / "template.xml",
-        phytest_report=RESULTS_DIR / "{id}-phytest.html",
+        phytest_report="results/{id}-phytest.html",
     output:
-        RESULTS_DIR / "beast/{id}-dynamic_beast.xml",
-    conda:
-        ENVS_DIR / "dynamicbeast.yml"
+        "results/beast/{id}-dynamic_beast.xml",
     log:
-        LOG_DIR / "{id}-dynamic_beast.log",
+        "logs/{id}-dynamic_beast.log",
+    conda:
+        "envs/dynamicbeast.yml"
     shell:
         """
         dynamic-beast {input.template} > {output}
