@@ -181,8 +181,8 @@ def run(
     ]
     if verbose:
         args.insert(0, "--verbose")
-        typer.secho(f"Running workflow: {run_id}", fg=typer.colors.BLUE)
-        typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.BLUE)
+        typer.secho(f"Running workflow: {run_id}", fg=typer.colors.MAGENTA)
+        typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.MAGENTA)
 
     status = snakemake.main(args)
 
