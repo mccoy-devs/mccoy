@@ -9,7 +9,7 @@ rule beast:
     log:
         "logs/{id}_beast.log",
     conda:
-        "envs/beast.yml"
+        "../envs/beast.yml"
     params:
         beast=lambda wildcards: ",".join(config["beast"]),
     shell:

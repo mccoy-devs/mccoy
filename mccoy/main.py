@@ -28,6 +28,7 @@ def create_project(project_name, reference: Path, xml_template: Path, copy_workf
         shutil.copytree(f"{mccoy_dir}/workflow", f"{project_name}/workflow")
 
     resources_dir = project_dir / "resources"
+    resources_dir.mkdir()
     shutil.copyfile(reference, resources_dir / "reference.fasta")
     shutil.copyfile(xml_template, resources_dir / "template.xml")
 
@@ -42,14 +43,14 @@ def get_last_run_id(project_path):
     return None
 
 
-def create_run(project_path: Path):
+def create_run(project_path: Path, cont: bool = False):
     last_run_id = get_last_run_id(project_path)
     if last_run_id:
-        run_id = last_run_id + 1
+        run_id = last_run_id + 1 if not cont else last_run_id
     else:
         run_id = 1
     run_dir = project_path / f'runs/run_{run_id}'
-    run_dir.mkdir()
+    run_dir.mkdir(exist_ok=True)
     return run_id, run_dir
 
 
@@ -122,6 +123,7 @@ def run(
     config: Optional[List[str]] = typer.Option(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
     ),
+    cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace."),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -133,30 +135,31 @@ def run(
     All unrecognised arguments will be passed directly to snakemake. Rerun with `--help-snakemake` to see a list of
     all available snakemake arguments.
     """
-    run_id, run_dir = create_run(project)
+    run_id, run_dir = create_run(project, cont=cont)
     project_id = project.name
-    if inherit_last:
-        last_run_id = run_id - 1
-        inherit = project / f"runs/run_{last_run_id}"
-    if inherit:
-        inherit_data = list(inherit.glob("data/*-combined.fasta"))
-        data = inherit_data + data
-        # copy state file
-        try:
-            inherit_state_file_path = list((inherit / "results").glob("*.state"))[0]
-        except IndexError:
-            raise ValueError("Could not find state file.")
-        data_dir = run_dir / "data"
-        data_dir.mkdir()
-        shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
+    if not cont:
+        if inherit_last:
+            last_run_id = run_id - 1
+            inherit = project / f"runs/run_{last_run_id}"
+        if inherit:
+            inherit_data = list(inherit.glob("data/*-combined.fasta"))
+            data = inherit_data + data
+            # copy state file
+            try:
+                inherit_state_file_path = list((inherit / "results").glob("*.state"))[0]
+            except IndexError:
+                raise ValueError("Could not find state file.")
+            data_dir = run_dir / "data"
+            data_dir.mkdir()
+            shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
 
     mccoy_config = {
         'id': f"{project_id}-{run_id}",
         "project_id": project_id,
-        "project_path": project,
+        "project_path": project.resolve(),
         "run_id": run_id,
         "run_name": f"run_{run_id}",
-        "data": [str(d) for d in data],
+        "data": [str(d.resolve()) for d in data],
         "inherit": inherit,
     }
 

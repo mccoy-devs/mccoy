@@ -8,7 +8,7 @@ rule phytest:
     log:
         "logs/phytest-{id}.log",
     conda:
-        "envs/phytest.yml"
+        "../envs/phytest.yml"
     shell:
         """
         phytest {input.phytest_file} -a {input.alignment} -t {input.tree} --report {output} -v > {log}

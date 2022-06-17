@@ -16,7 +16,7 @@ rule tree:
     log:
         "results/logs/tree-{id}.txt",
     conda:
-        "envs/iqtree.yml"
+        "../envs/iqtree.yml"
     params:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),

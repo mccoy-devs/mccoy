@@ -7,7 +7,7 @@ rule align:
     log:
         "logs/align-{id}.txt",
     conda:
-        "envs/mafft.yml"
+        "../envs/mafft.yml"
     params:
         lambda wildcards: " ".join(config["align"]["mafft"]),
     threads: lambda wildcards: config["align"]["threads"] if config["align"]["threads"] else workflow.cores
@@ -16,6 +16,6 @@ rule align:
     shell:
         """
         REFNAME=$(head -n1 {input.reference} | tr -d '>')
-        mafft --thread {threads} {params} {input.original} {input.reference} \
-            | seqkit grep -rvip "^$REFNAME" > {output}
+        mafft --thread {threads} {params} {input.original} {input.reference} 2> {log} \
+            | seqkit grep -rvip "^$REFNAME" > {output} 2> {log}
         """

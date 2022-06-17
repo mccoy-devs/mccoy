@@ -11,7 +11,7 @@ rule onlinebeast:
     log:
         "logs/{id}-beast.log",
     conda:
-        "envs/beast.yml"
+        "../envs/beast.yml"
     params:
         beast=lambda wildcards: ",".join(config["beast"]),
     shell:

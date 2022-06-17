@@ -5,15 +5,9 @@ import snakemake
 import pathlib
 
 
-# SNAKE_DIR = Path(workflow.basedir)
 PROJECT_DIR = Path(config['project_path'])
 RESOURCES_DIR = PROJECT_DIR / "resources"
-# RUN_DIR = PROJECT_DIR / "runs" / config['run_name']
-# RESULTS_DIR = RUN_DIR / "results"
 INPUT_DATA = config['data']
-# DATA_DIR = RUN_DIR / "data"
-# LOG_DIR = RUN_DIR / "logs"
-# ENVS_DIR = SNAKE_DIR / "envs"
 
 
 # overwrite config with project specific file
@@ -54,7 +48,7 @@ onstart:
 
     # Ensure log directory exists. Required for cluster job submission.
     # TODO: Not sure if this will work...
-    Path(workflow._workdir / "logs").mkdir(exist_ok=True)
+    Path("logs").mkdir(exist_ok=True)
 
 
 

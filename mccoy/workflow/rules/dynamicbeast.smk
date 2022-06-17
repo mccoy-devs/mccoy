@@ -7,7 +7,7 @@ rule dynamicbeast:
     log:
         "logs/{id}-dynamic_beast.log",
     conda:
-        "envs/dynamicbeast.yml"
+        "../envs/dynamicbeast.yml"
     shell:
         """
         dynamic-beast {input.template} > {output}

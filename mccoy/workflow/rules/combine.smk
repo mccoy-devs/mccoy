@@ -6,7 +6,7 @@ rule combine:
     log:
         "logs/combine-{id}.fasta",
     conda:
-        "envs/combine.yml"
+        "../envs/combine.yml"
     shell:
         """
         cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output}
