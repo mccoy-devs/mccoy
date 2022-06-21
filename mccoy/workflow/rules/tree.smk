@@ -1,9 +1,9 @@
 rule tree:
     input:
-        RESULTS_DIR / "{id}-aligned.fasta",
+        RESULTS_DIR / "aligned/{id}.fasta",
     output:
         multiext(
-            str(RESULTS_DIR / "{id}-aligned.fasta"),
+            str(RESULTS_DIR / "tree/{id}.fasta"),
             ".treefile",
             ".bionj",
             ".ckp.gz",
@@ -18,9 +18,12 @@ rule tree:
     log:
         RESULTS_DIR / "logs/tree-{id}.txt",
     params:
-        lambda wildcards: " ".join(config["tree"]["iqtree2"]),
+        config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
+        pre=lambda wildcards, output: Path(output[0]).with_suffix(''),
     threads: lambda wildcards: config["tree"]["threads"] if config["tree"]["threads"] else workflow.cores
     resources:
         **config['tree']['resources'],
     shell:
-        "iqtree2 -s {input} -st DNA -pre {input} {params} -ntmax {threads}"
+        """
+        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} -ntmax {threads}
+        """

@@ -2,7 +2,7 @@ rule combine:
     input:
         data=INPUT_DATA,
     output:
-        DATA_DIR / "{id}-combined.fasta",
+        DATA_DIR / "combined/{id}.fasta",
     conda:
         SNAKE_DIR / "envs/combine.yml"
     log:
