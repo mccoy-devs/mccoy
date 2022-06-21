@@ -31,7 +31,7 @@ flowchart TB
     class gisaid,GISAIDR,sources,combine,MSA,tree,RTR,XML complete;
 
     classDef inProg fill:#cc8400;
-    class otherQC inProg;
+    class otherQC OnlineBEAST inProg;
 ```
 
 # Instructions
@@ -59,7 +59,7 @@ The workflow is being developed such that all required software will be automati
 First begin by creating a new McCoy project (called `test` in this example):
 
 ```bash
-mccoy create test --reference mccoy/resources/reference.fasta --template mccoy/resources/templates/CoV_CE_fixed_clock_template.xml
+mccoy create test --reference resources/reference.fasta --template resources/templates/CoV_CE_fixed_clock_template.xml
 ```
 
 The `reference` and `template` options are required. At the moment we are distributing these reference and template files, however, once we reach v1.0, these will be removed and the useer will have to ensure they have appropriate reference and template files available.
@@ -71,7 +71,7 @@ The config for this project can be altered by editing the newly created file `te
 To run the newly created project:
 
 ```bash
-mccoy run test --data mccoy/resources/omicron_test-original.fasta
+mccoy run test --data resources/omicron_test-original.fasta
 ```
 
 Again, the `data` option here is required. This command will create a new directory in `test/runs` with the workflow results and output.
@@ -81,12 +81,12 @@ Again, the `data` option here is required. This command will create a new direct
 Subsequent calls to `mccoy run` will result in a whole new run of the pipeline from start-to-finsh unless the `--inherit` or `--inherit-last` flags are used. See `mccoy run --help` for more information. Inheriting from a previous run will use the data and MCMC state as a starting point for the new data.
 
 ```bash
-mccoy run test --data mccoy/resources/omicron_test-extra.fasta --inherit-last
+mccoy run test --data resources/omicron_test-extra.fasta --inherit-last
 ```
 
 As well as directly altering a project's `config.yaml`, config variables can be overridden on the command line. e.g.:
 ```bash
-mccoy run --data mccoy/resources/omicron_test-original.fasta --config align='{mafft: ["--6merpair", "--addfragments"]}'
+mccoy run --data resources/omicron_test-original.fasta --config align='{mafft: ["--6merpair", "--addfragments"]}'
 ```
 
 Any options passed to `mccoy run` that are not listed in `mccoy run --help` will be directly forwarded on to Snakemake. See `mccoy run --help-snakemake` for a list of all available options.

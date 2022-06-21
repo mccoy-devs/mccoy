@@ -1,6 +1,5 @@
 workspace.code-workspace
 results/
-resources/*
 input/*
 !resources/reference.fasta
 !resources/templates

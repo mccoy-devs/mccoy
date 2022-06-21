@@ -6,6 +6,8 @@ from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
+import pkg_resources
+import pooch
 import snakemake
 import typer
 
@@ -55,7 +57,8 @@ def callback(ctx: typer.Context):
      |_|  |_|\___|\_____\___/ \__, |
                                __/ |
                               |___/   CLI
-    """
+    """  # noqa: W605
+    pass
 
 
 @app.command()
@@ -72,6 +75,21 @@ def create(
         raise typer.Exit(1)
     typer.echo(f"Creating new project: {project}")
     create_project(project, reference, template)
+
+
+@app.command()
+def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_okay=False)):
+    """
+    Download example resources.
+    """
+
+    brian = pooch.create(
+        path=target, base_url="https://raw.githubusercontent.com/smutch/mccoy/main/mccoy/resources/", registry=None
+    )
+    registry_file = pkg_resources.resource_stream("mccoy", "resources_registry.txt")
+    brian.load_registry(registry_file)
+    for resource in brian.registry:
+        brian.fetch(resource, progressbar=True)
 
 
 def _print_snakemake_help(value: bool):
