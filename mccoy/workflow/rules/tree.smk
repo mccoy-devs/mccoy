@@ -1,9 +1,9 @@
 rule tree:
     input:
-        RESULTS_DIR / "{id}-aligned.fasta",
+        RESULTS_DIR / "aligned/{id}.fasta",
     output:
         multiext(
-            str(RESULTS_DIR / "{id}-aligned.fasta"),
+            str(RESULTS_DIR / "tree/{id}.fasta"),
             ".treefile",
             ".bionj",
             ".ckp.gz",
@@ -23,4 +23,4 @@ rule tree:
     resources:
         **config['tree']['resources'],
     shell:
-        "iqtree2 -s {input} -st DNA -pre {input} {params} -ntmax {threads}"
+        f"iqtree2 -s {{input}} -st DNA -pre {Path(output[0]).stem} {{params}} -ntmax {{threads}}"

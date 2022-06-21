@@ -1,9 +1,9 @@
 rule align:
     input:
-        original=DATA_DIR / "{id}-combined.fasta",
+        original=DATA_DIR / "combined/{id}.fasta",
         reference=RESOURCES_DIR / "reference.fasta",
     output:
-        RESULTS_DIR / "{id}-aligned.fasta",
+        RESULTS_DIR / "aligned/{id}.fasta",
     conda:
         SNAKE_DIR / "envs/mafft.yml"
     log:

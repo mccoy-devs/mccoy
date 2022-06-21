@@ -3,9 +3,9 @@ rule beast:
         alignment=rules.align.output,
         template=rules.dynamicbeast.output,
     output:
-        treelog=RESULTS_DIR / "{id}-tree.log",
-        tracelog=RESULTS_DIR / "{id}-trace.log",
-        statefile=RESULTS_DIR / "{id}-beast.xml.state",
+        treelog=RESULTS_DIR / "beast/{id}-tree.log",
+        tracelog=RESULTS_DIR / "beast/{id}-trace.log",
+        statefile=RESULTS_DIR / "beast/{id}-beast.xml.state",
     conda:
         ENVS_DIR / "beast.yml"
     log:

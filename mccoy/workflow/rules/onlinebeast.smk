@@ -4,16 +4,16 @@ rule onlinebeast:
         alignment=rules.align.output,
         statefile=DATA_DIR / "{id}-beast.xml.state",
     output:
-        treelog=RESULTS_DIR / "{id}-tree.log",
-        tracelog=RESULTS_DIR / "{id}-trace.log",
-        statefile=RESULTS_DIR / "{id}-beast.xml.state",
+        treelog=RESULTS_DIR / "beast/{id}-tree.log",
+        tracelog=RESULTS_DIR / "beast/{id}-trace.log",
+        statefile=RESULTS_DIR / "beast/{id}-beast.xml.state",
     conda:
         ENVS_DIR / "beast.yml"
     log:
         LOG_DIR / "{id}-beast.log",
     params:
         beast=lambda wildcards: ",".join(config["beast"]),
-        statefile=RESULTS_DIR / f"{config['id']}-beast.xml",
+        statefile=RESULTS_DIR / f"beast/{config['id']}-beast.xml",
     shell:
         """
         online-beast {input.xml} {input.alignment} --state-file {input.statefile} --output {params.statefile} --template --no-date-trait
