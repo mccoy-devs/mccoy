@@ -31,7 +31,7 @@ flowchart TB
     class gisaid,GISAIDR,sources,combine,MSA,tree,RTR,XML complete;
 
     classDef inProg fill:#cc8400;
-    class otherQC OnlineBEAST inProg;
+    class otherQC,OnlineBEAST inProg;
 ```
 
 # Instructions
