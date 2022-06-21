@@ -19,10 +19,8 @@ rule tree:
         RESULTS_DIR / "logs/tree-{id}.txt",
     params:
         lambda wildcards: " ".join(config["tree"]["iqtree2"]),
-    threads: 10
+    threads: lambda wildcards: config["tree"]["threads"] if config["tree"]["threads"] else workflow.cores
     resources:
-        time="02:00:00",
-        mem="16G",
-        cpus=10,
+        **config['tree']['resources'],
     shell:
         "iqtree2 -s {input} -st DNA -pre {input} {params} -ntmax {threads}"

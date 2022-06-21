@@ -10,11 +10,9 @@ rule align:
         LOG_DIR / "align-{id}.txt",
     params:
         lambda wildcards: " ".join(config["align"]["mafft"]),
-    threads: 4
+    threads: lambda wildcards: config["align"]["threads"] if config["align"]["threads"] else workflow.cores
     resources:
-        time="00:10:00",
-        mem="8G",
-        cpus=4,
+        **config["align"]["resources"],
     shell:
         """
         REFNAME=$(head -n1 {input.reference} | tr -d '>')
