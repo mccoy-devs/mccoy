@@ -5,18 +5,12 @@ import snakemake
 import pathlib
 
 
-SNAKE_DIR = Path(workflow.basedir)
-PROJECT_DIR = SNAKE_DIR.parent
+PROJECT_DIR = Path(config['project_path'])
 RESOURCES_DIR = PROJECT_DIR / "resources"
-RUN_DIR = PROJECT_DIR / "runs" / config['run_name']
-RESULTS_DIR = RUN_DIR / "results"
 INPUT_DATA = config['data']
-DATA_DIR = RUN_DIR / "data"
-LOG_DIR = RUN_DIR / "logs"
-ENVS_DIR = SNAKE_DIR / "envs"
 
 
-# overwrite config
+# overwrite config with project specific file
 configfile: Path(config['project_path']) / "config.yaml"
 
 
@@ -37,27 +31,14 @@ else:
     include: "rules/onlinebeast.smk"
 
 
-print(RESOURCES_DIR)
-
-
 onstart:
     # Print some environment info
     print("Input data:")
     for path in INPUT_DATA:
         print(f"- {path}")
-    print("Workflow directories:")
-    path_vars = (
-        'PROJECT_DIR',
-        'SNAKE_DIR',
-        'RESOURCES_DIR',
-        'RUN_DIR',
-        'DATA_DIR',
-        'RESULTS_DIR',
-        'LOG_DIR',
-        'ENVS_DIR',
-    )
-    for name in path_vars:
-        print(f"\t{name:20s} ➡  {str(globals()[name])}")
+    print("Workflow paths:")
+    print(f"\tsnakefile ➡  {workflow.snakefile}")
+    print(f"\tworking directory ➡  {workflow.basedir}")
 
     print("Environment:")
     shell = lambda cmd: subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode().rstrip()
@@ -66,7 +47,10 @@ onstart:
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
 
     # Ensure log directory exists. Required for cluster job submission.
-    LOG_DIR.mkdir(exist_ok=True)
+    # TODO: Not sure if this will work...
+    Path("logs").mkdir(exist_ok=True)
+
+
 
 
 rule all:

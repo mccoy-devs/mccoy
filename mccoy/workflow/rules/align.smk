@@ -1,13 +1,13 @@
 rule align:
     input:
-        original=DATA_DIR / "combined/{id}.fasta",
+        original="data/combined/{id}.fasta",
         reference=RESOURCES_DIR / "reference.fasta",
     output:
-        RESULTS_DIR / "aligned/{id}.fasta",
-    conda:
-        SNAKE_DIR / "envs/mafft.yml"
+        "results/aligned/{id}.fasta",
     log:
-        LOG_DIR / "align-{id}.txt",
+        "logs/align-{id}.txt",
+    conda:
+        "../envs/mafft.yml"
     params:
         lambda wildcards: " ".join(config["align"]["mafft"]),
     threads: lambda wildcards: config["align"]["threads"] if config["align"]["threads"] else workflow.cores
@@ -16,6 +16,6 @@ rule align:
     shell:
         """
         REFNAME=$(head -n1 {input.reference} | tr -d '>')
-        mafft --thread {threads} {params} {input.original} {input.reference} \
-            | seqkit grep -rvip "^$REFNAME" > {output}
+        mafft --thread {threads} {params} {input.original} {input.reference} 2> {log} \
+            | seqkit grep -rvip "^$REFNAME" > {output} 2> {log}
         """

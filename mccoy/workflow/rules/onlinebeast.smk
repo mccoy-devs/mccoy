@@ -2,20 +2,20 @@ rule onlinebeast:
     input:
         xml=rules.dynamicbeast.output,
         alignment=rules.align.output,
-        statefile=DATA_DIR / "{id}-beast.xml.state",
+        statefile="data/{id}-beast.xml.state",
     output:
-        treelog=RESULTS_DIR / "beast/{id}-tree.log",
-        tracelog=RESULTS_DIR / "beast/{id}-trace.log",
-        statefile=RESULTS_DIR / "beast/{id}-beast.xml.state",
-    conda:
-        ENVS_DIR / "beast.yml"
+        treelog="results/beast/{id}-tree.log",
+        tracelog="results/beast/{id}-trace.log",
+        statefile="results/beast/{id}-beast.xml.state",
+        online_statefile="results/beast/{id}-beast.xml",
     log:
-        LOG_DIR / "{id}-beast.log",
+        "logs/{id}-beast.log",
+    conda:
+        "../envs/beast.yml"
     params:
         beast=lambda wildcards: ",".join(config["beast"]),
-        statefile=RESULTS_DIR / f"beast/{config['id']}-beast.xml",
     shell:
         """
-        online-beast {input.xml} {input.alignment} --state-file {input.statefile} --output {params.statefile} --template --no-date-trait
+        online-beast {input.xml} {input.alignment} --state-file {input.statefile} --output {output.online_statefile} --template --no-date-trait
         beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},{params.beast}' -resume -statefile {output.statefile} {input.xml} 2>&1 1> {log}
         """
