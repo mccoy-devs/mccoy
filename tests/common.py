@@ -1,5 +1,5 @@
 """
-Common code for unit testing of rules generated with Snakemake 7.3.2.
+Common code for unit testing of rules generated with Snakemake 7.8.3.
 """
 
 import os
@@ -41,5 +41,4 @@ class OutputChecker:
             raise ValueError("Unexpected files:\n{}".format("\n".join(sorted(map(str, unexpected_files)))))
 
     def compare_files(self, generated_file, expected_file):
-        if generated_file.suffix != ".pdf":
-            sp.check_output(["cmp", generated_file, expected_file])
+        sp.check_output(["cmp", generated_file, expected_file])

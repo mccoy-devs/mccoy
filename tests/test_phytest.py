@@ -10,22 +10,18 @@ sys.path.insert(0, os.path.dirname(__file__))
 import common
 
 
-def test_treetime():
-    # import pdb; pdb.set_trace()
+def test_phytest():
 
     with TemporaryDirectory() as tmpdir:
         workdir = Path(tmpdir) / "workdir"
-        data_path = PurePosixPath(".tests/unit/treetime/data")
-        expected_path = PurePosixPath(".tests/unit/treetime/expected")
+        data_path = PurePosixPath("../../../phytest/data")
+        expected_path = PurePosixPath("../../../phytest/expected")
 
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print(
-            "results/test-treetime/rerooted.newick results/test-treetime/rtt.csv results/test-treetime/root_to_tip_regression.pdf",
-            file=sys.stderr,
-        )
+        print("results/project-1-phytest.html", file=sys.stderr)
 
         # Run the test job.
         sp.check_output(
@@ -33,16 +29,17 @@ def test_treetime():
                 "python",
                 "-m",
                 "snakemake",
-                "results/test-treetime/rtt.csv",
+                "results/project-1-phytest.html",
                 "-f",
                 "-j1",
                 "--keep-target-files",
+                "--configfile",
+                "/Users/smutch/work/mdap/collabs/2022/duchene/duchene-mdap-2022/tests/project/config.yaml",
                 "--use-conda",
                 "--directory",
                 workdir,
             ]
         )
-        # import pdb; pdb.set_trace()
 
         # Check the output byte by byte using cmp.
         # To modify this behavior, you can inherit from common.OutputChecker in here

@@ -10,18 +10,18 @@ sys.path.insert(0, os.path.dirname(__file__))
 import common
 
 
-def test_dates():
+def test_align():
 
     with TemporaryDirectory() as tmpdir:
         workdir = Path(tmpdir) / "workdir"
-        data_path = PurePosixPath(".tests/unit/dates/data")
-        expected_path = PurePosixPath(".tests/unit/dates/expected")
+        data_path = PurePosixPath("../../../align/data")
+        expected_path = PurePosixPath("../../../align/expected")
 
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
 
         # dbg
-        print("results/test-dates.csv", file=sys.stderr)
+        print("results/aligned/project-1.fasta", file=sys.stderr)
 
         # Run the test job.
         sp.check_output(
@@ -29,10 +29,12 @@ def test_dates():
                 "python",
                 "-m",
                 "snakemake",
-                "results/test-dates.csv",
+                "results/aligned/project-1.fasta",
                 "-f",
                 "-j1",
                 "--keep-target-files",
+                "--configfile",
+                "/Users/smutch/work/mdap/collabs/2022/duchene/duchene-mdap-2022/tests/project/config.yaml",
                 "--use-conda",
                 "--directory",
                 workdir,
