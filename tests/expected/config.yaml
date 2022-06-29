@@ -1,0 +1,31 @@
+align:           # Options for the query rule (./workflow/rules/align.smk)
+  mafft:         # Command line options passed directly to mafft
+    - "--6merpair"
+    - "--keeplength"
+    - "--addfragments"
+  threads: 4     # Use up to this many cores (set to `false` to use all available cores, as set by the McCoy CLI)
+  resources:     # Only used for submission to an HPC queue
+    time: "00:10:00"
+    mem: "8G"
+    cpus: 4
+
+tree:            # Options for the query rule (./workflow/rules/tree.smk)
+  iqtree2:       # Command line options passed directly to iqtree2
+    - "-nt AUTO"
+    - "-m HKY+G"
+    - "-bb 1000"
+  threads: 10    # Use up to this many cores (set to `false` to use all available cores, as set by the McCoy CLI)
+  resources:     # Only used for submission to an HPC queue
+    time: "02:00:00"
+    mem: "16G"
+    cpus: 10
+
+beast:            # Options for the query rule (./workflow/rules/beast.smk)
+  - "ePopSize=0.3"
+  - "Date.dateFormat=yyyy-MM-dd"
+  - "Date.delimiter=_"
+  - "mutationRate=1.0"
+  - "mcmc.threads=6"
+  - "mcmc.chainLength=10000"
+  - "treelog.logEvery=1000"
+  - "tracelog.logEvery=1000"

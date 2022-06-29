@@ -1,3 +1,4 @@
+.conda
 workspace.code-workspace
 results/
 input/*
@@ -12,3 +13,4 @@ test/
 docs/_build
 test_project/
 VIC-COVID-19/
+/.nox/
