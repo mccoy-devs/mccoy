@@ -95,7 +95,7 @@ def run_workflow(tmpdir: Path):
             expected_dir,
             work_dir,
             # copy_function=shutil.copy,
-            ignore=shutil.ignore_patterns('.snakemake'),
+            ignore=shutil.ignore_patterns('.snakemake', '.conda'),
         )
 
         sp.check_output(
@@ -106,7 +106,6 @@ def run_workflow(tmpdir: Path):
                 "--data",
                 Path(__file__).parent.resolve() / "data.fasta",
                 "-j1",
-                "-c4",
                 "-f",
                 "--keep-target-files",
                 # f"--conda-base-path={Path(__file__).parent.resolve() / '.conda'}",
@@ -115,8 +114,6 @@ def run_workflow(tmpdir: Path):
                 *targets,
             ],
         )
-
-        print(sp.check_output(f"fd -I . {work_dir} | as-tree", shell=True).decode("utf-8"))
 
         run_dir = "runs/run_1"
         return Workflow(targets, work_dir / run_dir, expected_dir / run_dir)
