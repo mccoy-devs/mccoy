@@ -175,6 +175,7 @@ def run(
         "--use-conda",
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
+        f"--conda-prefix={project.resolve() / '.conda'}",
         *ctx.args,
         "--config",
         *config_strs,
