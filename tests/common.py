@@ -8,10 +8,11 @@ from pathlib import Path
 
 
 class OutputChecker:
-    def __init__(self, data_path, expected_path, workdir):
+    def __init__(self, data_path, expected_path, workdir, ignore=None):
         self.data_path = data_path
         self.expected_path = expected_path
         self.workdir = workdir
+        self.ignore = [] if ignore is None else ignore
 
     def check(self):
         input_files = set(
@@ -28,7 +29,7 @@ class OutputChecker:
         for path, subdirs, files in os.walk(self.workdir):
             for f in files:
                 f = (Path(path) / f).relative_to(self.workdir)
-                if str(f).startswith(".snakemake"):
+                if str(f).startswith(".snakemake") or str(f).startswith("logs/") or str(f) in self.ignore:
                     continue
                 if f in expected_files:
                     self.compare_files(self.workdir / f, self.expected_path / f)
@@ -41,4 +42,8 @@ class OutputChecker:
             raise ValueError("Unexpected files:\n{}".format("\n".join(sorted(map(str, unexpected_files)))))
 
     def compare_files(self, generated_file, expected_file):
-        sp.check_output(["cmp", generated_file, expected_file])
+        try:
+            sp.check_output(["cmp", generated_file, expected_file])
+        except sp.CalledProcessError as err:
+            print(err.output.decode("utf8"))
+            raise ValueError
