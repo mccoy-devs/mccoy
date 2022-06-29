@@ -8,8 +8,8 @@ nox.options.sessions = ["test"]
 
 @session(python=["3.7", "3.8", "3.9", "3.10"])
 def test(session):
-    session.env["IQTREE_SEED"] = 28379373
-    session.install("pytest")
+    session.env["IQTREE_SEED"] = "28379373"
+    session.install("pytest", "typer")
     session.run("pytest")
 
 
