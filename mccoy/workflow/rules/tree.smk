@@ -1,3 +1,8 @@
+def iqtree_random_seed(wildcards):
+    seed = os.environ.get("IQTREE_SEED", False)
+    return f"-seed {seed}" if seed else ""
+
+
 rule tree:
     input:
         "results/aligned/{id}.fasta",
@@ -20,10 +25,11 @@ rule tree:
     params:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),
+        seed=iqtree_random_seed,
     threads: lambda wildcards: config["tree"]["threads"] if config["tree"]["threads"] else workflow.cores
     resources:
         **config['tree']['resources'],
     shell:
         """
-        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} -ntmax {threads} 2>&1 > {log}
+        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} {params.seed} -ntmax {threads} 2>&1 > {log}
         """
