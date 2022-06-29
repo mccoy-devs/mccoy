@@ -14,7 +14,7 @@ rule tree:
             ".splits.nex",
         ),
     log:
-        "results/logs/tree-{id}.txt",
+        "logs/tree-{id}.txt",
     conda:
         "../envs/iqtree.yml"
     params:
