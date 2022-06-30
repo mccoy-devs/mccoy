@@ -1,6 +1,5 @@
 .conda
 workspace.code-workspace
-results/
 input/*
 !resources/reference.fasta
 !resources/templates
