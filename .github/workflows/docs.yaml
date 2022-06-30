@@ -14,27 +14,22 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - uses: actions/setup-python@v3
       with:
-        python-version: "3.9"
-    - name: Install and configure Poetry
-      uses: snok/install-poetry@v1
-      with:
-        version: 1.1.13
-        virtualenvs-create: true
-        virtualenvs-in-project: true
-    - name: Set up cache
-      uses: actions/cache@v2
-      id: cached-poetry-dependencies
-      with:
-        path: .venv
-        key: venv-v1-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
-    - name: Install dependencies
-      run: poetry install
-      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-    - name: Build docs
+        python-version: "3.10"
+    - name: Install Poetry and nox
       run: |
-        mkdir gh-pages
-        touch gh-pages/.nojekyll
-        poetry run sphinx-build -b html docs gh-pages
+        curl -sSL https://install.python-poetry.org | python3 -
+        pip install nox nox-poetry
+
+    - name: Set up cache for nox
+      uses: actions/cache@v2
+      id: cached-nox-datadir
+      with:
+        path: .nox
+        key: nox-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/pyproject.toml') }}
+
+    - name: Run nox
+      run: nox -e docs_github
+
     - name: Deploy documentation
       if: ${{ github.event_name == 'push' }}
       uses: JamesIves/github-pages-deploy-action@4.1.4
