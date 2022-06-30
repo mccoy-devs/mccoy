@@ -10,7 +10,7 @@ nox.options.sessions = ["test"]
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
     session.install("pytest", "typer", ".")
-    session.run("pytest")
+    session.run("pytest", "-vs", "-k", "align")
 
 
 @session
