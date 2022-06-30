@@ -13,3 +13,4 @@ docs/_build
 test_project/
 VIC-COVID-19/
 /.nox/
+/dist/
