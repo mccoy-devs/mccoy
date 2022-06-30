@@ -1,6 +1,5 @@
 .conda
 workspace.code-workspace
-results/
 input/*
 !resources/reference.fasta
 !resources/templates
@@ -14,3 +13,4 @@ docs/_build
 test_project/
 VIC-COVID-19/
 /.nox/
+/dist/

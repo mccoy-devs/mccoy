@@ -1,0 +1,224 @@
+<?xml version="1.0" ?><beast beautitemplate="Standard" beautistatus="" namespace="beast.core:beast.evolution.alignment:feast:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.6">	
+
+    	<alignment id="alignment" spec="feast.fileio.AlignmentFromFasta" fileName="$(alignment)"/>	
+
+    	<map name="Uniform">beast.math.distributions.Uniform</map>	
+
+    	<map name="Exponential">beast.math.distributions.Exponential</map>	
+
+    	<map name="LogNormal">beast.math.distributions.LogNormalDistributionModel</map>	
+
+    	<map name="Normal">beast.math.distributions.Normal</map>	
+
+    	<map name="Beta">beast.math.distributions.Beta</map>	
+
+    	<map name="Gamma">beast.math.distributions.Gamma</map>	
+
+    	<map name="LaplaceDistribution">beast.math.distributions.LaplaceDistribution</map>	
+
+    	<map name="prior">beast.math.distributions.Prior</map>	
+
+    	<map name="InverseGamma">beast.math.distributions.InverseGamma</map>	
+
+    	<map name="OneOnX">beast.math.distributions.OneOnX</map>	
+
+    	<run id="mcmc" spec="$(mcmc.spec=MCMC)" chainLength="$(mcmc.chainLength=100000000)">		
+
+        		<state id="state" spec="$(state.spec=State)" storeEvery="$(state.storeEvery=5000)">			
+
+            			<tree id="Tree" spec="$(Tree.spec=beast.evolution.tree.Tree)" name="$(Tree.name=stateNode)">				
+                				<trait id="Date" spec="$(Date.spec=feast.fileio.TraitSetFromTaxonSet)" delimiter="$(Date.delimiter=|)" everythingAfterLast="$(Date.everythingAfterLast=true)" dateFormat="$(Date.dateFormat=Y)" traitname="$(Date.traitname=date)">					
+                   					<taxa id="taxonSet" spec="$(taxonSet.spec=TaxonSet)" alignment="$(taxonSet.alignment=@alignment)"/>					
+                				</trait>				
+
+                				<taxonset idref="taxonSet"/>				
+
+            			</tree>			
+
+            			<parameter id="kappa" spec="$(kappa.spec=parameter.RealParameter)" lower="$(kappa.lower=0.0)" name="$(kappa.name=stateNode)">$(kappa=2.0)</parameter>			
+
+            			<parameter id="gammaShape" spec="$(gammaShape.spec=parameter.RealParameter)" name="$(gammaShape.name=stateNode)">$(gammaShape=1.0)</parameter>			
+
+            			<parameter id="ePopSize" spec="$(ePopSize.spec=parameter.RealParameter)" name="$(ePopSize.name=stateNode)">$(ePopSize=0.3)</parameter>			
+
+            			<parameter id="growthRate" spec="$(growthRate.spec=parameter.RealParameter)" name="$(growthRate.name=stateNode)">$(growthRate=3.0E-4)</parameter>			
+
+            			<parameter id="freqParameter" spec="$(freqParameter.spec=parameter.RealParameter)" dimension="$(freqParameter.dimension=4)" lower="$(freqParameter.lower=0.0)" name="$(freqParameter.name=stateNode)" upper="$(freqParameter.upper=1.0)">$(freqParameter=0.25)</parameter>			
+
+        		</state>		
+
+        		<init id="RandomTree" spec="$(RandomTree.spec=beast.evolution.tree.RandomTree)" estimate="$(RandomTree.estimate=false)" initial="$(RandomTree.initial=@Tree)" taxa="$(RandomTree.taxa=@alignment)">			
+
+            			<populationModel id="ConstantPopulation0" spec="$(ConstantPopulation0.spec=ConstantPopulation)">				
+
+                				<parameter id="randomPopSize" spec="$(randomPopSize.spec=parameter.RealParameter)" name="$(randomPopSize.name=popSize)">$(randomPopSize=1.0)</parameter>				
+
+            			</populationModel>			
+
+        		</init>		
+
+        		<distribution id="posterior" spec="$(posterior.spec=util.CompoundDistribution)">			
+
+            			<distribution id="prior" spec="$(prior.spec=util.CompoundDistribution)">				
+
+                				<distribution id="CoalescentExponential" spec="$(CoalescentExponential.spec=Coalescent)">					
+
+                    					<populationModel id="ExponentialGrowth" spec="$(ExponentialGrowth.spec=ExponentialGrowth)" growthRate="$(ExponentialGrowth.growthRate=@growthRate)" popSize="$(ExponentialGrowth.popSize=@ePopSize)"/>					
+
+                    					<treeIntervals id="TreeIntervals" spec="$(TreeIntervals.spec=TreeIntervals)" tree="$(TreeIntervals.tree=@Tree)"/>					
+
+                				</distribution>				
+
+                				<prior id="ePopSizePrior" name="$(ePopSizePrior.name=distribution)" x="$(ePopSizePrior.x=@ePopSize)">					
+
+                    					<OneOnX id="OneOnX.1" name="$(OneOnX.1.name=distr)"/>					
+
+                				</prior>				
+
+                				<prior id="FrequenciesPrior" name="$(FrequenciesPrior.name=distribution)" x="$(FrequenciesPrior.x=@freqParameter)">					
+
+                    					<Uniform id="Uniform.3" name="$(Uniform.3.name=distr)"/>					
+
+                				</prior>				
+
+                				<prior id="GammaShapePrior" name="$(GammaShapePrior.name=distribution)" x="$(GammaShapePrior.x=@gammaShape)">					
+
+                    					<Exponential id="Exponential.0" name="$(Exponential.0.name=distr)">						
+
+                        						<parameter id="RealParameter.0" spec="$(RealParameter.0.spec=parameter.RealParameter)" estimate="$(RealParameter.0.estimate=false)" name="$(RealParameter.0.name=mean)">$(RealParameter.0=1.0)</parameter>						
+
+                    					</Exponential>					
+
+                				</prior>				
+
+                				<prior id="GrowthRatePrior" name="$(GrowthRatePrior.name=distribution)" x="$(GrowthRatePrior.x=@growthRate)">					
+
+                    					<LaplaceDistribution id="LaplaceDistribution.0" name="$(LaplaceDistribution.0.name=distr)">						
+
+                        						<parameter id="RealParameter.3" spec="$(RealParameter.3.spec=parameter.RealParameter)" estimate="$(RealParameter.3.estimate=false)" name="$(RealParameter.3.name=mu)">$(RealParameter.3=0.0)</parameter>						
+
+                        						<parameter id="RealParameter.4" spec="$(RealParameter.4.spec=parameter.RealParameter)" estimate="$(RealParameter.4.estimate=false)" name="$(RealParameter.4.name=scale)">$(RealParameter.4=500.0)</parameter>						
+
+                    					</LaplaceDistribution>					
+
+                				</prior>				
+
+                				<prior id="KappaPrior" name="$(KappaPrior.name=distribution)" x="$(KappaPrior.x=@kappa)">					
+
+                    					<LogNormal id="LogNormalDistributionModel.0" name="$(LogNormalDistributionModel.0.name=distr)">						
+
+                        						<parameter id="RealParameter.1" spec="$(RealParameter.1.spec=parameter.RealParameter)" estimate="$(RealParameter.1.estimate=false)" name="$(RealParameter.1.name=M)">$(RealParameter.1=1.0)</parameter>						
+
+                        						<parameter id="RealParameter.2" spec="$(RealParameter.2.spec=parameter.RealParameter)" estimate="$(RealParameter.2.estimate=false)" name="$(RealParameter.2.name=S)">$(RealParameter.2=1.25)</parameter>						
+
+                    					</LogNormal>					
+
+                				</prior>				
+
+            			</distribution>			
+
+            			<distribution id="likelihood" spec="$(likelihood.spec=util.CompoundDistribution)" useThreads="$(likelihood.useThreads=true)">				
+
+                				<distribution id="treeLikelihood" spec="$(treeLikelihood.spec=ThreadedTreeLikelihood)" data="$(treeLikelihood.data=@alignment)" tree="$(treeLikelihood.tree=@Tree)">					
+
+                    					<siteModel id="SiteModel" spec="$(SiteModel.spec=SiteModel)" gammaCategoryCount="$(SiteModel.gammaCategoryCount=4)" shape="$(SiteModel.shape=@gammaShape)">						
+
+                        						<parameter id="mutationRate" spec="$(mutationRate.spec=parameter.RealParameter)" estimate="$(mutationRate.estimate=false)" name="$(mutationRate.name=mutationRate)">$(mutationRate=1.0)</parameter>						
+
+                        						<parameter id="proportionInvariant" spec="$(proportionInvariant.spec=parameter.RealParameter)" estimate="$(proportionInvariant.estimate=false)" lower="$(proportionInvariant.lower=0.0)" name="$(proportionInvariant.name=proportionInvariant)" upper="$(proportionInvariant.upper=1.0)">$(proportionInvariant=0.0)</parameter>						
+
+                        						<substModel id="hky" spec="$(hky.spec=HKY)" kappa="$(hky.kappa=@kappa)">							
+
+                            							<frequencies id="estimatedFreqs" spec="$(estimatedFreqs.spec=Frequencies)" frequencies="$(estimatedFreqs.frequencies=@freqParameter)"/>							
+
+                        						</substModel>						
+
+                    					</siteModel>					
+
+                    					<branchRateModel id="StrictClock.c" spec="$(StrictClock.c.spec=beast.evolution.branchratemodel.StrictClockModel)">						
+
+                        						<parameter id="clockRate.c" spec="$(clockRate.c.spec=parameter.RealParameter)" estimate="$(clockRate.c.estimate=false)" name="$(clockRate.c.name=clock.rate)">$(clockRate.c=7.0E-4)</parameter>						
+
+                    					</branchRateModel>					
+
+                				</distribution>				
+
+            			</distribution>			
+
+        		</distribution>		
+
+        		<operator id="KappaScaler" spec="$(KappaScaler.spec=ScaleOperator)" parameter="$(KappaScaler.parameter=@kappa)" scaleFactor="$(KappaScaler.scaleFactor=0.5)" weight="$(KappaScaler.weight=0.1)"/>		
+
+        		<operator id="gammaShapeScaler" spec="$(gammaShapeScaler.spec=ScaleOperator)" parameter="$(gammaShapeScaler.parameter=@gammaShape)" scaleFactor="$(gammaShapeScaler.scaleFactor=0.5)" weight="$(gammaShapeScaler.weight=0.1)"/>		
+
+        		<operator id="CoalescentExponentialTreeScaler" spec="$(CoalescentExponentialTreeScaler.spec=ScaleOperator)" scaleFactor="$(CoalescentExponentialTreeScaler.scaleFactor=0.5)" tree="$(CoalescentExponentialTreeScaler.tree=@Tree)" weight="$(CoalescentExponentialTreeScaler.weight=3.0)"/>		
+
+        		<operator id="CoalescentExponentialTreeRootScaler" spec="$(CoalescentExponentialTreeRootScaler.spec=ScaleOperator)" rootOnly="$(CoalescentExponentialTreeRootScaler.rootOnly=true)" scaleFactor="$(CoalescentExponentialTreeRootScaler.scaleFactor=0.5)" tree="$(CoalescentExponentialTreeRootScaler.tree=@Tree)" weight="$(CoalescentExponentialTreeRootScaler.weight=3.0)"/>		
+
+        		<operator id="CoalescentExponentialUniformOperator" spec="$(CoalescentExponentialUniformOperator.spec=Uniform)" tree="$(CoalescentExponentialUniformOperator.tree=@Tree)" weight="$(CoalescentExponentialUniformOperator.weight=30.0)"/>		
+
+        		<operator id="CoalescentExponentialSubtreeSlide" spec="$(CoalescentExponentialSubtreeSlide.spec=SubtreeSlide)" tree="$(CoalescentExponentialSubtreeSlide.tree=@Tree)" weight="$(CoalescentExponentialSubtreeSlide.weight=15.0)"/>		
+
+        		<operator id="CoalescentExponentialNarrow" spec="$(CoalescentExponentialNarrow.spec=Exchange)" tree="$(CoalescentExponentialNarrow.tree=@Tree)" weight="$(CoalescentExponentialNarrow.weight=15.0)"/>		
+
+        		<operator id="CoalescentExponentialWide" spec="$(CoalescentExponentialWide.spec=Exchange)" isNarrow="$(CoalescentExponentialWide.isNarrow=false)" tree="$(CoalescentExponentialWide.tree=@Tree)" weight="$(CoalescentExponentialWide.weight=3.0)"/>		
+
+        		<operator id="CoalescentExponentialWilsonBalding" spec="$(CoalescentExponentialWilsonBalding.spec=WilsonBalding)" tree="$(CoalescentExponentialWilsonBalding.tree=@Tree)" weight="$(CoalescentExponentialWilsonBalding.weight=3.0)"/>		
+
+        		<operator id="ePopSizeScaler" spec="$(ePopSizeScaler.spec=ScaleOperator)" parameter="$(ePopSizeScaler.parameter=@ePopSize)" weight="$(ePopSizeScaler.weight=3.0)"/>		
+
+        		<operator id="GrowthRateRandomWalk" spec="$(GrowthRateRandomWalk.spec=RealRandomWalkOperator)" parameter="$(GrowthRateRandomWalk.parameter=@growthRate)" weight="$(GrowthRateRandomWalk.weight=3.0)" windowSize="$(GrowthRateRandomWalk.windowSize=1.0)"/>		
+
+        		<operator id="FrequenciesExchanger" spec="$(FrequenciesExchanger.spec=DeltaExchangeOperator)" delta="$(FrequenciesExchanger.delta=0.01)" weight="$(FrequenciesExchanger.weight=0.1)">			
+
+            			<parameter idref="freqParameter"/>			
+
+        		</operator>		
+
+        		<logger id="tracelog" spec="$(tracelog.spec=Logger)" fileName="$(tracelog)" logEvery="$(tracelog.logEvery=10000)" model="$(tracelog.model=@posterior)" sanitiseHeaders="$(tracelog.sanitiseHeaders=true)" sort="$(tracelog.sort=smart)">			
+
+            			<log idref="posterior"/>			
+
+            			<log idref="likelihood"/>			
+
+            			<log idref="prior"/>			
+
+            			<log idref="treeLikelihood"/>			
+
+            			<log id="TreeHeight" spec="$(TreeHeight.spec=beast.evolution.tree.TreeHeightLogger)" tree="$(TreeHeight.tree=@Tree)"/>			
+
+            			<log idref="kappa"/>			
+
+            			<log idref="gammaShape"/>			
+
+            			<log idref="CoalescentExponential"/>			
+
+            			<log idref="ePopSize"/>			
+
+            			<log idref="growthRate"/>			
+
+            			<log idref="freqParameter"/>			
+
+        		</logger>		
+
+        		<logger id="screenlog" spec="$(screenlog.spec=Logger)" logEvery="$(screenlog.logEvery=1000)">			
+
+            			<log idref="posterior"/>			
+
+            			<log idref="likelihood"/>			
+
+            			<log idref="prior"/>			
+
+        		</logger>		
+
+        		<logger id="treelog" spec="$(treelog.spec=Logger)" fileName="$(treelog)" logEvery="$(treelog.logEvery=10000)" mode="$(treelog.mode=tree)">			
+
+            			<log id="TreeWithMetaDataLogger" spec="$(TreeWithMetaDataLogger.spec=beast.evolution.tree.TreeWithMetaDataLogger)" tree="$(TreeWithMetaDataLogger.tree=@Tree)"/>			
+
+        		</logger>		
+
+        		<operatorschedule id="OperatorSchedule" spec="$(OperatorSchedule.spec=OperatorSchedule)"/>		
+
+    	</run>	
+
+</beast>
