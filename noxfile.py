@@ -13,7 +13,7 @@ nox.options.sessions = ["test"]
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
     session.install("pytest", "typer", ".")
-    session.run("pytest")
+    session.run("pytest", "-s")
 
 
 @session
@@ -57,8 +57,22 @@ _env_files = list(str(p) for p in chain(_envs_dir.glob(r"*.yml"), _envs_dir.glob
 
 
 @session
-@nox.parametrize('env_file', _env_files)
-def lock_conda_env(session, env_file):
+@nox.parametrize('env', _env_files)
+def lock_conda_envs(session, env):
     session.install("conda-lock[pip_support]")
-    lock_file = Path(env_file).with_suffix(".lock")
-    session.run("conda-lock", "--mamba", "-p", "linux-64", "-p", "osx-64", "-f", env_file, "--lockfile", str(lock_file))
+    name = Path(env).stem
+    loc = Path(env).parents[0]
+    session.run(
+        "conda-lock",
+        "--mamba",
+        "-p",
+        "linux-64",
+        "-p",
+        "osx-64",
+        "-f",
+        env,
+        "-k",
+        "explicit",
+        "--filename-template",
+        str(loc / f"{name}.{{platform}}.pin.txt"),
+    )
