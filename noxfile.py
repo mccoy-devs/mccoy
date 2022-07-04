@@ -1,5 +1,7 @@
 import shutil
+from itertools import chain
 from pathlib import Path
+from typing import List, Optional
 
 import nox
 from nox_poetry import session
@@ -11,7 +13,7 @@ nox.options.sessions = ["test"]
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
     session.install("pytest", "typer", ".")
-    session.run("pytest")
+    session.run("pytest", "-s")
 
 
 @session
@@ -48,3 +50,29 @@ def docs_github(session):
     gh_pages.mkdir()
     (gh_pages / ".nojekll").touch()
     session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
+
+
+_envs_dir = Path("mccoy/workflow/envs")
+_env_files = list(str(p) for p in chain(_envs_dir.glob(r"*.yml"), _envs_dir.glob(r"*.yaml")))
+
+
+@session
+@nox.parametrize('env', _env_files)
+def lock_conda_envs(session, env):
+    session.install("conda-lock[pip_support]")
+    name = Path(env).stem
+    loc = Path(env).parents[0]
+    session.run(
+        "conda-lock",
+        "--mamba",
+        "-p",
+        "linux-64",
+        "-p",
+        "osx-64",
+        "-f",
+        env,
+        "-k",
+        "explicit",
+        "--filename-template",
+        str(loc / f"{name}.{{platform}}.pin.txt"),
+    )
