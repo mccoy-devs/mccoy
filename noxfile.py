@@ -1,5 +1,7 @@
 import shutil
+from itertools import chain
 from pathlib import Path
+from typing import List, Optional
 
 import nox
 from nox_poetry import session
@@ -48,3 +50,15 @@ def docs_github(session):
     gh_pages.mkdir()
     (gh_pages / ".nojekll").touch()
     session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
+
+
+_envs_dir = Path("mccoy/workflow/envs")
+_env_files = list(str(p) for p in chain(_envs_dir.glob(r"*.yml"), _envs_dir.glob(r"*.yaml")))
+
+
+@session
+@nox.parametrize('env_file', _env_files)
+def lock_conda_env(session, env_file):
+    session.install("conda-lock[pip_support]")
+    lock_file = Path(env_file).with_suffix(".lock")
+    session.run("conda-lock", "--mamba", "-p", "linux-64", "-p", "osx-64", "-f", env_file, "--lockfile", str(lock_file))
