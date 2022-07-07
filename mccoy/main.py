@@ -1,3 +1,4 @@
+import subprocess
 import shutil
 import sys
 from glob import glob
@@ -163,6 +164,7 @@ def run(
         "inherit": inherit,
     }
 
+
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
     workflow_dir = project / "workflow"
     if workflow_dir.exists():
@@ -180,6 +182,16 @@ def run(
         "--config",
         *config_strs,
     ]
+
+    # Set up conda frontend
+    mamba_found = True
+    try:
+        subprocess.run(["mamba", "--version"], capture_output=True, check=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        mamba_found = False
+    if not mamba_found:
+        args.append("--conda-frontend=conda")
+
     if verbose:
         args.insert(0, "--verbose")
         typer.secho(f"Running workflow: {run_id}", fg=typer.colors.MAGENTA)
