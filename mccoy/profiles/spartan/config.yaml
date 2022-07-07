@@ -3,7 +3,7 @@ cluster: >-
   sbatch --time={resources.time}
   --mem={resources.mem}
   -c {resources.cpus}
-  -o logs/{rule}_{wildcards}.out -e logs/{rule}_{wildcards}.err
+  -o logs/{rule}-{wildcards}.out -e logs/{rule}-{wildcards}.err
 cluster-cancel: "scancel $(echo $* | grep -Eo '[0-9]+')"
 jobs: 50
 cores: 1

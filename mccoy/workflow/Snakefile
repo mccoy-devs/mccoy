@@ -15,8 +15,7 @@ configfile: Path(config['project_path']) / "config.yaml"
 
 
 # Ensure log directory exists. Required for cluster job submission.
-if config.get('cluster', False):
-    Path("logs").mkdir(exist_ok=True)
+Path("logs").mkdir(exist_ok=True)
 
 
 include: "rules/combine.smk"
