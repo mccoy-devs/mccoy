@@ -33,3 +33,20 @@ rule tree:
         """
         iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} {params.seed} -ntmax {threads} 2>&1 > {log}
         """
+
+rule render_tree:
+    """
+    Renders the tree from iqtree in SVG format.
+    """
+    output:
+        svg=report("results/tree/{id}-tree.svg", category="Tree"),
+        html=report("results/tree/{id}-tree.html", category="Tree"),
+    input:
+        "results/tree/{id}.fasta.treefile"
+    conda:
+        "../envs/toytree.yml"
+    log:
+        "logs/render_tree-{id}.txt",
+    shell:
+        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+

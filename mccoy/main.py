@@ -164,7 +164,6 @@ def run(
         "inherit": inherit,
     }
 
-
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
     workflow_dir = project / "workflow"
     if workflow_dir.exists():
