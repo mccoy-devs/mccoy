@@ -637,9 +637,9 @@ tabulate==0.8.10 ; python_version >= "3.7" and python_version < "4.0" \
 toml==0.10.2 ; python_version >= "3.7" and python_version < "4.0" \
     --hash=sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b \
     --hash=sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
-tomlkit==0.11.0 ; python_version >= "3.7" and python_version < "4.0" \
-    --hash=sha256:0f4050db66fd445b885778900ce4dd9aea8c90c4721141fde0d6ade893820ef1 \
-    --hash=sha256:71ceb10c0eefd8b8f11fe34e8a51ad07812cb1dc3de23247425fbc9ddc47b9dd
+tomlkit==0.11.1 ; python_version >= "3.7" and python_version < "4.0" \
+    --hash=sha256:1c5bebdf19d5051e2e1de6cf70adfc5948d47221f097fcff7a3ffc91e953eaf5 \
+    --hash=sha256:61901f81ff4017951119cd0d1ed9b7af31c821d6845c8c477587bbdcd5e5854e
 toposort==1.7 ; python_version >= "3.7" and python_version < "4.0" \
     --hash=sha256:8ed8e109e96ae30bf66da2d2155e4eb9989d9c5c743c837e37d9774a4eddd804 \
     --hash=sha256:ddc2182c42912a440511bd7ff5d3e6a1cabc3accbc674a3258c8c41cbfbb2125
