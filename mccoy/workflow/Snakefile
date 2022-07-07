@@ -16,6 +16,10 @@ SCRIPT_DIR = SNAKE_DIR/ "scripts"
 configfile: Path(config['project_path']) / "config.yaml"
 
 
+# Ensure log directory exists. Required for cluster job submission.
+Path("logs").mkdir(exist_ok=True)
+
+
 include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
@@ -48,10 +52,6 @@ onstart:
     print(f"\t{shell('python --version'):20s} ➡  {shell('which python')}")
     print(f"\t{shell('conda --version'):20s} ➡  {shell('which conda')}")
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
-
-    # Ensure log directory exists. Required for cluster job submission.
-    # TODO: Not sure if this will work...
-    Path("logs").mkdir(exist_ok=True)
 
 
 
