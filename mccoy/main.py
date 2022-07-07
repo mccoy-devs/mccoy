@@ -1,5 +1,5 @@
-import subprocess
 import shutil
+import subprocess
 import sys
 from glob import glob
 from itertools import chain
@@ -163,7 +163,6 @@ def run(
         "data": [str(d.resolve()) for d in data],
         "inherit": inherit,
     }
-
 
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
     workflow_dir = project / "workflow"
