@@ -9,7 +9,7 @@ PROJECT_DIR = Path(config['project_path'])
 RESOURCES_DIR = PROJECT_DIR / "resources"
 INPUT_DATA = config['data']
 SNAKE_DIR = Path(workflow.basedir)
-SCRIPT_DIR = SNAKE_DIR/ "scripts"
+SCRIPT_DIR = SNAKE_DIR / "scripts"
 
 
 # overwrite config with project specific file
@@ -36,7 +36,9 @@ else:
 
     include: "rules/onlinebeast.smk"
 
+
 report: "report/workflow-report.rst"
+
 
 onstart:
     # Print some environment info

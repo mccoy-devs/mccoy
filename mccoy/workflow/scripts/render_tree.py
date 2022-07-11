@@ -1,8 +1,10 @@
 from pathlib import Path
-import toytree
-import toyplot.svg
+
 import toyplot.html
+import toyplot.svg
+import toytree
 import typer
+
 
 def render_tree(
     tree_file: Path = typer.Argument(..., help="The path to the tree file in newick format."),
@@ -14,18 +16,17 @@ def render_tree(
 ):
     tree = toytree.tree(str(tree_file))
     canvas, axes, mark = tree.draw(
-        width=width, 
-        height=height, 
-        node_hover=True, 
-        node_sizes=20, 
+        width=width,
+        height=height,
+        node_hover=True,
+        node_sizes=20,
         node_labels='support',
-        tip_labels_align=tip_labels_align
+        tip_labels_align=tip_labels_align,
     )
     if svg:
         toyplot.svg.render(canvas, str(svg))
     if html:
         toyplot.html.render(canvas, str(html))
-
 
 
 if __name__ == "__main__":
