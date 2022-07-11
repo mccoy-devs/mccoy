@@ -1,7 +1,6 @@
 import shutil
 from itertools import chain
 from pathlib import Path
-from typing import List, Optional
 
 import nox
 from nox_poetry import session
@@ -12,7 +11,7 @@ nox.options.sessions = ["test"]
 @session(python=["3.7", "3.8", "3.9", "3.10"])
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
-    session.install("pytest", "typer", ".")
+    session.install("pytest", "typer", "DendroPy>=4.5.2", ".")
     session.run("pytest", "-s")
 
 
