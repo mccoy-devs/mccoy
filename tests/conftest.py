@@ -108,7 +108,7 @@ def run_workflow(tmpdir: Path):
                 "-j1",
                 "-f",
                 "--keep-target-files",
-                # f"--conda-base-path={Path(__file__).parent.resolve() / '.conda'}",
+                f"--conda-prefix={Path(__file__).parent.resolve() / '.conda'}",
                 "--continue",
                 "--verbose",
                 *targets,

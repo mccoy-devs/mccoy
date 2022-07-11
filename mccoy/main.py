@@ -125,6 +125,12 @@ def run(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
     ),
     cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace."),
+    conda_prefix: Optional[Path] = typer.Option(
+        None,
+        file_okay=False,
+        dir_okay=True,
+        help="Conda environment prefix. By default set to f\"{project}/.conda\"",
+    ),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -170,13 +176,16 @@ def run(
         snakefile = workflow_dir / "Snakefile"
     else:
         snakefile = Path(__file__).parent / "workflow/Snakefile"
+
+    conda_prefix_dir = f"{project.resolve() / '.conda'}" if not conda_prefix else conda_prefix
+
     args = [
         f"--snakefile={snakefile}",
         f"--directory={run_dir}",
         "--use-conda",
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
-        f"--conda-prefix={project.resolve() / '.conda'}",
+        f"--conda-prefix={conda_prefix_dir}",
         *ctx.args,
         "--config",
         *config_strs,
