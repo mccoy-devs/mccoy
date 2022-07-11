@@ -17,6 +17,11 @@ Welcome to Phylodynamics Workflow's documentation!
 
    These docs are not complete or up-to-date. Stay tuned for that!
 
+.. smk:autodoc:: ../mccoy/workflow/Snakefile
+   :config: project_path = ../tests/expected
+            data = ../tests/data.fasta
+            inherit = False
+            id = run_1
 
 Indices and tables
 ==================
