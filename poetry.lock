@@ -930,6 +930,25 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "snakedoc"
+version = "0.1.dev104+gaff60bb"
+description = "A Sphinx extension for Snakemake"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+develop = false
+
+[package.dependencies]
+snakemake = ">=7.6.2"
+sphinx = "<5.0.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/smutch/snakedoc.git"
+reference = "main"
+resolved_reference = "aff60bb68ba02128a0b5df5e5a6cb73ce8c1f247"
+
+[[package]]
 name = "snakemake"
 version = "7.12.1"
 description = "Snakemake is a workflow management system that aims to reduce the complexity of creating workflows by providing a fast and comfortable execution environment, together with a clean and modern specification language in python style. Snakemake workflows are essentially Python scripts extended by declarative code to define rules. Rules describe how to create output files from input files."
@@ -1364,6 +1383,7 @@ shellingham = []
 six = []
 smart-open = []
 smmap = []
+snakedoc = []
 snakemake = []
 snowballstemmer = []
 sphinx = []

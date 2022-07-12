@@ -39,6 +39,13 @@ extensions = [
 ]
 
 smk_linkcode_baseurl = "https://github.com/smutch/mccoy/blob/main"
+smk_configfile = "../mccoy/config/config.yaml"
+smk_config = dict(
+    project_path="../tests/expected",
+    data="../tests/data.fasta",
+    inherit=False,
+    id="run_1",
+)
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
