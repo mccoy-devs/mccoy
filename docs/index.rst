@@ -1,3 +1,10 @@
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   rules
+
+
 McCoy
 =====
 
@@ -5,16 +12,39 @@ McCoy
 
    These docs are not complete or up-to-date. Stay tuned for that!
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents
 
-   rules
+Workflow overview
+-----------------
 
-|
+.. mermaid::
 
-Indices and tables
-==================
+    %%{init: { 'theme':'neutral' } }%%
+    flowchart TB
+        sources[(fasta files)]
+        sources --> combine --> MSA
+        click combine href "rules.html#rule-combine"
 
-* :ref:`smk-rule`
-* :ref:`search`
+        MSA["multiple sequence alignment"] --> QC
+        click MSA href "rules.html#alignment"
+
+        subgraph QC["Quality control"]
+            direction TB
+            tree[maximum likelihood tree] --> RTR[root-tip regression]
+            click tree href "rules.html#tree-construction"
+            otherQC[other checks]
+        end
+
+        QC --> Beast
+
+        subgraph Beast
+            direction TB
+            XML["XML generation"] --> OnlineBEAST["run, pause & update data"]
+            click XML href "rules.html#dynamicbeast"
+            click OnlineBEAST href "rules.html#onlinebeast"
+        end
+
+
+All rules
+---------
+
+* :ref:`Index<smk-rule>`
