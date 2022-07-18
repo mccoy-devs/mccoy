@@ -21,7 +21,6 @@ pytest = "^6.0"
 sphinx-rtd-theme = "^1.0.0"
 myst-parser = "^0.17.2"
 sphinx-copybutton = "^0.5.0"
-conda-lock = {extras = ["pip_support"], version = "^1.0.5"}
 DendroPy = "^4.5.2"
 
 [build-system]
