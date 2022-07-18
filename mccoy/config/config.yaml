@@ -20,12 +20,21 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
     mem: "16G"
     cpus: 10
 
-beast:            # Options for the query rule (./workflow/rules/beast.smk)
-  - "ePopSize=0.3"
-  - "Date.dateFormat=yyyy-MM-dd"
-  - "Date.delimiter=_"
-  - "mutationRate=1.0"
-  - "mcmc.threads=6"
-  - "mcmc.chainLength=10000"
-  - "treelog.logEvery=1000"
-  - "tracelog.logEvery=1000"
+beast:
+  beast:
+     - "-beagle"
+     - "-beagle_GPU"
+  dynamic-variables:
+      - "ePopSize=0.3"
+      - "Date.dateFormat=yyyy-MM-dd"
+      - "Date.delimiter=_"
+      - "mutationRate=1.0"
+      - "mcmc.threads=6"
+      - "mcmc.chainLength=10000"
+      - "treelog.logEvery=1000"
+      - "tracelog.logEvery=1000"
+  resources:     # Only used for submission to an HPC queue
+    time: "20:00:00"
+    mem: "4G"
+    cpus: 1
+    extra: "-p gpgpu -gres=gpu:p100:1"
