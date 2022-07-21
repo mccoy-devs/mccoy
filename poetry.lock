@@ -614,7 +614,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "snakemake"
-version = "7.8.5"
+version = "7.9.0"
 description = "Snakemake is a workflow management system that aims to reduce the complexity of creating workflows by providing a fast and comfortable execution environment, together with a clean and modern specification language in python style. Snakemake workflows are essentially Python scripts extended by declarative code to define rules. Rules describe how to create output files from input files."
 category = "main"
 optional = false
@@ -1279,10 +1279,7 @@ smmap = [
     {file = "smmap-5.0.0-py3-none-any.whl", hash = "sha256:2aba19d6a040e78d8b09de5c57e96207b09ed71d8e55ce0959eeee6c8e190d94"},
     {file = "smmap-5.0.0.tar.gz", hash = "sha256:c840e62059cd3be204b0c9c9f74be2c09d5648eddd4580d9314c3ecde0b30936"},
 ]
-snakemake = [
-    {file = "snakemake-7.8.5-py3-none-any.whl", hash = "sha256:def7f654c15dca8d0412535f9dd113d5a265214b077b8e7845e064a2ce8e3cfd"},
-    {file = "snakemake-7.8.5.tar.gz", hash = "sha256:6a3add290f362c37c91fa5c6b34f30c776ad3012f43b6d1f1fe97b3af7687d7a"},
-]
+snakemake = []
 snowballstemmer = [
     {file = "snowballstemmer-2.2.0-py2.py3-none-any.whl", hash = "sha256:c8e1716e83cc398ae16824e5572ae04e0d9fc2c6b985fb0f900f5f0c96ecba1a"},
     {file = "snowballstemmer-2.2.0.tar.gz", hash = "sha256:09b16deb8547d3412ad7b590689584cd0fe25ec8db3be37788be3810cbf19cb1"},

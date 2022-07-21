@@ -2,11 +2,13 @@
 cluster: >-
   sbatch --time={resources.time}
   --mem={resources.mem}
+  -N {resources.nodes}
   -c {resources.cpus}
   -o logs/{rule}-{wildcards}.out -e logs/{rule}-{wildcards}.err
-  {resources.extra}
+  -p {resources.partition}
+  $(if [[ '{resources.gres}' ]]; then echo '-gres={resources.gres}'; fi)
 cluster-cancel: "scancel $(echo $* | grep -Eo '[0-9]+')"
 jobs: 50
 cores: 1
-default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "cpus=1", "extra=''"]
+default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "cpus=1", "partition=physical", "extra=''", "gres=''"]
 use-conda: true
