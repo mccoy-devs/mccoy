@@ -13,9 +13,10 @@ rule onlinebeast:
     conda:
         "../envs/beast.yml"
     params:
-        beast=lambda wildcards: ",".join(config["beast"]),
+        dynamic=lambda wildcards: ",".join(config["beast"]["dynamic"]),
+        beast=lambda wildcards: " ".join(config["beast"]["beast"]),
     shell:
         """
         online-beast {input.xml} {input.alignment} --state-file {input.statefile} --output {output.online_statefile} --template --no-date-trait
-        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},{params.beast}' -resume -statefile {output.statefile} {input.xml} 2>&1 1> {log}
+        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.xml} 1>&2 2> {log}
         """

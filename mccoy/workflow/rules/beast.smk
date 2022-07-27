@@ -12,10 +12,11 @@ rule beast:
         "../envs/beast.yml"
     params:
         dynamic=lambda wildcards: ",".join(config["beast"]["dynamic"]),
-        cmdline=lambda wildcards: " ".join(config["beast"]["cmdline"]),
+        beast=lambda wildcards: " ".join(config["beast"]["beast"]),
+    threads: config["beast"]["threads"]
     resources:
         **config["beast"].get("resources", {}),
     shell:
         """
-        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},{params.dyn_vars}' {params.beast_flags} -statefile {output.statefile} {input.template} 1>&2 2> {log}
+        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2> {log}
         """
