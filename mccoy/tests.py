@@ -40,9 +40,9 @@ def test_tree(tree: Tree):
     pass
 
 
-def test_root_to_tip(tree: Tree):
+def test_root_to_tip(tree: Tree, extra):
     """
     Test the tree for temporal signal with a root-to-tip regression.
     https://phytest-devs.github.io/phytest/reference.html#phytest.bio.tree.Tree.assert_root_to_tip
     """
-    tree.assert_root_to_tip(min_r_squared=0)
+    tree.assert_root_to_tip(min_r_squared=0, extra=extra)

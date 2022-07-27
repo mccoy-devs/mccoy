@@ -40,8 +40,8 @@ rule render_tree:
     Renders the tree from iqtree in SVG format.
     """
     output:
-        svg=report("results/tree/{id}-tree.svg", category="Tree"),
-        html=report("results/tree/{id}-tree.html", category="Tree"),
+        svg=report("results/tree/{id}-tree.svg", category="Maximum Likelihood Tree"),
+        html=report("results/tree/{id}-tree.html", category="Maximum Likelihood Tree"),
     input:
         "results/tree/{id}.fasta.treefile",
     conda:

@@ -5,4 +5,5 @@ dependencies:
   - python=3.9
   - pip
   - pip:
-    - phytest
+    - phytest==1.0.1
+

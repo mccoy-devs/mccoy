@@ -4,7 +4,7 @@ rule phytest:
         tree="results/tree/{id}.fasta.treefile",
         phytest_file=PROJECT_DIR / "tests.py",
     output:
-        "results/{id}-phytest.html",
+        report("results/{id}-phytest.html", category="Quality Control")
     log:
         "logs/phytest-{id}.log",
     conda:
