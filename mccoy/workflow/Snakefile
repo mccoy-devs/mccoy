@@ -25,16 +25,7 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
 include: "rules/dynamicbeast.smk"
-
-
-if config['inherit'] == 'None':
-
-    include: "rules/beast.smk"
-
-
-else:
-
-    include: "rules/onlinebeast.smk"
+include: "rules/beast.smk"
 
 
 report: "report/workflow-report.rst"
@@ -56,9 +47,7 @@ onstart:
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
 
 
-
-
 rule all:
     input:
-        expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
+        expand(rules.beast.output, id=config['id']),
         f"results/tree/{config['id']}-tree.svg",

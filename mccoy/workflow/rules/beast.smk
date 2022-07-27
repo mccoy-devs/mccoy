@@ -1,7 +1,23 @@
+rule onlinebeast:
+    input:
+        xml=rules.dynamicbeast.output,
+        alignment=rules.align.output,
+    output:
+        "results/beast/{id}-online_beast.xml",
+    log:
+        "logs/{id}-onlinebeast.log",
+    conda:
+        "../envs/beast.yml"
+    shell:
+        """
+        online-beast {input.xml} {input.alignment} --state-file data/{wildcards.id}-beast.xml.state --output {output} --template --no-date-trait
+        """
+
+
 rule beast:
     input:
         alignment=rules.align.output,
-        template=rules.dynamicbeast.output,
+        template=rules.onlinebeast.output if config['inherit'] else rules.dynamicbeast.output,
     output:
         treelog="results/beast/{id}-tree.log",
         tracelog="results/beast/{id}-trace.log",

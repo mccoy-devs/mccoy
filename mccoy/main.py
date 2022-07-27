@@ -153,7 +153,7 @@ def run(
             data = inherit_data + data
             # copy state file
             try:
-                inherit_state_file_path = list((inherit / "results").glob("*.state"))[0]
+                inherit_state_file_path = list((inherit / "results/beast").glob("*.state"))[0]
             except IndexError:
                 raise ValueError("Could not find state file.")
             data_dir = run_dir / "data"
@@ -167,7 +167,7 @@ def run(
         "run_id": run_id,
         "run_name": f"run_{run_id}",
         "data": [str(d.resolve()) for d in data],
-        "inherit": inherit,
+        "inherit": inherit or False,
     }
 
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)

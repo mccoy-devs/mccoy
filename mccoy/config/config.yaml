@@ -26,7 +26,7 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 
 # }}}
 
-# beast.smk & onlinebeast.smk {{{
+# beast.smk {{{
 
 beast:
   beast:
