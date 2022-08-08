@@ -56,9 +56,7 @@ rule beast:
     resources:
         **config["beast"].get("resources", {}),
     envmodules:
-        "gcccore/8.3.0",
-        "fosscuda/2019b",
-        "beast/2.6.6"
+        *config["beast"].get("envmodules", []),
     shell:
         """
         beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2> {log}

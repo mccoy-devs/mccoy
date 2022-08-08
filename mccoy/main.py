@@ -124,13 +124,14 @@ def run(
     config: Optional[List[str]] = typer.Option(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
     ),
-    cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace."),
+    cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace"),
     conda_prefix: Optional[Path] = typer.Option(
         None,
         file_okay=False,
         dir_okay=True,
         help="Conda environment prefix. By default set to f\"{project}/.conda\"",
     ),
+    no_envmodules: Optional[bool] = typer.Option(False, help="Do not add the --use-envmodules flag to Snakemake call"),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -186,9 +187,6 @@ def run(
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
         f"--conda-prefix={conda_prefix_dir}",
-        *ctx.args,
-        "--config",
-        *config_strs,
     ]
 
     # Set up conda frontend
@@ -200,10 +198,15 @@ def run(
     if not mamba_found:
         args.append("--conda-frontend=conda")
 
+    if not no_envmodules:
+        args.append("--use-envmodules")
+
     if verbose:
         args.insert(0, "--verbose")
         typer.secho(f"Running workflow: {run_id}", fg=typer.colors.MAGENTA)
         typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.MAGENTA)
+
+    args.extend([*ctx.args, "--config", *config_strs])
 
     status = snakemake.main(args)
 

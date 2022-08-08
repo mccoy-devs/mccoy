@@ -46,5 +46,10 @@ beast:
     partition: "gpgpu"
     gres: "gpu:1"
     qos: gpgpumdhs
+  envmodules:
+    - "gcccore/8.3.0"
+    - "fosscuda/2019b"
+    - "beast/2.6.6"
+
 
 # }}}
