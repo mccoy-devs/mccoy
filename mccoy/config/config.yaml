@@ -30,7 +30,6 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 
 beast:
   beast:
-     - "-beagle"
      - "-beagle_GPU"
   dynamic:
       - "ePopSize=0.3"
