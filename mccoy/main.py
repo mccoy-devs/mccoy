@@ -145,21 +145,20 @@ def run(
     """
     run_id, run_dir = create_run(project, cont=cont)
     project_id = project.name
-    if not cont:
-        if inherit_last:
-            last_run_id = run_id - 1
-            inherit = project / f"runs/run_{last_run_id}"
-        if inherit:
-            inherit_data = list(inherit.glob("data/*-combined.fasta"))
-            data = inherit_data + data
-            # copy state file
-            try:
-                inherit_state_file_path = list((inherit / "results/beast").glob("*.state"))[0]
-            except IndexError:
-                raise ValueError("Could not find state file.")
-            data_dir = run_dir / "data"
-            data_dir.mkdir()
-            shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
+    if inherit_last:
+        last_run_id = run_id - 1
+        inherit = project / f"runs/run_{last_run_id}"
+    if inherit:
+        inherit_data = list(inherit.glob("data/*-combined.fasta"))
+        data = inherit_data + data
+        # copy state file
+        try:
+            inherit_state_file_path = list((inherit / "results/beast").glob("*.state"))[0]
+        except IndexError:
+            raise ValueError("Could not find state file.")
+        data_dir = run_dir / "data"
+        data_dir.mkdir(exist_ok=True)
+        shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
 
     mccoy_config = {
         'id': f"{project_id}-{run_id}",
