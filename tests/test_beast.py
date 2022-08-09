@@ -1,4 +1,7 @@
+from pathlib import Path
 from xml.dom.minidom import Document, Element, parse
+
+import dendropy
 
 
 def test_beast(run_workflow):
@@ -19,7 +22,7 @@ def test_beast(run_workflow):
         assert (workflow.work_dir / target).exists()
 
     # The first `n_lines` of the tree file should match...
-    n_lines = 142
+    n_lines = 140
     expected = (workflow.expected_dir / workflow.targets[0]).read_text().splitlines()[:n_lines]
     result = (workflow.work_dir / workflow.targets[0]).read_text().splitlines()[:n_lines]
     assert expected == result, f"First {n_lines} of {str(workflow.targets[0])} does not match expected"
@@ -31,6 +34,22 @@ def test_beast(run_workflow):
     assert element.getAttribute("sample") == "10000"
 
 
+def _count_taxa(statefile: Path) -> int:
+    with statefile.open("r") as fp:
+        doc: Document = parse(fp)
+    element: Element = doc.getElementsByTagName("statenode")[0]
+    return len(
+        dendropy.Tree.get(
+            data=element.firstChild.data, schema="newick", terminating_semicolon_required=False
+        ).taxon_namespace
+    )
+
+
 def test_onlinebeast(run_workflow):
 
-    workflow = run_workflow("results/beast/expected-1-online_beast.xml")
+    workflow = run_workflow("results/beast/expected-2-online_beast.xml.state", inherit=True)
+
+    # Ensure we have one more taxa than the inherited run
+    result = _count_taxa(workflow.work_dir / workflow.targets[0])
+    expected = _count_taxa(workflow.work_dir / "data/expected-2-beast.xml.state") + 1
+    assert result == expected
