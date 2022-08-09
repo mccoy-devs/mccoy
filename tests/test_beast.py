@@ -29,3 +29,8 @@ def test_beast(run_workflow):
         doc: Document = parse(fp)
     element: Element = doc.getElementsByTagName("itsabeastystatewerein")[0]
     assert element.getAttribute("sample") == "10000"
+
+
+def test_onlinebeast(run_workflow):
+
+    workflow = run_workflow("results/beast/expected-1-online_beast.xml")

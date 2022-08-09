@@ -33,6 +33,16 @@ def regen_expected(session):
         "resources/templates/CoV_CE_fixed_clock_template.xml",
     )
     session.run("mccoy", "run", "tests/expected", "--data", "tests/data.fasta", "-c", "4")
+    session.run(
+        "mccoy",
+        "run",
+        "tests/expected",
+        "--data",
+        "tests/data2.fasta",
+        "--inherit-last",
+        "-c",
+        "4",
+    )
 
 
 @session
