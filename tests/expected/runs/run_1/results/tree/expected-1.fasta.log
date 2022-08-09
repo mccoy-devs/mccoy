@@ -5,7 +5,7 @@ Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
 Host:    9350L-206723-M.local (SSE4.2, 64 GB RAM)
 Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -seed 28379373 -ntmax 4
 Seed:    28379373 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Wed Jun 29 16:03:19 2022
+Time:    Tue Aug  9 11:16:51 2022
 Kernel:  SSE2 - auto-detect threads (10 CPU cores detected)
 
 Reading alignment file results/aligned/expected-1.fasta ... Fasta format detected
@@ -108,12 +108,12 @@ Generating 1000 samples for ultrafast bootstrap (seed: 28379373)...
 NOTE: 7 MB RAM (0 GB) is required!
 Measuring multi-threading efficiency up to 4 CPU cores
 Increase to 10 rounds for branch lengths
-168 trees examined
-Threads: 1 / Time: 4.006 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -48079
-Threads: 2 / Time: 2.464 sec / Speedup: 1.626 / Efficiency: 81% / LogL: -48079
-Threads: 3 / Time: 1.832 sec / Speedup: 2.186 / Efficiency: 73% / LogL: -48079
-Threads: 4 / Time: 2.654 sec / Speedup: 1.510 / Efficiency: 38% / LogL: -48079
-BEST NUMBER OF THREADS: 3
+169 trees examined
+Threads: 1 / Time: 4.019 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -48096
+Threads: 2 / Time: 2.136 sec / Speedup: 1.882 / Efficiency: 94% / LogL: -48096
+Threads: 3 / Time: 1.573 sec / Speedup: 2.556 / Efficiency: 85% / LogL: -48096
+Threads: 4 / Time: 1.314 sec / Speedup: 3.059 / Efficiency: 76% / LogL: -48096
+BEST NUMBER OF THREADS: 4
 
 Estimate model parameters (epsilon = 0.100)
 1. Initial log-likelihood: -45811.966
@@ -125,16 +125,16 @@ Optimal log-likelihood: -45667.799
 Rate parameters:  A-C: 1.00000  A-G: 4.22103  A-T: 1.00000  C-G: 1.00000  C-T: 4.22103  G-T: 1.00000
 Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
 Gamma shape alpha: 0.020
-Parameters optimization took 5 rounds (0.137 sec)
+Parameters optimization took 5 rounds (0.083 sec)
 Computing ML distances based on estimated model parameters...
-Computing ML distances took 0.017608 sec (of wall-clock time) 0.064873 sec(of CPU time)
-Computing RapidNJ tree took 0.002920 sec (of wall-clock time) 0.008343 sec (of CPU time)
-Log-likelihood of RapidNJ tree: -45693.509
+Computing ML distances took 0.013017 sec (of wall-clock time) 0.051828 sec(of CPU time)
+Computing RapidNJ tree took 0.001772 sec (of wall-clock time) 0.008296 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -45693.257
 --------------------------------------------------------------------
 |             INITIALIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
 Generating 98 parsimony trees... 0.246 second
-Computing log-likelihood of 98 initial trees ... 0.295 seconds
+Computing log-likelihood of 98 initial trees ... 0.249 seconds
 Current best score: -45663.376
 
 Do NNI search on 20 best initial trees
@@ -142,26 +142,26 @@ Estimate model parameters (epsilon = 0.100)
 BETTER TREE FOUND at iteration 1: -45663.271
 BETTER TREE FOUND at iteration 2: -45663.271
 BETTER TREE FOUND at iteration 3: -45663.271
-Iteration 10 / LogL: -45663.331 / Time: 0h:0m:12s
-Iteration 20 / LogL: -45666.501 / Time: 0h:0m:14s
+Iteration 10 / LogL: -45663.331 / Time: 0h:0m:10s
+Iteration 20 / LogL: -45666.501 / Time: 0h:0m:11s
 Finish initializing candidate tree set (20)
-Current best tree score: -45663.271 / CPU time: 2.981
+Current best tree score: -45663.271 / CPU time: 2.369
 Number of iterations: 20
 --------------------------------------------------------------------
 |               OPTIMIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Iteration 30 / LogL: -45663.452 / Time: 0h:0m:15s (0h:0m:37s left)
-Iteration 40 / LogL: -45672.408 / Time: 0h:0m:16s (0h:0m:26s left)
-Iteration 50 / LogL: -45663.464 / Time: 0h:0m:17s (0h:0m:18s left)
-Log-likelihood cutoff on original alignment: -45728.422
-Iteration 60 / LogL: -45666.291 / Time: 0h:0m:18s (0h:0m:13s left)
-Iteration 70 / LogL: -45666.148 / Time: 0h:0m:19s (0h:0m:9s left)
-Iteration 80 / LogL: -45663.524 / Time: 0h:0m:20s (0h:0m:5s left)
-Iteration 90 / LogL: -45663.619 / Time: 0h:0m:21s (0h:0m:3s left)
-Iteration 100 / LogL: -45663.678 / Time: 0h:0m:22s (0h:0m:0s left)
-Log-likelihood cutoff on original alignment: -45728.422
-NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.998
-TREE SEARCH COMPLETED AFTER 104 ITERATIONS / Time: 0h:0m:22s
+Iteration 30 / LogL: -45717.338 / Time: 0h:0m:12s (0h:0m:30s left)
+Iteration 40 / LogL: -45674.366 / Time: 0h:0m:13s (0h:0m:21s left)
+Iteration 50 / LogL: -45663.746 / Time: 0h:0m:13s (0h:0m:14s left)
+Log-likelihood cutoff on original alignment: -45728.036
+Iteration 60 / LogL: -45713.636 / Time: 0h:0m:14s (0h:0m:10s left)
+Iteration 70 / LogL: -45717.104 / Time: 0h:0m:15s (0h:0m:7s left)
+Iteration 80 / LogL: -45666.092 / Time: 0h:0m:15s (0h:0m:4s left)
+Iteration 90 / LogL: -45668.729 / Time: 0h:0m:16s (0h:0m:2s left)
+Iteration 100 / LogL: -45666.179 / Time: 0h:0m:17s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -45728.036
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.997
+TREE SEARCH COMPLETED AFTER 104 ITERATIONS / Time: 0h:0m:18s
 
 --------------------------------------------------------------------
 |                    FINALIZING TREE SEARCH                        |
@@ -170,27 +170,27 @@ Performs final model parameters optimization
 Estimate model parameters (epsilon = 0.010)
 1. Initial log-likelihood: -45663.271
 Optimal log-likelihood: -45663.271
-Rate parameters:  A-C: 1.00000  A-G: 4.21559  A-T: 1.00000  C-G: 1.00000  C-T: 4.21559  G-T: 1.00000
+Rate parameters:  A-C: 1.00000  A-G: 4.21560  A-T: 1.00000  C-G: 1.00000  C-T: 4.21560  G-T: 1.00000
 Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
 Gamma shape alpha: 0.020
-Parameters optimization took 1 rounds (0.021 sec)
+Parameters optimization took 1 rounds (0.012 sec)
 BEST SCORE FOUND : -45663.271
 Creating bootstrap support values...
 Split supports printed to NEXUS file results/tree/expected-1.fasta.splits.nex
 Total tree length: 0.017
 
 Total number of iterations: 104
-CPU time used for tree search: 32.089 sec (0h:0m:32s)
-Wall-clock time used for tree search: 11.566 sec (0h:0m:11s)
-Total CPU time used: 56.417 sec (0h:0m:56s)
-Total wall-clock time used: 22.902 sec (0h:0m:22s)
+CPU time used for tree search: 34.842 sec (0h:0m:34s)
+Wall-clock time used for tree search: 9.057 sec (0h:0m:9s)
+Total CPU time used: 54.512 sec (0h:0m:54s)
+Total wall-clock time used: 18.426 sec (0h:0m:18s)
 
 Computing bootstrap consensus tree...
 Reading input file results/tree/expected-1.fasta.splits.nex...
-66 taxa and 913 splits.
+66 taxa and 896 splits.
 Consensus tree written to results/tree/expected-1.fasta.contree
 Reading input trees file results/tree/expected-1.fasta.contree
-Log-likelihood of consensus tree: -45664.244
+Log-likelihood of consensus tree: -45664.312
 
 Analysis results written to: 
   IQ-TREE report:                results/tree/expected-1.fasta.iqtree
@@ -202,4 +202,4 @@ Ultrafast bootstrap approximation results written to:
   Consensus tree:                results/tree/expected-1.fasta.contree
   Screen log file:               results/tree/expected-1.fasta.log
 
-Date and Time: Wed Jun 29 16:03:43 2022
+Date and Time: Tue Aug  9 11:17:10 2022

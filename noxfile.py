@@ -17,7 +17,7 @@ def test(session):
 @session
 def regen_expected(session):
     session.env["IQTREE_SEED"] = "28379373"
-    shutil.rmtree("tests/expected")
+    shutil.rmtree("tests/expected", ignore_errors=True)
     session.run(
         "mccoy",
         "create",
