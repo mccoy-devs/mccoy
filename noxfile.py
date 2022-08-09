@@ -1,3 +1,4 @@
+import platform
 import shutil
 from pathlib import Path
 
@@ -16,6 +17,10 @@ def test(session):
 
 @session
 def regen_expected(session):
+    if platform.system() == "Darwin" and platform.processor() == "arm":
+        session.env["CONDA_SUBDIR"] = "osx-64"
+
+    session.install(".")
     session.env["IQTREE_SEED"] = "28379373"
     shutil.rmtree("tests/expected", ignore_errors=True)
     session.run(
