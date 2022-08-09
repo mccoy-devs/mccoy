@@ -26,7 +26,7 @@ rule tree:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),
         seed=iqtree_random_seed,
-    threads: lambda wildcards: config["tree"]["threads"] if config["tree"]["threads"] else workflow.cores
+    threads: config["tree"]["threads"]
     resources:
         **config['tree']['resources'],
     shell:

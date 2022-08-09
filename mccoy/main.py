@@ -2,11 +2,11 @@ import shutil
 import subprocess
 import sys
 from glob import glob
+from importlib.resources import path as resources_path
 from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
-import pkg_resources
 import pooch
 import snakemake
 import typer
@@ -100,7 +100,7 @@ def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_ok
     brian = pooch.create(
         path=target, base_url="https://raw.githubusercontent.com/smutch/mccoy/main/mccoy/resources/", registry=None
     )
-    registry_file = pkg_resources.resource_stream("mccoy", "resources_registry.txt")
+    registry_file = resources_path("mccoy", "resources_registry.txt")
     brian.load_registry(registry_file)
     for resource in brian.registry:
         brian.fetch(resource, progressbar=True)
@@ -124,13 +124,14 @@ def run(
     config: Optional[List[str]] = typer.Option(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
     ),
-    cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace."),
+    cont: Optional[bool] = typer.Option(False, "--continue", help="Continue previous run inplace"),
     conda_prefix: Optional[Path] = typer.Option(
         None,
         file_okay=False,
         dir_okay=True,
         help="Conda environment prefix. By default set to f\"{project}/.conda\"",
     ),
+    no_envmodules: Optional[bool] = typer.Option(False, help="Do not add the --use-envmodules flag to Snakemake call"),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -144,21 +145,20 @@ def run(
     """
     run_id, run_dir = create_run(project, cont=cont)
     project_id = project.name
-    if not cont:
-        if inherit_last:
-            last_run_id = run_id - 1
-            inherit = project / f"runs/run_{last_run_id}"
-        if inherit:
-            inherit_data = list(inherit.glob("data/*-combined.fasta"))
-            data = inherit_data + data
-            # copy state file
-            try:
-                inherit_state_file_path = list((inherit / "results").glob("*.state"))[0]
-            except IndexError:
-                raise ValueError("Could not find state file.")
-            data_dir = run_dir / "data"
-            data_dir.mkdir()
-            shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
+    if inherit_last:
+        last_run_id = run_id - 1
+        inherit = project / f"runs/run_{last_run_id}"
+    if inherit:
+        inherit_data = list(inherit.glob("data/*-combined.fasta"))
+        data = inherit_data + data
+        # copy state file
+        try:
+            inherit_state_file_path = list((inherit / "results/beast").glob("*.state"))[0]
+        except IndexError:
+            raise ValueError("Could not find state file.")
+        data_dir = run_dir / "data"
+        data_dir.mkdir(exist_ok=True)
+        shutil.copyfile(inherit_state_file_path, data_dir / f"{project_id}-{run_id}-beast.xml.state")
 
     mccoy_config = {
         'id': f"{project_id}-{run_id}",
@@ -167,7 +167,7 @@ def run(
         "run_id": run_id,
         "run_name": f"run_{run_id}",
         "data": [str(d.resolve()) for d in data],
-        "inherit": inherit,
+        "inherit": inherit or False,
     }
 
     config_strs = chain((f"{k}={v}" for k, v in mccoy_config.items()), config)
@@ -186,9 +186,6 @@ def run(
         f"--configfile={project}/config.yaml",
         f"--cores={cores}",
         f"--conda-prefix={conda_prefix_dir}",
-        *ctx.args,
-        "--config",
-        *config_strs,
     ]
 
     # Set up conda frontend
@@ -200,10 +197,15 @@ def run(
     if not mamba_found:
         args.append("--conda-frontend=conda")
 
+    if not no_envmodules:
+        args.append("--use-envmodules")
+
     if verbose:
         args.insert(0, "--verbose")
         typer.secho(f"Running workflow: {run_id}", fg=typer.colors.MAGENTA)
         typer.secho(f"snakemake {' '.join(args)}", fg=typer.colors.MAGENTA)
+
+    args.extend([*ctx.args, "--config", *config_strs])
 
     status = snakemake.main(args)
 

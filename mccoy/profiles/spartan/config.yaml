@@ -1,11 +1,16 @@
-# Assuming that all workflow rules will require shared memory only (i.e. <= 1 node per job)
+# Note that we use `threads` here as SLURM `--cpus-per-task`.
 cluster: >-
   sbatch --time={resources.time}
   --mem={resources.mem}
-  -c {resources.cpus}
+  -A punim1654
+  -p {resources.partition}
+  -N {resources.nodes}
+  -n {resources.tasks_per_node}
+  -c {threads}
   -o logs/{rule}-{wildcards}.out -e logs/{rule}-{wildcards}.err
-cluster-cancel: "scancel $(echo $* | grep -Eo '[0-9]+')"
+  -q {resources.qos}
+  $(if [[ '{resources.gres}' ]]; then echo '--gres={resources.gres}'; fi)
+cluster-cancel: scancel $(echo $* | grep -Eo '[0-9]+')
 jobs: 50
-cores: 1
-default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "cpus=1"]
+default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "tasks_per_node=1", "partition=physical", "extra=''", "gres=''", "qos='normal'"]
 use-conda: true

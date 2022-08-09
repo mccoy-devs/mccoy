@@ -82,7 +82,7 @@ class Workflow:
 
 @pytest.fixture
 def run_workflow(tmpdir: Path):
-    def _run_workflow(targets: TargetsType) -> Workflow:
+    def _run_workflow(targets: TargetsType, inherit=False) -> Workflow:
         targets = _targets_to_pathlist(targets)
 
         work_dir = Path(tmpdir) / "expected"
@@ -98,24 +98,33 @@ def run_workflow(tmpdir: Path):
             ignore=shutil.ignore_patterns('.snakemake', '.conda'),
         )
 
-        sp.check_output(
-            [
-                "mccoy",
-                "run",
-                work_dir,
-                "--data",
-                Path(__file__).parent.resolve() / "data.fasta",
-                "-j1",
-                "-f",
-                "--keep-target-files",
-                f"--conda-prefix={Path(__file__).parent.resolve() / '.conda'}",
-                "--continue",
-                "--verbose",
-                *targets,
-            ],
-        )
+        if not inherit:
+            shutil.rmtree(work_dir / "runs/run_2")
 
-        run_dir = "runs/run_1"
+        cmd = [
+            "mccoy",
+            "run",
+            work_dir,
+            "--data",
+            Path(__file__).parent.resolve() / ("data.fasta" if not inherit else "data2.fasta"),
+            "-j1",
+            "-f",
+            "--keep-target-files",
+            f"--conda-prefix={Path(__file__).parent.resolve() / '.conda'}",
+            "--continue",
+            "--verbose",
+        ]
+
+        if inherit:
+            cmd.append("--inherit-last")
+            run_dir = "runs/run_2"
+        else:
+            run_dir = "runs/run_1"
+
+        cmd.extend(targets)
+
+        sp.check_output(cmd)
+
         return Workflow(targets, work_dir / run_dir, expected_dir / run_dir)
 
     return _run_workflow

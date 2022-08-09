@@ -1,3 +1,4 @@
+import platform
 import shutil
 from pathlib import Path
 
@@ -16,8 +17,12 @@ def test(session):
 
 @session
 def regen_expected(session):
+    if platform.system() == "Darwin" and platform.processor() == "arm":
+        session.env["CONDA_SUBDIR"] = "osx-64"
+
+    session.install(".")
     session.env["IQTREE_SEED"] = "28379373"
-    shutil.rmtree("tests/expected")
+    shutil.rmtree("tests/expected", ignore_errors=True)
     session.run(
         "mccoy",
         "create",
@@ -28,6 +33,16 @@ def regen_expected(session):
         "resources/templates/CoV_CE_fixed_clock_template.xml",
     )
     session.run("mccoy", "run", "tests/expected", "--data", "tests/data.fasta", "-c", "4")
+    session.run(
+        "mccoy",
+        "run",
+        "tests/expected",
+        "--data",
+        "tests/data2.fasta",
+        "--inherit-last",
+        "-c",
+        "4",
+    )
 
 
 @session
