@@ -7,6 +7,7 @@ rule report:
     input:
         phytest=rules.phytest.output,
         render_tree_svg=rules.render_tree.output.svg,
+        mcmc_output=expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
     output:
         html="{id}-report.html"
     run:
