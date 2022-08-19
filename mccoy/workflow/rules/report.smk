@@ -7,7 +7,7 @@ rule report:
     input:
         phytest=rules.phytest.output,
         render_tree_svg=rules.render_tree.output.svg,
-        mcmc_output=expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
+        mcmc_output=expand(rules.beast.output, id=config['id']),
     output:
         html="{id}-report.html"
     run:
@@ -28,8 +28,7 @@ rule report:
         
         template = env.get_template("report-template.html")
         result = template.render(
-            phytest=input.phytest,
-            render_tree_svg=input.render_tree_svg,
+            input=input,
         )
 
         with open(output_path, 'w') as f:

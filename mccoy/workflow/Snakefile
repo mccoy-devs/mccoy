@@ -19,23 +19,13 @@ configfile: Path(config['project_path']) / "config.yaml"
 # Ensure log directory exists. Required for cluster job submission.
 Path("logs").mkdir(exist_ok=True)
 
-
 include: "rules/combine.smk"
 include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
 include: "rules/dynamicbeast.smk"
+include: "rules/beast.smk"
 include: "rules/report.smk"
-
-
-if config['inherit'] == 'None':
-
-    include: "rules/beast.smk"
-
-
-else:
-
-    include: "rules/onlinebeast.smk"
 
 
 onstart:
@@ -52,8 +42,6 @@ onstart:
     print(f"\t{shell('python --version'):20s} ➡  {shell('which python')}")
     print(f"\t{shell('conda --version'):20s} ➡  {shell('which conda')}")
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
-
-
 
 
 rule all:

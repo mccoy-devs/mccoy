@@ -5,7 +5,7 @@ Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
 Host:    9350L-206723-M.local (SSE4.2, 64 GB RAM)
 Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -seed 28379373 -ntmax 4
 Seed:    28379373 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Wed Jun 29 16:03:19 2022
+Time:    Tue Aug  9 20:47:43 2022
 Kernel:  SSE2 - auto-detect threads (10 CPU cores detected)
 
 Reading alignment file results/aligned/expected-1.fasta ... Fasta format detected
@@ -31,8 +31,8 @@ NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255163_2020-12-27' -> Bu
 NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255164_2020-12-27' -> Burkina_Faso_AY.36_EPI_ISL_4255164_2020-12-27
 NOTE: Change sequence name 'United Kingdom_AY.4_EPI_ISL_3077206_2020-12-27' -> United_Kingdom_AY.4_EPI_ISL_3077206_2020-12-27
 Alignment most likely contains DNA/RNA sequences
-Alignment has 66 sequences with 29903 columns, 587 distinct patterns
-123 parsimony-informative, 359 singleton sites, 29421 constant sites
+Alignment has 65 sequences with 29903 columns, 580 distinct patterns
+123 parsimony-informative, 353 singleton sites, 29427 constant sites
                                                           Gap/Ambiguity  Composition  p-value
    1  USA_AY.23_EPI_ISL_6661895_2020-03-12                        0.51%    passed     99.99%
    2  Senegal_AY.34.1_EPI_ISL_8525495_2020-04-01                  1.29%    passed     99.75%
@@ -54,29 +54,29 @@ Alignment has 66 sequences with 29903 columns, 587 distinct patterns
   18  Mexico_AY.100_EPI_ISL_2937904_2020-09-22                    0.30%    passed     99.95%
   19  USA_AY.103_EPI_ISL_7946609_2020-10-06                       0.96%    passed     99.96%
   20  USA_AY.100_EPI_ISL_6211803_2020-10-10                       0.99%    passed     99.99%
-  21  Slovenia_AY.41_EPI_ISL_8855476_2020-10-20                   0.69%    passed     99.42%
+  21  Slovenia_AY.41_EPI_ISL_8855476_2020-10-20                   0.69%    passed     99.43%
   22  Slovenia_AY.122_EPI_ISL_8855479_2020-10-21                  0.70%    passed     99.74%
   23  Slovenia_AY.122_EPI_ISL_8855485_2020-10-23                  0.71%    passed     99.81%
-  24  Slovenia_B.1.617.2_EPI_ISL_7932310_2020-10-23               0.72%    passed     99.76%
+  24  Slovenia_B.1.617.2_EPI_ISL_7932310_2020-10-23               0.72%    passed     99.77%
   25  Slovenia_AY.41_EPI_ISL_8855482_2020-10-25                   0.70%    passed     99.63%
   26  Slovenia_AY.41_EPI_ISL_8855483_2020-10-25                   0.72%    passed     99.79%
   27  Slovenia_AY.43_EPI_ISL_8855484_2020-10-26                   0.98%    passed     99.85%
   28  Slovenia_AY.122_EPI_ISL_8855486_2020-10-29                  1.12%    passed     99.80%
-  29  Slovenia_AY.43_EPI_ISL_6950150_2020-11-02                   0.50%    passed     99.68%
+  29  Slovenia_AY.43_EPI_ISL_6950150_2020-11-02                   0.50%    passed     99.69%
   30  USA_AY.25_EPI_ISL_6469003_2020-11-03                        0.55%    passed    100.00%
   31  United_Kingdom_AY.4_EPI_ISL_2998424_2020-11-04              0.60%    passed     99.98%
-  32  Slovenia_AY.43_EPI_ISL_8855489_2020-11-04                   0.72%    passed     99.86%
+  32  Slovenia_AY.43_EPI_ISL_8855489_2020-11-04                   0.72%    passed     99.87%
   33  Slovenia_AY.98.1_EPI_ISL_8855490_2020-11-04                 0.69%    passed     99.76%
   34  Slovenia_AY.43_EPI_ISL_8855491_2020-11-06                   0.70%    passed     99.88%
   35  United_Kingdom_AY.4_EPI_ISL_7283634_2020-11-13              0.46%    passed     99.98%
-  36  Slovenia_AY.98.1_EPI_ISL_5104615_2020-11-13                 0.51%    passed     98.42%
+  36  Slovenia_AY.98.1_EPI_ISL_5104615_2020-11-13                 0.51%    passed     98.44%
   37  Sweden_AY.122_EPI_ISL_3791379_2020-11-19                    0.29%    passed     99.99%
   38  Canada_AY.126_EPI_ISL_9522121_2020-11-24                    0.74%    passed     99.95%
   39  Burkina_Faso_AY.36_EPI_ISL_4255127_2020-12-03               0.20%    passed     99.97%
   40  Burkina_Faso_AY.36_EPI_ISL_4255128_2020-12-03               0.64%    passed     99.90%
   41  Burkina_Faso_AY.36_EPI_ISL_4255129_2020-12-03               0.32%    passed     99.92%
   42  USA_AY.25_EPI_ISL_5863438_2020-12-03                        0.04%    passed     99.58%
-  43  USA_AY.25_EPI_ISL_5863435_2020-12-03                        0.05%    passed     99.53%
+  43  USA_AY.25_EPI_ISL_5863435_2020-12-03                        0.05%    passed     99.54%
   44  Burkina_Faso_AY.36_EPI_ISL_4255126_2020-12-07               0.22%    passed     99.97%
   45  Burkina_Faso_AY.36_EPI_ISL_4255155_2020-12-08               0.20%    passed     99.97%
   46  India_AY.44_EPI_ISL_1663516_2020-12-12                      0.20%    passed     99.85%
@@ -99,7 +99,6 @@ Alignment has 66 sequences with 29903 columns, 587 distinct patterns
   63  USA_AY.44_EPI_ISL_8883179_2020-12-30                        0.31%    passed     99.98%
   64  Germany_AY.43_EPI_ISL_7761036_2021-01-01                    1.24%    passed     99.94%
   65  India_AY.127_EPI_ISL_5886224_2021-01-01                     0.09%    passed    100.00%
-  66  USA_AY.103_EPI_ISL_8620376_2021-01-01                       0.36%    passed     99.99%
 ****  TOTAL                                                       0.58%  0 sequences failed composition chi2 test (p-value<5%; df=3)
 
 Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.003 seconds
@@ -108,89 +107,88 @@ Generating 1000 samples for ultrafast bootstrap (seed: 28379373)...
 NOTE: 7 MB RAM (0 GB) is required!
 Measuring multi-threading efficiency up to 4 CPU cores
 Increase to 10 rounds for branch lengths
-168 trees examined
-Threads: 1 / Time: 4.006 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -48079
-Threads: 2 / Time: 2.464 sec / Speedup: 1.626 / Efficiency: 81% / LogL: -48079
-Threads: 3 / Time: 1.832 sec / Speedup: 2.186 / Efficiency: 73% / LogL: -48079
-Threads: 4 / Time: 2.654 sec / Speedup: 1.510 / Efficiency: 38% / LogL: -48079
-BEST NUMBER OF THREADS: 3
+134 trees examined
+Threads: 1 / Time: 4.001 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -47980
+Threads: 2 / Time: 2.079 sec / Speedup: 1.924 / Efficiency: 96% / LogL: -47980
+Threads: 3 / Time: 1.472 sec / Speedup: 2.718 / Efficiency: 91% / LogL: -47980
+Threads: 4 / Time: 1.189 sec / Speedup: 3.366 / Efficiency: 84% / LogL: -47980
+BEST NUMBER OF THREADS: 4
 
 Estimate model parameters (epsilon = 0.100)
-1. Initial log-likelihood: -45811.966
-2. Current log-likelihood: -45782.913
-3. Current log-likelihood: -45744.230
-4. Current log-likelihood: -45687.928
-5. Current log-likelihood: -45667.812
-Optimal log-likelihood: -45667.799
-Rate parameters:  A-C: 1.00000  A-G: 4.22103  A-T: 1.00000  C-G: 1.00000  C-T: 4.22103  G-T: 1.00000
+1. Initial log-likelihood: -45746.146
+2. Current log-likelihood: -45717.193
+3. Current log-likelihood: -45679.485
+4. Current log-likelihood: -45624.684
+5. Current log-likelihood: -45603.470
+Optimal log-likelihood: -45603.461
+Rate parameters:  A-C: 1.00000  A-G: 4.21947  A-T: 1.00000  C-G: 1.00000  C-T: 4.21947  G-T: 1.00000
 Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
 Gamma shape alpha: 0.020
-Parameters optimization took 5 rounds (0.137 sec)
+Parameters optimization took 5 rounds (0.098 sec)
 Computing ML distances based on estimated model parameters...
-Computing ML distances took 0.017608 sec (of wall-clock time) 0.064873 sec(of CPU time)
-Computing RapidNJ tree took 0.002920 sec (of wall-clock time) 0.008343 sec (of CPU time)
-Log-likelihood of RapidNJ tree: -45693.509
+Computing ML distances took 0.016020 sec (of wall-clock time) 0.063560 sec(of CPU time)
+Computing RapidNJ tree took 0.002088 sec (of wall-clock time) 0.009007 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -45630.443
 --------------------------------------------------------------------
 |             INITIALIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Generating 98 parsimony trees... 0.246 second
-Computing log-likelihood of 98 initial trees ... 0.295 seconds
-Current best score: -45663.376
+Generating 98 parsimony trees... 0.304 second
+Computing log-likelihood of 98 initial trees ... 0.263 seconds
+Current best score: -45599.856
 
 Do NNI search on 20 best initial trees
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 1: -45663.271
-BETTER TREE FOUND at iteration 2: -45663.271
-BETTER TREE FOUND at iteration 3: -45663.271
-Iteration 10 / LogL: -45663.331 / Time: 0h:0m:12s
-Iteration 20 / LogL: -45666.501 / Time: 0h:0m:14s
+BETTER TREE FOUND at iteration 1: -45599.793
+BETTER TREE FOUND at iteration 2: -45599.793
+Iteration 10 / LogL: -45601.402 / Time: 0h:0m:10s
+Iteration 20 / LogL: -45601.245 / Time: 0h:0m:11s
 Finish initializing candidate tree set (20)
-Current best tree score: -45663.271 / CPU time: 2.981
+Current best tree score: -45599.793 / CPU time: 2.821
 Number of iterations: 20
 --------------------------------------------------------------------
 |               OPTIMIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Iteration 30 / LogL: -45663.452 / Time: 0h:0m:15s (0h:0m:37s left)
-Iteration 40 / LogL: -45672.408 / Time: 0h:0m:16s (0h:0m:26s left)
-Iteration 50 / LogL: -45663.464 / Time: 0h:0m:17s (0h:0m:18s left)
-Log-likelihood cutoff on original alignment: -45728.422
-Iteration 60 / LogL: -45666.291 / Time: 0h:0m:18s (0h:0m:13s left)
-Iteration 70 / LogL: -45666.148 / Time: 0h:0m:19s (0h:0m:9s left)
-Iteration 80 / LogL: -45663.524 / Time: 0h:0m:20s (0h:0m:5s left)
-Iteration 90 / LogL: -45663.619 / Time: 0h:0m:21s (0h:0m:3s left)
-Iteration 100 / LogL: -45663.678 / Time: 0h:0m:22s (0h:0m:0s left)
-Log-likelihood cutoff on original alignment: -45728.422
+Iteration 30 / LogL: -45602.781 / Time: 0h:0m:13s (0h:0m:32s left)
+Iteration 40 / LogL: -45605.900 / Time: 0h:0m:13s (0h:0m:22s left)
+Iteration 50 / LogL: -45602.511 / Time: 0h:0m:14s (0h:0m:15s left)
+Log-likelihood cutoff on original alignment: -45690.813
+Iteration 60 / LogL: -45623.245 / Time: 0h:0m:15s (0h:0m:11s left)
+Iteration 70 / LogL: -45602.607 / Time: 0h:0m:16s (0h:0m:7s left)
+Iteration 80 / LogL: -45615.123 / Time: 0h:0m:18s (0h:0m:5s left)
+Iteration 90 / LogL: -45614.132 / Time: 0h:0m:19s (0h:0m:2s left)
+Iteration 100 / LogL: -45599.962 / Time: 0h:0m:20s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -45690.812
 NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.998
-TREE SEARCH COMPLETED AFTER 104 ITERATIONS / Time: 0h:0m:22s
+TREE SEARCH COMPLETED AFTER 103 ITERATIONS / Time: 0h:0m:20s
 
 --------------------------------------------------------------------
 |                    FINALIZING TREE SEARCH                        |
 --------------------------------------------------------------------
 Performs final model parameters optimization
 Estimate model parameters (epsilon = 0.010)
-1. Initial log-likelihood: -45663.271
-Optimal log-likelihood: -45663.271
-Rate parameters:  A-C: 1.00000  A-G: 4.21559  A-T: 1.00000  C-G: 1.00000  C-T: 4.21559  G-T: 1.00000
+1. Initial log-likelihood: -45599.793
+Optimal log-likelihood: -45599.793
+Rate parameters:  A-C: 1.00000  A-G: 4.21574  A-T: 1.00000  C-G: 1.00000  C-T: 4.21574  G-T: 1.00000
 Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
 Gamma shape alpha: 0.020
-Parameters optimization took 1 rounds (0.021 sec)
-BEST SCORE FOUND : -45663.271
+Parameters optimization took 1 rounds (0.014 sec)
+BEST SCORE FOUND : -45599.793
 Creating bootstrap support values...
 Split supports printed to NEXUS file results/tree/expected-1.fasta.splits.nex
 Total tree length: 0.017
 
-Total number of iterations: 104
-CPU time used for tree search: 32.089 sec (0h:0m:32s)
-Wall-clock time used for tree search: 11.566 sec (0h:0m:11s)
-Total CPU time used: 56.417 sec (0h:0m:56s)
-Total wall-clock time used: 22.902 sec (0h:0m:22s)
+Total number of iterations: 103
+CPU time used for tree search: 44.569 sec (0h:0m:44s)
+Wall-clock time used for tree search: 11.664 sec (0h:0m:11s)
+Total CPU time used: 63.517 sec (0h:1m:3s)
+Total wall-clock time used: 20.783 sec (0h:0m:20s)
 
 Computing bootstrap consensus tree...
 Reading input file results/tree/expected-1.fasta.splits.nex...
-66 taxa and 913 splits.
+65 taxa and 904 splits.
 Consensus tree written to results/tree/expected-1.fasta.contree
 Reading input trees file results/tree/expected-1.fasta.contree
-Log-likelihood of consensus tree: -45664.244
+Log-likelihood of consensus tree: -55842.124
 
 Analysis results written to: 
   IQ-TREE report:                results/tree/expected-1.fasta.iqtree
@@ -202,4 +200,4 @@ Ultrafast bootstrap approximation results written to:
   Consensus tree:                results/tree/expected-1.fasta.contree
   Screen log file:               results/tree/expected-1.fasta.log
 
-Date and Time: Wed Jun 29 16:03:43 2022
+Date and Time: Tue Aug  9 20:48:03 2022
