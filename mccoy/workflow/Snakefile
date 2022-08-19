@@ -25,6 +25,7 @@ include: "rules/align.smk"
 include: "rules/tree.smk"
 include: "rules/phytest.smk"
 include: "rules/dynamicbeast.smk"
+include: "rules/report.smk"
 
 
 if config['inherit'] == 'None':
@@ -35,9 +36,6 @@ if config['inherit'] == 'None':
 else:
 
     include: "rules/onlinebeast.smk"
-
-
-report: "report/workflow-report.rst"
 
 
 onstart:
@@ -60,5 +58,5 @@ onstart:
 
 rule all:
     input:
-        expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
-        f"results/tree/{config['id']}-tree.svg",
+        # expand(rules.beast.output if config['inherit'] == 'None' else rules.onlinebeast.output, id=config['id']),
+        f"{config['id']}-report.html",

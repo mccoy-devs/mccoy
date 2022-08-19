@@ -6,7 +6,7 @@ from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
-import pkg_resources
+
 import pooch
 import snakemake
 import typer
@@ -96,7 +96,7 @@ def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_ok
     """
     Download example resources.
     """
-
+    import pkg_resources
     brian = pooch.create(
         path=target, base_url="https://raw.githubusercontent.com/smutch/mccoy/main/mccoy/resources/", registry=None
     )
