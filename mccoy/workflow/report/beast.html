@@ -1,3 +1,5 @@
 <h1>Beast</h1>
 
-{{ input.mcmc_output }}
+{% for trace in traces %}
+    {{ include_file(trace)|safe }}
+{% endfor %}

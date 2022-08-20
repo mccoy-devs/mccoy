@@ -99,3 +99,19 @@ rule beast:
         if [[ -n "{input.statefile}" ]]; then cp {input.statefile} {output.statefile}; fi
         beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2> {log}
         """
+
+
+rule plot_traces:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.tracelog, id=config['id']),
+    output:
+        directory("results/traces/")
+    conda:
+        "../envs/plot_traces.yml"
+    shell:
+        """
+        python {SCRIPT_DIR}/plot_traces.py {input} {output}
+        """
