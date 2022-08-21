@@ -6,7 +6,10 @@ import typer
 rule report:
     input:
         phytest=rules.phytest.output,
-        render_tree_svg=rules.render_tree.output.svg,
+        iqtree_report="results/tree/{id}.fasta.iqtree",
+        iqtree_log="results/tree/{id}.fasta.log",
+        mltree_svg=rules.render_mltree.output.svg,
+        consensus_mltree_svg=rules.render_consensus_mltree.output.svg,
         mcmc_output=expand(rules.beast.output, id=config['id']),
         traces_dir=rules.plot_traces.output[0],
     output:
