@@ -1,4 +1,10 @@
 rule combine:
+    """
+    Combine multiple sequence files together into a single file.
+
+    :input data: the sequence files to be concatenated 
+    :output:     a single concatenated fasta file
+    """
     input:
         data=INPUT_DATA,
     output:
