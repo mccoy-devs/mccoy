@@ -186,7 +186,7 @@ def run(
         args.append("--use-envmodules")
 
     if hpc and all(('profile' not in re.split(r' |=', arg)[0] for arg in ctx.args)):
-        args.append("--profile={Path(__file__).parent.resolve()/profiles/slurm/config.yaml}")
+        args.append(f"--profile={Path(__file__).parent.resolve()/'profiles/slurm'}")
 
     if verbose:
         args.insert(0, "--verbose")
