@@ -52,13 +52,26 @@ def style(session):
 
 @session
 def docs(session):
-    session.install("sphinx", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton", ".")
-    session.run("sphinx-build", "docs", "docs/_build/html")
+    session.install(
+        "sphinx",
+        "sphinx-immaterial",
+        "sphinxcontrib-mermaid",
+        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        ".",
+    )
+    with session.chdir("docs"):
+        session.run("sphinx-build", ".", "./_build/html")
 
 
 @session
 def docs_github(session):
-    session.install("sphinx", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton", ".")
+    session.install(
+        "sphinx",
+        "sphinx-immaterial",
+        "sphinxcontrib-mermaid",
+        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        ".",
+    )
     gh_pages = Path("gh-pages")
     gh_pages.mkdir()
     (gh_pages / ".nojekll").touch()
