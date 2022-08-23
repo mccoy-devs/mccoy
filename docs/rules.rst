@@ -30,4 +30,4 @@ Quality control
 Beast
 -----
 
-.. smk:autodoc:: ../mccoy/workflow/Snakefile dynamicbeast onlinebeast
+.. smk:autodoc:: ../mccoy/workflow/Snakefile dynamicbeast onlinebeast beast
