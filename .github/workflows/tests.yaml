@@ -69,6 +69,16 @@ jobs:
           key: conda-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/*') }}-${{ env.CACHE_NUMBER }}
         env:
           # Increase this value to reset cache if the env files have not changed
+          CACHE_NUMBER: 1
+
+      - name: Set up cache for beast extensions
+        uses: actions/cache@v2
+        id: cached-beast-extensions
+        with:
+          path: $HOME/.beast
+          key: beast_exts-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/beast*') }}-${{ env.CACHE_NUMBER }}
+        env:
+          # Increase this value to reset cache if the env files have not changed
           CACHE_NUMBER: 0
 
       - name: Run nox
