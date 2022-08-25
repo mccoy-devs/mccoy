@@ -63,11 +63,8 @@ rule beast:
 
     Note
     ----
-    GPU acceleration is requested if available by default. If you are running on a machine with a compatible GPU then
-    the code will crash when using the bioconda package. To avoid this, either:
-
-    1. ensure you pass ``--use-envmodules`` to McCoy and set the ``envmodules`` directives of this rule appropriately, or
-    2. remove the ``-beagle_GPU`` flag from the  ``beast.beast`` entry in your McCoy config file. 
+    GPU acceleration is **not** requested by default. If you are running on a machine with a compatible GPU then
+    please replace ``-beagle`` with ``-beagle_GPU`` in the ``beast.beast`` entry in your McCoy ``config.yaml`` file.
     """
     input:
         alignment=rules.align.output,
