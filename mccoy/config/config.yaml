@@ -30,7 +30,7 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 
 beast:
   beast:
-     - "-beagle_GPU"
+     - "-beagle"
   dynamic:
       - "ePopSize=0.3"
       - "Date.dateFormat=yyyy-MM-dd"
@@ -43,9 +43,9 @@ beast:
   resources:     # Only used when called with `--cluster`
     time: "20:00:00"
     mem: "16G"
-    partition: "gpgpu"
-    gres: "gpu:1"
-    qos: gpgpumdhs
+    # partition: "gpgpu"
+    # gres: "gpu:1"
+    # qos: gpgpumdhs
   envmodules:
     - "gcccore/8.3.0"
     - "fosscuda/2019b"
