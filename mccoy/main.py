@@ -132,7 +132,7 @@ def run(
         last_run_id = run_id - 1
         inherit = project / f"runs/run_{last_run_id}"
     if inherit:
-        inherit_data = list(inherit.glob("data/*-combined.fasta"))
+        inherit_data = list(inherit.glob("data/combined/*.fasta"))
         data = inherit_data + data
         # copy state file
         try:
