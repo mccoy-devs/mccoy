@@ -2,12 +2,10 @@ import shutil
 import subprocess
 import sys
 from glob import glob
-from importlib.resources import path as resources_path
 from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
-import pooch
 import snakemake
 import typer
 
@@ -89,21 +87,6 @@ def create(
         raise typer.Exit(1)
     typer.echo(f"Creating new project: {project}")
     create_project(project, reference, template, copy_workflow=copy_workflow)
-
-
-@app.command()
-def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_okay=False)):
-    """
-    Download example resources.
-    """
-
-    brian = pooch.create(
-        path=target, base_url="https://raw.githubusercontent.com/smutch/mccoy/main/mccoy/resources/", registry=None
-    )
-    registry_file = resources_path("mccoy", "resources_registry.txt")
-    brian.load_registry(registry_file)
-    for resource in brian.registry:
-        brian.fetch(resource, progressbar=True)
 
 
 def _print_snakemake_help(value: bool):
