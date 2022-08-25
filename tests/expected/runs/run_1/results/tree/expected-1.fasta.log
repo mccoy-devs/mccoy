@@ -3,192 +3,381 @@ Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
 Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
 
 Host:    9350L-206723-M.local (SSE4.2, 64 GB RAM)
-Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -seed 28379373 -ntmax 4
-Seed:    28379373 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Tue Aug  9 20:47:43 2022
+Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -ntmax 1
+Seed:    78574 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Aug 25 11:05:24 2022
 Kernel:  SSE2 - auto-detect threads (10 CPU cores detected)
 
 Reading alignment file results/aligned/expected-1.fasta ... Fasta format detected
-NOTE: Change sequence name 'U.S. Virgin Islands_B.1.617.2_EPI_ISL_4577392_2020-08-21' -> U.S._Virgin_Islands_B.1.617.2_EPI_ISL_4577392_2020-08-21
-NOTE: Change sequence name 'U.S. Virgin Islands_AY.45_EPI_ISL_4577393_2020-08-21' -> U.S._Virgin_Islands_AY.45_EPI_ISL_4577393_2020-08-21
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255138_2020-09-16' -> Burkina_Faso_AY.36_EPI_ISL_4255138_2020-09-16
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255139_2020-09-18' -> Burkina_Faso_AY.36_EPI_ISL_4255139_2020-09-18
-NOTE: Change sequence name 'United Kingdom_AY.4_EPI_ISL_2998424_2020-11-04' -> United_Kingdom_AY.4_EPI_ISL_2998424_2020-11-04
-NOTE: Change sequence name 'United Kingdom_AY.4_EPI_ISL_7283634_2020-11-13' -> United_Kingdom_AY.4_EPI_ISL_7283634_2020-11-13
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255127_2020-12-03' -> Burkina_Faso_AY.36_EPI_ISL_4255127_2020-12-03
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255128_2020-12-03' -> Burkina_Faso_AY.36_EPI_ISL_4255128_2020-12-03
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255129_2020-12-03' -> Burkina_Faso_AY.36_EPI_ISL_4255129_2020-12-03
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255126_2020-12-07' -> Burkina_Faso_AY.36_EPI_ISL_4255126_2020-12-07
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255155_2020-12-08' -> Burkina_Faso_AY.36_EPI_ISL_4255155_2020-12-08
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255165_2020-12-17' -> Burkina_Faso_AY.36_EPI_ISL_4255165_2020-12-17
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255156_2020-12-18' -> Burkina_Faso_AY.36_EPI_ISL_4255156_2020-12-18
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255157_2020-12-18' -> Burkina_Faso_AY.36_EPI_ISL_4255157_2020-12-18
-NOTE: Change sequence name 'United Kingdom_AY.4.2.1_EPI_ISL_7770788_2020-12-21' -> United_Kingdom_AY.4.2.1_EPI_ISL_7770788_2020-12-21
-NOTE: Change sequence name 'South Africa_AY.45_EPI_ISL_9201662_2020-12-23' -> South_Africa_AY.45_EPI_ISL_9201662_2020-12-23
-NOTE: Change sequence name 'United Kingdom_AY.5_EPI_ISL_7584674_2020-12-24' -> United_Kingdom_AY.5_EPI_ISL_7584674_2020-12-24
-NOTE: Change sequence name 'South Africa_AY.45_EPI_ISL_9201663_2020-12-24' -> South_Africa_AY.45_EPI_ISL_9201663_2020-12-24
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255163_2020-12-27' -> Burkina_Faso_AY.36_EPI_ISL_4255163_2020-12-27
-NOTE: Change sequence name 'Burkina Faso_AY.36_EPI_ISL_4255164_2020-12-27' -> Burkina_Faso_AY.36_EPI_ISL_4255164_2020-12-27
-NOTE: Change sequence name 'United Kingdom_AY.4_EPI_ISL_3077206_2020-12-27' -> United_Kingdom_AY.4_EPI_ISL_3077206_2020-12-27
 Alignment most likely contains DNA/RNA sequences
-Alignment has 65 sequences with 29903 columns, 580 distinct patterns
-123 parsimony-informative, 353 singleton sites, 29427 constant sites
-                                                          Gap/Ambiguity  Composition  p-value
-   1  USA_AY.23_EPI_ISL_6661895_2020-03-12                        0.51%    passed     99.99%
-   2  Senegal_AY.34.1_EPI_ISL_8525495_2020-04-01                  1.29%    passed     99.75%
-   3  Senegal_AY.34.1_EPI_ISL_8525510_2020-04-10                  1.10%    passed     99.99%
-   4  USA_AY.25_EPI_ISL_4689452_2020-07-21                        1.04%    passed     99.93%
-   5  Indonesia_AY.23_EPI_ISL_5395768_2020-07-29                  0.50%    passed     99.98%
-   6  Indonesia_AY.24_EPI_ISL_5395769_2020-07-29                  0.45%    passed     99.98%
-   7  Indonesia_AY.23_EPI_ISL_5395771_2020-07-29                  0.50%    passed     99.99%
-   8  USA_AY.25_EPI_ISL_8729890_2020-08-01                        0.25%    passed     99.95%
-   9  USA_AY.3_EPI_ISL_8729891_2020-08-01                         0.27%    passed     99.98%
-  10  USA_AY.25.1_EPI_ISL_8729892_2020-08-01                      0.27%    passed     99.97%
-  11  U.S._Virgin_Islands_B.1.617.2_EPI_ISL_4577392_2020-08-21    0.43%    passed     99.93%
-  12  U.S._Virgin_Islands_AY.45_EPI_ISL_4577393_2020-08-21        1.34%    passed     98.85%
-  13  Serbia_AY.46.6_EPI_ISL_10411465_2020-09-02                  0.29%    passed    100.00%
-  14  USA_AY.3_EPI_ISL_4558284_2020-09-02                         1.26%    passed     99.91%
-  15  Rwanda_B.1.617.2_EPI_ISL_4768101_2020-09-10                 0.34%    passed     99.91%
-  16  Burkina_Faso_AY.36_EPI_ISL_4255138_2020-09-16               0.21%    passed     99.97%
-  17  Burkina_Faso_AY.36_EPI_ISL_4255139_2020-09-18               0.32%    passed     99.93%
-  18  Mexico_AY.100_EPI_ISL_2937904_2020-09-22                    0.30%    passed     99.95%
-  19  USA_AY.103_EPI_ISL_7946609_2020-10-06                       0.96%    passed     99.96%
-  20  USA_AY.100_EPI_ISL_6211803_2020-10-10                       0.99%    passed     99.99%
-  21  Slovenia_AY.41_EPI_ISL_8855476_2020-10-20                   0.69%    passed     99.43%
-  22  Slovenia_AY.122_EPI_ISL_8855479_2020-10-21                  0.70%    passed     99.74%
-  23  Slovenia_AY.122_EPI_ISL_8855485_2020-10-23                  0.71%    passed     99.81%
-  24  Slovenia_B.1.617.2_EPI_ISL_7932310_2020-10-23               0.72%    passed     99.77%
-  25  Slovenia_AY.41_EPI_ISL_8855482_2020-10-25                   0.70%    passed     99.63%
-  26  Slovenia_AY.41_EPI_ISL_8855483_2020-10-25                   0.72%    passed     99.79%
-  27  Slovenia_AY.43_EPI_ISL_8855484_2020-10-26                   0.98%    passed     99.85%
-  28  Slovenia_AY.122_EPI_ISL_8855486_2020-10-29                  1.12%    passed     99.80%
-  29  Slovenia_AY.43_EPI_ISL_6950150_2020-11-02                   0.50%    passed     99.69%
-  30  USA_AY.25_EPI_ISL_6469003_2020-11-03                        0.55%    passed    100.00%
-  31  United_Kingdom_AY.4_EPI_ISL_2998424_2020-11-04              0.60%    passed     99.98%
-  32  Slovenia_AY.43_EPI_ISL_8855489_2020-11-04                   0.72%    passed     99.87%
-  33  Slovenia_AY.98.1_EPI_ISL_8855490_2020-11-04                 0.69%    passed     99.76%
-  34  Slovenia_AY.43_EPI_ISL_8855491_2020-11-06                   0.70%    passed     99.88%
-  35  United_Kingdom_AY.4_EPI_ISL_7283634_2020-11-13              0.46%    passed     99.98%
-  36  Slovenia_AY.98.1_EPI_ISL_5104615_2020-11-13                 0.51%    passed     98.44%
-  37  Sweden_AY.122_EPI_ISL_3791379_2020-11-19                    0.29%    passed     99.99%
-  38  Canada_AY.126_EPI_ISL_9522121_2020-11-24                    0.74%    passed     99.95%
-  39  Burkina_Faso_AY.36_EPI_ISL_4255127_2020-12-03               0.20%    passed     99.97%
-  40  Burkina_Faso_AY.36_EPI_ISL_4255128_2020-12-03               0.64%    passed     99.90%
-  41  Burkina_Faso_AY.36_EPI_ISL_4255129_2020-12-03               0.32%    passed     99.92%
-  42  USA_AY.25_EPI_ISL_5863438_2020-12-03                        0.04%    passed     99.58%
-  43  USA_AY.25_EPI_ISL_5863435_2020-12-03                        0.05%    passed     99.54%
-  44  Burkina_Faso_AY.36_EPI_ISL_4255126_2020-12-07               0.22%    passed     99.97%
-  45  Burkina_Faso_AY.36_EPI_ISL_4255155_2020-12-08               0.20%    passed     99.97%
-  46  India_AY.44_EPI_ISL_1663516_2020-12-12                      0.20%    passed     99.85%
-  47  USA_AY.44_EPI_ISL_3263174_2020-12-16                        0.35%    passed     99.97%
-  48  Burkina_Faso_AY.36_EPI_ISL_4255165_2020-12-17               0.21%    passed     99.96%
-  49  Burkina_Faso_AY.36_EPI_ISL_4255156_2020-12-18               0.36%    passed     99.92%
-  50  Burkina_Faso_AY.36_EPI_ISL_4255157_2020-12-18               0.20%    passed     99.94%
-  51  United_Kingdom_AY.4.2.1_EPI_ISL_7770788_2020-12-21          1.37%    passed     99.89%
-  52  South_Africa_AY.45_EPI_ISL_9201662_2020-12-23               0.85%    passed     99.98%
-  53  United_Kingdom_AY.5_EPI_ISL_7584674_2020-12-24              1.44%    passed    100.00%
-  54  South_Africa_AY.45_EPI_ISL_9201663_2020-12-24               0.46%    passed    100.00%
-  55  Burkina_Faso_AY.36_EPI_ISL_4255163_2020-12-27               0.18%    passed     99.99%
-  56  Burkina_Faso_AY.36_EPI_ISL_4255164_2020-12-27               0.20%    passed     99.89%
-  57  United_Kingdom_AY.4_EPI_ISL_3077206_2020-12-27              1.69%    passed     99.98%
-  58  USA_AY.120.1_EPI_ISL_8883164_2020-12-27                     0.32%    passed     99.99%
-  59  USA_AY.120.1_EPI_ISL_8883168_2020-12-27                     0.32%    passed    100.00%
-  60  USA_AY.120.1_EPI_ISL_8883169_2020-12-27                     0.90%    passed     99.65%
-  61  USA_AY.44_EPI_ISL_8883176_2020-12-29                        0.32%    passed    100.00%
-  62  USA_AY.103_EPI_ISL_8883178_2020-12-30                       0.32%    passed     99.99%
-  63  USA_AY.44_EPI_ISL_8883179_2020-12-30                        0.31%    passed     99.98%
-  64  Germany_AY.43_EPI_ISL_7761036_2021-01-01                    1.24%    passed     99.94%
-  65  India_AY.127_EPI_ISL_5886224_2021-01-01                     0.09%    passed    100.00%
-****  TOTAL                                                       0.58%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+Alignment has 137 sequences with 1734 columns, 180 distinct patterns
+81 parsimony-informative, 105 singleton sites, 1548 constant sites
+                                               Gap/Ambiguity  Composition  p-value
+   1  CY068113_A_California_VRDL374_2009_2009/04/25    0.00%    passed    100.00%
+   2  CY068838_A_California_VRDL384_2009_2009/04/25    0.00%    passed     99.92%
+   3  CY068854_A_California_VRDL390_2009_2009/04/26    0.17%    passed     99.84%
+   4  CY064815_A_California_VRDL136_2009_2009/04/26    0.12%    passed     99.69%
+   5  CY068830_A_California_VRDL383_2009_2009/04/26    0.00%    passed     99.96%
+   6  CY072206_A_California_VRDL386_2009_2009/04/26    0.17%    passed     99.99%
+   7  CY072198_A_California_VRDL385_2009_2009/04/26    0.00%    passed     99.99%
+   8  CY068782_A_California_VRDL207_2009_2009/04/27    0.00%    passed     99.94%
+   9  CY064863_A_California_VRDL145_2009_2009/04/27    0.17%    passed     99.97%
+  10  CY068297_A_California_VRDL248_2009_2009/04/27    0.12%    passed     99.98%
+  11  CY068105_A_California_VRDL373_2009_2009/04/27    0.12%    passed     99.98%
+  12  CY067921_A_California_VRDL176_2009_2009/04/27    0.00%    passed     99.98%
+  13  CY068822_A_California_VRDL381_2009_2009/04/27    0.17%    passed     99.84%
+  14  CY068121_A_California_VRDL375_2009_2009/04/27    0.00%    passed     99.97%
+  15  CY068097_A_California_VRDL368_2009_2009/04/27    0.12%    passed     99.91%
+  16  CY064847_A_California_VRDL143_2009_2009/04/27    0.12%    passed     99.74%
+  17  CY064823_A_California_VRDL138_2009_2009/04/27    0.12%    passed     99.96%
+  18  CY064887_A_California_VRDL158_2009_2009/04/27    0.23%    passed    100.00%
+  19  CY064855_A_California_VRDL144_2009_2009/04/27    0.12%    passed     99.99%
+  20  CY068694_A_California_VRDL183_2009_2009/04/27    0.00%    passed     99.96%
+  21  CY068846_A_California_VRDL387_2009_2009/04/27    0.17%    passed     99.98%
+  22  CY068758_A_California_VRDL203_2009_2009/04/28    0.17%    passed     99.77%
+  23  CY068870_A_California_VRDL392_2009_2009/04/28    0.17%    passed     99.97%
+  24  CY068686_A_California_VRDL181_2009_2009/04/28    0.17%    passed     99.95%
+  25  CY068702_A_California_VRDL184_2009_2009/04/28    0.12%    passed     99.97%
+  26  CY068137_A_California_VRDL159_2009_2009/04/28    0.00%    passed     99.98%
+  27  CY068217_A_California_VRDL173_2009_2009/04/28    0.17%    passed     99.95%
+  28  CY068742_A_California_VRDL199_2009_2009/04/28    0.12%    passed     99.98%
+  29  CY068129_A_California_VRDL396_2009_2009/04/28    0.63%    passed     99.89%
+  30  CY068766_A_California_VRDL204_2009_2009/04/28    0.12%    passed     99.84%
+  31  CY068718_A_California_VRDL187_2009_2009/04/28    0.17%    passed    100.00%
+  32  CY068161_A_California_VRDL164_2009_2009/04/28    0.00%    passed     99.51%
+  33  CY067221_A_California_VRDL302_2009_2009/04/28    0.69%    passed     99.82%
+  34  CY067929_A_California_VRDL177_2009_2009/04/28    0.17%    passed     99.75%
+  35  CY092329_A_California_VRDL182_2009_2009/04/28    0.12%    passed     99.73%
+  36  CY068177_A_California_VRDL166_2009_2009/04/28    0.00%    passed     99.98%
+  37  CY068193_A_California_VRDL169_2009_2009/04/28    0.17%    passed     99.94%
+  38  CY066519_A_California_VRDL156_2009_2009/04/28    0.12%    passed     99.97%
+  39  CY068145_A_California_VRDL160_2009_2009/04/28    0.00%    passed     99.88%
+  40  CY068201_A_California_VRDL170_2009_2009/04/28    0.17%    passed     99.93%
+  41  CY068798_A_California_VRDL210_2009_2009/04/28    0.00%    passed     99.94%
+  42  CY068862_A_California_VRDL391_2009_2009/04/28    0.17%    passed     99.98%
+  43  CY068249_A_California_VRDL216_2009_2009/04/28    0.17%    passed     99.99%
+  44  CY068209_A_California_VRDL172_2009_2009/04/28    0.17%    passed     99.82%
+  45  CY064879_A_California_VRDL147_2009_2009/04/28    0.17%    passed     99.94%
+  46  CY068678_A_California_VRDL178_2009_2009/04/28    0.17%    passed     99.99%
+  47  CY068233_A_California_VRDL211_2009_2009/04/28    0.00%    passed     99.90%
+  48  CY068633_A_California_VRDL394_2009_2009/04/28    0.58%    passed     99.98%
+  49  CY068734_A_California_VRDL198_2009_2009/04/28    0.40%    passed     99.99%
+  50  CY068153_A_California_VRDL161_2009_2009/04/28    0.12%    passed     99.99%
+  51  CY068321_A_California_VRDL259_2009_2009/04/29    0.17%    passed    100.00%
+  52  CY068169_A_California_VRDL165_2009_2009/04/29    0.00%    passed     99.95%
+  53  CY068806_A_California_VRDL246_2009_2009/04/29    0.17%    passed     99.95%
+  54  CY092369_A_California_VRDL255_2009_2009/04/29    0.06%    passed     99.98%
+  55  CY068281_A_California_VRDL243_2009_2009/04/29    0.17%    passed    100.00%
+  56  CY067197_A_California_VRDL241_2009_2009/04/29    0.12%    passed     99.99%
+  57  CY092353_A_California_VRDL197_2009_2009/04/29    0.00%    passed     99.76%
+  58  CY068465_A_California_VRDL308_2009_2009/04/29    0.17%    passed     99.90%
+  59  CY068273_A_California_VRDL233_2009_2009/04/29    0.12%    passed     99.69%
+  60  CY068726_A_California_VRDL196_2009_2009/04/29    0.00%    passed     99.88%
+  61  CY068878_A_California_VRDL393_2009_2009/04/29    0.17%    passed     99.97%
+  62  CY068750_A_California_VRDL201_2009_2009/04/29    0.17%    passed     99.97%
+  63  CY068241_A_California_VRDL212_2009_2009/04/29    0.06%    passed     99.96%
+  64  CY068289_A_California_VRDL247_2009_2009/04/29    0.17%    passed     99.94%
+  65  CY068305_A_California_VRDL250_2009_2009/04/29    0.58%    passed    100.00%
+  66  CY068790_A_California_VRDL208_2009_2009/04/29    0.12%    passed    100.00%
+  67  CY068257_A_California_VRDL230_2009_2009/04/29    0.17%    passed     99.99%
+  68  CY092361_A_California_VRDL242_2009_2009/04/29    0.00%    passed     99.99%
+  69  CY068774_A_California_VRDL205_2009_2009/04/29    0.00%    passed     99.83%
+  70  CY068185_A_California_VRDL168_2009_2009/04/29    0.12%    passed     99.99%
+  71  CY068710_A_California_VRDL185_2009_2009/04/29    0.00%    passed     99.99%
+  72  CY068225_A_California_VRDL188_2009_2009/04/29    0.12%    passed     99.99%
+  73  CY068313_A_California_VRDL253_2009_2009/04/30    0.17%    passed     99.55%
+  74  CY067953_A_California_VRDL288_2009_2009/04/30    0.23%    passed     99.97%
+  75  CY067213_A_California_VRDL296_2009_2009/04/30    0.17%    passed     99.99%
+  76  CY068353_A_California_VRDL263_2009_2009/04/30    0.12%    passed     99.85%
+  77  CY068393_A_California_VRDL272_2009_2009/04/30    0.17%    passed     99.97%
+  78  CY068433_A_California_VRDL285_2009_2009/04/30    0.12%    passed    100.00%
+  79  CY068265_A_California_VRDL231_2009_2009/04/30    0.17%    passed    100.00%
+  80  CY068409_A_California_VRDL277_2009_2009/04/30    0.00%    passed     99.96%
+  81  CY068449_A_California_VRDL294_2009_2009/04/30    0.17%    passed     99.97%
+  82  CY068441_A_California_VRDL293_2009_2009/04/30    0.17%    passed     99.99%
+  83  CY068377_A_California_VRDL268_2009_2009/04/30    0.12%    passed     99.96%
+  84  CY068401_A_California_VRDL274_2009_2009/04/30    0.00%    passed     99.90%
+  85  CY068417_A_California_VRDL278_2009_2009/04/30    0.17%    passed     99.98%
+  86  CY068369_A_California_VRDL266_2009_2009/04/30    0.58%    passed     99.96%
+  87  CY067937_A_California_VRDL286_2009_2009/04/30    0.58%    passed     99.83%
+  88  CY068425_A_California_VRDL279_2009_2009/04/30    0.00%    passed     99.96%
+  89  CY068385_A_California_VRDL271_2009_2009/04/30    0.17%    passed     99.97%
+  90  CY068814_A_California_VRDL269_2009_2009/04/30    0.17%    passed     99.96%
+  91  CY068481_A_California_VRDL310_2009_2009/04/30    0.17%    passed     99.96%
+  92  CY068497_A_California_VRDL313_2009_2009/05/01    0.00%    passed     99.97%
+  93  CY068505_A_California_VRDL315_2009_2009/05/01    0.00%    passed     99.90%
+  94  CY068329_A_California_VRDL260_2009_2009/05/01    0.00%    passed     99.95%
+  95  CY068457_A_California_VRDL305_2009_2009/05/01    0.17%    passed     99.96%
+  96  CY067245_A_California_VRDL314_2009_2009/05/01    0.17%    passed     99.96%
+  97  CY092377_A_California_VRDL257_2009_2009/05/01    0.12%    passed     99.94%
+  98  CY067205_A_California_VRDL291_2009_2009/05/01    0.17%    passed     99.95%
+  99  CY068489_A_California_VRDL312_2009_2009/05/01    0.17%    passed     99.96%
+ 100  CY067237_A_California_VRDL307_2009_2009/05/02    0.17%    passed     99.84%
+ 101  CY068473_A_California_VRDL309_2009_2009/05/02    0.17%    passed     99.99%
+ 102  CY068337_A_California_VRDL261_2009_2009/05/02    0.00%    passed     99.99%
+ 103  CY068609_A_California_VRDL335_2009_2009/05/03    0.17%    passed     99.85%
+ 104  CY068553_A_California_VRDL325_2009_2009/05/03    0.17%    passed     99.99%
+ 105  CY067969_A_California_VRDL339_2009_2009/05/04    0.12%    passed     99.62%
+ 106  CY067977_A_California_VRDL340_2009_2009/05/04    0.00%    passed     99.98%
+ 107  CY067945_A_California_VRDL287_2009_2009/05/04    0.17%    passed    100.00%
+ 108  CY068545_A_California_VRDL322_2009_2009/05/04    0.17%    passed     99.90%
+ 109  CY067253_A_California_VRDL316_2009_2009/05/04    0.00%    passed     99.62%
+ 110  CY068537_A_California_VRDL321_2009_2009/05/04    0.00%    passed     99.90%
+ 111  CY068617_A_California_VRDL336_2009_2009/05/05    0.17%    passed     99.99%
+ 112  CY068529_A_California_VRDL319_2009_2009/05/06    0.17%    passed     99.94%
+ 113  CY068513_A_California_VRDL317_2009_2009/05/06    0.00%    passed     99.98%
+ 114  CY068521_A_California_VRDL318_2009_2009/05/06    0.00%    passed     99.80%
+ 115  CY068593_A_California_VRDL333_2009_2009/05/06    0.17%    passed     99.99%
+ 116  CY067229_A_California_VRDL304_2009_2009/05/07    0.17%    passed     99.98%
+ 117  CY068569_A_California_VRDL329_2009_2009/05/09    0.17%    passed     99.97%
+ 118  CY067961_A_California_VRDL328_2009_2009/05/09    0.23%    passed     99.93%
+ 119  CY070919_A_California_VRDL330_2009_2009/05/09    0.17%    passed     99.93%
+ 120  CY068577_A_California_VRDL331_2009_2009/05/11    0.12%    passed     99.96%
+ 121  CY068561_A_California_VRDL327_2009_2009/05/11    0.17%    passed     99.88%
+ 122  CY068033_A_California_VRDL352_2009_2009/05/11    0.17%    passed     99.97%
+ 123  CY068049_A_California_VRDL355_2009_2009/05/11    0.17%    passed     99.97%
+ 124  CY068585_A_California_VRDL332_2009_2009/05/11    0.17%    passed     99.99%
+ 125  CY067993_A_California_VRDL343_2009_2009/05/11    0.17%    passed     99.97%
+ 126  CY068601_A_California_VRDL334_2009_2009/05/18    0.17%    passed     99.97%
+ 127  CY068625_A_California_VRDL338_2009_2009/05/18    0.17%    passed     99.55%
+ 128  CY068001_A_California_VRDL344_2009_2009/05/19    0.17%    passed    100.00%
+ 129  CY067985_A_California_VRDL342_2009_2009/05/20    0.17%    passed     99.90%
+ 130  CY072190_A_California_VRDL347_2009_2009/05/23    0.12%    passed     99.97%
+ 131  CY068025_A_California_VRDL351_2009_2009/05/23    0.17%    passed     99.99%
+ 132  CY068009_A_California_VRDL345_2009_2009/05/26    0.12%    passed     99.66%
+ 133  CY068017_A_California_VRDL349_2009_2009/05/26    0.12%    passed     99.66%
+ 134  CY068041_A_California_VRDL354_2009_2009/05/26    0.17%    passed     99.95%
+ 135  CY077425_A_California_VRDL356_2009_2009/06/02    0.17%    passed    100.00%
+ 136  CY068065_A_California_VRDL360_2009_2009/06/03    0.17%    passed     99.99%
+ 137  CY068057_A_California_VRDL357_2009_2009/06/05    0.17%    passed    100.00%
+****  TOTAL                                            0.14%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: CY068710_A_California_VRDL185_2009_2009/04/29 is identical to CY072198_A_California_VRDL385_2009_2009/04/26 but kept for subsequent analysis
+NOTE: CY068870_A_California_VRDL392_2009_2009/04/28 is identical to CY064863_A_California_VRDL145_2009_2009/04/27 but kept for subsequent analysis
+NOTE: CY068105_A_California_VRDL373_2009_2009/04/27 is identical to CY068297_A_California_VRDL248_2009_2009/04/27 but kept for subsequent analysis
+NOTE: CY067237_A_California_VRDL307_2009_2009/05/02 is identical to CY068822_A_California_VRDL381_2009_2009/04/27 but kept for subsequent analysis
+NOTE: CY068377_A_California_VRDL268_2009_2009/04/30 is identical to CY064823_A_California_VRDL138_2009_2009/04/27 but kept for subsequent analysis
+NOTE: CY068425_A_California_VRDL279_2009_2009/04/30 is identical to CY068694_A_California_VRDL183_2009_2009/04/27 but kept for subsequent analysis
+NOTE: CY068806_A_California_VRDL246_2009_2009/04/29 is identical to CY068217_A_California_VRDL173_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068265_A_California_VRDL231_2009_2009/04/30 is identical to CY068718_A_California_VRDL187_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY067229_A_California_VRDL304_2009_2009/05/07 is identical to CY068862_A_California_VRDL391_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068473_A_California_VRDL309_2009_2009/05/02 is identical to CY068249_A_California_VRDL216_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068257_A_California_VRDL230_2009_2009/04/29 is identical to CY068678_A_California_VRDL178_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068537_A_California_VRDL321_2009_2009/05/04 is identical to CY068233_A_California_VRDL211_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068185_A_California_VRDL168_2009_2009/04/29 is identical to CY068153_A_California_VRDL161_2009_2009/04/28 but kept for subsequent analysis
+NOTE: CY068329_A_California_VRDL260_2009_2009/05/01 is identical to CY068169_A_California_VRDL165_2009_2009/04/29 but kept for subsequent analysis
+NOTE: CY068545_A_California_VRDL322_2009_2009/05/04 is identical to CY068465_A_California_VRDL308_2009_2009/04/29 but kept for subsequent analysis
+NOTE: CY068385_A_California_VRDL271_2009_2009/04/30 is identical to CY068878_A_California_VRDL393_2009_2009/04/29 but kept for subsequent analysis
+NOTE: CY068569_A_California_VRDL329_2009_2009/05/09 is identical to CY068393_A_California_VRDL272_2009_2009/04/30 but kept for subsequent analysis
+NOTE: CY068481_A_California_VRDL310_2009_2009/04/30 is identical to CY068814_A_California_VRDL269_2009_2009/04/30 but kept for subsequent analysis
+NOTE: CY067245_A_California_VRDL314_2009_2009/05/01 is identical to CY068457_A_California_VRDL305_2009_2009/05/01 but kept for subsequent analysis
+NOTE: CY068513_A_California_VRDL317_2009_2009/05/06 is identical to CY067977_A_California_VRDL340_2009_2009/05/04 but kept for subsequent analysis
+NOTE: CY068057_A_California_VRDL357_2009_2009/06/05 is identical to CY067945_A_California_VRDL287_2009_2009/05/04 but kept for subsequent analysis
+NOTE: CY068049_A_California_VRDL355_2009_2009/05/11 is identical to CY068033_A_California_VRDL352_2009_2009/05/11 but kept for subsequent analysis
+NOTE: CY068017_A_California_VRDL349_2009_2009/05/26 is identical to CY068009_A_California_VRDL345_2009_2009/05/26 but kept for subsequent analysis
+NOTE: 6 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: CY068337_A_California_VRDL261_2009_2009/05/02 (identical to CY072198_A_California_VRDL385_2009_2009/04/26) is ignored but added at the end
+NOTE: CY077425_A_California_VRDL356_2009_2009/06/02 (identical to CY068718_A_California_VRDL187_2009_2009/04/28) is ignored but added at the end
+NOTE: CY068553_A_California_VRDL325_2009_2009/05/03 (identical to CY068678_A_California_VRDL178_2009_2009/04/28) is ignored but added at the end
+NOTE: CY068225_A_California_VRDL188_2009_2009/04/29 (identical to CY068153_A_California_VRDL161_2009_2009/04/28) is ignored but added at the end
+NOTE: CY068601_A_California_VRDL334_2009_2009/05/18 (identical to CY068393_A_California_VRDL272_2009_2009/04/30) is ignored but added at the end
+NOTE: CY068489_A_California_VRDL312_2009_2009/05/01 (identical to CY068814_A_California_VRDL269_2009_2009/04/30) is ignored but added at the end
+Alignment was printed to results/tree/expected-1.fasta.uniqueseq.phy
 
-Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.003 seconds
-Generating 1000 samples for ultrafast bootstrap (seed: 28379373)...
+For your convenience alignment with unique sequences printed to results/tree/expected-1.fasta.uniqueseq.phy
+Creating fast initial parsimony tree by random order stepwise addition...
+0.014 seconds, parsimony score: 215 (based on 186 sites)
+Generating 1000 samples for ultrafast bootstrap (seed: 78574)...
 
-NOTE: 7 MB RAM (0 GB) is required!
-Measuring multi-threading efficiency up to 4 CPU cores
+NOTE: 3 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 1 CPU cores
 Increase to 10 rounds for branch lengths
-134 trees examined
-Threads: 1 / Time: 4.001 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -47980
-Threads: 2 / Time: 2.079 sec / Speedup: 1.924 / Efficiency: 96% / LogL: -47980
-Threads: 3 / Time: 1.472 sec / Speedup: 2.718 / Efficiency: 91% / LogL: -47980
-Threads: 4 / Time: 1.189 sec / Speedup: 3.366 / Efficiency: 84% / LogL: -47980
-BEST NUMBER OF THREADS: 4
+37 trees examined
+Threads: 1 / Time: 1.033 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -7956
+BEST NUMBER OF THREADS: 1
 
 Estimate model parameters (epsilon = 0.100)
-1. Initial log-likelihood: -45746.146
-2. Current log-likelihood: -45717.193
-3. Current log-likelihood: -45679.485
-4. Current log-likelihood: -45624.684
-5. Current log-likelihood: -45603.470
-Optimal log-likelihood: -45603.461
-Rate parameters:  A-C: 1.00000  A-G: 4.21947  A-T: 1.00000  C-G: 1.00000  C-T: 4.21947  G-T: 1.00000
-Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
-Gamma shape alpha: 0.020
-Parameters optimization took 5 rounds (0.098 sec)
+1. Initial log-likelihood: -4185.246
+2. Current log-likelihood: -4116.004
+3. Current log-likelihood: -4115.896
+4. Current log-likelihood: -4115.794
+5. Current log-likelihood: -4115.692
+6. Current log-likelihood: -4115.589
+7. Current log-likelihood: -4115.485
+8. Current log-likelihood: -4115.381
+9. Current log-likelihood: -4115.277
+10. Current log-likelihood: -4115.171
+11. Current log-likelihood: -4115.065
+12. Current log-likelihood: -4114.959
+13. Current log-likelihood: -4114.852
+14. Current log-likelihood: -4114.744
+15. Current log-likelihood: -4114.636
+16. Current log-likelihood: -4114.527
+17. Current log-likelihood: -4114.417
+18. Current log-likelihood: -4114.307
+19. Current log-likelihood: -4114.196
+20. Current log-likelihood: -4114.084
+21. Current log-likelihood: -4113.972
+22. Current log-likelihood: -4113.859
+23. Current log-likelihood: -4113.745
+24. Current log-likelihood: -4113.630
+25. Current log-likelihood: -4113.515
+26. Current log-likelihood: -4113.399
+27. Current log-likelihood: -4113.283
+28. Current log-likelihood: -4113.165
+29. Current log-likelihood: -4113.047
+30. Current log-likelihood: -4112.928
+31. Current log-likelihood: -4112.809
+32. Current log-likelihood: -4112.688
+33. Current log-likelihood: -4112.567
+34. Current log-likelihood: -4112.445
+35. Current log-likelihood: -4112.322
+36. Current log-likelihood: -4112.198
+37. Current log-likelihood: -4112.074
+38. Current log-likelihood: -4111.948
+39. Current log-likelihood: -4111.822
+40. Current log-likelihood: -4111.695
+41. Current log-likelihood: -4111.567
+42. Current log-likelihood: -4111.438
+43. Current log-likelihood: -4111.308
+44. Current log-likelihood: -4111.177
+45. Current log-likelihood: -4111.046
+46. Current log-likelihood: -4110.913
+47. Current log-likelihood: -4110.779
+48. Current log-likelihood: -4110.645
+49. Current log-likelihood: -4110.509
+50. Current log-likelihood: -4110.373
+51. Current log-likelihood: -4110.235
+52. Current log-likelihood: -4110.097
+53. Current log-likelihood: -4109.957
+54. Current log-likelihood: -4109.816
+55. Current log-likelihood: -4109.674
+56. Current log-likelihood: -4109.532
+57. Current log-likelihood: -4109.387
+58. Current log-likelihood: -4109.242
+59. Current log-likelihood: -4109.096
+60. Current log-likelihood: -4108.949
+61. Current log-likelihood: -4108.800
+62. Current log-likelihood: -4108.650
+63. Current log-likelihood: -4108.499
+64. Current log-likelihood: -4108.347
+65. Current log-likelihood: -4108.193
+66. Current log-likelihood: -4108.038
+67. Current log-likelihood: -4107.882
+68. Current log-likelihood: -4107.725
+69. Current log-likelihood: -4107.566
+70. Current log-likelihood: -4107.406
+71. Current log-likelihood: -4107.244
+72. Current log-likelihood: -4107.081
+73. Current log-likelihood: -4106.917
+74. Current log-likelihood: -4106.751
+75. Current log-likelihood: -4106.583
+76. Current log-likelihood: -4106.414
+77. Current log-likelihood: -4106.244
+78. Current log-likelihood: -4106.072
+79. Current log-likelihood: -4105.898
+80. Current log-likelihood: -4105.723
+81. Current log-likelihood: -4105.546
+82. Current log-likelihood: -4105.367
+83. Current log-likelihood: -4105.187
+84. Current log-likelihood: -4105.005
+85. Current log-likelihood: -4104.821
+86. Current log-likelihood: -4104.635
+87. Current log-likelihood: -4104.448
+88. Current log-likelihood: -4104.258
+89. Current log-likelihood: -4104.067
+90. Current log-likelihood: -4103.873
+91. Current log-likelihood: -4103.678
+92. Current log-likelihood: -4103.480
+93. Current log-likelihood: -4103.281
+94. Current log-likelihood: -4103.079
+95. Current log-likelihood: -4102.875
+96. Current log-likelihood: -4102.669
+97. Current log-likelihood: -4102.460
+98. Current log-likelihood: -4102.250
+99. Current log-likelihood: -4102.036
+Optimal log-likelihood: -4102.036
+Rate parameters:  A-C: 1.00000  A-G: 63.16173  A-T: 1.00000  C-G: 1.00000  C-T: 63.16173  G-T: 1.00000
+Base frequencies:  A: 0.341  C: 0.199  G: 0.218  T: 0.242
+Gamma shape alpha: 0.414
+Parameters optimization took 99 rounds (1.830 sec)
 Computing ML distances based on estimated model parameters...
-Computing ML distances took 0.016020 sec (of wall-clock time) 0.063560 sec(of CPU time)
-Computing RapidNJ tree took 0.002088 sec (of wall-clock time) 0.009007 sec (of CPU time)
-Log-likelihood of RapidNJ tree: -45630.443
+Computing ML distances took 0.099822 sec (of wall-clock time) 0.098903 sec(of CPU time)
+Computing RapidNJ tree took 0.001311 sec (of wall-clock time) 0.002204 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -4103.954
 --------------------------------------------------------------------
 |             INITIALIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Generating 98 parsimony trees... 0.304 second
-Computing log-likelihood of 98 initial trees ... 0.263 seconds
-Current best score: -45599.856
+Generating 98 parsimony trees... 1.359 second
+Computing log-likelihood of 98 initial trees ... 0.462 seconds
+Current best score: -4096.767
 
 Do NNI search on 20 best initial trees
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 1: -45599.793
-BETTER TREE FOUND at iteration 2: -45599.793
-Iteration 10 / LogL: -45601.402 / Time: 0h:0m:10s
-Iteration 20 / LogL: -45601.245 / Time: 0h:0m:11s
+BETTER TREE FOUND at iteration 1: -4063.360
+BETTER TREE FOUND at iteration 5: -4063.360
+Iteration 10 / LogL: -4063.360 / Time: 0h:0m:6s
+Iteration 20 / LogL: -4065.764 / Time: 0h:0m:7s
 Finish initializing candidate tree set (20)
-Current best tree score: -45599.793 / CPU time: 2.821
+Current best tree score: -4063.360 / CPU time: 4.741
 Number of iterations: 20
 --------------------------------------------------------------------
 |               OPTIMIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Iteration 30 / LogL: -45602.781 / Time: 0h:0m:13s (0h:0m:32s left)
-Iteration 40 / LogL: -45605.900 / Time: 0h:0m:13s (0h:0m:22s left)
-Iteration 50 / LogL: -45602.511 / Time: 0h:0m:14s (0h:0m:15s left)
-Log-likelihood cutoff on original alignment: -45690.813
-Iteration 60 / LogL: -45623.245 / Time: 0h:0m:15s (0h:0m:11s left)
-Iteration 70 / LogL: -45602.607 / Time: 0h:0m:16s (0h:0m:7s left)
-Iteration 80 / LogL: -45615.123 / Time: 0h:0m:18s (0h:0m:5s left)
-Iteration 90 / LogL: -45614.132 / Time: 0h:0m:19s (0h:0m:2s left)
-Iteration 100 / LogL: -45599.962 / Time: 0h:0m:20s (0h:0m:0s left)
-Log-likelihood cutoff on original alignment: -45690.812
-NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.998
-TREE SEARCH COMPLETED AFTER 103 ITERATIONS / Time: 0h:0m:20s
+Iteration 30 / LogL: -4063.407 / Time: 0h:0m:9s (0h:0m:24s left)
+Iteration 40 / LogL: -4063.417 / Time: 0h:0m:11s (0h:0m:18s left)
+Iteration 50 / LogL: -4063.409 / Time: 0h:0m:13s (0h:0m:14s left)
+Log-likelihood cutoff on original alignment: -4106.378
+Iteration 60 / LogL: -4063.414 / Time: 0h:0m:15s (0h:0m:11s left)
+Iteration 70 / LogL: -4069.447 / Time: 0h:0m:17s (0h:0m:8s left)
+Iteration 80 / LogL: -4063.385 / Time: 0h:0m:19s (0h:0m:6s left)
+Iteration 90 / LogL: -4072.532 / Time: 0h:0m:21s (0h:0m:3s left)
+Iteration 100 / LogL: -4063.413 / Time: 0h:0m:23s (0h:0m:1s left)
+Log-likelihood cutoff on original alignment: -4107.222
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.985
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 110 / LogL: -4068.028 / Time: 0h:0m:25s (0h:0m:21s left)
+Iteration 120 / LogL: -4069.382 / Time: 0h:0m:27s (0h:0m:18s left)
+Iteration 130 / LogL: -4063.415 / Time: 0h:0m:29s (0h:0m:16s left)
+Iteration 140 / LogL: -4063.408 / Time: 0h:0m:31s (0h:0m:13s left)
+Iteration 150 / LogL: -4124.170 / Time: 0h:0m:33s (0h:0m:11s left)
+Log-likelihood cutoff on original alignment: -4108.012
+Iteration 160 / LogL: -4068.652 / Time: 0h:0m:36s (0h:0m:9s left)
+Iteration 170 / LogL: -4063.418 / Time: 0h:0m:38s (0h:0m:6s left)
+Iteration 180 / LogL: -4063.407 / Time: 0h:0m:41s (0h:0m:4s left)
+Iteration 190 / LogL: -4084.086 / Time: 0h:0m:43s (0h:0m:2s left)
+Iteration 200 / LogL: -4071.988 / Time: 0h:0m:45s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -4108.368
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+TREE SEARCH COMPLETED AFTER 200 ITERATIONS / Time: 0h:0m:45s
 
 --------------------------------------------------------------------
 |                    FINALIZING TREE SEARCH                        |
 --------------------------------------------------------------------
 Performs final model parameters optimization
 Estimate model parameters (epsilon = 0.010)
-1. Initial log-likelihood: -45599.793
-Optimal log-likelihood: -45599.793
-Rate parameters:  A-C: 1.00000  A-G: 4.21574  A-T: 1.00000  C-G: 1.00000  C-T: 4.21574  G-T: 1.00000
-Base frequencies:  A: 0.299  C: 0.183  G: 0.196  T: 0.322
-Gamma shape alpha: 0.020
-Parameters optimization took 1 rounds (0.014 sec)
-BEST SCORE FOUND : -45599.793
+1. Initial log-likelihood: -4063.360
+Optimal log-likelihood: -4063.359
+Rate parameters:  A-C: 1.00000  A-G: 10.14132  A-T: 1.00000  C-G: 1.00000  C-T: 10.14132  G-T: 1.00000
+Base frequencies:  A: 0.341  C: 0.199  G: 0.218  T: 0.242
+Gamma shape alpha: 0.429
+Parameters optimization took 1 rounds (0.017 sec)
+BEST SCORE FOUND : -4063.359
 Creating bootstrap support values...
 Split supports printed to NEXUS file results/tree/expected-1.fasta.splits.nex
-Total tree length: 0.017
+Total tree length: 0.125
 
-Total number of iterations: 103
-CPU time used for tree search: 44.569 sec (0h:0m:44s)
-Wall-clock time used for tree search: 11.664 sec (0h:0m:11s)
-Total CPU time used: 63.517 sec (0h:1m:3s)
-Total wall-clock time used: 20.783 sec (0h:0m:20s)
+Total number of iterations: 200
+CPU time used for tree search: 42.684 sec (0h:0m:42s)
+Wall-clock time used for tree search: 42.739 sec (0h:0m:42s)
+Total CPU time used: 46.016 sec (0h:0m:46s)
+Total wall-clock time used: 46.093 sec (0h:0m:46s)
 
 Computing bootstrap consensus tree...
 Reading input file results/tree/expected-1.fasta.splits.nex...
-65 taxa and 904 splits.
+131 taxa and 3676 splits.
 Consensus tree written to results/tree/expected-1.fasta.contree
 Reading input trees file results/tree/expected-1.fasta.contree
-Log-likelihood of consensus tree: -55842.124
+Log-likelihood of consensus tree: -4063.673
 
 Analysis results written to: 
   IQ-TREE report:                results/tree/expected-1.fasta.iqtree
@@ -200,4 +389,4 @@ Ultrafast bootstrap approximation results written to:
   Consensus tree:                results/tree/expected-1.fasta.contree
   Screen log file:               results/tree/expected-1.fasta.log
 
-Date and Time: Tue Aug  9 20:48:03 2022
+Date and Time: Thu Aug 25 11:06:10 2022
