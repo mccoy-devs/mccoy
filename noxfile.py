@@ -72,7 +72,8 @@ def docs_github(session):
         "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
         ".",
     )
-    gh_pages = Path("gh-pages")
-    gh_pages.mkdir()
-    (gh_pages / ".nojekll").touch()
-    session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
+    with session.chdir("docs"):
+        gh_pages = Path("gh-pages")
+        gh_pages.mkdir()
+        (gh_pages / ".nojekll").touch()
+        session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
