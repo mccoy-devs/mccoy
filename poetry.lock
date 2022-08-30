@@ -297,38 +297,6 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
-name = "mdit-py-plugins"
-version = "0.3.0"
-description = "Collection of plugins for markdown-it-py"
-category = "dev"
-optional = false
-python-versions = "~=3.6"
-
-[package.dependencies]
-markdown-it-py = ">=1.0.0,<3.0.0"
-
-[package.extras]
-testing = ["pytest-regressions", "pytest-cov", "pytest (>=3.6,<4)", "coverage"]
-rtd = ["sphinx-book-theme (>=0.1.0,<0.2.0)", "myst-parser (>=0.14.0,<0.15.0)"]
-code_style = ["pre-commit (==2.6)"]
-
-[[package]]
-name = "mdurl"
-version = "0.1.2"
-description = "Markdown URL utilities"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
-name = "msgpack"
-version = "1.0.4"
-description = "MessagePack serializer"
-category = "dev"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "nbformat"
 version = "5.4.0"
 description = "The Jupyter Notebook format"
@@ -605,7 +573,7 @@ resolved_reference = "2186b27e9766e50b39d303819cb304dafa11d8e2"
 
 [[package]]
 name = "snakemake"
-version = "7.12.1"
+version = "7.14.0"
 description = "Snakemake is a workflow management system that aims to reduce the complexity of creating workflows by providing a fast and comfortable execution environment, together with a clean and modern specification language in python style. Snakemake workflows are essentially Python scripts extended by declarative code to define rules. Rules describe how to create output files from input files."
 category = "main"
 optional = false
@@ -916,7 +884,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4.0"
-content-hash = "935ea74dca9b6868d6c002d4f9ee972439916e249e4695bca2bc75ecd971b487"
+content-hash = "bc9ccd33e14963c3b223c0663496ea257c8dbeeb169bed4fe0b092ed606073d4"
 
 [metadata.files]
 alabaster = []

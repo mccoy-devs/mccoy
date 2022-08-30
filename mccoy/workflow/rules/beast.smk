@@ -68,10 +68,9 @@ rule beast:
 
     :envmodules:              environment variables to load for the Spartan HPC system
 
-    Note
-    ----
-    GPU acceleration is **not** requested by default. If you are running on a machine with a compatible GPU then
-    please replace ``-beagle`` with ``-beagle_GPU`` in the ``beast.beast`` entry in your McCoy ``config.yaml`` file.
+    ..note::
+        GPU acceleration is **not** requested by default. If you are running on a machine with a compatible GPU then
+        please replace ``-beagle`` with ``-beagle_GPU`` in the ``beast.beast`` entry in your McCoy ``config.yaml`` file.
     """
     input:
         alignment=rules.align.output,
