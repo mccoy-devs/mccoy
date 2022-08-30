@@ -19,11 +19,10 @@ repos:
     rev: '1.2.0b2'
     hooks:
       - id: poetry-check
-      - id: poetry-lock
       - id: poetry-export
         args: ["-f", "requirements.txt", "-o", "requirements.txt"]
       - id: poetry-export
         args: ["--dev", "-f", "requirements.txt", "-o", "dev-requirements.txt"]
 
 ci:
-  skip: [poetry-lock, poetry-export]
+  skip: [poetry-export]
