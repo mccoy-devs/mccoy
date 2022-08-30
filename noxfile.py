@@ -76,4 +76,4 @@ def docs_github(session):
         gh_pages = Path("gh-pages")
         gh_pages.mkdir()
         (gh_pages / ".nojekll").touch()
-        session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
+        session.run("sphinx-build", "-b", "html", ".", "gh-pages")
