@@ -1,26 +1,50 @@
-.. Phylodynamics Workflow documentation master file, created by
-   sphinx-quickstart on Thu Mar 17 14:41:54 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Phylodynamics Workflow's documentation!
-==================================================
-
 .. toctree::
+   :hidden:
    :maxdepth: 2
-   :caption: Contents:
 
-   installation
-   usage
+   rules
+
+
+McCoy
+=====
 
 .. warning::
 
    These docs are not complete or up-to-date. Stay tuned for that!
 
 
-Indices and tables
-==================
+Workflow overview
+-----------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. mermaid::
+
+    %%{init: { 'theme':'neutral' } }%%
+    flowchart TB
+        sources[(fasta files)]
+        sources --> combine --> MSA
+        click combine href "rules.html#rule-combine"
+
+        MSA["multiple sequence alignment"] --> QC
+        click MSA href "rules.html#alignment"
+
+        subgraph QC["Quality control"]
+            direction TB
+            tree[maximum likelihood tree] --> RTR[root-tip regression]
+            click tree href "rules.html#tree-construction"
+            otherQC[other checks]
+        end
+
+        QC --> Beast
+
+        subgraph Beast
+            direction TB
+            XML["XML generation"] --> OnlineBEAST["run, pause & update data"]
+            click XML href "rules.html#dynamicbeast"
+            click OnlineBEAST href "rules.html#onlinebeast"
+        end
+
+
+All rules
+---------
+
+* :ref:`Index<smk-rule>`

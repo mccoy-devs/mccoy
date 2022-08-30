@@ -13,7 +13,7 @@
     
     
       
-        <title>Phylodynamics Workflow 0.1.0 documentation</title>
+        <title>None - Phylodynamics Workflow 0.1.0 documentation</title>
       
     
     
@@ -37,6 +37,13 @@
 
     
     
+
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
   </head>
   
   
@@ -51,11 +58,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#workflow-overview" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -66,7 +68,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="#" title="Phylodynamics Workflow 0.1.0 documentation" class="md-header__button md-logo" aria-label="Phylodynamics Workflow 0.1.0 documentation" data-md-component="logo">
+    <a href="index.html" title="Phylodynamics Workflow 0.1.0 documentation" class="md-header__button md-logo" aria-label="Phylodynamics Workflow 0.1.0 documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -84,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              McCoy
+              None
             
           </span>
         </div>
@@ -157,7 +159,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="#" title="Phylodynamics Workflow 0.1.0 documentation" class="md-nav__button md-logo" aria-label="Phylodynamics Workflow 0.1.0 documentation" data-md-component="logo">
+    <a href="index.html" title="Phylodynamics Workflow 0.1.0 documentation" class="md-nav__button md-logo" aria-label="Phylodynamics Workflow 0.1.0 documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -196,33 +198,9 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 <nav class="md-nav md-nav--secondary">
   
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      <span class="md-ellipsis">Mc<wbr>Coy</span>
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-overview" class="md-nav__link">
-    <span class="md-ellipsis">Workflow overview</span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#all-rules" class="md-nav__link">
-    <span class="md-ellipsis">All rules</span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -235,43 +213,86 @@
                 
 
 
-  <div class="toctree-wrapper compound">
-</div>
-<h1 id="mccoy">McCoy<a class="headerlink" href="#mccoy" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>These docs are not complete or up-to-date. Stay tuned for that!</p>
-</div>
-<h2 id="workflow-overview">Workflow overview<a class="headerlink" href="#workflow-overview" title="Permalink to this headline">¶</a></h2>
-<div class="mermaid">
-            %%{init: { 'theme':'neutral' } }%%
-flowchart TB
-    sources[(fasta files)]
-    sources --&gt; combine --&gt; MSA
-    click combine href &quot;rules.html#rule-combine&quot;
 
-    MSA[&quot;multiple sequence alignment&quot;] --&gt; QC
-    click MSA href &quot;rules.html#alignment&quot;
+   <h1>Snakemake Rules</h1>
 
-    subgraph QC[&quot;Quality control&quot;]
-        direction TB
-        tree[maximum likelihood tree] --&gt; RTR[root-tip regression]
-        click tree href &quot;rules.html#tree-construction&quot;
-        otherQC[other checks]
-    end
+   <div class="modindex-jumpbox">
+   <a href="#cap-a"><strong>a</strong></a> | 
+   <a href="#cap-b"><strong>b</strong></a> | 
+   <a href="#cap-c"><strong>c</strong></a> | 
+   <a href="#cap-d"><strong>d</strong></a> | 
+   <a href="#cap-o"><strong>o</strong></a> | 
+   <a href="#cap-p"><strong>p</strong></a> | 
+   <a href="#cap-r"><strong>r</strong></a> | 
+   <a href="#cap-t"><strong>t</strong></a>
+   </div>
 
-    QC --&gt; Beast
-
-    subgraph Beast
-        direction TB
-        XML[&quot;XML generation&quot;] --&gt; OnlineBEAST[&quot;run, pause &amp; update data&quot;]
-        click XML href &quot;rules.html#dynamicbeast&quot;
-        click OnlineBEAST href &quot;rules.html#onlinebeast&quot;
-    end
-        </div><h2 id="all-rules">All rules<a class="headerlink" href="#all-rules" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="smk-rule.html"><span class="std std-ref">Index</span></a></p></li>
-</ul>
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-a"><td></td><td>
+       <strong>a</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-align"><code class="xref">align</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-b"><td></td><td>
+       <strong>b</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-beast"><code class="xref">beast</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-c"><td></td><td>
+       <strong>c</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-combine"><code class="xref">combine</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-d"><td></td><td>
+       <strong>d</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-dynamicbeast"><code class="xref">dynamicbeast</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-o"><td></td><td>
+       <strong>o</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-onlinebeast"><code class="xref">onlinebeast</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-p"><td></td><td>
+       <strong>p</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-phytest"><code class="xref">phytest</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-r"><td></td><td>
+       <strong>r</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-render_tree"><code class="xref">render_tree</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-t"><td></td><td>
+       <strong>t</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="rules.html#rule-tree"><code class="xref">tree</code></a> <em>(rules)</em></td><td>
+       <em>Rule</em></td></tr>
+   </table>
 
 
 
@@ -283,26 +304,6 @@ flowchart TB
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-      
-        
-        <a href="rules.html" class="md-footer__link md-footer__link--next" aria-label="Next: Modules and rules" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Modules and rules
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   
   
