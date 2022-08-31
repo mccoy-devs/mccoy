@@ -10,16 +10,16 @@
 </nav>
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="mltree_svg" role="tabpanel" aria-labelledby="mltree_svg-tab">
-    {{ include_file(input.mltree_svg)|safe }}
+    {{ include_file(input.mltree_svg) }}
   </div>
   <div class="tab-pane fade" id="consensus_mltree_svg" role="tabpanel" aria-labelledby="consensus_mltree_svg-tab">
-    {{ include_file(input.consensus_mltree_svg)|safe }}
+    {{ include_file(input.consensus_mltree_svg) }}
   </div>
   <div class="tab-pane fade" id="iqtree_report" role="tabpanel" aria-labelledby="iqtree_report-tab">
-    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_report)|safe }}</pre>
+    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_report) }}</pre>
   </div>
   <div class="tab-pane fade" id="iqtree_log" role="tabpanel" aria-labelledby="iqtree_log-tab">
-    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_log)|safe }}</pre>
+    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_log) }}</pre>
   </div>
 </div>
 

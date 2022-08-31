@@ -11,6 +11,6 @@
     {% include 'formatted-bibliography.html' %}
   </div>
   <div class="tab-pane fade" id="BibTeX" role="tabpanel" aria-labelledby="BibTeX-tab">
-    <pre><code class="language-bib">{% include 'bibliography.bib' %}</code></pre>
+    <pre><code class="language-bib">{{ include_raw("bibliography.bib") }}</code></pre>
   </div>
 </div>

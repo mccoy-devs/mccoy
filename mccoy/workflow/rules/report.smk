@@ -1,7 +1,7 @@
 from pathlib import Path
 import jinja2
 import typer
-
+from jinja2.utils import markupsafe
 
 rule report:
     input:
@@ -24,17 +24,30 @@ rule report:
         def include_file(name):
             print('include', name)
             if name:
-                return Path(str(name)).read_text()
+                return markupsafe.Markup(Path(str(name)).read_text())
+            return ""
+
+        def include_raw(name):
+            print('include raw', name)
+            if name:
+                file = report_dir/name
+                return markupsafe.Markup(file.read_text())
             return ""
 
         env.globals['include_file'] = include_file
+        env.globals['include_raw'] = include_raw
+
         output_path = Path(output.html).resolve()
 
         template = env.get_template("report-template.html")
-        result = template.render(
-            input=input,
-            traces=Path(input.traces_dir).glob("*.html"),
-        )
+        try:
+            result = template.render(
+                input=input,
+                traces=Path(input.traces_dir).glob("*.svg"),
+            )
+        except Exception as err:
+            print(f"could not render template: {err}")
+
 
         with open(output_path, 'w') as f:
             print(f"Writing result to {output_path}")
