@@ -52,21 +52,22 @@ def arviz_output(
     df = pd.read_csv(trace_log, sep="\t", comment="#").rename(columns={'Sample':'draw'})
     burnin_df = df.truncate(after=burnin*len(df))
     posterior_df = df.truncate(before=burnin*len(df))
+    figsize=[14,14]
 
     posterior_df["chain"] = 0
     posterior_df = posterior_df.set_index(["chain", "draw"])
 
     xdata = xr.Dataset.from_dataframe(posterior_df)
     dataset = az.InferenceData(posterior=xdata)
-    az.plot_posterior(dataset)
+    az.plot_posterior(dataset, figsize=figsize, textsize=10)
 
-    plt.savefig(posterior_svg, dpi=100)
+    plt.savefig(posterior_svg)
 
     summary = az.summary(dataset)
     pandas_to_bootstrap(summary, summary_html)
 
-    az.plot_pair(dataset, kind='kde')
-    plt.savefig(pairplot_svg, dpi=100)
+    az.plot_pair(dataset, kind='kde', figsize=figsize, textsize=8)
+    plt.savefig(pairplot_svg)
 
 
 if __name__ == "__main__":

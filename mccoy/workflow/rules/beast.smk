@@ -133,3 +133,34 @@ rule arviz:
         """
         python {SCRIPT_DIR}/arviz_output.py {input} {output.summary_html} {output.posterior_svg} {output.pairplot_svg}
         """
+
+
+rule max_clade_credibility_tree:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.treelog, id=config['id']),
+    output:
+        "results/beast/{id}-maxcladecredibility.treefile",
+    conda:
+        "../envs/beast.yml"
+    shell:
+        """
+        treeannotator -heights mean {input} {output}
+        """
+
+
+rule max_clade_credibility_tree_render:
+    """
+    Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.
+    """
+    input:
+        expand(rules.max_clade_credibility_tree.output, id=config['id']),
+    output:
+        svg="results/beast/{id}-maxcladecredibility.svg",
+        html="results/beast/{id}-maxcladecredibility.html",
+    conda:
+        "../envs/toytree.yml"
+    shell:
+        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"

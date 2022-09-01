@@ -8,4 +8,5 @@ dependencies:
     - arviz
     - pandas
     - typer
+    - bokeh
 

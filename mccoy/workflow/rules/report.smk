@@ -20,6 +20,7 @@ rule report:
         arviz_summary=rules.arviz.output.summary_html,
         arviz_posterior_svg=rules.arviz.output.posterior_svg,
         arviz_pairplot_svg=rules.arviz.output.pairplot_svg,
+        max_clade_credibility_tree=rules.max_clade_credibility_tree.output,
     output:
         html="{id}-report.html"
     run:
