@@ -2,6 +2,28 @@ from pathlib import Path
 import jinja2
 import typer
 from jinja2.utils import markupsafe
+import yaml
+from pathlib import Path
+
+rule dag_dot:
+    output:
+        "{id}-dag.dot"
+    run:
+        dot_string = workflow.persistence.dag.rule_dot()
+        Path(output[0]).write_text(dot_string)
+
+
+rule dag_svg:
+    input: rules.dag_dot.output
+    output:
+        "{id}-dag.svg"
+    conda:
+        "../envs/graphviz.yml"
+    shell:
+        """
+        dot -Tsvg {input} > {output}
+        """
+
 
 rule report:
     input:
@@ -21,6 +43,7 @@ rule report:
         arviz_posterior_svg=rules.arviz.output.posterior_svg,
         arviz_pairplot_svg=rules.arviz.output.pairplot_svg,
         max_clade_credibility_tree_svg=rules.max_clade_credibility_tree_render.output.svg,
+        dynamic_beast_xml=rules.dynamicbeast.output,
     output:
         html="{id}-report.html"
     run:
@@ -30,19 +53,23 @@ rule report:
             loader=loader,
             autoescape=jinja2.select_autoescape()
         )
-        def include_file(name):
-            print('include', name)
+        def include_file_unsafe(name):
             if name:
-                return markupsafe.Markup(Path(str(name)).read_text())
+                return Path(str(name)).read_text()
+            return ""
+
+        def include_file(name):
+            if name:
+                return markupsafe.Markup(include_file_unsafe(name))
             return ""
 
         def include_raw(name):
-            print('include raw', name)
             if name:
                 file = report_dir/name
                 return markupsafe.Markup(file.read_text())
             return ""
 
+        env.globals['include_file_unsafe'] = include_file_unsafe
         env.globals['include_file'] = include_file
         env.globals['include_raw'] = include_raw
 
@@ -53,6 +80,8 @@ rule report:
             result = template.render(
                 input=input,
                 traces=Path(input.traces_dir).glob("*.svg"),
+                config=config,
+                config_yaml=yaml.dump(config),
             )
         except Exception as err:
             print(f"could not render template: {err}")
