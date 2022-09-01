@@ -111,7 +111,7 @@ rule plot_traces:
     input:
         expand(rules.beast.output.tracelog, id=config['id']),
     output:
-        directory("results/traces/")
+        directory("results/traces/"),
     conda:
         "../envs/plot_traces.yml"
     shell:

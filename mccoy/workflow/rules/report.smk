@@ -5,18 +5,20 @@ from jinja2.utils import markupsafe
 import yaml
 from pathlib import Path
 
+
 rule dag_dot:
     output:
-        "{id}-dag.dot"
+        "{id}-dag.dot",
     run:
         dot_string = workflow.persistence.dag.rule_dot()
         Path(output[0]).write_text(dot_string)
 
 
 rule dag_svg:
-    input: rules.dag_dot.output
+    input:
+        rules.dag_dot.output,
     output:
-        "{id}-dag.svg"
+        "{id}-dag.svg",
     conda:
         "../envs/graphviz.yml"
     shell:
@@ -45,29 +47,31 @@ rule report:
         max_clade_credibility_tree_svg=rules.max_clade_credibility_tree_render.output.svg,
         dynamic_beast_xml=rules.dynamicbeast.output,
     output:
-        html="{id}-report.html"
+        html="{id}-report.html",
     run:
-        report_dir = SNAKE_DIR/"report"
+        report_dir = SNAKE_DIR / "report"
         loader = jinja2.FileSystemLoader(report_dir)
-        env = jinja2.Environment(
-            loader=loader,
-            autoescape=jinja2.select_autoescape()
-        )
+        env = jinja2.Environment(loader=loader, autoescape=jinja2.select_autoescape())
+
+
         def include_file_unsafe(name):
             if name:
                 return Path(str(name)).read_text()
             return ""
+
 
         def include_file(name):
             if name:
                 return markupsafe.Markup(include_file_unsafe(name))
             return ""
 
+
         def include_raw(name):
             if name:
-                file = report_dir/name
+                file = report_dir / name
                 return markupsafe.Markup(file.read_text())
             return ""
+
 
         env.globals['include_file_unsafe'] = include_file_unsafe
         env.globals['include_file'] = include_file
@@ -89,4 +93,4 @@ rule report:
 
         with open(output_path, 'w') as f:
             print(f"Writing result to {output_path}")
-            f.write(result)        
+            f.write(result)

@@ -1,11 +1,12 @@
-from pathlib import Path
-import pandas as pd
-import typer
 import re
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
+from pathlib import Path
+
 import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import typer
+from plotly.subplots import make_subplots
 
 
 def format_fig(fig):
@@ -43,18 +44,17 @@ def pairwise_identity_histogram(
                 values.append(value)
         except:
             print(f"cannot interpret line: {line}")
-    
-    fig = px.histogram(values, labels={'value':"Pairwise identity"})
+
+    fig = px.histogram(values, labels={'value': "Pairwise identity"})
     format_fig(fig)
     fig.update_layout(
         showlegend=False,
         yaxis_title="Number of pairs",
         xaxis_title="Pairwise identity",
-        xaxis_tickformat = '.%',
+        xaxis_tickformat='.%',
     )
     fig.write_image(svg)
     fig.write_html(html)
-
 
 
 if __name__ == "__main__":

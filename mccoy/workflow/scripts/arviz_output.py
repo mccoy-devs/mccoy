@@ -1,21 +1,23 @@
-from pathlib import Path
-import pandas as pd
-import typer
 import re
-import xarray as xr
+from pathlib import Path
+
 import arviz as az
 import matplotlib.pyplot as plt
+import pandas as pd
+import typer
+import xarray as xr
 
 
-def camel_to_title_case(column:str):
-    """ 
+def camel_to_title_case(column: str):
+    """
     Transforms camel case to title case with space delimited.
-    
-    Regex from https://stackoverflow.com/a/9283563 
+
+    Regex from https://stackoverflow.com/a/9283563
     """
     return re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', column).title()
 
-def pandas_to_bootstrap(df, output:Path = None):
+
+def pandas_to_bootstrap(df, output: Path = None):
     """
     Adapted from https://stackoverflow.com/a/62153724
     """
@@ -42,17 +44,18 @@ def pandas_to_bootstrap(df, output:Path = None):
 
     return html
 
+
 def arviz_output(
     trace_log: Path = typer.Argument(..., help="The path to the trace log from beast."),
     summary_html: Path = typer.Argument(...),
     posterior_svg: Path = typer.Argument(...),
     pairplot_svg: Path = typer.Argument(...),
-    burnin:float = 0.1
+    burnin: float = 0.1,
 ):
-    df = pd.read_csv(trace_log, sep="\t", comment="#").rename(columns={'Sample':'draw'})
-    burnin_df = df.truncate(after=burnin*len(df))
-    posterior_df = df.truncate(before=burnin*len(df))
-    figsize=[14,14]
+    df = pd.read_csv(trace_log, sep="\t", comment="#").rename(columns={'Sample': 'draw'})
+    burnin_df = df.truncate(after=burnin * len(df))
+    posterior_df = df.truncate(before=burnin * len(df))
+    figsize = [14, 14]
 
     posterior_df["chain"] = 0
     posterior_df = posterior_df.set_index(["chain", "draw"])

@@ -36,6 +36,7 @@ rule align:
             | seqkit grep -rvip "^$REFNAME" > {output} 2> {log}
         """
 
+
 rule alignment_stats:
     input:
         alignment=rules.align.output,
@@ -75,6 +76,3 @@ rule pairwise_identity_histogram:
         """
         python {SCRIPT_DIR}/pairwise_identity_histogram.py {input} {output.svg} {output.html}
         """
-
-
-    
