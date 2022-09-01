@@ -90,24 +90,6 @@ def create(
     create_project(project, reference, template, copy_workflow=copy_workflow)
 
 
-<<<<<<< HEAD
-@app.command()
-def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_okay=False)):
-    """
-    Download example resources.
-    """
-    import pkg_resources
-    brian = pooch.create(
-        path=target, base_url="https://raw.githubusercontent.com/smutch/mccoy/main/mccoy/resources/", registry=None
-    )
-    registry_file = resources_path("mccoy", "resources_registry.txt")
-    brian.load_registry(registry_file)
-    for resource in brian.registry:
-        brian.fetch(resource, progressbar=True)
-
-
-=======
->>>>>>> main
 def _print_snakemake_help(value: bool):
     if value:
         snakemake.main("-h")
