@@ -17,6 +17,9 @@ rule report:
         relative_composition_variability=rules.alignment_stats.output.relative_composition_variability,
         pairwise_identity=rules.alignment_stats.output.pairwise_identity,
         pairwise_identity_histogram=rules.pairwise_identity_histogram.output.html,
+        arviz_summary=rules.arviz.output.summary_html,
+        arviz_posterior_svg=rules.arviz.output.posterior_svg,
+        arviz_pairplot_svg=rules.arviz.output.pairplot_svg,
     output:
         html="{id}-report.html"
     run:

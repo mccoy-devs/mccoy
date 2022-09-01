@@ -1,0 +1,11 @@
+name: arviz
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - arviz
+    - pandas
+    - typer
+

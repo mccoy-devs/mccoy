@@ -115,3 +115,21 @@ rule plot_traces:
         """
         python {SCRIPT_DIR}/plot_traces.py {input} {output}
         """
+
+
+rule arviz:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.tracelog, id=config['id']),
+    output:
+        summary_html="results/beast/{id}-summary.html",
+        posterior_svg="results/beast/{id}-posterior.svg",
+        pairplot_svg="results/beast/{id}-pairplot.svg",
+    conda:
+        "../envs/arviz.yml"
+    shell:
+        """
+        python {SCRIPT_DIR}/arviz_output.py {input} {output.summary_html} {output.posterior_svg} {output.pairplot_svg}
+        """
