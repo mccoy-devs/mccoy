@@ -12,7 +12,7 @@ nox.options.sessions = ["test"]
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
     session.install("pytest", "typer", "DendroPy>=4.5.2", ".")
-    session.run("pytest", "-s")
+    session.run("pytest", "-s", "-x")
 
 
 @session
@@ -52,14 +52,28 @@ def style(session):
 
 @session
 def docs(session):
-    session.install("sphinx", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton", ".")
-    session.run("sphinx-build", "docs", "docs/_build/html")
+    session.install(
+        "sphinx",
+        "sphinx-immaterial",
+        "sphinxcontrib-mermaid",
+        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        ".",
+    )
+    with session.chdir("docs"):
+        session.run("sphinx-build", ".", "./_build/html")
 
 
 @session
 def docs_github(session):
-    session.install("sphinx", "sphinx-rtd-theme", "myst-parser", "sphinx-copybutton", ".")
-    gh_pages = Path("gh-pages")
-    gh_pages.mkdir()
-    (gh_pages / ".nojekll").touch()
-    session.run("sphinx-build", "-b", "html", "docs", "gh-pages")
+    session.install(
+        "sphinx",
+        "sphinx-immaterial",
+        "sphinxcontrib-mermaid",
+        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        ".",
+    )
+    with session.chdir("docs"):
+        gh_pages = Path("gh-pages")
+        gh_pages.mkdir()
+        (gh_pages / ".nojekll").touch()
+        session.run("sphinx-build", "-b", "html", ".", "gh-pages")

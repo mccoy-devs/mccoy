@@ -34,14 +34,17 @@ onstart:
     for path in INPUT_DATA:
         print(f"- {path}")
     print("Workflow paths:")
-    print(f"\tsnakefile ➡  {workflow.snakefile}")
-    print(f"\tworking directory ➡  {workflow.basedir}")
+    print(f"\t{'snakefile':20s} ➡  {workflow.snakefile}")
+    print(f"\t{'working directory':20s} ➡  {workflow.basedir}")
 
     print("Environment:")
     shell = lambda cmd: subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode().rstrip()
     print(f"\t{shell('python --version'):20s} ➡  {shell('which python')}")
-    print(f"\t{shell('conda --version'):20s} ➡  {shell('which conda')}")
     print(f"\t{' '.join(('snakemake', shell('snakemake --version'))):20s} ➡  {shell('which snakemake')}")
+    print("Conda:")
+    print(f"\t{'frontend':20s} ➡  {workflow.conda_frontend}")
+    print(f"\t{'prefix':20s} ➡  {workflow.conda_prefix}")
+    print(f"\t{'base path':20s} ➡  {workflow.conda_base_path}")
 
 
 rule all:

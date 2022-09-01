@@ -1,13 +1,12 @@
+import re
 import shutil
 import subprocess
 import sys
 from glob import glob
-from importlib.resources import path as resources_path
 from itertools import chain
 from pathlib import Path
 from typing import List, Optional
 
-import pooch
 import snakemake
 import typer
 
@@ -91,6 +90,7 @@ def create(
     create_project(project, reference, template, copy_workflow=copy_workflow)
 
 
+<<<<<<< HEAD
 @app.command()
 def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_okay=False)):
     """
@@ -106,6 +106,8 @@ def download_resources(target: Path = typer.Argument(..., dir_okay=True, file_ok
         brian.fetch(resource, progressbar=True)
 
 
+=======
+>>>>>>> main
 def _print_snakemake_help(value: bool):
     if value:
         snakemake.main("-h")
@@ -132,6 +134,7 @@ def run(
         help="Conda environment prefix. By default set to f\"{project}/.conda\"",
     ),
     no_envmodules: Optional[bool] = typer.Option(False, help="Do not add the --use-envmodules flag to Snakemake call"),
+    hpc: bool = typer.Option(False, help="Run on an HPC cluster (with the SLURM scheduler)?"),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
     ),
@@ -149,7 +152,7 @@ def run(
         last_run_id = run_id - 1
         inherit = project / f"runs/run_{last_run_id}"
     if inherit:
-        inherit_data = list(inherit.glob("data/*-combined.fasta"))
+        inherit_data = list(inherit.glob("data/combined/*.fasta"))
         data = inherit_data + data
         # copy state file
         try:
@@ -199,6 +202,9 @@ def run(
 
     if not no_envmodules:
         args.append("--use-envmodules")
+
+    if hpc and all(('profile' not in re.split(r' |=', arg)[0] for arg in ctx.args)):
+        args.append(f"--profile={Path(__file__).parent.resolve()/'profiles/slurm'}")
 
     if verbose:
         args.insert(0, "--verbose")

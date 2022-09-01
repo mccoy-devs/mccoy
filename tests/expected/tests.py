@@ -45,4 +45,5 @@ def test_root_to_tip(tree: Tree, extra):
     Test the tree for temporal signal with a root-to-tip regression.
     https://phytest-devs.github.io/phytest/reference.html#phytest.bio.tree.Tree.assert_root_to_tip
     """
-    tree.assert_root_to_tip(min_r_squared=0, extra=extra)
+    dates = tree.parse_tip_dates(patterns=r'\d{4}/\d{2}/\d{2}')
+    tree.assert_root_to_tip(dates=dates, min_r_squared=0, extra=extra)
