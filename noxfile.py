@@ -12,7 +12,7 @@ nox.options.sessions = ["test"]
 def test(session):
     session.env["IQTREE_SEED"] = "28379373"
     session.install("pytest", "typer", "DendroPy>=4.5.2", ".")
-    session.run("pytest", "-s")
+    session.run("pytest", "-s", "-x")
 
 
 @session
