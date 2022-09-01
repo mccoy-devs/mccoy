@@ -151,12 +151,26 @@ rule max_clade_credibility_tree:
         """
 
 
+rule max_clade_credibility_tree_newick:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.max_clade_credibility_tree.output, id=config['id']),
+    output:
+        "results/beast/{id}-maxcladecredibility.nwk",
+    conda:
+        "../envs/dendropy.yml"
+    shell:
+        "python {SCRIPT_DIR}/tree_converter.py {input} {output} --node-label posterior"
+
+
 rule max_clade_credibility_tree_render:
     """
     Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.
     """
     input:
-        expand(rules.max_clade_credibility_tree.output, id=config['id']),
+        expand(rules.max_clade_credibility_tree_newick.output, id=config['id']),
     output:
         svg="results/beast/{id}-maxcladecredibility.svg",
         html="results/beast/{id}-maxcladecredibility.html",

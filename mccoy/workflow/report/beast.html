@@ -6,6 +6,7 @@
       <button class="nav-link" id="posterior-tab" data-bs-toggle="tab" data-bs-target="#posterior" type="button" role="tab" aria-controls="posterior" aria-selected="false">Posterior</button>      
       <button class="nav-link" id="traces-tab" data-bs-toggle="tab" data-bs-target="#traces" type="button" role="tab" aria-controls="traces" aria-selected="false">Traces</button>
       <button class="nav-link" id="pairplots-tab" data-bs-toggle="tab" data-bs-target="#pairplots" type="button" role="tab" aria-controls="pairplots" aria-selected="false">Pair Plots</button>
+      <button class="nav-link" id="maxclade-tab" data-bs-toggle="tab" data-bs-target="#maxclade" type="button" role="tab" aria-controls="maxclade" aria-selected="false">Max Clade Credibility Tree</button>
       
     </div>
   </nav>
@@ -24,5 +25,10 @@
     <div class="tab-pane fade" id="pairplots" role="tabpanel" aria-labelledby="pairplots-tab">
       {{ include_file(input.arviz_pairplot_svg) }}
     </div>
+    <div class="tab-pane fade" id="maxclade" role="tabpanel" aria-labelledby="maxclade-tab">
+      {{ include_file(input.max_clade_credibility_tree_svg) }}
+    </div>
+
+    
   </div>
   
