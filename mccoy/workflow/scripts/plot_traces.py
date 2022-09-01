@@ -140,8 +140,6 @@ def plot_traces(
             col=3,
         )
 
-
-        # fig = px.scatter(posterior_df, x="Sample", y=variable, marginal_y="histogram")
         format_fig(fig)
         fig.data[0].update(mode='markers+lines')
         fig.update_layout(

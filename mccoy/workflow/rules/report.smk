@@ -12,6 +12,11 @@ rule report:
         consensus_mltree_svg=rules.render_consensus_mltree.output.svg,
         mcmc_output=expand(rules.beast.output, id=config['id']),
         traces_dir=rules.plot_traces.output[0],
+        alignment_summary=rules.alignment_stats.output.summary,
+        gc_content=rules.alignment_stats.output.gc_content,
+        relative_composition_variability=rules.alignment_stats.output.relative_composition_variability,
+        pairwise_identity=rules.alignment_stats.output.pairwise_identity,
+        pairwise_identity_histogram=rules.pairwise_identity_histogram.output.html,
     output:
         html="{id}-report.html"
     run:
