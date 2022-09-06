@@ -2,6 +2,6 @@ channels:
   - bioconda
   - conda-forge
 dependencies:
-  - beast2==2.6.3
+  - beast2==2.6.2
   - pip:
     - online-beast
