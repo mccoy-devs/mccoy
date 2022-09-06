@@ -3,9 +3,9 @@ Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
 Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
 
 Host:    9350L-206723-M.local (SSE4.2, 64 GB RAM)
-Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -seed 847202098 -ntmax 4
-Seed:    847202098 (Using SPRNG - Scalable Parallel Random Number Generator)
-Time:    Fri Sep  2 14:49:14 2022
+Command: iqtree2 -s results/aligned/expected-1.fasta -st DNA -pre results/tree/expected-1.fasta -nt AUTO -m HKY+G -bb 1000 -ntmax 1
+Seed:    78574 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Aug 25 11:05:24 2022
 Kernel:  SSE2 - auto-detect threads (10 CPU cores detected)
 
 Reading alignment file results/aligned/expected-1.fasta ... Fasta format detected
@@ -185,203 +185,199 @@ Alignment was printed to results/tree/expected-1.fasta.uniqueseq.phy
 
 For your convenience alignment with unique sequences printed to results/tree/expected-1.fasta.uniqueseq.phy
 Creating fast initial parsimony tree by random order stepwise addition...
-0.108 seconds, parsimony score: 215 (based on 186 sites)
-Generating 1000 samples for ultrafast bootstrap (seed: 847202098)...
+0.014 seconds, parsimony score: 215 (based on 186 sites)
+Generating 1000 samples for ultrafast bootstrap (seed: 78574)...
 
 NOTE: 3 MB RAM (0 GB) is required!
-Measuring multi-threading efficiency up to 4 CPU cores
+Measuring multi-threading efficiency up to 1 CPU cores
 Increase to 10 rounds for branch lengths
-138 trees examined
-Threads: 1 / Time: 4.004 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -7732
-Threads: 2 / Time: 2.680 sec / Speedup: 1.494 / Efficiency: 75% / LogL: -7732
-Threads: 3 / Time: 2.205 sec / Speedup: 1.816 / Efficiency: 61% / LogL: -7732
-Threads: 4 / Time: 4.772 sec / Speedup: 0.839 / Efficiency: 21% / LogL: -7732
-BEST NUMBER OF THREADS: 3
+37 trees examined
+Threads: 1 / Time: 1.033 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -7956
+BEST NUMBER OF THREADS: 1
 
 Estimate model parameters (epsilon = 0.100)
-1. Initial log-likelihood: -4182.283
-2. Current log-likelihood: -4113.126
-3. Current log-likelihood: -4113.021
-4. Current log-likelihood: -4112.919
-5. Current log-likelihood: -4112.817
-6. Current log-likelihood: -4112.714
-7. Current log-likelihood: -4112.610
-8. Current log-likelihood: -4112.506
-9. Current log-likelihood: -4112.401
-10. Current log-likelihood: -4112.296
-11. Current log-likelihood: -4112.190
-12. Current log-likelihood: -4112.084
-13. Current log-likelihood: -4111.977
-14. Current log-likelihood: -4111.869
-15. Current log-likelihood: -4111.761
-16. Current log-likelihood: -4111.652
-17. Current log-likelihood: -4111.542
-18. Current log-likelihood: -4111.431
-19. Current log-likelihood: -4111.320
-20. Current log-likelihood: -4111.209
-21. Current log-likelihood: -4111.096
-22. Current log-likelihood: -4110.983
-23. Current log-likelihood: -4110.870
-24. Current log-likelihood: -4110.755
-25. Current log-likelihood: -4110.640
-26. Current log-likelihood: -4110.524
-27. Current log-likelihood: -4110.407
-28. Current log-likelihood: -4110.290
-29. Current log-likelihood: -4110.172
-30. Current log-likelihood: -4110.053
-31. Current log-likelihood: -4109.933
-32. Current log-likelihood: -4109.813
-33. Current log-likelihood: -4109.691
-34. Current log-likelihood: -4109.569
-35. Current log-likelihood: -4109.446
-36. Current log-likelihood: -4109.323
-37. Current log-likelihood: -4109.198
-38. Current log-likelihood: -4109.073
-39. Current log-likelihood: -4108.946
-40. Current log-likelihood: -4108.819
-41. Current log-likelihood: -4108.691
-42. Current log-likelihood: -4108.562
-43. Current log-likelihood: -4108.432
-44. Current log-likelihood: -4108.302
-45. Current log-likelihood: -4108.170
-46. Current log-likelihood: -4108.037
-47. Current log-likelihood: -4107.904
-48. Current log-likelihood: -4107.769
-49. Current log-likelihood: -4107.633
-50. Current log-likelihood: -4107.497
-51. Current log-likelihood: -4107.359
-52. Current log-likelihood: -4107.221
-53. Current log-likelihood: -4107.081
-54. Current log-likelihood: -4106.940
-55. Current log-likelihood: -4106.798
-56. Current log-likelihood: -4106.656
-57. Current log-likelihood: -4106.512
-58. Current log-likelihood: -4106.366
-59. Current log-likelihood: -4106.220
-60. Current log-likelihood: -4106.073
-61. Current log-likelihood: -4105.924
-62. Current log-likelihood: -4105.774
-63. Current log-likelihood: -4105.623
-64. Current log-likelihood: -4105.471
-65. Current log-likelihood: -4105.317
-66. Current log-likelihood: -4105.162
-67. Current log-likelihood: -4105.006
-68. Current log-likelihood: -4104.849
-69. Current log-likelihood: -4104.690
-70. Current log-likelihood: -4104.529
-71. Current log-likelihood: -4104.368
-72. Current log-likelihood: -4104.205
-73. Current log-likelihood: -4104.040
-74. Current log-likelihood: -4103.874
-75. Current log-likelihood: -4103.707
-76. Current log-likelihood: -4103.538
-77. Current log-likelihood: -4103.367
-78. Current log-likelihood: -4103.195
-79. Current log-likelihood: -4103.022
-80. Current log-likelihood: -4102.846
-81. Current log-likelihood: -4102.669
-82. Current log-likelihood: -4102.491
-83. Current log-likelihood: -4102.310
-84. Current log-likelihood: -4102.128
-85. Current log-likelihood: -4101.944
-86. Current log-likelihood: -4101.758
-87. Current log-likelihood: -4101.571
-88. Current log-likelihood: -4101.381
-89. Current log-likelihood: -4101.190
-90. Current log-likelihood: -4100.996
-91. Current log-likelihood: -4100.801
-92. Current log-likelihood: -4100.603
-93. Current log-likelihood: -4100.403
-94. Current log-likelihood: -4100.202
-95. Current log-likelihood: -4099.998
-96. Current log-likelihood: -4099.791
-97. Current log-likelihood: -4099.583
-98. Current log-likelihood: -4099.372
-99. Current log-likelihood: -4099.159
-Optimal log-likelihood: -4099.159
-Rate parameters:  A-C: 1.00000  A-G: 63.15854  A-T: 1.00000  C-G: 1.00000  C-T: 63.15854  G-T: 1.00000
+1. Initial log-likelihood: -4185.246
+2. Current log-likelihood: -4116.004
+3. Current log-likelihood: -4115.896
+4. Current log-likelihood: -4115.794
+5. Current log-likelihood: -4115.692
+6. Current log-likelihood: -4115.589
+7. Current log-likelihood: -4115.485
+8. Current log-likelihood: -4115.381
+9. Current log-likelihood: -4115.277
+10. Current log-likelihood: -4115.171
+11. Current log-likelihood: -4115.065
+12. Current log-likelihood: -4114.959
+13. Current log-likelihood: -4114.852
+14. Current log-likelihood: -4114.744
+15. Current log-likelihood: -4114.636
+16. Current log-likelihood: -4114.527
+17. Current log-likelihood: -4114.417
+18. Current log-likelihood: -4114.307
+19. Current log-likelihood: -4114.196
+20. Current log-likelihood: -4114.084
+21. Current log-likelihood: -4113.972
+22. Current log-likelihood: -4113.859
+23. Current log-likelihood: -4113.745
+24. Current log-likelihood: -4113.630
+25. Current log-likelihood: -4113.515
+26. Current log-likelihood: -4113.399
+27. Current log-likelihood: -4113.283
+28. Current log-likelihood: -4113.165
+29. Current log-likelihood: -4113.047
+30. Current log-likelihood: -4112.928
+31. Current log-likelihood: -4112.809
+32. Current log-likelihood: -4112.688
+33. Current log-likelihood: -4112.567
+34. Current log-likelihood: -4112.445
+35. Current log-likelihood: -4112.322
+36. Current log-likelihood: -4112.198
+37. Current log-likelihood: -4112.074
+38. Current log-likelihood: -4111.948
+39. Current log-likelihood: -4111.822
+40. Current log-likelihood: -4111.695
+41. Current log-likelihood: -4111.567
+42. Current log-likelihood: -4111.438
+43. Current log-likelihood: -4111.308
+44. Current log-likelihood: -4111.177
+45. Current log-likelihood: -4111.046
+46. Current log-likelihood: -4110.913
+47. Current log-likelihood: -4110.779
+48. Current log-likelihood: -4110.645
+49. Current log-likelihood: -4110.509
+50. Current log-likelihood: -4110.373
+51. Current log-likelihood: -4110.235
+52. Current log-likelihood: -4110.097
+53. Current log-likelihood: -4109.957
+54. Current log-likelihood: -4109.816
+55. Current log-likelihood: -4109.674
+56. Current log-likelihood: -4109.532
+57. Current log-likelihood: -4109.387
+58. Current log-likelihood: -4109.242
+59. Current log-likelihood: -4109.096
+60. Current log-likelihood: -4108.949
+61. Current log-likelihood: -4108.800
+62. Current log-likelihood: -4108.650
+63. Current log-likelihood: -4108.499
+64. Current log-likelihood: -4108.347
+65. Current log-likelihood: -4108.193
+66. Current log-likelihood: -4108.038
+67. Current log-likelihood: -4107.882
+68. Current log-likelihood: -4107.725
+69. Current log-likelihood: -4107.566
+70. Current log-likelihood: -4107.406
+71. Current log-likelihood: -4107.244
+72. Current log-likelihood: -4107.081
+73. Current log-likelihood: -4106.917
+74. Current log-likelihood: -4106.751
+75. Current log-likelihood: -4106.583
+76. Current log-likelihood: -4106.414
+77. Current log-likelihood: -4106.244
+78. Current log-likelihood: -4106.072
+79. Current log-likelihood: -4105.898
+80. Current log-likelihood: -4105.723
+81. Current log-likelihood: -4105.546
+82. Current log-likelihood: -4105.367
+83. Current log-likelihood: -4105.187
+84. Current log-likelihood: -4105.005
+85. Current log-likelihood: -4104.821
+86. Current log-likelihood: -4104.635
+87. Current log-likelihood: -4104.448
+88. Current log-likelihood: -4104.258
+89. Current log-likelihood: -4104.067
+90. Current log-likelihood: -4103.873
+91. Current log-likelihood: -4103.678
+92. Current log-likelihood: -4103.480
+93. Current log-likelihood: -4103.281
+94. Current log-likelihood: -4103.079
+95. Current log-likelihood: -4102.875
+96. Current log-likelihood: -4102.669
+97. Current log-likelihood: -4102.460
+98. Current log-likelihood: -4102.250
+99. Current log-likelihood: -4102.036
+Optimal log-likelihood: -4102.036
+Rate parameters:  A-C: 1.00000  A-G: 63.16173  A-T: 1.00000  C-G: 1.00000  C-T: 63.16173  G-T: 1.00000
 Base frequencies:  A: 0.341  C: 0.199  G: 0.218  T: 0.242
-Gamma shape alpha: 0.421
-Parameters optimization took 99 rounds (0.775 sec)
+Gamma shape alpha: 0.414
+Parameters optimization took 99 rounds (1.830 sec)
 Computing ML distances based on estimated model parameters...
-Computing ML distances took 0.034902 sec (of wall-clock time) 0.104381 sec(of CPU time)
-Computing RapidNJ tree took 0.001577 sec (of wall-clock time) 0.004066 sec (of CPU time)
-Log-likelihood of RapidNJ tree: -4103.948
+Computing ML distances took 0.099822 sec (of wall-clock time) 0.098903 sec(of CPU time)
+Computing RapidNJ tree took 0.001311 sec (of wall-clock time) 0.002204 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -4103.954
 --------------------------------------------------------------------
 |             INITIALIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Generating 98 parsimony trees... 0.648 second
-Computing log-likelihood of 98 initial trees ... 0.501 seconds
-Current best score: -4096.764
+Generating 98 parsimony trees... 1.359 second
+Computing log-likelihood of 98 initial trees ... 0.462 seconds
+Current best score: -4096.767
 
 Do NNI search on 20 best initial trees
 Estimate model parameters (epsilon = 0.100)
-BETTER TREE FOUND at iteration 1: -4063.359
-BETTER TREE FOUND at iteration 10: -4063.359
-Iteration 10 / LogL: -4063.359 / Time: 0h:0m:17s
-BETTER TREE FOUND at iteration 16: -4063.359
-Iteration 20 / LogL: -4065.764 / Time: 0h:0m:19s
+BETTER TREE FOUND at iteration 1: -4063.360
+BETTER TREE FOUND at iteration 5: -4063.360
+Iteration 10 / LogL: -4063.360 / Time: 0h:0m:6s
+Iteration 20 / LogL: -4065.764 / Time: 0h:0m:7s
 Finish initializing candidate tree set (20)
-Current best tree score: -4063.359 / CPU time: 4.503
+Current best tree score: -4063.360 / CPU time: 4.741
 Number of iterations: 20
 --------------------------------------------------------------------
 |               OPTIMIZING CANDIDATE TREE SET                      |
 --------------------------------------------------------------------
-Iteration 30 / LogL: -4063.403 / Time: 0h:0m:22s (0h:1m:5s left)
-Iteration 40 / LogL: -4090.150 / Time: 0h:0m:23s (0h:0m:45s left)
-Iteration 50 / LogL: -4068.991 / Time: 0h:0m:25s (0h:0m:33s left)
-Log-likelihood cutoff on original alignment: -4103.973
-Iteration 60 / LogL: -4069.368 / Time: 0h:0m:27s (0h:0m:25s left)
-Iteration 70 / LogL: -4068.781 / Time: 0h:0m:28s (0h:0m:19s left)
-Iteration 80 / LogL: -4063.410 / Time: 0h:0m:30s (0h:0m:13s left)
-Iteration 90 / LogL: -4087.518 / Time: 0h:0m:31s (0h:0m:9s left)
-Iteration 100 / LogL: -4063.423 / Time: 0h:0m:33s (0h:0m:5s left)
-Log-likelihood cutoff on original alignment: -4104.655
-NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.987
+Iteration 30 / LogL: -4063.407 / Time: 0h:0m:9s (0h:0m:24s left)
+Iteration 40 / LogL: -4063.417 / Time: 0h:0m:11s (0h:0m:18s left)
+Iteration 50 / LogL: -4063.409 / Time: 0h:0m:13s (0h:0m:14s left)
+Log-likelihood cutoff on original alignment: -4106.378
+Iteration 60 / LogL: -4063.414 / Time: 0h:0m:15s (0h:0m:11s left)
+Iteration 70 / LogL: -4069.447 / Time: 0h:0m:17s (0h:0m:8s left)
+Iteration 80 / LogL: -4063.385 / Time: 0h:0m:19s (0h:0m:6s left)
+Iteration 90 / LogL: -4072.532 / Time: 0h:0m:21s (0h:0m:3s left)
+Iteration 100 / LogL: -4063.413 / Time: 0h:0m:23s (0h:0m:1s left)
+Log-likelihood cutoff on original alignment: -4107.222
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.985
 NOTE: UFBoot does not converge, continue at least 100 more iterations
-Iteration 110 / LogL: -4063.396 / Time: 0h:0m:35s (0h:0m:29s left)
-Iteration 120 / LogL: -4073.380 / Time: 0h:0m:37s (0h:0m:25s left)
-Iteration 130 / LogL: -4063.404 / Time: 0h:0m:40s (0h:0m:21s left)
-Iteration 140 / LogL: -4063.394 / Time: 0h:0m:42s (0h:0m:18s left)
-Iteration 150 / LogL: -4066.946 / Time: 0h:0m:43s (0h:0m:14s left)
-Log-likelihood cutoff on original alignment: -4104.655
-Iteration 160 / LogL: -4063.415 / Time: 0h:0m:45s (0h:0m:11s left)
-Iteration 170 / LogL: -4069.155 / Time: 0h:0m:47s (0h:0m:8s left)
-Iteration 180 / LogL: -4068.577 / Time: 0h:0m:49s (0h:0m:5s left)
-Iteration 190 / LogL: -4063.419 / Time: 0h:0m:51s (0h:0m:2s left)
-Iteration 200 / LogL: -4078.249 / Time: 0h:0m:54s (0h:0m:0s left)
-Log-likelihood cutoff on original alignment: -4105.115
-NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.993
-TREE SEARCH COMPLETED AFTER 200 ITERATIONS / Time: 0h:0m:54s
+Iteration 110 / LogL: -4068.028 / Time: 0h:0m:25s (0h:0m:21s left)
+Iteration 120 / LogL: -4069.382 / Time: 0h:0m:27s (0h:0m:18s left)
+Iteration 130 / LogL: -4063.415 / Time: 0h:0m:29s (0h:0m:16s left)
+Iteration 140 / LogL: -4063.408 / Time: 0h:0m:31s (0h:0m:13s left)
+Iteration 150 / LogL: -4124.170 / Time: 0h:0m:33s (0h:0m:11s left)
+Log-likelihood cutoff on original alignment: -4108.012
+Iteration 160 / LogL: -4068.652 / Time: 0h:0m:36s (0h:0m:9s left)
+Iteration 170 / LogL: -4063.418 / Time: 0h:0m:38s (0h:0m:6s left)
+Iteration 180 / LogL: -4063.407 / Time: 0h:0m:41s (0h:0m:4s left)
+Iteration 190 / LogL: -4084.086 / Time: 0h:0m:43s (0h:0m:2s left)
+Iteration 200 / LogL: -4071.988 / Time: 0h:0m:45s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -4108.368
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.995
+TREE SEARCH COMPLETED AFTER 200 ITERATIONS / Time: 0h:0m:45s
 
 --------------------------------------------------------------------
 |                    FINALIZING TREE SEARCH                        |
 --------------------------------------------------------------------
 Performs final model parameters optimization
 Estimate model parameters (epsilon = 0.010)
-1. Initial log-likelihood: -4063.359
+1. Initial log-likelihood: -4063.360
 Optimal log-likelihood: -4063.359
-Rate parameters:  A-C: 1.00000  A-G: 10.08945  A-T: 1.00000  C-G: 1.00000  C-T: 10.08945  G-T: 1.00000
+Rate parameters:  A-C: 1.00000  A-G: 10.14132  A-T: 1.00000  C-G: 1.00000  C-T: 10.14132  G-T: 1.00000
 Base frequencies:  A: 0.341  C: 0.199  G: 0.218  T: 0.242
 Gamma shape alpha: 0.429
-Parameters optimization took 1 rounds (0.010 sec)
+Parameters optimization took 1 rounds (0.017 sec)
 BEST SCORE FOUND : -4063.359
 Creating bootstrap support values...
 Split supports printed to NEXUS file results/tree/expected-1.fasta.splits.nex
 Total tree length: 0.125
 
 Total number of iterations: 200
-CPU time used for tree search: 104.961 sec (0h:1m:44s)
-Wall-clock time used for tree search: 40.003 sec (0h:0m:40s)
-Total CPU time used: 140.436 sec (0h:2m:20s)
-Total wall-clock time used: 54.960 sec (0h:0m:54s)
+CPU time used for tree search: 42.684 sec (0h:0m:42s)
+Wall-clock time used for tree search: 42.739 sec (0h:0m:42s)
+Total CPU time used: 46.016 sec (0h:0m:46s)
+Total wall-clock time used: 46.093 sec (0h:0m:46s)
 
 Computing bootstrap consensus tree...
 Reading input file results/tree/expected-1.fasta.splits.nex...
-131 taxa and 3616 splits.
+131 taxa and 3676 splits.
 Consensus tree written to results/tree/expected-1.fasta.contree
 Reading input trees file results/tree/expected-1.fasta.contree
-Log-likelihood of consensus tree: -4063.775
+Log-likelihood of consensus tree: -4063.673
 
 Analysis results written to: 
   IQ-TREE report:                results/tree/expected-1.fasta.iqtree
@@ -393,4 +389,4 @@ Ultrafast bootstrap approximation results written to:
   Consensus tree:                results/tree/expected-1.fasta.contree
   Screen log file:               results/tree/expected-1.fasta.log
 
-Date and Time: Fri Sep  2 14:50:10 2022
+Date and Time: Thu Aug 25 11:06:10 2022
