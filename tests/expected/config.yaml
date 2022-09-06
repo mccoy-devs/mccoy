@@ -30,7 +30,8 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 
 beast:
   beast:
-     - "-beagle_GPU"
+     - "-beagle"
+     - "-seed 98202873"
   dynamic:
       - "ePopSize=0.3"
       - "Date.dateFormat=yyyy/MM/dd"
