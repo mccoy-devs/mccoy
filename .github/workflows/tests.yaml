@@ -79,7 +79,7 @@ jobs:
           key: beast_exts-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/beast*') }}-${{ env.CACHE_NUMBER }}
         env:
           # Increase this value to reset cache if the env files have not changed
-          CACHE_NUMBER: 1
+          CACHE_NUMBER: 3
 
       - name: Run nox
         # Run nox using the version of Python in `PATH`
