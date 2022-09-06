@@ -33,7 +33,6 @@ beast:
   beast:
      - "-beagle"
      - "-seed 98202873"
-     - "-sampleFromPrior='true'"
   dynamic:
       - "ePopSize=0.3"
       - "Date.dateFormat=yyyy/MM/dd"
