@@ -30,6 +30,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set up JDK 8  # to match beast2 conda recipe
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
