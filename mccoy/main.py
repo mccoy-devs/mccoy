@@ -115,7 +115,6 @@ def run(
         dir_okay=True,
         help="Conda environment prefix. By default set to f\"{project}/.conda\"",
     ),
-    no_envmodules: Optional[bool] = typer.Option(False, help="Do not add the --use-envmodules flag to Snakemake call"),
     hpc: bool = typer.Option(False, help="Run on an HPC cluster (with the SLURM scheduler)?"),
     help_snakemake: Optional[bool] = typer.Option(
         False, help="Print the snakemake help", is_eager=True, callback=_print_snakemake_help
@@ -181,9 +180,6 @@ def run(
         mamba_found = False
     if not mamba_found:
         args.append("--conda-frontend=conda")
-
-    if not no_envmodules:
-        args.append("--use-envmodules")
 
     if hpc and all(('profile' not in re.split(r' |=', arg)[0] for arg in ctx.args)):
         args.append(f"--profile={Path(__file__).parent.resolve()/'profiles/slurm'}")
