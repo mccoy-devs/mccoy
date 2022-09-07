@@ -2,15 +2,16 @@
 cluster: >-
   sbatch --time={resources.time}
   --mem={resources.mem}
-  -A punim1654
+  $(if [[ '{resources.account}' ]]; then echo '-A {resources.account}'; fi)
   $(if [[ '{resources.partition}' ]]; then echo '-p {resources.partition}'; fi)
   -N {resources.nodes}
   -n {resources.tasks_per_node}
   -c {threads}
   -o logs/{rule}-{wildcards}.out -e logs/{rule}-{wildcards}.err
-  -q {resources.qos}
+  $(if [[ '{resources.qos}' ]]; then echo '-q {resources.qos}'; fi)
   $(if [[ '{resources.gres}' ]]; then echo '--gres={resources.gres}'; fi)
 cluster-cancel: scancel $(echo $* | grep -Eo '[0-9]+')
 jobs: 50
-default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "tasks_per_node=1", "extra=''", "gres=''", "qos='normal'"]
+default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "tasks_per_node=1", "extra=''", "gres=''", "qos=''", "account=''"]
 use-conda: true
+use-envmodules: true
