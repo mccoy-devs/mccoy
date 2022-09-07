@@ -1,2 +1,2 @@
-beast --help  # Need to call beast once (even just to generate help text) to create support dirs
+beast -version  # Need to call beast once (even just to query the version) to create support dirs
 packagemanager -add feast
