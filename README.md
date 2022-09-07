@@ -1,7 +1,7 @@
 # Current workflow
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/smutch/mccoy/main.svg)](https://results.pre-commit.ci/latest/github/smutch/mccoy/main)
-[![docs](https://github.com/smutch/mccoy/actions/workflows/docs.yaml/badge.svg?event=push)](https://github.com/smutch/mccoy/actions/workflows/docs.yaml)
+[![docs](https://github.com/smutch/mccoy/actions/workflows/docs.yaml/badge.svg?event=push)](https://mccoy-devs.github.io/mccoy/)
 [![pypo](https://img.shields.io/pypi/v/mccoy.svg)](https://pypi.org/project/mccoy/)
 
 This will be updated as pieces are developed and modified.
