@@ -741,7 +741,9 @@ doesn’t actually contain the sequences in it.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bioconda</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beast2==2.6.2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beast2==2.6.3</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beagle-lib&lt;4</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">online-beast</span><span class="w"></span>
 </code></pre></div>
@@ -785,7 +787,7 @@ otherwise the output of the <a class="reference internal" href="#rule-dynamicbea
 </p></li>
 <li><p><strong>beast.dynamic</strong> – the dynamic variables used to populate the feast template.<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['ePopSize=0.3',</span> <span class="pre">'Date.dateFormat=yyyy/MM/dd',</span> <span class="pre">'Date.delimiter=_',</span> <span class="pre">'mutationRate=1.0',</span> <span class="pre">'mcmc.chainLength=10000',</span> <span class="pre">'treelog.logEvery=1000',</span> <span class="pre">'tracelog.logEvery=1000']</span></code></p>
 </p></li>
-<li><p><strong>beast.beast</strong> – Beast2 command line arguments to pass (beyond the params, statefile and input)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['-beagle',</span> <span class="pre">'-seed</span> <span class="pre">98202873']</span></code></p>
+<li><p><strong>beast.beast</strong> – Beast2 command line arguments to pass (beyond the params, statefile and input)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['-beagle_GPU',</span> <span class="pre">'-seed</span> <span class="pre">98202873']</span></code></p>
 </p></li>
 <li><p><strong>beast.threads</strong> – the number of cores to run with (both locally or when submitting to a cluster)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">6</span></code></p>
 </p></li>
@@ -808,7 +810,9 @@ please replace <code class="docutils literal notranslate"><span class="pre">-bea
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bioconda</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beast2==2.6.2</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beast2==2.6.3</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beagle-lib&lt;4</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">online-beast</span><span class="w"></span>
 </code></pre></div>
