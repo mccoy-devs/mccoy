@@ -66,25 +66,25 @@ jobs:
         run: echo "::set-output name=today::$(/bin/date -u '+%Y%m%d')"
         shell: bash
 
-      # - name: Set up cache for conda
-      #   uses: actions/cache@v2
-      #   id: cached-conda-envsdir
-      #   with:
-      #     path: tests/.conda
-      #     key: conda-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/*') }}-${{ env.CACHE_NUMBER }}
-      #   env:
-      #     # Increase this value to reset cache if the env files have not changed
-      #     CACHE_NUMBER: 1
+      - name: Set up cache for conda
+        uses: actions/cache@v2
+        id: cached-conda-envsdir
+        with:
+          path: tests/.conda
+          key: conda-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/*') }}-${{ env.CACHE_NUMBER }}
+        env:
+          # Increase this value to reset cache if the env files have not changed
+          CACHE_NUMBER: 1
 
-      # - name: Set up cache for beast extensions
-      #   uses: actions/cache@v2
-      #   id: cached-beast-extensions
-      #   with:
-      #     path: ~/.beast
-      #     key: beast_exts-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/beast*') }}-${{ env.CACHE_NUMBER }}
-      #   env:
-      #     # Increase this value to reset cache if the env files have not changed
-      #     CACHE_NUMBER: 1
+      - name: Set up cache for beast extensions
+        uses: actions/cache@v2
+        id: cached-beast-extensions
+        with:
+          path: ~/.beast
+          key: beast_exts-${{ runner.os }}--${{ runner.arch }}--${{ steps.get-date.outputs.today }}-${{ hashFiles('mccoy/workflow/envs/beast*') }}-${{ env.CACHE_NUMBER }}
+        env:
+          # Increase this value to reset cache if the env files have not changed
+          CACHE_NUMBER: 1
 
       - name: Run nox
         # Run nox using the version of Python in `PATH`
