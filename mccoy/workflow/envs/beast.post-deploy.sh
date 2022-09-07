@@ -1,4 +1,2 @@
-packagemanager -list \
-  | awk '{if($1 ~ /feast/){if($3 ~ /NA/){exit 1}}}' \
-  && echo "feast is already installed" \
-  || packagemanager -add feast
+beast -version  # Need to call beast once (even just to query the version) to create support dirs
+packagemanager -add feast

@@ -19,6 +19,7 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
     - "-nt AUTO"
     - "-m HKY+G"
     - "-bb 1000"
+    - "-seed 847202098"
   threads: 10    # Use up to this many threads
   resources:     # Only used when called with --cluster
     time: "00:20:00"
@@ -30,7 +31,8 @@ tree:            # Options for the query rule (./workflow/rules/tree.smk)
 
 beast:
   beast:
-     - "-beagle"
+     - "-beagle_GPU"  # This will use the GPU version of BEAGLE **only** if a GPU is available
+     - "-seed 98202873"
   dynamic:
       - "ePopSize=0.3"
       - "Date.dateFormat=yyyy/MM/dd"
