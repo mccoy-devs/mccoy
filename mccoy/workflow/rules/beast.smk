@@ -44,9 +44,6 @@ def beast_params(wildcards):
     return " ".join(params)
 
 
-print(config['beast'])
-
-
 rule beast:
     """
     Run Beast2, either restarting from a state file or from scratch.
