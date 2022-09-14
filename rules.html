@@ -243,6 +243,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rule-alignment_stats" class="md-nav__link">
+    <span title="rule.alignment_stats (Snakemake rule)" class="md-ellipsis">alignment_<wbr>stats</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-pairwise_identity_histogram" class="md-nav__link">
+    <span title="rule.pairwise_identity_histogram (Snakemake rule)" class="md-ellipsis">pairwise_<wbr>identity_<wbr>histogram</span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -264,8 +278,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-render_tree" class="md-nav__link">
-    <span title="rule.render_tree (Snakemake rule)" class="md-ellipsis">render_<wbr>tree</span>
+  <a href="#rule-render_mltree" class="md-nav__link">
+    <span title="rule.render_mltree (Snakemake rule)" class="md-ellipsis">render_<wbr>mltree</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-render_consensus_mltree" class="md-nav__link">
+    <span title="rule.render_consensus_mltree (Snakemake rule)" class="md-ellipsis">render_<wbr>consensus_<wbr>mltree</span>
   </a>
   
 </li>
@@ -397,6 +418,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rule-alignment_stats" class="md-nav__link">
+    <span title="rule.alignment_stats (Snakemake rule)" class="md-ellipsis">alignment_<wbr>stats</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-pairwise_identity_histogram" class="md-nav__link">
+    <span title="rule.pairwise_identity_histogram (Snakemake rule)" class="md-ellipsis">pairwise_<wbr>identity_<wbr>histogram</span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -418,8 +453,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-render_tree" class="md-nav__link">
-    <span title="rule.render_tree (Snakemake rule)" class="md-ellipsis">render_<wbr>tree</span>
+  <a href="#rule-render_mltree" class="md-nav__link">
+    <span title="rule.render_mltree (Snakemake rule)" class="md-ellipsis">render_<wbr>mltree</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-render_consensus_mltree" class="md-nav__link">
+    <span title="rule.render_consensus_mltree (Snakemake rule)" class="md-ellipsis">render_<wbr>consensus_<wbr>mltree</span>
   </a>
   
 </li>
@@ -575,6 +617,50 @@ reference.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<dl class="smk rule objdesc">
+<dt class="sig sig-object highlight smk" id="rule-alignment_stats">
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">alignment_stats</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/align.smk#L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-alignment_stats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd" id="rule-alignment_stats-conda">Conda<a class="headerlink" href="#rule-alignment_stats-conda" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jlsteenwyk</span><span class="w"></span>
+<span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phykit</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jlsteenwyk-biokit</span><span class="w"></span>
+</code></pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="smk rule objdesc">
+<dt class="sig sig-object highlight smk" id="rule-pairwise_identity_histogram">
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">pairwise_identity_histogram</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/align.smk#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-pairwise_identity_histogram" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd" id="rule-pairwise_identity_histogram-conda">Conda<a class="headerlink" href="#rule-pairwise_identity_histogram-conda" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plot_traces</span><span class="w"></span>
+<span class="nt">channels</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
+<span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.9</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">typer</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plotly</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaleido</span><span class="w"></span>
+</code></pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <h2 id="tree-construction">Tree construction<a class="headerlink" href="#tree-construction" title="Permalink to this headline">¶</a></h2>
 <dl class="smk rule objdesc">
 <dt class="sig sig-object highlight smk" id="rule-tree">
@@ -615,20 +701,42 @@ reference.</p>
 <div class="line"><br /></div>
 </div>
 <dl class="smk rule objdesc">
-<dt class="sig sig-object highlight smk" id="rule-render_tree">
-<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">render_tree</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-render_tree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Renders the tree from iqtree in SVG format.</p>
+<dt class="sig sig-object highlight smk" id="rule-render_mltree">
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">render_mltree</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-render_mltree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the maximum likelihood tree from iqtree in SVG and HTML format.</p>
 <dl class="field-list">
-<dt class="field-odd" id="rule-render_tree-input">Input<a class="headerlink" href="#rule-render_tree-input" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-render_mltree-input">Input<a class="headerlink" href="#rule-render_mltree-input" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><p>the tree file produced by the <a class="reference internal" href="#rule-tree" title="rule-tree"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">tree</span></code></a> rule</p>
 </dd>
-<dt class="field-even" id="rule-render_tree-output">Output<a class="headerlink" href="#rule-render_tree-output" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-render_mltree-output">Output<a class="headerlink" href="#rule-render_mltree-output" title="Permalink to this headline">¶</a></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>svg</strong> – the maximum likeihood tree (svg)</p></li>
 <li><p><strong>html</strong> – the maximum likeihood tree (html)</p></li>
 </ul>
 </dd>
-<dt class="field-odd" id="rule-render_tree-conda">Conda<a class="headerlink" href="#rule-render_tree-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-render_mltree-conda">Conda<a class="headerlink" href="#rule-render_mltree-conda" title="Permalink to this headline">¶</a></dt>
+<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
+<span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toytree=2.0.5</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">typer</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy==1.22.4</span><span class="w"></span>
+</code></pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="smk rule objdesc">
+<dt class="sig sig-object highlight smk" id="rule-render_consensus_mltree">
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">render_consensus_mltree</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-render_consensus_mltree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.</p>
+<dl class="field-list">
+<dt class="field-odd" id="rule-render_consensus_mltree-conda">Conda<a class="headerlink" href="#rule-render_consensus_mltree-conda" title="Permalink to this headline">¶</a></dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
@@ -715,7 +823,7 @@ only run when our quality control checks pass.</p></li>
 </div>
 <dl class="smk rule objdesc">
 <dt class="sig sig-object highlight smk" id="rule-onlinebeast">
-<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">onlinebeast</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/beast.smk#L1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-onlinebeast" title="Permalink to this definition">¶</a></dt>
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">onlinebeast</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/beast.smk#L3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-onlinebeast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://github.com/Wytamma/online-beast">online-beast</a> to add any new
 sequences to the Beast2 analysis from an inherited run and update the state.</p>
 <div class="admonition warning">
@@ -757,7 +865,7 @@ doesn’t actually contain the sequences in it.</p>
 </div>
 <dl class="smk rule objdesc">
 <dt class="sig sig-object highlight smk" id="rule-beast">
-<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">beast</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/beast.smk#L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-beast" title="Permalink to this definition">¶</a></dt>
+<span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">beast</span></span><a class="reference external" href="https://github.com/smutch/mccoy/blob/main/mccoy/workflow/rules/beast.smk#L47"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-beast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run Beast2, either restarting from a state file or from scratch.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
