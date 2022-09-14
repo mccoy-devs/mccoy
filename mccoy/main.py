@@ -104,7 +104,6 @@ def run(
     data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
     inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
     inherit_last: Optional[bool] = False,
-    cores: Optional[int] = typer.Option(1, "--cores", "-c", help="Number of cores to request for the workflow"),
     config: Optional[List[str]] = typer.Option(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
     ),
@@ -166,9 +165,7 @@ def run(
     args = [
         f"--snakefile={snakefile}",
         f"--directory={run_dir}",
-        "--use-conda",
         f"--configfile={project}/config.yaml",
-        f"--cores={cores}",
         f"--conda-prefix={conda_prefix_dir}",
     ]
 
@@ -183,6 +180,8 @@ def run(
 
     if hpc and all(('profile' not in re.split(r' |=', arg)[0] for arg in ctx.args)):
         args.append(f"--profile={Path(__file__).parent.resolve()/'profiles/slurm'}")
+    else:
+        args.append(f"--profile={Path(__file__).parent.resolve()/'profiles/local'}")
 
     if verbose:
         args.insert(0, "--verbose")
