@@ -182,7 +182,7 @@ typing-extensions = {version = ">=3.7.4.3", markers = "python_version < \"3.8\""
 
 [[package]]
 name = "idna"
-version = "3.3"
+version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
 category = "main"
 optional = false
@@ -513,7 +513,7 @@ py = ">=1.4.26,<2.0.0"
 
 [[package]]
 name = "smart-open"
-version = "6.1.0"
+version = "6.2.0"
 description = "Utils for streaming large files (S3, HDFS, GCS, Azure Blob Storage, gzip, bz2...)"
 category = "main"
 optional = false
@@ -538,7 +538,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "snakedoc"
-version = "0.1.dev106+g6500243"
+version = "0.1.dev109+gb19d491"
 description = "A Sphinx extension for Snakemake"
 category = "dev"
 optional = false
@@ -553,7 +553,7 @@ sphinx = "<5.0.0"
 type = "git"
 url = "https://github.com/smutch/snakedoc.git"
 reference = "main"
-resolved_reference = "650024346b32682793342ba926596c7965e29b93"
+resolved_reference = "b19d491145695620f3c62e39c99cfcca866a7691"
 
 [[package]]
 name = "snakemake"

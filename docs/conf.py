@@ -14,6 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
@@ -38,7 +39,7 @@ extensions = [
     "snakedoc",
 ]
 
-smk_linkcode_baseurl = "https://github.com/smutch/mccoy/blob/main"
+smk_linkcode_mapping = (str(Path(__file__).absolute().parents[1]), "https://github.com/smutch/mccoy/blob/main")
 smk_configfile = "../mccoy/config/config.yaml"
 smk_config = dict(
     project_path="../tests/expected",
