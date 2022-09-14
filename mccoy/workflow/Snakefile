@@ -26,9 +26,7 @@ include: "rules/tree.smk"
 include: "rules/phytest.smk"
 include: "rules/dynamicbeast.smk"
 include: "rules/beast.smk"
-
-
-report: "report/workflow-report.rst"
+include: "rules/report.smk"
 
 
 onstart:
@@ -52,5 +50,4 @@ onstart:
 
 rule all:
     input:
-        expand(rules.beast.output, id=config['id']),
-        f"results/tree/{config['id']}-tree.svg",
+        f"{config['id']}-report.html",

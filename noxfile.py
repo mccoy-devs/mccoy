@@ -75,3 +75,11 @@ def docs_github(session):
         gh_pages.mkdir()
         (gh_pages / ".nojekll").touch()
         session.run("sphinx-build", "-b", "html", ".", "gh-pages")
+
+
+@session
+def format_bib(session):
+    session.install("pybtex>=0.24")
+    session.run(
+        "pybtex-format", "mccoy/workflow/report/bibliography.bib", "mccoy/workflow/report/formatted-bibliography.html"
+    )

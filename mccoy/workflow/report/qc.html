@@ -1,0 +1,9 @@
+<h1>Quality Control</h1>
+<iframe id="phytest" style="height:1000px; width:100%;" height="100%" width="100%">
+    {{ include_file(input.phytest) }}
+</iframe>
+<script>
+    const iframe = document.getElementById("phytest");
+    iframe.srcdoc = iframe.innerHTML;
+</script>
+    

@@ -1,0 +1,12 @@
+<h1>Alignment</h1>
+
+<pre>{{ include_file(input.alignment_summary) }}</pre>
+
+<pre>GC content: {{ include_file(input.gc_content) }}</pre>
+<pre>Relative composition variability: {{ include_file(input.relative_composition_variability) }}</pre>
+
+<h3>Pairwise Identity</h3>
+<p>The proportion of colums that agree between pairs in the alignment. See <a href="https://jlsteenwyk.com/PhyKIT/usage/index.html#pairwise-identity">PhyKIT docs</a>.</p>
+<pre>{{ include_file(input.pairwise_identity) }}</pre>
+
+{{ include_file(input.pairwise_identity_histogram) }}

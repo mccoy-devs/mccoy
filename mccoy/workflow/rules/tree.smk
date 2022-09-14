@@ -49,9 +49,9 @@ rule tree:
         """
 
 
-rule render_tree:
+rule render_mltree:
     """
-    Renders the tree from iqtree in SVG format.
+    Renders the maximum likelihood tree from iqtree in SVG and HTML format.
 
     :input:  the tree file produced by the :smk:ref:`tree` rule
 
@@ -61,11 +61,26 @@ rule render_tree:
     input:
         "results/tree/{id}.fasta.treefile",
     output:
-        svg=report("results/tree/{id}-tree.svg", category="Maximum Likelihood Tree"),
-        html=report("results/tree/{id}-tree.html", category="Maximum Likelihood Tree"),
+        svg="results/tree/{id}-mltree.svg",
+        html="results/tree/{id}-mltree.html",
     conda:
         "../envs/toytree.yml"
     log:
         "logs/render_tree-{id}.txt",
+    shell:
+        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+
+
+rule render_consensus_mltree:
+    """
+    Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.
+    """
+    input:
+        "results/tree/{id}.fasta.contree",
+    output:
+        svg="results/tree/{id}-consensus-mltree.svg",
+        html="results/tree/{id}-consensus-mltree.html",
+    conda:
+        "../envs/toytree.yml"
     shell:
         "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"

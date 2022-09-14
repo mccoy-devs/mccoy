@@ -1,0 +1,10 @@
+name: plot_traces
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - typer
+    - dendropy
+

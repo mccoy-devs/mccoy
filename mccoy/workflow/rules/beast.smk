@@ -1,3 +1,5 @@
+
+
 rule onlinebeast:
     """
     Use `online-beast <https://github.com/Wytamma/online-beast>`_ to add any new
@@ -97,3 +99,82 @@ rule beast:
         if [[ -n "{input.statefile}" ]]; then cp {input.statefile} {output.statefile}; fi
         beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2> {log}
         """
+
+
+rule plot_traces:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.tracelog, id=config['id']),
+    output:
+        directory("results/traces/"),
+    conda:
+        "../envs/plot_traces.yml"
+    shell:
+        """
+        python {SCRIPT_DIR}/plot_traces.py {input} {output}
+        """
+
+
+rule arviz:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.tracelog, id=config['id']),
+    output:
+        summary_html="results/beast/{id}-summary.html",
+        posterior_svg="results/beast/{id}-posterior.svg",
+        pairplot_svg="results/beast/{id}-pairplot.svg",
+    conda:
+        "../envs/arviz.yml"
+    shell:
+        """
+        python {SCRIPT_DIR}/arviz_output.py {input} {output.summary_html} {output.posterior_svg} {output.pairplot_svg}
+        """
+
+
+rule max_clade_credibility_tree:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.beast.output.treelog, id=config['id']),
+    output:
+        "results/beast/{id}-maxcladecredibility.treefile",
+    conda:
+        "../envs/beast.yml"
+    shell:
+        """
+        treeannotator -heights mean {input} {output}
+        """
+
+
+rule max_clade_credibility_tree_newick:
+    """
+    Makes trace plots from the beast log file.
+    """
+    input:
+        expand(rules.max_clade_credibility_tree.output, id=config['id']),
+    output:
+        "results/beast/{id}-maxcladecredibility.nwk",
+    conda:
+        "../envs/dendropy.yml"
+    shell:
+        "python {SCRIPT_DIR}/tree_converter.py {input} {output} --node-label posterior"
+
+
+rule max_clade_credibility_tree_render:
+    """
+    Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.
+    """
+    input:
+        expand(rules.max_clade_credibility_tree_newick.output, id=config['id']),
+    output:
+        svg="results/beast/{id}-maxcladecredibility.svg",
+        html="results/beast/{id}-maxcladecredibility.html",
+    conda:
+        "../envs/toytree.yml"
+    shell:
+        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"

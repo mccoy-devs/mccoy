@@ -1,0 +1,31 @@
+<h1>Maximum Likelihood Tree</h1>
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="mltree_svg-tab" data-bs-toggle="tab" data-bs-target="#mltree_svg" type="button" role="tab" aria-controls="mltree_svg" aria-selected="true">Tree</button>
+    <button class="nav-link" id="consensus_mltree_svg-tab" data-bs-toggle="tab" data-bs-target="#consensus_mltree_svg" type="button" role="tab" aria-controls="consensus_mltree_svg" aria-selected="false">Consensus Tree</button>
+    <button class="nav-link" id="iqtree_report-tab" data-bs-toggle="tab" data-bs-target="#iqtree_report" type="button" role="tab" aria-controls="iqtree_report" aria-selected="false">IQTree Report</button>
+    <button class="nav-link" id="iqtree_log-tab" data-bs-toggle="tab" data-bs-target="#iqtree_log" type="button" role="tab" aria-controls="iqtree_log" aria-selected="false">IQTree Log</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="mltree_svg" role="tabpanel" aria-labelledby="mltree_svg-tab">
+    {{ include_file(input.mltree_svg) }}
+  </div>
+  <div class="tab-pane fade" id="consensus_mltree_svg" role="tabpanel" aria-labelledby="consensus_mltree_svg-tab">
+    {{ include_file(input.consensus_mltree_svg) }}
+  </div>
+  <div class="tab-pane fade" id="iqtree_report" role="tabpanel" aria-labelledby="iqtree_report-tab">
+    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_report) }}</pre>
+  </div>
+  <div class="tab-pane fade" id="iqtree_log" role="tabpanel" aria-labelledby="iqtree_log-tab">
+    <pre style="padding-top: 20px;">{{ include_file(input.iqtree_log) }}</pre>
+  </div>
+</div>
+
+
+
+
+
+
+

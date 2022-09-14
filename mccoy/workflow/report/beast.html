@@ -1,0 +1,36 @@
+<h1>Beast</h1>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="summary-tab" data-bs-toggle="tab" data-bs-target="#summary" type="button" role="tab" aria-controls="summary" aria-selected="true">Summary</button>
+      <button class="nav-link" id="posterior-tab" data-bs-toggle="tab" data-bs-target="#posterior" type="button" role="tab" aria-controls="posterior" aria-selected="false">Posterior</button>      
+      <button class="nav-link" id="traces-tab" data-bs-toggle="tab" data-bs-target="#traces" type="button" role="tab" aria-controls="traces" aria-selected="false">Traces</button>
+      <button class="nav-link" id="pairplots-tab" data-bs-toggle="tab" data-bs-target="#pairplots" type="button" role="tab" aria-controls="pairplots" aria-selected="false">Pair Plots</button>
+      <button class="nav-link" id="maxclade-tab" data-bs-toggle="tab" data-bs-target="#maxclade" type="button" role="tab" aria-controls="maxclade" aria-selected="false">Max Clade Credibility Tree</button>
+      <button class="nav-link" id="dynamicbeast-tab" data-bs-toggle="tab" data-bs-target="#dynamicbeast" type="button" role="tab" aria-controls="dynamicbeast" aria-selected="false">Dynamic Beast XML</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+      {{ include_file(input.arviz_summary) }}
+    </div>
+    <div class="tab-pane fade" id="posterior" role="tabpanel" aria-labelledby="posterior-tab">
+      <div style="width: 100%">{{ include_file(input.arviz_posterior_svg) }}</div>
+    </div>  
+    <div class="tab-pane fade" id="traces" role="tabpanel" aria-labelledby="traces-tab">
+        {% for trace in traces %}
+            {{ include_file(trace) }}
+        {% endfor %}
+    </div>
+    <div class="tab-pane fade" id="pairplots" role="tabpanel" aria-labelledby="pairplots-tab">
+      {{ include_file(input.arviz_pairplot_svg) }}
+    </div>
+    <div class="tab-pane fade" id="maxclade" role="tabpanel" aria-labelledby="maxclade-tab">
+      {{ include_file(input.max_clade_credibility_tree_svg) }}
+    </div>
+    <div class="tab-pane fade" id="dynamicbeast" role="tabpanel" aria-labelledby="dynamicbeast-tab">
+      <pre><code class="language-xml">{{ include_file_unsafe(input.dynamic_beast_xml) }}</code></pre>
+    </div>
+      
+  </div>
+  
