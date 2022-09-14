@@ -10,7 +10,7 @@ cluster: >-
   -o logs/{rule}-{wildcards}.out -e logs/{rule}-{wildcards}.err
   $(if [[ '{resources.qos}' ]]; then echo '-q {resources.qos}'; fi)
   $(if [[ '{resources.gres}' ]]; then echo '--gres={resources.gres}'; fi)
-cluster-cancel: scancel $(echo $* | grep -Eo '[0-9]+')
+cluster-cancel: slurm-cancel
 jobs: 50
 default-resources: ["time='00:15:00'", "mem='4G'", "nodes=1", "tasks_per_node=1", "extra=''", "gres=''", "qos=''", "account=''"]
 use-conda: true
