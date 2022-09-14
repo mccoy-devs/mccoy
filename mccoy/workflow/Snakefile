@@ -17,6 +17,7 @@ configfile: Path(config['project_path']) / "config.yaml"
 
 
 # Ensure log directory exists. Required for cluster job submission.
+# TODO(SM): Not sure if this is needed now with the slurm profile...
 Path("logs").mkdir(exist_ok=True)
 
 
