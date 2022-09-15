@@ -89,7 +89,7 @@ rule beast:
     params:
         dynamic=lambda wildcards: ",".join(config["beast"]["dynamic"]),
         beast=beast_params,
-    threads: config["beast"].get("threads", workflow.cores)
+    threads: config["beast"].get("threads", config["all"]["threads_max"])
     resources:
         **config["beast"].get("resources", {}),
     envmodules:

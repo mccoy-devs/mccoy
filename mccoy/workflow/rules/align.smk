@@ -12,7 +12,7 @@ rule align:
 
     :output:     the aligned version of the original input file
     :params:     the command-line arguments passed to MAFFT (set in `align.mafft` config entry)
-    :threads:    set to `align.threads` from the config file if present, else set by the number of cores available to the workflow
+    :threads:    set to `align.threads` from the config file if present, else set by the number of cores available to the workflow (up-to `threads_max`)
     :resources:  set to `align.resources` in the project config, if present
     """
     input:
@@ -26,7 +26,7 @@ rule align:
         "../envs/mafft.yml"
     params:
         lambda wildcards: " ".join(config["align"]["mafft"]),
-    threads: config["align"].get("threads", workflow.cores)
+    threads: config["align"].get("threads", config["all"]["threads_max"])
     resources:
         **config["align"].get("resources", {}),
     shell:

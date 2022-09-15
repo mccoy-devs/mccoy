@@ -1,3 +1,6 @@
+all:
+  threads_max: 64  # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
+
 # align.smk {{{
 
 align:           # Options for the query rule (./workflow/rules/align.smk)

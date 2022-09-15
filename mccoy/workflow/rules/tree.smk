@@ -40,7 +40,7 @@ rule tree:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),
         seed=iqtree_random_seed,
-    threads: config["tree"].get("threads", workflow.cores)
+    threads: config["tree"].get("threads", config["all"]["threads_max"])
     resources:
         **config['tree'].get('resources', {}),
     shell:
