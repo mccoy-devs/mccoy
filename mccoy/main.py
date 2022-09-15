@@ -127,7 +127,7 @@ def run(
     all available snakemake arguments.
     """
     run_id, run_dir = create_run(project, cont=cont)
-    project_id = project.name
+    project_id = project.resolve().name
     if inherit_last:
         last_run_id = run_id - 1
         inherit = project / f"runs/run_{last_run_id}"

@@ -1,4 +1,3 @@
-# Note that we use `threads` here as SLURM `--cpus-per-task`.
 cores: 1
 use-conda: true
 use-envmodules: true
