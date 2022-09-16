@@ -15,10 +15,11 @@ SCRIPT_DIR = SNAKE_DIR / "scripts"
 # overwrite config with project specific file
 configfile: Path(config['project_path']) / "config.yaml"
 
+
 # use the config file to update our default resources
 if extra := config["all"].get("update_default_resources", None):
-  for k, v in extra.items():
-    workflow.default_resources.set_resource(k, v)
+    for k, v in extra.items():
+        workflow.default_resources.set_resource(k, v)
 
 # Ensure log directory exists. Required for cluster job submission.
 # TODO(SM): Not sure if this is needed now with the slurm profile...
