@@ -5,6 +5,8 @@
    intake
    alignment
    quality_control
+   beast
+   report
 
 
 McCoy
@@ -65,4 +67,6 @@ Contents
 * :ref:`intake_module`
 * :ref:`alignment_module`
 * :ref:`quality_control_module`
+* :ref:`beast_module`
+* :ref:`report_module`
 * :ref:`All rules<smk-rule>`
