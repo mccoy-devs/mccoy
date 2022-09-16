@@ -9,12 +9,6 @@ Intake
 .. smk:autodoc:: ../mccoy/workflow/Snakefile combine
 
 
-Alignment
----------
-
-.. smk:autodoc:: ../mccoy/workflow/rules/align.smk
-
-
 Tree construction
 -----------------
 

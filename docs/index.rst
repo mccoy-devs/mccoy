@@ -3,6 +3,8 @@
    :maxdepth: 2
 
    rules
+   intake
+   alignment
 
 
 McCoy
@@ -10,7 +12,7 @@ McCoy
 
 .. warning::
 
-   These docs are not complete or up-to-date. Stay tuned for that!
+   These docs are a work-in-progress!
 
 
 Workflow overview
@@ -20,31 +22,41 @@ Workflow overview
 
     %%{init: { 'theme':'neutral' } }%%
     flowchart TB
-        sources[(fasta files)]
-        sources --> combine --> MSA
-        click combine href "rules.html#rule-combine"
+        subgraph intake["Intake module"]
+            sources[(fasta files)]
+            sources --> combine
+        end
+        click sources,combine href "intake.html"
+
+        subgraph alignment["Alignment module"]
+            MSA
+        end
+        combine --> alignment
+        click MSA href "alignment.html"
 
         MSA["multiple sequence alignment"] --> QC
-        click MSA href "rules.html#alignment"
 
-        subgraph QC["Quality control"]
+        subgraph QC["Quality control module"]
             direction TB
-            tree[maximum likelihood tree] --> RTR[root-tip regression]
-            click tree href "rules.html#tree-construction"
-            otherQC[other checks]
+            tree[maximum likelihood tree] --> phytest[Phytest checks]
         end
+        click tree href "quality_control.html#tree"
+        click phytest href "quality_control.html#phytest"
 
         QC --> Beast
 
-        subgraph Beast
+        subgraph Beast["Beast module"]
             direction TB
-            XML["XML generation"] --> OnlineBEAST["run, pause & update data"]
-            click XML href "rules.html#dynamicbeast"
-            click OnlineBEAST href "rules.html#onlinebeast"
+            XML["dynamic XML generation"] --> OnlineBEAST["add new sequences to previous run"] --> BEAST2
+            click XML href "beast.html#dynamicbeast"
+            click OnlineBEAST href "beast.html#onlinebeast"
+            click BEAST2 href "beast.html#beast"
         end
 
 
-All rules
----------
+Contents
+--------
 
-* :ref:`Index<smk-rule>`
+* :ref:`intake_module`
+* :ref:`alignment_module`
+* :ref:`All rules<smk-rule>`
