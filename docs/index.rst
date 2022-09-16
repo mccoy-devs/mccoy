@@ -1,10 +1,10 @@
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
 
-   rules
    intake
    alignment
+   quality_control
 
 
 McCoy
@@ -27,12 +27,13 @@ Workflow overview
             sources --> combine
         end
         click sources,combine href "intake.html"
+        combine --> alignment
 
         subgraph alignment["Alignment module"]
             MSA
         end
-        combine --> alignment
         click MSA href "alignment.html"
+        alignment --> report
 
         MSA["multiple sequence alignment"] --> QC
 
@@ -44,6 +45,7 @@ Workflow overview
         click phytest href "quality_control.html#phytest"
 
         QC --> Beast
+        QC --> report
 
         subgraph Beast["Beast module"]
             direction TB
@@ -53,10 +55,14 @@ Workflow overview
             click BEAST2 href "beast.html#beast"
         end
 
+        Beast --> report{{Report generation}}
+        click report href "report.html"
+
 
 Contents
 --------
 
 * :ref:`intake_module`
 * :ref:`alignment_module`
+* :ref:`quality_control_module`
 * :ref:`All rules<smk-rule>`

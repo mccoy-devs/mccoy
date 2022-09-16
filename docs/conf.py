@@ -18,12 +18,12 @@ from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 
-project = "Phylodynamics Workflow"
-copyright = "2022, Sebastián Duchêne, Wytamma Wirth, Simon Mutch, Priyanka Pillai, Noel Faux, Robert Turnbull"
-author = "Wytamma Wirth, Simon Mutch, Robert Turnbull, Priyanka Pillai, Noel Faux, Sebastián Duchêne"
+project = "McCoy"
+copyright = "2022, Wytamma Wirth, Sebastián Duchêne, Simon Mutch, Robert Turnbull"
+author = "Wytamma Wirth, Simon Mutch, Robert Turnbull, Sebastián Duchêne"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1.0"
+# release = "0.1.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,7 @@ extensions = [
     "snakedoc",
 ]
 
-smk_linkcode_mapping = (str(Path(__file__).absolute().parents[1]), "https://github.com/smutch/mccoy/blob/main")
+smk_linkcode_mapping = (str(Path(__file__).absolute().parents[1]), "https://github.com/mccoy-devs/mccoy/blob/main")
 smk_configfile = "../mccoy/config/config.yaml"
 smk_config = dict(
     project_path="../tests/expected",
@@ -63,9 +63,12 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".venv"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_immaterial"
+html_logo = "_static/mccoy-logo.svg"
 html_theme_options = {
     "features": ["content.code.annotate"],
     "toc_title_is_page_title": True,
+    "repo_url": "https://github.com/mccoy-devs/mccoy",
+    "repo_name": "McCoy",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

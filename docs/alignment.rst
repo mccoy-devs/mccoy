@@ -1,3 +1,5 @@
+:tocdepth: 3
+
 .. _alignment_module:
 
 Alignment module
