@@ -1,5 +1,7 @@
 all:
-  threads_max: 64  # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
+  threads_max: 64                 # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
+  update_default_resources: none  # Additional default-resources to extend those defined in the profile being used
+    
 
 # align.smk {{{
 
