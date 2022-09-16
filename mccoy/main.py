@@ -35,6 +35,8 @@ def create_project(project_name, reference: Path, xml_template: Path, copy_workf
     shutil.copyfile(mccoy_dir / "tests.py", project_dir / "tests.py")
     (project_dir / 'runs').mkdir()
 
+    shutil.copyfile(mccoy_dir / "readme_template.md", project_dir / "README.md")
+
 
 def get_last_run_id(project_path):
     runs = [int(run.split("_")[-1]) for run in glob(f"{project_path}/runs/*") if Path(run).is_dir()]
