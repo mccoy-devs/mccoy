@@ -1,4 +1,4 @@
-cores: 1
+cores: all
 use-conda: true
 use-envmodules: true
 printshellcmds: true
