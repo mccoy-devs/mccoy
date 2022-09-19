@@ -1,13 +1,4 @@
-.. toctree::
-   :hidden:
-   :maxdepth: 3
-
-   intake
-   alignment
-   quality_control
-   beast
-   report
-
+:hero: McCoy: a complete workflow for close-to-real-time phylodynamic analyses.
 
 McCoy
 =====
@@ -16,57 +7,23 @@ McCoy
 
    These docs are a work-in-progress!
 
+Welcome to the documentation for **McCoy**.
 
-Workflow overview
------------------
+* To get started quickly, check out the :doc:`installation <installation>` and :doc:`quick-start <quickstart>` guides.
+* For a fully worked example, from data ingestion to results, see the :doc:`example workflow <example>`.
 
-.. mermaid::
-
-    %%{init: { 'theme':'neutral' } }%%
-    flowchart TB
-        subgraph intake["Intake module"]
-            sources[(fasta files)]
-            sources --> combine
-        end
-        click sources,combine href "intake.html"
-        combine --> alignment
-
-        subgraph alignment["Alignment module"]
-            MSA
-        end
-        click MSA href "alignment.html"
-        alignment --> report
-
-        MSA["multiple sequence alignment"] --> QC
-
-        subgraph QC["Quality control module"]
-            direction TB
-            tree[maximum likelihood tree] --> phytest[Phytest checks]
-        end
-        click tree href "quality_control.html#tree"
-        click phytest href "quality_control.html#phytest"
-
-        QC --> Beast
-        QC --> report
-
-        subgraph Beast["Beast module"]
-            direction TB
-            XML["dynamic XML generation"] --> OnlineBEAST["add new sequences to previous run"] --> BEAST2
-            click XML href "beast.html#dynamicbeast"
-            click OnlineBEAST href "beast.html#onlinebeast"
-            click BEAST2 href "beast.html#beast"
-        end
-
-        Beast --> report{{Report generation}}
-        click report href "report.html"
+As an open-source project, we warmly accept contributions in the form of
+`bug-reports <https://github.com/mccoy-devs/mccoy/issues>`_, `suggestions <https://github.com/mccoy-devs/mccoy/discussions/landing>`_ , and `pull requests <https://github.com/mccoy-devs/mccoy/pulls>`_. For more information, please check
+out our contributions guide.
 
 
 Contents
 --------
 
-* :ref:`intake_module`
-* :ref:`alignment_module`
-* :ref:`quality_control_module`
-* :ref:`beast_module`
-* :ref:`report_module`
-* :ref:`All rules<smk-rule>`
+.. toctree::
+   :maxdepth: 1
+
+   installation
+   quickstart
+   example
+   workflow
