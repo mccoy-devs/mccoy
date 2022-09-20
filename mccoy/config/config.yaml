@@ -1,44 +1,33 @@
 all:
   threads_max: 64                 # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
   update_default_resources: null  # Additional default-resources to extend those defined in the profile being used
-    
-
-# align.smk {{{
-
-align:           # Options for the query rule (./workflow/rules/align.smk)
-  mafft:         # Command line options passed directly to mafft
+ 
+align:                            # Options for the alignemnt rule
+  mafft:                          # Command line options passed directly to mafft
     - "--6merpair"
     - "--keeplength"
     - "--addfragments"
-  threads: 4     # Use up to this many threads
-  resources:     # Only used for submission to an HPC queue
+  threads: 4                      # Use up to this many threads
+  resources:                      # Only used for submission to an HPC queue
     time: "00:10:00"
     mem: "8G"
 
-# }}}
-
-# tree.smk {{{
-
-tree:            # Options for the query rule (./workflow/rules/tree.smk)
-  iqtree2:       # Command line options passed directly to iqtree2
+tree:                             # Options for the tree rule
+  iqtree2:                        # Command line options passed directly to iqtree2
     - "-nt AUTO"
     - "-m HKY+G"
     - "-bb 1000"
     - "-seed 847202098"
-  threads: 10    # Use up to this many threads
-  resources:     # Only used when called with --cluster
+  threads: 10                     # Use up to this many threads
+  resources:                      # Only used when called with --cluster
     time: "00:20:00"
     mem: "16G"
 
-# }}}
-
-# beast.smk {{{
-
-beast:
-  beast:
-     - "-beagle_GPU"  # This will use the GPU version of BEAGLE **only** if a GPU is available
+beast:                            # Options for the beast rule
+  beast:                          # Command line options passed directly to beast
+     - "-beagle_GPU"              # This will use the GPU version of BEAGLE only if a GPU is available
      - "-seed 98202873"
-  dynamic:
+  dynamic:                        # Values for the dynamic template parameters
       - "ePopSize=0.3"
       - "Date.dateFormat=yyyy/MM/dd"
       - "Date.delimiter=_"
@@ -46,17 +35,11 @@ beast:
       - "mcmc.chainLength=10000"
       - "treelog.logEvery=1000"
       - "tracelog.logEvery=1000"
-  threads: 6
-  resources:     # Only used when called with `--cluster`
+  threads: 6                      # Use up to this many threads
+  resources:                      # Only used for submission to an HPC queue
     time: "20:00:00"
     mem: "16G"
-    # partition: "gpgpu"
-    # gres: "gpu:1"
-    # qos: gpgpumdhs
-  envmodules:
+  envmodules:                     # This will only have any effect if the environment `module` command is available
     - "gcccore/8.3.0"
     - "fosscuda/2019b"
     - "beast/2.6.6"
-
-
-# }}}
