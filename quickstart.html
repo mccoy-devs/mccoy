@@ -51,6 +51,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#install-mccoy" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -218,9 +223,55 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Quick-<wbr>start</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="#" class="md-nav__link md-nav__link--active">
         <span class="md-ellipsis">Quick-<wbr>start</span>
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Quick-<wbr>start</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-mccoy" class="md-nav__link">
+    <span class="md-ellipsis">Install Mc<wbr>Coy</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-project" class="md-nav__link">
+    <span class="md-ellipsis">Create a project</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-your-project" class="md-nav__link">
+    <span class="md-ellipsis">Configure your project</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -271,9 +322,40 @@
                   <div class="md-sidebar__inner">
                     
 
+  
+
 <nav class="md-nav md-nav--secondary">
   
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Quick-<wbr>start</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-mccoy" class="md-nav__link">
+    <span class="md-ellipsis">Install Mc<wbr>Coy</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-project" class="md-nav__link">
+    <span class="md-ellipsis">Create a project</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-your-project" class="md-nav__link">
+    <span class="md-ellipsis">Configure your project</span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -289,8 +371,152 @@
   <h1 id="quick-start">Quick-start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This page has yet to be written!</p>
+<p>This page is under construction!</p>
 </div>
+<h2 id="install-mccoy">Install McCoy<a class="headerlink" href="#install-mccoy" title="Permalink to this headline">¶</a></h2>
+<p>If you haven’t done so yet, install McCoy and <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> following the <a class="reference internal" href="installation.html"><span class="doc">installation</span></a> instructions.</p>
+<h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
+<p>A new project can be created using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
+    --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
+    --template &lt;beast2_template_file&gt;
+</code></pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;reference_fasta_file&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;beast2_template_file&gt;</span></code> are replaced appropriately.</p>
+<p>A new directory will be created with the following contents:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>├── config.yaml            <span class="c1"># &lt;- A configuration file, used to tweak the</span>
+│                          <span class="c1">#    parameters of each step in the pipeline</span>
+├── resources
+│   ├── reference.fasta    <span class="c1"># &lt;- Copy of the reference genome</span>
+│   └── template.xml       <span class="c1"># &lt;- Copy of the Beast2 template</span>
+│
+├── runs                   <span class="c1"># &lt;- An empty directory where runs will be stored</span>
+└── tests.py               <span class="c1"># &lt;- Bare-bones quality control test suite</span>
+</code></pre></div>
+</div>
+<h2 id="configure-your-project">Configure your project<a class="headerlink" href="#configure-your-project" title="Permalink to this headline">¶</a></h2>
+<p>Due to the large diversity in possible phylodynamic analyses, you will almost certainly need to customise the McCoy project to fit your needs.
+McCoy has been designed so that as much of that customisation as possible can be made using the project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or command line arguments.</p>
+<p>The default config file looks something like this:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption highlight"><span class="caption-text filename">
+Config options applied to all workflow rules<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-bash notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code>all:
+  threads_max: <span class="m">64</span>                 <span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span>
+  update_default_resources: null  <span class="c1"># Additional default-resources to extend those defined in the profile being used</span>
+ 
+align:                            <span class="c1"># Options for the alignemnt rule</span>
+  mafft:                          <span class="c1"># Command line options passed directly to mafft</span>
+    - <span class="s2">&quot;--6merpair&quot;</span>
+    - <span class="s2">&quot;--keeplength&quot;</span>
+    - <span class="s2">&quot;--addfragments&quot;</span>
+  threads: <span class="m">4</span>                      <span class="c1"># Use up to this many threads</span>
+  resources:                      <span class="c1"># Only used for submission to an HPC queue</span>
+    time: <span class="s2">&quot;00:10:00&quot;</span>
+    mem: <span class="s2">&quot;8G&quot;</span>
+
+tree:                             <span class="c1"># Options for the tree rule</span>
+  iqtree2:                        <span class="c1"># Command line options passed directly to iqtree2</span>
+    - <span class="s2">&quot;-nt AUTO&quot;</span>
+    - <span class="s2">&quot;-m HKY+G&quot;</span>
+    - <span class="s2">&quot;-bb 1000&quot;</span>
+    - <span class="s2">&quot;-seed 847202098&quot;</span>
+  threads: <span class="m">10</span>                     <span class="c1"># Use up to this many threads</span>
+  resources:                      <span class="c1"># Only used when called with --cluster</span>
+    time: <span class="s2">&quot;00:20:00&quot;</span>
+    mem: <span class="s2">&quot;16G&quot;</span>
+
+beast:                            <span class="c1"># Options for the beast rule</span>
+  beast:                          <span class="c1"># Command line options passed directly to beast</span>
+     - <span class="s2">&quot;-beagle_GPU&quot;</span>              <span class="c1"># This will use the GPU version of BEAGLE only if a GPU is available</span>
+     - <span class="s2">&quot;-seed 98202873&quot;</span>
+  dynamic:                        <span class="c1"># Values for the dynamic template parameters</span>
+      - <span class="s2">&quot;ePopSize=0.3&quot;</span>
+      - <span class="s2">&quot;Date.dateFormat=yyyy/MM/dd&quot;</span>
+      - <span class="s2">&quot;Date.delimiter=_&quot;</span>
+      - <span class="s2">&quot;mutationRate=1.0&quot;</span>
+      - <span class="s2">&quot;mcmc.chainLength=10000&quot;</span>
+      - <span class="s2">&quot;treelog.logEvery=1000&quot;</span>
+      - <span class="s2">&quot;tracelog.logEvery=1000&quot;</span>
+  threads: <span class="m">6</span>                      <span class="c1"># Use up to this many threads</span>
+  resources:                      <span class="c1"># Only used for submission to an HPC queue</span>
+    time: <span class="s2">&quot;20:00:00&quot;</span>
+    mem: <span class="s2">&quot;16G&quot;</span>
+  envmodules:                     <span class="c1"># This will only have any effect if the environment `module` command is available</span>
+    - <span class="s2">&quot;gcccore/8.3.0&quot;</span>
+    - <span class="s2">&quot;fosscuda/2019b&quot;</span>
+    - <span class="s2">&quot;beast/2.6.6&quot;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+<p>Let’s break down some of the key sections…</p>
+<p>The first block is called <code class="docutils literal notranslate"><span class="pre">all</span></code> and applies to all rules in the workflow. It allows setting the absolute maximum number of threads / cores used by any single rule on a single machine / node, regardless of what is available (<code class="docutils literal notranslate"><span class="pre">threads_max</span></code>). If you are running on an HPC system and want to make use of nodes with more than 64 cores then you may want to raise this value.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When discussing “threads” and “cores”, we attempt to remain as close to the
+definitions of <a class="reference external" href="https://snakemake.github.io">Snakemake</a> as possible. However, the Snakemake definitions
+can be quite confusing and the meaning of “thread” changes depending on the
+context (e.g. running on a cluster or locally). If in doubt, we recommend
+always treating a “thread” as a physical cpu-core unless you have a specific
+reason not to and know what you are doing. This is the default definition in
+McCoy.</p>
+</div>
+<p>When running on an HPC cluster, you can also use <code class="docutils literal notranslate"><span class="pre">update_default_resources</span></code> to set defaults for the requested resources of all of your jobs. This is very useful to, for example, set the default account to which your resource usage will be charged:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">account=&#39;proj00577&#39;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>After this, we have one config block for each rule of the workflow with options: <a class="reference internal" href="alignment.html#rule-align" title="rule-align"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">align</span></code></a>, <a class="reference internal" href="quality_control.html#rule-tree" title="rule-tree"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">tree</span></code></a>, and <a class="reference internal" href="beast.html#rule-beast" title="rule-beast"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">beast</span></code></a>. See the documentation for each of these rules for information about the available config parameters.</p>
+<p>One key parameter which you will see repeated is <code class="docutils literal notranslate"><span class="pre">threads</span></code>. When running locally, this corresponds to the maximum number of CPU cores allocated (remembering that we will never exceed <code class="docutils literal notranslate"><span class="pre">all.threads_max</span></code>). This value will automatically be adjusted to the total number of cores available on the machine if more than that number is requested. When running on an HPC cluster, McCoy uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>].</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>In other words, we use threads to set the amount of “shared-memory” parallelism.</p>
+</dd>
+</dl>
 
 
 

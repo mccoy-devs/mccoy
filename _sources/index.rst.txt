@@ -1,11 +1,22 @@
-:hero: McCoy: a complete workflow for close-to-real-time phylodynamic analyses.
+:hero: McCoy: a complete workflow for close-to-real-time phylodynamic analyses
 
-McCoy
-=====
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   installation
+   quickstart
+   example
+   workflow
 
 .. warning::
 
    These docs are a work-in-progress!
+
+
+.. image:: _static/mccoy-logo.svg
+   :width: 30%
+   :align: center
 
 Welcome to the documentation for **McCoy**.
 
@@ -15,15 +26,3 @@ Welcome to the documentation for **McCoy**.
 As an open-source project, we warmly accept contributions in the form of
 `bug-reports <https://github.com/mccoy-devs/mccoy/issues>`_, `suggestions <https://github.com/mccoy-devs/mccoy/discussions/landing>`_ , and `pull requests <https://github.com/mccoy-devs/mccoy/pulls>`_. For more information, please check
 out our contributions guide.
-
-
-Contents
---------
-
-.. toctree::
-   :maxdepth: 1
-
-   installation
-   quickstart
-   example
-   workflow
