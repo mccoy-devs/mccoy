@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mccoy"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Wytamma Wirth <wytamma.wirth@me.com>", "Simon Mutch <smutch@unimelb.edu.au>", "Rob Turnbull <robert.turnbull@unimelb.edu.au>"]
 readme = "README.md"
