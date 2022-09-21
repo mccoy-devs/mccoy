@@ -269,6 +269,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run-the-mccoy-workflow" class="md-nav__link">
+    <span class="md-ellipsis">Run the Mc<wbr>Coy workflow</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-out-the-results" class="md-nav__link">
+    <span class="md-ellipsis">Check out the results</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-run-with-new-data" class="md-nav__link">
+    <span class="md-ellipsis">Updating a run with new data</span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -355,6 +376,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run-the-mccoy-workflow" class="md-nav__link">
+    <span class="md-ellipsis">Run the Mc<wbr>Coy workflow</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-out-the-results" class="md-nav__link">
+    <span class="md-ellipsis">Check out the results</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-run-with-new-data" class="md-nav__link">
+    <span class="md-ellipsis">Updating a run with new data</span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -398,9 +440,9 @@
 <p>Due to the large diversity in possible phylodynamic analyses, you will almost certainly need to customise the McCoy project to fit your needs.
 McCoy has been designed so that as much of that customisation as possible can be made using the project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or command line arguments.</p>
 <p>The default config file looks something like this:</p>
-<div class="literal-block-wrapper docutils container" id="id2">
+<div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption highlight"><span class="caption-text filename">
-Config options applied to all workflow rules<a class="headerlink" href="#id2" title="Permalink to this code">¶</a></span></div>
+Config options applied to all workflow rules<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
 <div class="highlight-bash notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -494,29 +536,91 @@ beast:                            <span class="c1"># Options for the beast rule<
 </div>
 </div>
 <p>Let’s break down some of the key sections…</p>
-<p>The first block is called <code class="docutils literal notranslate"><span class="pre">all</span></code> and applies to all rules in the workflow. It allows setting the absolute maximum number of threads / cores used by any single rule on a single machine / node, regardless of what is available (<code class="docutils literal notranslate"><span class="pre">threads_max</span></code>). If you are running on an HPC system and want to make use of nodes with more than 64 cores then you may want to raise this value.</p>
+<p>The first block is called <code class="docutils literal notranslate"><span class="pre">all</span></code> and applies to all rules in the workflow. <code class="docutils literal notranslate"><span class="pre">threads_max</span></code>
+allows setting the absolute maximum number of threads / cores used by any
+single rule on a single machine, regardless of what is available. If you
+are running on an HPC system and want to make use of nodes with more than 64
+cores then you may want to raise this value.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When discussing “threads” and “cores”, we attempt to remain as close to the
-definitions of <a class="reference external" href="https://snakemake.github.io">Snakemake</a> as possible. However, the Snakemake definitions
-can be quite confusing and the meaning of “thread” changes depending on the
-context (e.g. running on a cluster or locally). If in doubt, we recommend
-always treating a “thread” as a physical cpu-core unless you have a specific
-reason not to and know what you are doing. This is the default definition in
-McCoy.</p>
+definitions of <a class="reference external" href="https://snakemake.github.io">Snakemake</a> as possible.
+However, the Snakemake definitions can be quite confusing and the meaning of
+“thread” changes depending on the context (e.g. running on a cluster or
+locally). If in doubt, we recommend always treating a “thread” as a physical
+cpu-core unless you have a specific reason not to and know what you are
+doing. This is the default definition in McCoy.</p>
 </div>
-<p>When running on an HPC cluster, you can also use <code class="docutils literal notranslate"><span class="pre">update_default_resources</span></code> to set defaults for the requested resources of all of your jobs. This is very useful to, for example, set the default account to which your resource usage will be charged:</p>
+<p>When running on an HPC cluster, you can also use <code class="docutils literal notranslate"><span class="pre">update_default_resources</span></code>
+to set defaults for the requested resources of all of your jobs. This is very
+useful to, for example, set the default account to which your resource usage
+will be charged:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">account=&#39;proj00577&#39;</span><span class="w"></span>
 </code></pre></div>
 </div>
-<p>After this, we have one config block for each rule of the workflow with options: <a class="reference internal" href="alignment.html#rule-align" title="rule-align"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">align</span></code></a>, <a class="reference internal" href="quality_control.html#rule-tree" title="rule-tree"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">tree</span></code></a>, and <a class="reference internal" href="beast.html#rule-beast" title="rule-beast"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">beast</span></code></a>. See the documentation for each of these rules for information about the available config parameters.</p>
-<p>One key parameter which you will see repeated is <code class="docutils literal notranslate"><span class="pre">threads</span></code>. When running locally, this corresponds to the maximum number of CPU cores allocated (remembering that we will never exceed <code class="docutils literal notranslate"><span class="pre">all.threads_max</span></code>). This value will automatically be adjusted to the total number of cores available on the machine if more than that number is requested. When running on an HPC cluster, McCoy uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>].</p>
+<p>After this, we have one block for each rule of the workflow with config
+options: <a class="reference internal" href="alignment.html#rule-align" title="rule-align"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">align</span></code></a>, <a class="reference internal" href="quality_control.html#rule-tree" title="rule-tree"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">tree</span></code></a>, and <a class="reference internal" href="beast.html#rule-beast" title="rule-beast"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">beast</span></code></a>. See the
+documentation for each of these rules for information.</p>
+<p>One key parameter which you will see repeated is <code class="docutils literal notranslate"><span class="pre">threads</span></code>. When running
+locally, this corresponds to the maximum number of CPU cores allocated
+(remembering that we will never exceed <code class="docutils literal notranslate"><span class="pre">all.threads_max</span></code>). This value will
+automatically be adjusted to the total number of cores available on the machine
+if more than that number is requested. When running on an HPC cluster, McCoy
+uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>].</p>
 <dl class="footnote brackets">
 <dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In other words, we use threads to set the amount of “shared-memory” parallelism.</p>
+<dd><p>In other words, we always use threads to set the amount of “shared-memory” parallelism.</p>
 </dd>
 </dl>
+<h2 id="run-the-mccoy-workflow">Run the McCoy workflow<a class="headerlink" href="#run-the-mccoy-workflow" title="Permalink to this headline">¶</a></h2>
+<p>Now that your project is configured, it’s time to run the McCoy workflow:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>All results will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;project_dir&gt;/runs/run_1</span></code>.</p>
+<p>To see all of the available options for the <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span></code> command use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run --help</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>A few notable options include:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--inherit</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">--inherit-last</span></code></dt><dd><p>These will be discussed in the following section.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--config</span></code></dt><dd><p>This allows overriding the values set in the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file.
+For example <code class="docutils literal notranslate"><span class="pre">--config='all.update_default_resources=[&quot;account=proj00577&quot;]'</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--hpc</span></code></dt><dd><p>Run McCoy by submitting jobs to an HPC SLURM scheduler.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Importantly</strong>, any options or arguments not listed in <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">--help</span></code>
+are forwarded on to <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/executing/cli.html#all-options">Snakemake</a>.
+This provides power-users with the ability to fully tailor how the workflow
+runs.</p>
+<h2 id="check-out-the-results">Check out the results<a class="headerlink" href="#check-out-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Upon the successful completion of a run, McCoy will generate an html report
+with a number of results and diagnostics from each stage of the workflow.</p>
+<h2 id="updating-a-run-with-new-data">Updating a run with new data<a class="headerlink" href="#updating-a-run-with-new-data" title="Permalink to this headline">¶</a></h2>
+<p>One of the key features of McCoy is the ability to add new sequences and continue
+from the results of a previous run, without starting from scratch. This is
+achieved using <a class="reference external" href="https://github.com/Wytamma/online-beast">online-BEAST</a>.</p>
+<p>To inherit the results from the last run of McCoy, simply use:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit-last</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>To inherit from a different run:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit &lt;project_dir&gt;/runs/run_&lt;N&gt;</span><span class="w"></span>
+</code></pre></div>
+</div>
 
 
 

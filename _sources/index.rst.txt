@@ -17,6 +17,7 @@
 .. image:: _static/mccoy-logo.svg
    :width: 30%
    :align: center
+   :class: no-scaled-link
 
 Welcome to the documentation for **McCoy**.
 
