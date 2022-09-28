@@ -14,7 +14,7 @@ McCoy comes set up to easily run on any HPC system with a `SLURM`_ job scheduler
 ---------
 
 1. Set up your ``config.yaml`` appropriately (see the :ref:`example <hpc-example>` below).
-2. Run McCoy with ``mccoy run <project_dir> --hpc``
+2. Run McCoy with ``mccoy run <project_dir> --data <fasta_file> --hpc``
 
 
 Configuring your project
@@ -95,4 +95,20 @@ The following example shows how you would alter the project config to employ 16 
         - "gcccore/8.3.0"
         - "fosscuda/2019b"
 
+
+Running McCoy
+-------------
+
+.. highlight:: sh
+
+Once your ``config.yaml`` is all set up, you can run McCoy from the head-node of your HPC system using::
+
+    mccoy run <project_dir> --data <fasta_file> --hpc
+
+Snakemake will then run each rule as a SLURM batch job.
+
+Typically, you will want to ensure that Snakemake continues to monitor for completed jobs and submit new ones, even after you have logged out. There are multiple ways to achieve this. The easiest is to make use of a terminal multiplexer such as `tmux`_ or `GNU screen`_. You can also submit your ``mccoy run`` call as it's own batch job. If you are unsure the best way to proceed you should contact your system's sys-admin to find out their recommendation.
+
 .. _SLURM: https://slurm.schedmd.com
+.. _tmux: https://github.com/tmux/tmux/wiki
+.. _GNU screen: https://www.gnu.org/software/screen/
