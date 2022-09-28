@@ -1,6 +1,11 @@
 Workflow
 ========
 
+.. admonition:: TODO
+   :class: seealso
+
+   A general overview of the workflow.
+
 .. mermaid::
 
     %%{init: { 'theme':'neutral' } }%%

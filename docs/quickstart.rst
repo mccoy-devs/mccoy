@@ -1,9 +1,7 @@
-.. highlight-push::
+.. highlight:: sh
 
-.. highlight:: bash
-
-Quick-start
-===========
+Quickstart
+==========
 
 .. warning::
 
@@ -42,10 +40,14 @@ A new directory will be created with the following contents::
 Configure your project
 ----------------------
 
-Due to the large diversity in possible phylodynamic analyses, you will almost certainly need to customise the McCoy project to fit your needs.
-McCoy has been designed so that as much of that customisation as possible can be made using the project ``config.yaml`` or command line arguments.
+Due to the large diversity in possible phylodynamic analyses, you will almost
+certainly need to customise the McCoy project to fit your needs.
+McCoy has been designed so that as much of that customisation as possible can
+be made using the project ``config.yaml`` or command line arguments.
 
 The default config file looks something like this:
+
+.. highlight:: yaml
 
 .. literalinclude:: ../mccoy/config/config.yaml
    :caption: Config options applied to all workflow rules
@@ -54,11 +56,11 @@ The default config file looks something like this:
 
 Let's break down some of the key sections...
 
-The first block is called ``all`` and applies to all rules in the workflow. ``threads_max``
-allows setting the absolute maximum number of threads / cores used by any
-single rule on a single machine, regardless of what is available. If you
-are running on an HPC system and want to make use of nodes with more than 64
-cores then you may want to raise this value.
+The first block is called ``all`` and applies to all rules in the workflow.
+``threads_max`` allows setting the absolute maximum number of threads / cores
+used by any single rule on a single machine, regardless of what is available.
+If you are running on an HPC system and want to make use of nodes with more
+than 64 cores then you may want to raise this value.
 
 .. warning::
 
@@ -69,10 +71,6 @@ cores then you may want to raise this value.
    locally). If in doubt, we recommend always treating a "thread" as a physical
    cpu-core unless you have a specific reason not to and know what you are
    doing. This is the default definition in McCoy.
-
-.. highlight-push::
-
-.. highlight:: yaml
 
 When running on an HPC cluster, you can also use ``update_default_resources``
 to set defaults for the requested resources of all of your jobs. This is very
@@ -91,7 +89,9 @@ locally, this corresponds to the maximum number of CPU cores allocated
 (remembering that we will never exceed ``all.threads_max``). This value will
 automatically be adjusted to the total number of cores available on the machine
 if more than that number is requested. When running on an HPC cluster, McCoy
-uses ``threads`` to set the `SLURM`_ ``cpus-per-task`` value [[#f1]_].
+uses ``threads`` to set the `SLURM`_ ``cpus-per-task`` value [[#f1]_]. For more
+information about running McCoy on HPC systems, check out the :doc:`HPC page
+<hpc>`.
 
 .. [#f1] In other words, we always use threads to set the amount of "shared-memory" parallelism.
 
@@ -99,7 +99,7 @@ uses ``threads`` to set the `SLURM`_ ``cpus-per-task`` value [[#f1]_].
 Run the McCoy workflow
 ----------------------
 
-.. highlight-pop::
+.. highlight:: sh
 
 Now that your project is configured, it's time to run the McCoy workflow::
 
@@ -121,21 +121,23 @@ A few notable options include:
     For example ``--config='all.update_default_resources=["account=proj00577"]'``.
 
 - ``--hpc``
-    Run McCoy by submitting jobs to an HPC `SLURM`_ scheduler.
+    Run McCoy by submitting jobs to an HPC `SLURM`_ scheduler. See the
+    :doc:`hpc` page for more info.
 
-**Importantly**, any options or arguments not listed in ``mccoy run --help``
-are forwarded on to `Snakemake
-<https://snakemake.readthedocs.io/en/stable/executing/cli.html#all-options>`_.
-This provides power-users with the ability to fully tailor how the workflow
-runs.
+.. important::
+
+    Any options or arguments not listed in ``mccoy run --help`` are forwarded
+    on to Snakemake. This provides power-users with the ability to fully tailor
+    how the workflow runs.
 
 
-Check out the results
----------------------
+Check the results
+-----------------
 
 Upon the successful completion of a run, McCoy will generate an html report
 with a number of results and diagnostics from each stage of the workflow.
 
+.. image:: img/report_example.png
 
 Updating a run with new data
 ----------------------------

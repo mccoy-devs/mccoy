@@ -10,17 +10,25 @@ McCoy comes set up to easily run on any HPC system with a `SLURM`_ job scheduler
    pre-installed "modules" on many HPC systems. Please consult the
    documentation for your system for more information.
 
+----
+
 **TL;DR**
 ---------
 
 1. Set up your ``config.yaml`` appropriately (see the :ref:`example <hpc-example>` below).
 2. Run McCoy with ``mccoy run <project_dir> --data <fasta_file> --hpc``
 
+----
 
 Configuring your project
 ------------------------
 
-In order to run on such a system, you will almost certainly need to modify your project ``config.yaml`` to provide system specific information on your user account / project, queue, etc. McCoy allows you to set any of the following `Snakemake resource values <https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_ on a global or per-rule basis:
+In order to run on such a system, you will almost certainly need to modify your
+project ``config.yaml`` to provide system specific information on your user
+account / project, queue, etc. McCoy allows you to set any of the following
+`Snakemake resource values
+<https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources>`_
+on a global or per-rule basis:
 
 ``account`` (default: ``''``)
     Typically the "project" ID associated with your research.
@@ -49,7 +57,10 @@ In order to run on such a system, you will almost certainly need to modify your 
 ``extra`` (default: ``''``)
     Any extra flags and options to be passed to the SLURM ``sbatch`` command.
 
-In addition the SLURM ``cpus_per_task`` value is set by McCoy to be the Snakemake rule ``threads`` value. You can also pass required environment modules using the ``envmodules`` key in ``config.yaml``
+In addition the SLURM ``cpus_per_task`` value is set by McCoy to be the
+Snakemake rule ``threads`` value. You can also pass required environment
+modules using the ``envmodules`` key in ``config.yaml`` (:ref:`see below
+<hpc-example>`).
 
 .. warning::
 
@@ -71,22 +82,27 @@ In addition the SLURM ``cpus_per_task`` value is set by McCoy to be the Snakemak
 .. _hpc-example:
 
 Example
--------
+:::::::
 
 .. highlight:: yaml
 
-The following example shows how you would alter the project config to employ 16 cores and 1 GPU with Beast2 on the University of Melbourne's Spartan HPC System::
+The following example shows how you would alter the project config to employ 16
+cores and 1 GPU with Beast2 on the University of Melbourne's Spartan HPC
+System::
 
     all:
       update_default_resources:
         account: "<my project id>"
 
-    ...
+    # ...
 
     beast:
+      beast:
+        - "-beagle_GPU"  # This will use the GPU version of BEAGLE if available
+      # ...
       threads: 16
       resources:
-        time: "20:00:00"
+        time: "02:00:00"
         mem: "16G"
         partition: gpgpu
         gres: "gpu:1"
@@ -94,6 +110,11 @@ The following example shows how you would alter the project config to employ 16 
       envmodules:
         - "gcccore/8.3.0"
         - "fosscuda/2019b"
+        - "beagle-lib/3.1.2"
+
+Note the inclusion of the ``envmodules`` entry. This loads version of `BEAGLE`_
+which has GPU support using the system modules. We also ensure that we are
+passing the ``-beagle_GPU`` flag to Beast2.
 
 
 Running McCoy
@@ -101,14 +122,21 @@ Running McCoy
 
 .. highlight:: sh
 
-Once your ``config.yaml`` is all set up, you can run McCoy from the head-node of your HPC system using::
+Once your ``config.yaml`` is all set up, you can run McCoy from the head-node
+of your HPC system using::
 
     mccoy run <project_dir> --data <fasta_file> --hpc
 
 Snakemake will then run each rule as a SLURM batch job.
 
-Typically, you will want to ensure that Snakemake continues to monitor for completed jobs and submit new ones, even after you have logged out. There are multiple ways to achieve this. The easiest is to make use of a terminal multiplexer such as `tmux`_ or `GNU screen`_. You can also submit your ``mccoy run`` call as it's own batch job. If you are unsure the best way to proceed you should contact your system's sys-admin to find out their recommendation.
+Typically, you will want to ensure that Snakemake continues to monitor for
+completed jobs and submit new ones, even after you have logged out. There are
+multiple ways to achieve this. The easiest is to make use of a terminal
+multiplexer such as `tmux`_ or `GNU screen`_. You can also submit your ``mccoy
+run`` call as its own batch job. If you are unsure the best way to proceed you
+should contact your system's sys-admin for advice.
 
 .. _SLURM: https://slurm.schedmd.com
 .. _tmux: https://github.com/tmux/tmux/wiki
 .. _GNU screen: https://www.gnu.org/software/screen/
+.. _BEAGLE: https://github.com/beagle-dev/beagle-lib

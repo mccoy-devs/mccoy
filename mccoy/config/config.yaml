@@ -25,7 +25,7 @@ tree:                             # Options for the tree rule
 
 beast:                            # Options for the beast rule
   beast:                          # Command line options passed directly to beast
-     - "-beagle_GPU"              # This will use the GPU version of BEAGLE only if a GPU is available
+     - "-beagle_SSE"              # This will use the SSE extensions in BEAGLE if available
      - "-seed 98202873"
   dynamic:                        # Values for the dynamic template parameters
       - "ePopSize=0.3"
@@ -39,7 +39,3 @@ beast:                            # Options for the beast rule
   resources:                      # Only used for submission to an HPC queue
     time: "20:00:00"
     mem: "16G"
-  envmodules:                     # This will only have any effect if the environment `module` command is available
-    - "gcccore/8.3.0"
-    - "fosscuda/2019b"
-    - "beast/2.6.6"
