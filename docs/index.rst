@@ -14,7 +14,7 @@
    These docs are a work-in-progress!
 
 
-.. image:: _static/mccoy-logo.svg
+.. image:: img/mccoy-logo.svg
    :width: 30%
    :align: center
    :class: no-scaled-link

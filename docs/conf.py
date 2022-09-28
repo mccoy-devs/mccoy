@@ -63,7 +63,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", ".venv"]
 # a list of builtin themes.
 #
 html_theme = "sphinx_immaterial"
-html_logo = "_static/mccoy-logo.svg"
+html_logo = "img/mccoy-logo.svg"
 html_theme_options = {
     "features": ["content.code.annotate"],
     "toc_title_is_page_title": True,
