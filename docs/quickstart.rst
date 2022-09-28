@@ -70,7 +70,7 @@ cores then you may want to raise this value.
    cpu-core unless you have a specific reason not to and know what you are
    doing. This is the default definition in McCoy.
 
-.. highligh-push::
+.. highlight-push::
 
 .. highlight:: yaml
 
@@ -121,7 +121,7 @@ A few notable options include:
     For example ``--config='all.update_default_resources=["account=proj00577"]'``.
 
 - ``--hpc``
-    Run McCoy by submitting jobs to an HPC SLURM scheduler.
+    Run McCoy by submitting jobs to an HPC `SLURM`_ scheduler.
 
 **Importantly**, any options or arguments not listed in ``mccoy run --help``
 are forwarded on to `Snakemake

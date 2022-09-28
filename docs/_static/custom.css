@@ -1,0 +1,23 @@
+svg {
+    width: 100%;
+    line-height: 1.0;
+}
+
+:root {
+  --md-admonition-icon--sleep: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 12h-6v-2l3.39-4H17V4h6v2l-3.38 4H23v2m-8 4H9v-2l3.39-4H9V8h6v2l-3.38 4H15v2m-8 4H1v-2l3.39-4H1v-2h6v2l-3.38 4H7v2Z"/></svg>')
+}
+
+.md-typeset .admonition.sleep {
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .sleep>.admonition-title {
+  background-color: rgba(43, 155, 70, 0.1);
+  border-color: rgb(43, 155, 70);
+}
+
+.md-typeset .sleep>.admonition-title::before {
+  background-color: rgb(43, 155, 70);
+  -webkit-mask-image: var(--md-admonition-icon--sleep);
+  mask-image: var(--md-admonition-icon--sleep);
+}
