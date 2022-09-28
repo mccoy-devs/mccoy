@@ -13,7 +13,7 @@
     
     
       
-        <title>Example - McCoy  documentation</title>
+        <title>Running on HPC - McCoy  documentation</title>
       
     
     
@@ -51,6 +51,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#tl-dr" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -77,7 +82,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Example
+              Running on HPC
             
           </span>
         </div>
@@ -220,20 +225,12 @@
 
   
   
-    
-  
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      <a href="#" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="example.html" class="md-nav__link">
         <span class="md-ellipsis">Example</span>
       </a>
-      
     </li>
   
 
@@ -260,12 +257,66 @@
 
   
   
+    
+  
+    
   
   
-    <li class="md-nav__item">
-      <a href="hpc.html" class="md-nav__link">
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          <span class="md-ellipsis">Running on HPC</span>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
         <span class="md-ellipsis">Running on HPC</span>
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Running on HPC</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tl-dr" class="md-nav__link">
+    <span class="md-ellipsis">TL;DR</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-project" class="md-nav__link">
+    <span class="md-ellipsis">Configuring your project</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">Example</span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -283,9 +334,40 @@
                   <div class="md-sidebar__inner">
                     
 
+  
+
 <nav class="md-nav md-nav--secondary">
   
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Running on HPC</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tl-dr" class="md-nav__link">
+    <span class="md-ellipsis">TL;DR</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-your-project" class="md-nav__link">
+    <span class="md-ellipsis">Configuring your project</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">Example</span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -298,10 +380,78 @@
                 
 
 
-  <h1 id="example">Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+  <h1 id="running-on-hpc">Running on HPC<a class="headerlink" href="#running-on-hpc" title="Permalink to this headline">¶</a></h1>
+<p>McCoy comes set up to easily run on any HPC system with a <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> job scheduler.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will still need to satisfy the <a class="reference internal" href="installation.html#prerequisites"><span class="std std-ref">requirements for installing and
+running McCoy</span></a>, namely Python &amp; Mamba. These are provided as
+pre-installed “modules” on many HPC systems. Please consult the
+documentation for your system for more information.</p>
+</div>
+<h2 id="tl-dr"><strong>TL;DR</strong><a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Set up your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> appropriately (see the <a class="reference internal" href="#hpc-example"><span class="std std-ref">example</span></a> below).</p></li>
+<li><p>Run McCoy with <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">&lt;project_dir&gt;</span> <span class="pre">--hpc</span></code></p></li>
+</ol>
+<h2 id="configuring-your-project">Configuring your project<a class="headerlink" href="#configuring-your-project" title="Permalink to this headline">¶</a></h2>
+<p>In order to run on such a system, you will almost certainly need to modify your project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> to provide system specific information on your user account / project, queue, etc. McCoy allows you to set any of the following <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources">Snakemake resource values</a> on a global or per-rule basis:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">account</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>Typically the “project” ID associated with your research.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">partition</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>The queue partition to which your job will be sent.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">00:15:00</span></code>)</dt><dd><p>The maximum wallclock time to request for a single job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">mem</span></code> (default: <code class="docutils literal notranslate"><span class="pre">4G</span></code>)</dt><dd><p>The amount of memory (RAM) to request <strong>per-node</strong> for each job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">nodes</span></code> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>The total number of nodes to request for a single job.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tasks_per_node</span></code> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>The total number of SLURM tasks per job. Unless you are running an MPI job, you should always set this to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">qos</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>The SLURM Quality Of Service value. Sometimes used when requesting generic resources (e.g. GPUs).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">gres</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>May be used to request Generic RESources (e.g. GPUs)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">extra</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>Any extra flags and options to be passed to the SLURM <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.</p>
+</dd>
+</dl>
+<p>In addition the SLURM <code class="docutils literal notranslate"><span class="pre">cpus_per_task</span></code> value is set by McCoy to be the Snakemake rule <code class="docutils literal notranslate"><span class="pre">threads</span></code> value. You can also pass required environment modules using the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> key in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This page has yet to be written!</p>
+<p>When discussing “threads” and “cores”, we attempt to remain as close to the
+definitions of <a class="reference external" href="https://snakemake.github.io">Snakemake</a> as possible.
+However, the Snakemake definitions can be quite confusing and the meaning of
+“thread” changes depending on the context (e.g. running on a cluster or
+locally). If in doubt, we recommend always treating a “thread” as a physical
+cpu-core unless you have a specific reason not to and know what you are
+doing. This is the default definition in McCoy.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To see exactly how McCoy takes all of this information and passes it to
+SLURM, you can look at <a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/profiles/slurm/config.yaml">the relevant Snakemake profile here</a>.</p>
+</div>
+<h2 id="example"><span id="hpc-example"></span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The following example shows how you would alter the project config to employ 16 cores and 1 GPU with Beast2 on the University of Melbourne’s Spartan HPC System:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;my</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">id&gt;&quot;</span><span class="w"></span>
+
+<span class="nn">...</span><span class="w"></span>
+
+<span class="nt">beast</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20:00:00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpu</span><span class="w"></span>
+<span class="w">    </span><span class="nt">gres</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gpu:1&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpumdhs</span><span class="w"></span>
+<span class="w">  </span><span class="nt">envmodules</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;gcccore/8.3.0&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;fosscuda/2019b&quot;</span><span class="w"></span>
+</code></pre></div>
 </div>
 
 
@@ -318,7 +468,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="quickstart.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick-start" rel="prev">
+        <a href="report.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Report module" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -327,26 +477,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Quick-start
+              Report module
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="workflow.html" class="md-footer__link md-footer__link--next" aria-label="Next: Workflow" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Workflow
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

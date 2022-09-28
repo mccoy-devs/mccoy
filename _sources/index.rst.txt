@@ -8,6 +8,7 @@
    quickstart
    example
    workflow
+   hpc
 
 .. warning::
 
