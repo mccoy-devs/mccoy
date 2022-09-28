@@ -1,0 +1,20 @@
+
+General Characteristics
+=======================
+137	Number of taxa
+1734	Alignment length
+81	Parsimony informative sites
+189	Variable sites
+1545	Constant sites
+
+Character Frequencies
+=====================
+Y	1
+W	1
+T	57474
+R	1
+M	2
+G	51704
+C	47107
+A	80937
+-	331
