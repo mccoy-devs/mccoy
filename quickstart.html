@@ -13,7 +13,7 @@
     
     
       
-        <title>Quick-start - McCoy  documentation</title>
+        <title>Quickstart - McCoy  documentation</title>
       
     
     
@@ -82,7 +82,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick-start
+              Quickstart
             
           </span>
         </div>
@@ -196,6 +196,22 @@
   
   
     <li class="md-nav__item">
+      <a href="workflow.html" class="md-nav__link">
+        <span class="md-ellipsis">Workflow</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="installation.html" class="md-nav__link">
         <span class="md-ellipsis">Installation</span>
       </a>
@@ -220,12 +236,12 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-ellipsis">Quick-<wbr>start</span>
+          <span class="md-ellipsis">Quickstart</span>
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="#" class="md-nav__link md-nav__link--active">
-        <span class="md-ellipsis">Quick-<wbr>start</span>
+        <span class="md-ellipsis">Quickstart</span>
       </a>
       
         
@@ -240,7 +256,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span class="md-ellipsis">Quick-<wbr>start</span>
+      <span class="md-ellipsis">Quickstart</span>
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -273,8 +289,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-out-the-results" class="md-nav__link">
-    <span class="md-ellipsis">Check out the results</span>
+  <a href="#check-the-results" class="md-nav__link">
+    <span class="md-ellipsis">Check the results</span>
   </a>
   
 </li>
@@ -319,22 +335,6 @@
   
   
     <li class="md-nav__item">
-      <a href="workflow.html" class="md-nav__link">
-        <span class="md-ellipsis">Workflow</span>
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="hpc.html" class="md-nav__link">
         <span class="md-ellipsis">Running on HPC</span>
       </a>
@@ -363,7 +363,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      <span class="md-ellipsis">Quick-<wbr>start</span>
+      <span class="md-ellipsis">Quickstart</span>
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -396,8 +396,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-out-the-results" class="md-nav__link">
-    <span class="md-ellipsis">Check out the results</span>
+  <a href="#check-the-results" class="md-nav__link">
+    <span class="md-ellipsis">Check the results</span>
   </a>
   
 </li>
@@ -422,7 +422,7 @@
                 
 
 
-  <h1 id="quick-start">Quick-start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+  <h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This page is under construction!</p>
@@ -431,14 +431,14 @@
 <p>If you haven’t done so yet, install McCoy and <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> following the <a class="reference internal" href="installation.html"><span class="doc">installation</span></a> instructions.</p>
 <h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
 <p>A new project can be created using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
     --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
     --template &lt;beast2_template_file&gt;
 </code></pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;reference_fasta_file&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;beast2_template_file&gt;</span></code> are replaced appropriately.</p>
 <p>A new directory will be created with the following contents:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code>├── config.yaml            <span class="c1"># &lt;- A configuration file, used to tweak the</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>├── config.yaml            <span class="c1"># &lt;- A configuration file, used to tweak the</span>
 │                          <span class="c1">#    parameters of each step in the pipeline</span>
 ├── resources
 │   ├── reference.fasta    <span class="c1"># &lt;- Copy of the reference genome</span>
@@ -449,13 +449,15 @@
 </code></pre></div>
 </div>
 <h2 id="configure-your-project">Configure your project<a class="headerlink" href="#configure-your-project" title="Permalink to this headline">¶</a></h2>
-<p>Due to the large diversity in possible phylodynamic analyses, you will almost certainly need to customise the McCoy project to fit your needs.
-McCoy has been designed so that as much of that customisation as possible can be made using the project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or command line arguments.</p>
+<p>Due to the large diversity in possible phylodynamic analyses, you will almost
+certainly need to customise the McCoy project to fit your needs.
+McCoy has been designed so that as much of that customisation as possible can
+be made using the project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or command line arguments.</p>
 <p>The default config file looks something like this:</p>
-<div class="literal-block-wrapper docutils container" id="id4">
+<div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption highlight"><span class="caption-text filename">
-Config options applied to all workflow rules<a class="headerlink" href="#id4" title="Permalink to this code">¶</a></span></div>
-<div class="highlight-bash notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+Config options applied to all workflow rules<a class="headerlink" href="#id3" title="Permalink to this code">¶</a></span></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -495,64 +497,56 @@ Config options applied to all workflow rules<a class="headerlink" href="#id4" ti
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code>all:
-  threads_max: <span class="m">64</span>                 <span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span>
-  update_default_resources: null  <span class="c1"># Additional default-resources to extend those defined in the profile being used</span>
- 
-align:                            <span class="c1"># Options for the alignemnt rule</span>
-  mafft:                          <span class="c1"># Command line options passed directly to mafft</span>
-    - <span class="s2">&quot;--6merpair&quot;</span>
-    - <span class="s2">&quot;--keeplength&quot;</span>
-    - <span class="s2">&quot;--addfragments&quot;</span>
-  threads: <span class="m">4</span>                      <span class="c1"># Use up to this many threads</span>
-  resources:                      <span class="c1"># Only used for submission to an HPC queue</span>
-    time: <span class="s2">&quot;00:10:00&quot;</span>
-    mem: <span class="s2">&quot;8G&quot;</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">threads_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">                 </span><span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">  </span><span class="c1"># Additional default-resources to extend those defined in the profile being used</span><span class="w"></span>
+<span class="w"> </span>
+<span class="nt">align</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the alignemnt rule</span><span class="w"></span>
+<span class="w">  </span><span class="nt">mafft</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to mafft</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--6merpair&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--keeplength&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--addfragments&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
+<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00:10:00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span><span class="w"></span>
 
-tree:                             <span class="c1"># Options for the tree rule</span>
-  iqtree2:                        <span class="c1"># Command line options passed directly to iqtree2</span>
-    - <span class="s2">&quot;-nt AUTO&quot;</span>
-    - <span class="s2">&quot;-m HKY+G&quot;</span>
-    - <span class="s2">&quot;-bb 1000&quot;</span>
-    - <span class="s2">&quot;-seed 847202098&quot;</span>
-  threads: <span class="m">10</span>                     <span class="c1"># Use up to this many threads</span>
-  resources:                      <span class="c1"># Only used when called with --cluster</span>
-    time: <span class="s2">&quot;00:20:00&quot;</span>
-    mem: <span class="s2">&quot;16G&quot;</span>
+<span class="nt">tree</span><span class="p">:</span><span class="w">                             </span><span class="c1"># Options for the tree rule</span><span class="w"></span>
+<span class="w">  </span><span class="nt">iqtree2</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Command line options passed directly to iqtree2</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-nt</span><span class="nv"> </span><span class="s">AUTO&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-m</span><span class="nv"> </span><span class="s">HKY+G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-bb</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">847202098&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                     </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used when called with --cluster</span><span class="w"></span>
+<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00:20:00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
 
-beast:                            <span class="c1"># Options for the beast rule</span>
-  beast:                          <span class="c1"># Command line options passed directly to beast</span>
-     - <span class="s2">&quot;-beagle_GPU&quot;</span>              <span class="c1"># This will use the GPU version of BEAGLE only if a GPU is available</span>
-     - <span class="s2">&quot;-seed 98202873&quot;</span>
-  dynamic:                        <span class="c1"># Values for the dynamic template parameters</span>
-      - <span class="s2">&quot;ePopSize=0.3&quot;</span>
-      - <span class="s2">&quot;Date.dateFormat=yyyy/MM/dd&quot;</span>
-      - <span class="s2">&quot;Date.delimiter=_&quot;</span>
-      - <span class="s2">&quot;mutationRate=1.0&quot;</span>
-      - <span class="s2">&quot;mcmc.chainLength=10000&quot;</span>
-      - <span class="s2">&quot;treelog.logEvery=1000&quot;</span>
-      - <span class="s2">&quot;tracelog.logEvery=1000&quot;</span>
-  threads: <span class="m">6</span>                      <span class="c1"># Use up to this many threads</span>
-  resources:                      <span class="c1"># Only used for submission to an HPC queue</span>
-    time: <span class="s2">&quot;20:00:00&quot;</span>
-    mem: <span class="s2">&quot;16G&quot;</span>
-  envmodules:                     <span class="c1"># This will only have any effect if the environment `module` command is available</span>
-    - <span class="s2">&quot;gcccore/8.3.0&quot;</span>
-    - <span class="s2">&quot;fosscuda/2019b&quot;</span>
-    - <span class="s2">&quot;beast/2.6.6&quot;</span>
+<span class="nt">beast</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the beast rule</span><span class="w"></span>
+<span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to beast</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_SSE&quot;</span><span class="w">              </span><span class="c1"># This will use the SSE extensions in BEAGLE if available</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">98202873&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dynamic</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Values for the dynamic template parameters</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ePopSize=0.3&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.dateFormat=yyyy/MM/dd&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.delimiter=_&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mutationRate=1.0&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mcmc.chainLength=10000&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;treelog.logEvery=1000&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;tracelog.logEvery=1000&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
+<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20:00:00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
 <p>Let’s break down some of the key sections…</p>
-<p>The first block is called <code class="docutils literal notranslate"><span class="pre">all</span></code> and applies to all rules in the workflow. <code class="docutils literal notranslate"><span class="pre">threads_max</span></code>
-allows setting the absolute maximum number of threads / cores used by any
-single rule on a single machine, regardless of what is available. If you
-are running on an HPC system and want to make use of nodes with more than 64
-cores then you may want to raise this value.</p>
+<p>The first block is called <code class="docutils literal notranslate"><span class="pre">all</span></code> and applies to all rules in the workflow.
+<code class="docutils literal notranslate"><span class="pre">threads_max</span></code> allows setting the absolute maximum number of threads / cores
+used by any single rule on a single machine, regardless of what is available.
+If you are running on an HPC system and want to make use of nodes with more
+than 64 cores then you may want to raise this value.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When discussing “threads” and “cores”, we attempt to remain as close to the
@@ -579,7 +573,8 @@ locally, this corresponds to the maximum number of CPU cores allocated
 (remembering that we will never exceed <code class="docutils literal notranslate"><span class="pre">all.threads_max</span></code>). This value will
 automatically be adjusted to the total number of cores available on the machine
 if more than that number is requested. When running on an HPC cluster, McCoy
-uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>].</p>
+uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>]. For more
+information about running McCoy on HPC systems, check out the <a class="reference internal" href="hpc.html"><span class="doc">HPC page</span></a>.</p>
 <dl class="footnote brackets">
 <dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>In other words, we always use threads to set the amount of “shared-memory” parallelism.</p>
@@ -587,12 +582,12 @@ uses <code class="docutils literal notranslate"><span class="pre">threads</span>
 </dl>
 <h2 id="run-the-mccoy-workflow">Run the McCoy workflow<a class="headerlink" href="#run-the-mccoy-workflow" title="Permalink to this headline">¶</a></h2>
 <p>Now that your project is configured, it’s time to run the McCoy workflow:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt;</span><span class="w"></span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt;
 </code></pre></div>
 </div>
 <p>All results will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;project_dir&gt;/runs/run_1</span></code>.</p>
 <p>To see all of the available options for the <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span></code> command use:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run --help</span><span class="w"></span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run --help
 </code></pre></div>
 </div>
 <p>A few notable options include:</p>
@@ -609,28 +604,32 @@ For example <code class="docutils literal notranslate"><span class="pre">--confi
 </dl>
 </li>
 <li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--hpc</span></code></dt><dd><p>Run McCoy by submitting jobs to an HPC <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> scheduler.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">--hpc</span></code></dt><dd><p>Run McCoy by submitting jobs to an HPC <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> scheduler. See the
+<a class="reference internal" href="hpc.html"><span class="doc">Running on HPC</span></a> page for more info.</p>
 </dd>
 </dl>
 </li>
 </ul>
-<p><strong>Importantly</strong>, any options or arguments not listed in <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">--help</span></code>
-are forwarded on to <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/executing/cli.html#all-options">Snakemake</a>.
-This provides power-users with the ability to fully tailor how the workflow
-runs.</p>
-<h2 id="check-out-the-results">Check out the results<a class="headerlink" href="#check-out-the-results" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Any options or arguments not listed in <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">--help</span></code> are forwarded
+on to Snakemake. This provides power-users with the ability to fully tailor
+how the workflow runs.</p>
+</div>
+<h2 id="check-the-results">Check the results<a class="headerlink" href="#check-the-results" title="Permalink to this headline">¶</a></h2>
 <p>Upon the successful completion of a run, McCoy will generate an html report
 with a number of results and diagnostics from each stage of the workflow.</p>
+<img alt="_images/report_example.png" src="_images/report_example.png" />
 <h2 id="updating-a-run-with-new-data">Updating a run with new data<a class="headerlink" href="#updating-a-run-with-new-data" title="Permalink to this headline">¶</a></h2>
 <p>One of the key features of McCoy is the ability to add new sequences and continue
 from the results of a previous run, without starting from scratch. This is
 achieved using <a class="reference external" href="https://github.com/Wytamma/online-beast">online-BEAST</a>.</p>
 <p>To inherit the results from the last run of McCoy, simply use:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit-last</span><span class="w"></span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit-last
 </code></pre></div>
 </div>
 <p>To inherit from a different run:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit &lt;project_dir&gt;/runs/run_&lt;N&gt;</span><span class="w"></span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit &lt;project_dir&gt;/runs/run_&lt;N&gt;
 </code></pre></div>
 </div>
 

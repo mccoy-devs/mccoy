@@ -193,54 +193,6 @@
 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="installation.html" class="md-nav__link">
-        <span class="md-ellipsis">Installation</span>
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="quickstart.html" class="md-nav__link">
-        <span class="md-ellipsis">Quick-<wbr>start</span>
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="example.html" class="md-nav__link">
-        <span class="md-ellipsis">Example</span>
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -248,7 +200,7 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
       
       
@@ -256,14 +208,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="workflow.html"><span class="md-ellipsis">Workflow</span></a>
           
-            <label for="__nav_4">
+            <label for="__nav_1">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="Workflow" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           <span class="md-ellipsis">Workflow</span>
         </label>
@@ -450,6 +402,54 @@
       </nav>
     </li>
   
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        <span class="md-ellipsis">Installation</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quickstart.html" class="md-nav__link">
+        <span class="md-ellipsis">Quickstart</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example.html" class="md-nav__link">
+        <span class="md-ellipsis">Example</span>
+      </a>
+    </li>
   
 
     
@@ -686,7 +686,7 @@ otherwise the output of the <a class="reference internal" href="#rule-dynamicbea
 </p></li>
 <li><p><strong>beast.dynamic</strong> – the dynamic variables used to populate the feast template.<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['ePopSize=0.3',</span> <span class="pre">'Date.dateFormat=yyyy/MM/dd',</span> <span class="pre">'Date.delimiter=_',</span> <span class="pre">'mutationRate=1.0',</span> <span class="pre">'mcmc.chainLength=10000',</span> <span class="pre">'treelog.logEvery=1000',</span> <span class="pre">'tracelog.logEvery=1000']</span></code></p>
 </p></li>
-<li><p><strong>beast.beast</strong> – Beast2 command line arguments to pass (beyond the params, statefile and input)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['-beagle_GPU',</span> <span class="pre">'-seed</span> <span class="pre">98202873']</span></code></p>
+<li><p><strong>beast.beast</strong> – Beast2 command line arguments to pass (beyond the params, statefile and input)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['-beagle_SSE',</span> <span class="pre">'-seed</span> <span class="pre">98202873']</span></code></p>
 </p></li>
 <li><p><strong>beast.threads</strong> – the number of cores to run with (both locally or when submitting to a cluster)<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">6</span></code></p>
 </p></li>

@@ -196,6 +196,22 @@
   
   
     <li class="md-nav__item">
+      <a href="workflow.html" class="md-nav__link">
+        <span class="md-ellipsis">Workflow</span>
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="installation.html" class="md-nav__link">
         <span class="md-ellipsis">Installation</span>
       </a>
@@ -213,7 +229,7 @@
   
     <li class="md-nav__item">
       <a href="quickstart.html" class="md-nav__link">
-        <span class="md-ellipsis">Quick-<wbr>start</span>
+        <span class="md-ellipsis">Quickstart</span>
       </a>
     </li>
   
@@ -230,22 +246,6 @@
     <li class="md-nav__item">
       <a href="example.html" class="md-nav__link">
         <span class="md-ellipsis">Example</span>
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="workflow.html" class="md-nav__link">
-        <span class="md-ellipsis">Workflow</span>
       </a>
     </li>
   
@@ -304,11 +304,24 @@
     <span class="md-ellipsis">Configuring your project</span>
   </a>
   
+    <nav class="md-nav" aria-label="Configuring your project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">Example</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">Example</span>
+  <a href="#running-mccoy" class="md-nav__link">
+    <span class="md-ellipsis">Running Mc<wbr>Coy</span>
   </a>
   
 </li>
@@ -358,11 +371,24 @@
     <span class="md-ellipsis">Configuring your project</span>
   </a>
   
+    <nav class="md-nav" aria-label="Configuring your project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">Example</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">Example</span>
+  <a href="#running-mccoy" class="md-nav__link">
+    <span class="md-ellipsis">Running Mc<wbr>Coy</span>
   </a>
   
 </li>
@@ -389,13 +415,19 @@ running McCoy</span></a>, namely Python &amp; Mamba. These are provided as
 pre-installed “modules” on many HPC systems. Please consult the
 documentation for your system for more information.</p>
 </div>
+<hr class="docutils" />
 <h2 id="tl-dr"><strong>TL;DR</strong><a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Set up your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> appropriately (see the <a class="reference internal" href="#hpc-example"><span class="std std-ref">example</span></a> below).</p></li>
-<li><p>Run McCoy with <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">&lt;project_dir&gt;</span> <span class="pre">--hpc</span></code></p></li>
+<li><p>Run McCoy with <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span> <span class="pre">&lt;project_dir&gt;</span> <span class="pre">--data</span> <span class="pre">&lt;fasta_file&gt;</span> <span class="pre">--hpc</span></code></p></li>
 </ol>
+<hr class="docutils" />
 <h2 id="configuring-your-project">Configuring your project<a class="headerlink" href="#configuring-your-project" title="Permalink to this headline">¶</a></h2>
-<p>In order to run on such a system, you will almost certainly need to modify your project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> to provide system specific information on your user account / project, queue, etc. McCoy allows you to set any of the following <a class="reference external" href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources">Snakemake resource values</a> on a global or per-rule basis:</p>
+<p>In order to run on such a system, you will almost certainly need to modify your
+project <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> to provide system specific information on your user
+account / project, queue, etc. McCoy allows you to set any of the following
+<a class="reference external" href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources">Snakemake resource values</a>
+on a global or per-rule basis:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">account</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>Typically the “project” ID associated with your research.</p>
 </dd>
@@ -416,7 +448,9 @@ documentation for your system for more information.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">extra</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>Any extra flags and options to be passed to the SLURM <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.</p>
 </dd>
 </dl>
-<p>In addition the SLURM <code class="docutils literal notranslate"><span class="pre">cpus_per_task</span></code> value is set by McCoy to be the Snakemake rule <code class="docutils literal notranslate"><span class="pre">threads</span></code> value. You can also pass required environment modules using the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> key in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p>
+<p>In addition the SLURM <code class="docutils literal notranslate"><span class="pre">cpus_per_task</span></code> value is set by McCoy to be the
+Snakemake rule <code class="docutils literal notranslate"><span class="pre">threads</span></code> value. You can also pass required environment
+modules using the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> key in <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> (<a class="reference internal" href="#hpc-example"><span class="std std-ref">see below</span></a>).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When discussing “threads” and “cores”, we attempt to remain as close to the
@@ -432,18 +466,23 @@ doing. This is the default definition in McCoy.</p>
 <p>To see exactly how McCoy takes all of this information and passes it to
 SLURM, you can look at <a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/profiles/slurm/config.yaml">the relevant Snakemake profile here</a>.</p>
 </div>
-<h2 id="example"><span id="hpc-example"></span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>The following example shows how you would alter the project config to employ 16 cores and 1 GPU with Beast2 on the University of Melbourne’s Spartan HPC System:</p>
+<h3 id="example"><span id="hpc-example"></span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows how you would alter the project config to employ 16
+cores and 1 GPU with Beast2 on the University of Melbourne’s Spartan HPC
+System:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;my</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">id&gt;&quot;</span><span class="w"></span>
 
-<span class="nn">...</span><span class="w"></span>
+<span class="c1"># ...</span><span class="w"></span>
 
 <span class="nt">beast</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_GPU&quot;</span><span class="w">  </span><span class="c1"># This will use the GPU version of BEAGLE if available</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># ...</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w"></span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20:00:00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;02:00:00&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpu</span><span class="w"></span>
 <span class="w">    </span><span class="nt">gres</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gpu:1&quot;</span><span class="w"></span>
@@ -451,8 +490,25 @@ SLURM, you can look at <a class="reference external" href="https://github.com/mc
 <span class="w">  </span><span class="nt">envmodules</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;gcccore/8.3.0&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;fosscuda/2019b&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;beagle-lib/3.1.2&quot;</span><span class="w"></span>
 </code></pre></div>
 </div>
+<p>Note the inclusion of the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> entry. This loads version of <a class="reference external" href="https://github.com/beagle-dev/beagle-lib">BEAGLE</a>
+which has GPU support using the system modules. We also ensure that we are
+passing the <code class="docutils literal notranslate"><span class="pre">-beagle_GPU</span></code> flag to Beast2.</p>
+<h2 id="running-mccoy">Running McCoy<a class="headerlink" href="#running-mccoy" title="Permalink to this headline">¶</a></h2>
+<p>Once your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> is all set up, you can run McCoy from the head-node
+of your HPC system using:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt; --hpc
+</code></pre></div>
+</div>
+<p>Snakemake will then run each rule as a SLURM batch job.</p>
+<p>Typically, you will want to ensure that Snakemake continues to monitor for
+completed jobs and submit new ones, even after you have logged out. There are
+multiple ways to achieve this. The easiest is to make use of a terminal
+multiplexer such as <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> or <a class="reference external" href="https://www.gnu.org/software/screen/">GNU screen</a>. You can also submit your <code class="docutils literal notranslate"><span class="pre">mccoy</span>
+<span class="pre">run</span></code> call as its own batch job. If you are unsure the best way to proceed you
+should contact your system’s sys-admin for advice.</p>
 
 
 
@@ -468,7 +524,7 @@ SLURM, you can look at <a class="reference external" href="https://github.com/mc
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="report.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Report module" rel="prev">
+        <a href="example.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Example" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -477,7 +533,7 @@ SLURM, you can look at <a class="reference external" href="https://github.com/mc
               <span class="md-footer__direction">
                 Previous
               </span>
-              Report module
+              Example
             </div>
           </div>
         </a>
