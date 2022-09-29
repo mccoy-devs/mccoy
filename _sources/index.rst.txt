@@ -28,5 +28,7 @@ Welcome to the documentation for **McCoy**.
 * To find out more about running McCoy on HPC systems, see the :doc:`running on HPC <hpc>` page.
 
 As an open-source project, we warmly accept contributions in the form of
-`bug-reports <https://github.com/mccoy-devs/mccoy/issues>`_, `suggestions <https://github.com/mccoy-devs/mccoy/discussions/landing>`_ , and `pull requests <https://github.com/mccoy-devs/mccoy/pulls>`_. For more information, please check
-out our contributions guide.
+`bug-reports <https://github.com/mccoy-devs/mccoy/issues>`_, `suggestions
+<https://github.com/mccoy-devs/mccoy/discussions/landing>`_ , and `pull
+requests <https://github.com/mccoy-devs/mccoy/pulls>`_. For more information,
+please check out our contributions guide.

@@ -51,6 +51,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -222,6 +227,36 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1_1" type="checkbox" id="__nav_1_1" >
+      
+      
+      
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="#modules-rules"><span class="md-ellipsis">Modules &amp; Rules</span></a>
+          
+            <label for="__nav_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Modules &amp; Rules" data-md-level="2">
+        <label class="md-nav__title" for="__nav_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          <span class="md-ellipsis">Modules &amp; Rules</span>
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
   
     <li class="md-nav__item">
       <a href="intake.html" class="md-nav__link">
@@ -292,6 +327,29 @@
 
             
           
+            
+              
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="smk-rule.html" class="md-nav__link">
+        <span class="md-ellipsis">Rule index</span>
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -314,6 +372,8 @@
       
         
 
+  
+
 <nav class="md-nav md-nav--secondary">
   
   
@@ -322,41 +382,75 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      <span class="md-ellipsis">Workflow</span>
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">Overview</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-rules" class="md-nav__link">
+    <span class="md-ellipsis">Modules &amp; Rules</span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules &amp; Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="intake.html" class="md-nav__link">
     <span class="md-ellipsis">Intake module</span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="alignment.html" class="md-nav__link">
     <span class="md-ellipsis">Alignment module</span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="quality_control.html" class="md-nav__link">
     <span class="md-ellipsis">Quality control module</span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="beast.html" class="md-nav__link">
     <span class="md-ellipsis">Beast module</span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="report.html" class="md-nav__link">
     <span class="md-ellipsis">Report module</span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="smk-rule.html" class="md-nav__link">
+    <span class="md-ellipsis">Rule index</span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">Modifying the workflow</span>
   </a>
   
 </li>
@@ -446,9 +540,40 @@
                   <div class="md-sidebar__inner">
                     
 
+  
+
 <nav class="md-nav md-nav--secondary">
   
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      <span class="md-ellipsis">Workflow</span>
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">Overview</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-rules" class="md-nav__link">
+    <span class="md-ellipsis">Modules &amp; Rules</span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">Modifying the workflow</span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -462,9 +587,14 @@
 
 
   <h1 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <div class="seealso admonition">
 <p class="admonition-title">TODO</p>
 <p>A general overview of the workflow.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can clik on the workflow nodes below to see the documentation for the relevant rules.</p>
 </div>
 <div class="mermaid">
             %%{init: { 'theme':'neutral' } }%%
@@ -504,61 +634,31 @@ flowchart TB
 
     Beast --&gt; report{{Report generation}}
     click report href &quot;report.html&quot;
-        </div><div class="toctree-wrapper compound">
+        </div><h2 id="modules-rules">Modules &amp; Rules<a class="headerlink" href="#modules-rules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intake.html">Intake module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intake.html#rules">Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="intake.html#rule-combine">combine</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignment module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="alignment.html#rules">Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="alignment.html#rule-align">align</a></li>
-<li class="toctree-l3"><a class="reference internal" href="alignment.html#rule-alignment_stats">alignment_stats</a></li>
-<li class="toctree-l3"><a class="reference internal" href="alignment.html#rule-pairwise_identity_histogram">pairwise_identity_histogram</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="quality_control.html">Quality control module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="quality_control.html#rules">Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="quality_control.html#rule-tree">tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quality_control.html#rule-render_mltree">render_mltree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="quality_control.html#rule-render_consensus_mltree">render_consensus_mltree</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="beast.html">Beast module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="beast.html#rules">Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-dynamicbeast">dynamicbeast</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-onlinebeast">onlinebeast</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-beast">beast</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-plot_traces">plot_traces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-arviz">arviz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-max_clade_credibility_tree">max_clade_credibility_tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-max_clade_credibility_tree_newick">max_clade_credibility_tree_newick</a></li>
-<li class="toctree-l3"><a class="reference internal" href="beast.html#rule-max_clade_credibility_tree_render">max_clade_credibility_tree_render</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="report.html">Report module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="report.html#rules">Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="report.html#rule-report">report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="report.html#rule-dag_dot">dag_dot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="report.html#rule-dag_svg">dag_svg</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="intake.html">Intake module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment.html">Alignment module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality_control.html">Quality control module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beast.html">Beast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="report.html">Report module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smk-rule.html">Rule index</a></li>
 </ul>
 </div>
-<ul class="simple">
-<li><p><a class="reference internal" href="smk-rule.html"><span class="std std-ref">All rules</span></a></p></li>
-</ul>
+<h2 id="modifying-the-workflow">Modifying the workflow<a class="headerlink" href="#modifying-the-workflow" title="Permalink to this headline">¶</a></h2>
+<p>When creating a McCoy project, you can optionally create a local copy of the
+<a class="reference external" href="https://snakemake.github.io">Snakemake</a> workflow and use this for your runs. This allows complete control
+over every rule and arbitrary modification of the pipeline:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
+    --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
+    --template &lt;beast2_template_file&gt;
+    --copy-workflow
+</code></pre></div>
+</div>
+<p>The addition of the <code class="docutils literal notranslate"><span class="pre">--copy-workflow</span></code> flag will result in a new directory
+called <code class="docutils literal notranslate"><span class="pre">workflow</span></code> being placed in the project directory. This contains a
+complete copy of the Snakemake workflow that can be edited as needed. Any
+future use of the <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span></code> command will automatically use this local copy.</p>
 
 
 
