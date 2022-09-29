@@ -4,6 +4,8 @@
 </iframe>
 <script>
     const iframe = document.getElementById("phytest");
-    iframe.srcdoc = iframe.innerHTML;
+    // NB. iframe.innerHTML is interpreted as a string in Safari so we need
+    // to use the child data instead to be cross-platform.
+    iframe.srcdoc = iframe.childNodes[0].data;
 </script>
     
