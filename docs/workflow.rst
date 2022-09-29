@@ -1,10 +1,15 @@
 Workflow
 ========
 
+Overview
+--------
 .. admonition:: TODO
    :class: seealso
 
    A general overview of the workflow.
+
+.. tip::
+   You can clik on the workflow nodes below to see the documentation for the relevant rules.
 
 .. mermaid::
 
@@ -47,14 +52,38 @@ Workflow
         click report href "report.html"
 
 
+Modules & Rules
+---------------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    intake
    alignment
    quality_control
    beast
    report
+   smk-rule
 
-* :ref:`All rules<smk-rule>`
+
+Modifying the workflow
+----------------------
+
+.. highlight:: sh
+
+When creating a McCoy project, you can optionally create a local copy of the
+`Snakemake`_ workflow and use this for your runs. This allows complete control
+over every rule and arbitrary modification of the pipeline::
+
+    mccoy create <project_name> \
+        --reference <reference_fasta_file> \
+        --template <beast2_template_file>
+        --copy-workflow
+
+The addition of the ``--copy-workflow`` flag will result in a new directory
+called ``workflow`` being placed in the project directory. This contains a
+complete copy of the Snakemake workflow that can be edited as needed. Any
+future use of the ``mccoy run`` command will automatically use this local copy.
+
+
+.. _Snakemake: https://snakemake.github.io
