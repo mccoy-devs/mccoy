@@ -101,8 +101,8 @@ def _print_snakemake_help(value: bool):
 def run(
     ctx: typer.Context,
     project: Path = typer.Argument(..., exists=True, file_okay=False, dir_okay=True),
-    data: List[Path] = typer.Option(..., exists=True, file_okay=True, dir_okay=False),
-    inherit: Optional[Path] = typer.Option(None, exists=True, file_okay=False, dir_okay=True),
+    data: List[Path] = typer.Option(..., "--data", "-d", exists=True, file_okay=True, dir_okay=False),
+    inherit: Optional[Path] = typer.Option(None, "--inherit", "-i", exists=True, file_okay=False, dir_okay=True),
     inherit_last: Optional[bool] = False,
     config: Optional[List[str]] = typer.Option(
         [], "--config", "-C", help="Set or overwrite values in the workflow config object (see Snakemake docs)"
