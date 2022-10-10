@@ -1,4 +1,5 @@
 all:
+  # TODO: check this out...
   threads_max: 64                 # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
   update_default_resources: null  # Additional default-resources to extend those defined in the profile being used
  
@@ -9,8 +10,8 @@ align:                            # Options for the alignemnt rule
     - "--addfragments"
   threads: 4                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: "00:10:00"
-    mem: "8G"
+    runtime: 10                   # minutes
+    mem_mb: 8000
 
 tree:                             # Options for the tree rule
   iqtree2:                        # Command line options passed directly to iqtree2
@@ -20,8 +21,8 @@ tree:                             # Options for the tree rule
     - "-seed 847202098"
   threads: 10                     # Use up to this many threads
   resources:                      # Only used when called with --cluster
-    time: "00:20:00"
-    mem: "16G"
+    runtime: 20                   # minutes
+    mem_mb: 16000
 
 beast:                            # Options for the beast rule
   beast:                          # Command line options passed directly to beast
@@ -37,5 +38,5 @@ beast:                            # Options for the beast rule
       - "tracelog.logEvery=1000"
   threads: 6                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: "20:00:00"
-    mem: "16G"
+    runtimtime: 1200              # minutes
+    mem_mb: 16000
