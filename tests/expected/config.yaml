@@ -9,8 +9,8 @@ align:                            # Options for the alignemnt rule
     - "--addfragments"
   threads: 4                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: "00:10:00"
-    mem: "8G"
+    time: 10
+    mem_mb: 8000
 
 tree:                             # Options for the tree rule
   iqtree2:                        # Command line options passed directly to iqtree2
@@ -20,8 +20,8 @@ tree:                             # Options for the tree rule
     - "-seed 847202098"
   threads: 10                     # Use up to this many threads
   resources:                      # Only used when called with --cluster
-    time: "00:20:00"
-    mem: "16G"
+    time: 20
+    mem_mb: 16000
 
 beast:                            # Options for the beast rule
   beast:                          # Command line options passed directly to beast
@@ -37,8 +37,8 @@ beast:                            # Options for the beast rule
       - "tracelog.logEvery=1000"
   threads: 6                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: "20:00:00"
-    mem: "16G"
+    time: 1200
+    mem_mb: 16000
   envmodules:                     # This will only have any effect if the environment `module` command is available
     - "gcccore/8.3.0"
     - "fosscuda/2019b"
