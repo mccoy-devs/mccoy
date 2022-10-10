@@ -3,8 +3,8 @@ cluster: >-
   mkdir -p logs && sbatch
   $(if [[ '{resources.account}' ]]; then echo '-A {resources.account}'; fi)
   $(if [[ '{resources.partition}' ]]; then echo '-p {resources.partition}'; fi)
-  --time={resources.time}
-  --mem={resources.mem}
+  --time={resources.runtime}
+  --mem={resources.mem_mb}
   -N {resources.nodes}
   -n {resources.tasks_per_node}
   -c {threads}
@@ -15,8 +15,8 @@ cluster: >-
 default-resources:
   - account=''
   - partition=''
-  - time='00:15:00'
-  - mem='4G'
+  - runtime=15
+  - mem_mb=4000
   - nodes=1
   - tasks_per_node=1
   - qos=''
