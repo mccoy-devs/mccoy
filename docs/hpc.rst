@@ -36,11 +36,11 @@ on a global or per-rule basis:
 ``partition`` (default: ``''``)
     The queue partition to which your job will be sent.
     
-``time`` (default: ``00:15:00``)
-    The maximum wallclock time to request for a single job.
+``runtime`` (default: ``15``)
+    The maximum wallclock time (in minutes) to request for a single job.
 
-``mem`` (default: ``4G``)
-    The amount of memory (RAM) to request **per-node** for each job.
+``mem_mb`` (default: ``4000``)
+    The amount of memory (RAM) to request **per-node** (in MB) for each job.
 
 ``nodes`` (default: ``1``)
     The total number of nodes to request for a single job.
@@ -102,8 +102,8 @@ System::
       # ...
       threads: 16
       resources:
-        time: "02:00:00"
-        mem: "16G"
+        runtime: 120
+        mem_mb: 16000
         partition: gpgpu
         gres: "gpu:1"
         qos: gpgpumdhs
