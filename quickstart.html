@@ -497,7 +497,9 @@ Config options applied to all workflow rules<a class="headerlink" href="#id3" ti
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># TODO: check this out...</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">                 </span><span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span><span class="w"></span>
 <span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">  </span><span class="c1"># Additional default-resources to extend those defined in the profile being used</span><span class="w"></span>
 <span class="w"> </span>
@@ -508,8 +510,8 @@ Config options applied to all workflow rules<a class="headerlink" href="#id3" ti
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--addfragments&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
-<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00:10:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                   </span><span class="c1"># minutes</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w"></span>
 
 <span class="nt">tree</span><span class="p">:</span><span class="w">                             </span><span class="c1"># Options for the tree rule</span><span class="w"></span>
 <span class="w">  </span><span class="nt">iqtree2</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Command line options passed directly to iqtree2</span><span class="w"></span>
@@ -519,8 +521,8 @@ Config options applied to all workflow rules<a class="headerlink" href="#id3" ti
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">847202098&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                     </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used when called with --cluster</span><span class="w"></span>
-<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00:20:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># minutes</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
 
 <span class="nt">beast</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the beast rule</span><span class="w"></span>
 <span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to beast</span><span class="w"></span>
@@ -536,8 +538,8 @@ Config options applied to all workflow rules<a class="headerlink" href="#id3" ti
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;tracelog.logEvery=1000&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
-<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20:00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runtimtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200</span><span class="w">              </span><span class="c1"># minutes</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>

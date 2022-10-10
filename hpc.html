@@ -433,9 +433,9 @@ on a global or per-rule basis:</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">partition</span></code> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>The queue partition to which your job will be sent.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">time</span></code> (default: <code class="docutils literal notranslate"><span class="pre">00:15:00</span></code>)</dt><dd><p>The maximum wallclock time to request for a single job.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">runtime</span></code> (default: <code class="docutils literal notranslate"><span class="pre">15</span></code>)</dt><dd><p>The maximum wallclock time (in minutes) to request for a single job.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">mem</span></code> (default: <code class="docutils literal notranslate"><span class="pre">4G</span></code>)</dt><dd><p>The amount of memory (RAM) to request <strong>per-node</strong> for each job.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> (default: <code class="docutils literal notranslate"><span class="pre">4000</span></code>)</dt><dd><p>The amount of memory (RAM) to request <strong>per-node</strong> (in MB) for each job.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">nodes</span></code> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>The total number of nodes to request for a single job.</p>
 </dd>
@@ -482,8 +482,8 @@ System:</p>
 <span class="w">  </span><span class="c1"># ...</span><span class="w"></span>
 <span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w"></span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;02:00:00&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16G&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
 <span class="w">    </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpu</span><span class="w"></span>
 <span class="w">    </span><span class="nt">gres</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gpu:1&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpumdhs</span><span class="w"></span>
