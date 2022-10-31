@@ -78,8 +78,8 @@ rule render_consensus_mltree:
     input:
         "results/tree/{id}.fasta.contree",
     output:
-        svg="results/tree/{id}-consensus-mltree.svg",
-        html="results/tree/{id}-consensus-mltree.html",
+        svg="results/tree/{id}-mltree-consensus.svg",
+        html="results/tree/{id}-mltree-consensus.html",
     conda:
         "../envs/toytree.yml"
     shell:
