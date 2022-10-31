@@ -1,4 +1,5 @@
 all:
+  # TODO: check this out...
   threads_max: 64                 # If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.
   update_default_resources: null  # Additional default-resources to extend those defined in the profile being used
  
@@ -9,7 +10,7 @@ align:                            # Options for the alignemnt rule
     - "--addfragments"
   threads: 4                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: 10
+    runtime: 10                   # minutes
     mem_mb: 8000
 
 tree:                             # Options for the tree rule
@@ -20,12 +21,12 @@ tree:                             # Options for the tree rule
     - "-seed 847202098"
   threads: 10                     # Use up to this many threads
   resources:                      # Only used when called with --cluster
-    time: 20
+    runtime: 20                   # minutes
     mem_mb: 16000
 
 beast:                            # Options for the beast rule
   beast:                          # Command line options passed directly to beast
-     - "-beagle_GPU"              # This will use the GPU version of BEAGLE only if a GPU is available
+     - "-beagle_SSE"              # This will use the SSE extensions in BEAGLE if available
      - "-seed 98202873"
   dynamic:                        # Values for the dynamic template parameters
       - "ePopSize=0.3"
@@ -37,9 +38,5 @@ beast:                            # Options for the beast rule
       - "tracelog.logEvery=1000"
   threads: 6                      # Use up to this many threads
   resources:                      # Only used for submission to an HPC queue
-    time: 1200
+    runtimtime: 1200              # minutes
     mem_mb: 16000
-  envmodules:                     # This will only have any effect if the environment `module` command is available
-    - "gcccore/8.3.0"
-    - "fosscuda/2019b"
-    - "beast/2.6.6"

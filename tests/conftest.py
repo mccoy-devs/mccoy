@@ -3,7 +3,7 @@ import hashlib
 import shutil
 import subprocess as sp
 from pathlib import Path
-from typing import List, NewType, Optional, Union
+from typing import Callable, List, NewType, Optional, Union
 
 import pytest
 import typer
@@ -81,7 +81,7 @@ class Workflow:
 
 
 @pytest.fixture
-def run_workflow(tmpdir: Path):
+def run_workflow(tmpdir: Path) -> Callable[TargetsType, bool]:
     def _run_workflow(targets: TargetsType, inherit=False) -> Workflow:
         targets = _targets_to_pathlist(targets)
 
