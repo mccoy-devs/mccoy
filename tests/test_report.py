@@ -53,7 +53,10 @@ def test_pairwise_identity_histogram(run_workflow):
 
 
 def test_phytest(run_workflow):
-    run_workflow("results/expected-1-phytest.html").assert_expected()
+    """There are so many date and time dependent strings, performance metrics, random hashes, etc., that doing a
+    comparison between the output and the expected is not very useful here. Instead, we just ensure that the phytest
+    report can be generated without errors."""
+    run_workflow("results/expected-1-phytest.html")
 
 
 # }}}
