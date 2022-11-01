@@ -81,7 +81,7 @@ class Workflow:
 
 
 @pytest.fixture
-def run_workflow(tmpdir: Path) -> Callable[TargetsType, bool]:
+def run_workflow(tmpdir: Path):
     def _run_workflow(targets: TargetsType, inherit=False) -> Workflow:
         targets = _targets_to_pathlist(targets)
 
