@@ -68,7 +68,7 @@ rule render_mltree:
     log:
         "logs/render_tree-{id}.txt",
     shell:
-        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
 
 
 rule render_consensus_mltree:
@@ -83,4 +83,4 @@ rule render_consensus_mltree:
     conda:
         "../envs/toytree.yml"
     shell:
-        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
