@@ -1,5 +1,3 @@
-
-
 rule onlinebeast:
     """
     Use `online-beast <https://github.com/Wytamma/online-beast>`_ to add any new
@@ -113,7 +111,7 @@ rule plot_traces:
         "../envs/plot_traces.yml"
     shell:
         """
-        python {SCRIPT_DIR}/plot_traces.py {input} {output}
+        ${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/plot_traces.py {input} {output}
         """
 
 
@@ -131,7 +129,7 @@ rule arviz:
         "../envs/arviz.yml"
     shell:
         """
-        python {SCRIPT_DIR}/arviz_output.py {input} {output.summary_html} {output.posterior_svg} {output.pairplot_svg}
+        ${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/arviz_output.py {input} {output.summary_html} {output.posterior_svg} {output.pairplot_svg}
         """
 
 
@@ -162,7 +160,7 @@ rule max_clade_credibility_tree_newick:
     conda:
         "../envs/dendropy.yml"
     shell:
-        "python {SCRIPT_DIR}/tree_converter.py {input} {output} --node-label posterior"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/tree_converter.py {input} {output} --node-label posterior"
 
 
 rule max_clade_credibility_tree_render:
@@ -177,4 +175,4 @@ rule max_clade_credibility_tree_render:
     conda:
         "../envs/toytree.yml"
     shell:
-        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
