@@ -10,6 +10,9 @@ nox.options.sessions = ["test"]
 
 @session(python=["3.7", "3.8", "3.9", "3.10"])
 def test(session):
+    if platform.system() == "Darwin" and platform.processor() == "arm":
+        session.env["CONDA_SUBDIR"] = "osx-64"
+
     session.install("pytest", "typer", "DendroPy>=4.5.2", ".")
     session.run("pytest", "-s", "-x")
 
@@ -30,7 +33,7 @@ def regen_expected(session):
         "--template",
         "tests/template.xml",
     )
-    session.run("mccoy", "run", "tests/expected", "--data", "tests/data.fasta", "-c", "4")
+    session.run("mccoy", "run", "tests/expected", "--data", "tests/data.fasta", "-c", "2")
     session.run(
         "mccoy",
         "run",
@@ -39,7 +42,7 @@ def regen_expected(session):
         "tests/data2.fasta",
         "--inherit-last",
         "-c",
-        "4",
+        "2",
     )
 
 
