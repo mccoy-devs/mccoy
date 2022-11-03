@@ -107,12 +107,13 @@ def run_workflow(tmpdir: Path):
             work_dir,
             "--data",
             Path(__file__).parent.resolve() / ("data.fasta" if not inherit else "data2.fasta"),
-            "-j1",
             "-f",
             "--keep-target-files",
             f"--conda-prefix={Path(__file__).parent.resolve() / '.conda'}",
             "--continue",
             "--verbose",
+            "-c",
+            "2",
         ]
 
         if inherit:
