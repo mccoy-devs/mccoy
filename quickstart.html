@@ -422,14 +422,14 @@
                 
 
 
-  <h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+  <h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This page is under construction!</p>
 </div>
-<h2 id="install-mccoy">Install McCoy<a class="headerlink" href="#install-mccoy" title="Permalink to this headline">¶</a></h2>
+<h2 id="install-mccoy">Install McCoy<a class="headerlink" href="#install-mccoy" title="Permalink to this heading">¶</a></h2>
 <p>If you haven’t done so yet, install McCoy and <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> following the <a class="reference internal" href="installation.html"><span class="doc">installation</span></a> instructions.</p>
-<h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this headline">¶</a></h2>
+<h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this heading">¶</a></h2>
 <p>A new project can be created using:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
     --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
@@ -448,7 +448,7 @@
 └── tests.py               <span class="c1"># &lt;- Bare-bones quality control test suite</span>
 </code></pre></div>
 </div>
-<h2 id="configure-your-project">Configure your project<a class="headerlink" href="#configure-your-project" title="Permalink to this headline">¶</a></h2>
+<h2 id="configure-your-project">Configure your project<a class="headerlink" href="#configure-your-project" title="Permalink to this heading">¶</a></h2>
 <p>Due to the large diversity in possible phylodynamic analyses, you will almost
 certainly need to customise the McCoy project to fit your needs.
 McCoy has been designed so that as much of that customisation as possible can
@@ -575,14 +575,15 @@ locally, this corresponds to the maximum number of CPU cores allocated
 (remembering that we will never exceed <code class="docutils literal notranslate"><span class="pre">all.threads_max</span></code>). This value will
 automatically be adjusted to the total number of cores available on the machine
 if more than that number is requested. When running on an HPC cluster, McCoy
-uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1">1</a>]. For more
+uses <code class="docutils literal notranslate"><span class="pre">threads</span></code> to set the <a class="reference external" href="https://slurm.schedmd.com">SLURM</a> <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> value [<a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>]. For more
 information about running McCoy on HPC systems, check out the <a class="reference internal" href="hpc.html"><span class="doc">HPC page</span></a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In other words, we always use threads to set the amount of “shared-memory” parallelism.</p>
-</dd>
-</dl>
-<h2 id="run-the-mccoy-workflow">Run the McCoy workflow<a class="headerlink" href="#run-the-mccoy-workflow" title="Permalink to this headline">¶</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In other words, we always use threads to set the amount of “shared-memory” parallelism.</p>
+</aside>
+</aside>
+<h2 id="run-the-mccoy-workflow">Run the McCoy workflow<a class="headerlink" href="#run-the-mccoy-workflow" title="Permalink to this heading">¶</a></h2>
 <p>Now that your project is configured, it’s time to run the McCoy workflow:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt;
 </code></pre></div>
@@ -618,11 +619,11 @@ For example <code class="docutils literal notranslate"><span class="pre">--confi
 on to Snakemake. This provides power-users with the ability to fully tailor
 how the workflow runs.</p>
 </div>
-<h2 id="check-the-results">Check the results<a class="headerlink" href="#check-the-results" title="Permalink to this headline">¶</a></h2>
+<h2 id="check-the-results">Check the results<a class="headerlink" href="#check-the-results" title="Permalink to this heading">¶</a></h2>
 <p>Upon the successful completion of a run, McCoy will generate an html report
 with a number of results and diagnostics from each stage of the workflow.</p>
 <img alt="_images/report_example.png" src="_images/report_example.png" />
-<h2 id="updating-a-run-with-new-data">Updating a run with new data<a class="headerlink" href="#updating-a-run-with-new-data" title="Permalink to this headline">¶</a></h2>
+<h2 id="updating-a-run-with-new-data">Updating a run with new data<a class="headerlink" href="#updating-a-run-with-new-data" title="Permalink to this heading">¶</a></h2>
 <p>One of the key features of McCoy is the ability to add new sequences and continue
 from the results of a previous run, without starting from scratch. This is
 achieved using <a class="reference external" href="https://github.com/Wytamma/online-beast">online-BEAST</a>.</p>
@@ -695,7 +696,7 @@ achieved using <a class="reference external" href="https://github.com/Wytamma/on
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.5.0.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -714,6 +715,7 @@ achieved using <a class="reference external" href="https://github.com/Wytamma/on
     
     
       <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     

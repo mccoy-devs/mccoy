@@ -561,45 +561,45 @@
                 
 
 
-  <h1 id="alignment-module"><span id="id1"></span>Alignment module<a class="headerlink" href="#alignment-module" title="Permalink to this headline">¶</a></h1>
+  <h1 id="alignment-module"><span id="id1"></span>Alignment module<a class="headerlink" href="#alignment-module" title="Permalink to this heading">¶</a></h1>
 <p>This module contains rules for for carrying out sequence alignment, calculating
 summary statistics of the results, and generating plots.</p>
-<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h2>
+<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permalink to this heading">¶</a></h2>
 <dl class="smk rule objdesc">
 <dt class="sig sig-object highlight smk" id="rule-align">
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">align</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/align.smk#L1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-align" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="https://github.com/GSLBiotech/mafft">MAFFT</a> to align the combined sequence file against the project
 reference.</p>
 <dl class="field-list">
-<dt class="field-odd" id="rule-align-input">Input<a class="headerlink" href="#rule-align-input" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-align-input">Input<a class="headerlink" href="#rule-align-input" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>original</strong> – the combined sequence file generated from the <a class="reference internal" href="intake.html#rule-combine" title="rule-combine"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">combine</span></code></a> rule</p></li>
 <li><p><strong>reference</strong> – the project reference sequence, provided during McCoy project creation</p></li>
 </ul>
 </dd>
-<dt class="field-even" id="rule-align-config">Config<a class="headerlink" href="#rule-align-config" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-align-config">Config<a class="headerlink" href="#rule-align-config" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>align.mafft</strong> – a list of command line arguments passed directly to MAFFT<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['--6merpair',</span> <span class="pre">'--keeplength',</span> <span class="pre">'--addfragments']</span></code></p>
 </p></li>
 <li><p><strong>align.threads</strong> – the number of threads (cores) to use for a single MAFFT call<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">4</span></code></p>
 </p></li>
-<li><p><strong>align.resources</strong> – the resources to request when submitting to a cluster<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">{'runtime':</span> <span class="pre">10,</span> <span class="pre">'mem_mb':</span> <span class="pre">8000,</span> <span class="pre">'time':</span> <span class="pre">10}</span></code></p>
+<li><p><strong>align.resources</strong> – the resources to request when submitting to a cluster<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">{'runtime':</span> <span class="pre">10,</span> <span class="pre">'mem_mb':</span> <span class="pre">8000}</span></code></p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-odd" id="rule-align-output">Output<a class="headerlink" href="#rule-align-output" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-align-output">Output<a class="headerlink" href="#rule-align-output" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><p>the aligned version of the original input file</p>
 </dd>
-<dt class="field-even" id="rule-align-params">Params<a class="headerlink" href="#rule-align-params" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-align-params">Params<a class="headerlink" href="#rule-align-params" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><p>the command-line arguments passed to MAFFT (set in <cite>align.mafft</cite> config entry)</p>
 </dd>
-<dt class="field-odd" id="rule-align-threads">Threads<a class="headerlink" href="#rule-align-threads" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-align-threads">Threads<a class="headerlink" href="#rule-align-threads" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><p>set to <cite>align.threads</cite> from the config file if present, else set by the number of cores available to the workflow (up-to <cite>threads_max</cite>)</p>
 </dd>
-<dt class="field-even" id="rule-align-resources">Resources<a class="headerlink" href="#rule-align-resources" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-align-resources">Resources<a class="headerlink" href="#rule-align-resources" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><p>set to <cite>align.resources</cite> in the project config, if present</p>
 </dd>
-<dt class="field-odd" id="rule-align-conda">Conda<a class="headerlink" href="#rule-align-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-align-conda">Conda<a class="headerlink" href="#rule-align-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bioconda</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
@@ -619,7 +619,7 @@ reference.</p>
 <dt class="sig sig-object highlight smk" id="rule-alignment_stats">
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">alignment_stats</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/align.smk#L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-alignment_stats" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
-<dt class="field-odd" id="rule-alignment_stats-conda">Conda<a class="headerlink" href="#rule-alignment_stats-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-alignment_stats-conda">Conda<a class="headerlink" href="#rule-alignment_stats-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jlsteenwyk</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
@@ -638,17 +638,17 @@ reference.</p>
 <dt class="sig sig-object highlight smk" id="rule-pairwise_identity_histogram">
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">pairwise_identity_histogram</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/align.smk#L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-pairwise_identity_histogram" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
-<dt class="field-odd" id="rule-pairwise_identity_histogram-conda">Conda<a class="headerlink" href="#rule-pairwise_identity_histogram-conda" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plot_traces</span><span class="w"></span>
-<span class="nt">channels</span><span class="p">:</span><span class="w"></span>
+<dt class="field-odd" id="rule-pairwise_identity_histogram-conda">Conda<a class="headerlink" href="#rule-pairwise_identity_histogram-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
+<dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.9</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">typer</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plotly</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">typer</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plotly</span><span class="w"></span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaleido</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -720,7 +720,7 @@ reference.</p>
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.5.0.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -739,6 +739,7 @@ reference.</p>
     
     
       <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     

@@ -561,21 +561,21 @@
                 
 
 
-  <h1 id="quality-control-module"><span id="id1"></span>Quality control module<a class="headerlink" href="#quality-control-module" title="Permalink to this headline">¶</a></h1>
+  <h1 id="quality-control-module"><span id="id1"></span>Quality control module<a class="headerlink" href="#quality-control-module" title="Permalink to this heading">¶</a></h1>
 <p>This module contains several rules for ensuring quality control of the aligned sequences, most notably via construction of a maximum likelihood tree and the use of the <a class="reference external" href="https://github.com/phytest-devs/phytest">phytest</a> package.</p>
-<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h2>
+<h2 id="rules">Rules<a class="headerlink" href="#rules" title="Permalink to this heading">¶</a></h2>
 <dl class="smk rule objdesc">
 <dt class="sig sig-object highlight smk" id="rule-tree">
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">tree</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use <a class="reference external" href="http://www.iqtree.org">iqtree</a> to generate the maximum likelihood phylogenomic tree.</p>
 <dl class="field-list">
-<dt class="field-odd" id="rule-tree-input">Input<a class="headerlink" href="#rule-tree-input" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-tree-input">Input<a class="headerlink" href="#rule-tree-input" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><p>the aligned fasta file from the <a class="reference internal" href="alignment.html#rule-align" title="rule-align"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">align</span></code></a> rule</p>
 </dd>
-<dt class="field-even" id="rule-tree-output">Output<a class="headerlink" href="#rule-tree-output" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-tree-output">Output<a class="headerlink" href="#rule-tree-output" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><p>the files output by iqtree, most notably <cite>*.treefile</cite></p>
 </dd>
-<dt class="field-odd" id="rule-tree-config">Config<a class="headerlink" href="#rule-tree-config" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-tree-config">Config<a class="headerlink" href="#rule-tree-config" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tree.iqtree2</strong> – <p>the iqtree config parameters passed on the command line<p><em>default: </em><code class="docutils literal notranslate"><span class="pre">['-nt</span> <span class="pre">AUTO',</span> <span class="pre">'-m</span> <span class="pre">HKY+G',</span> <span class="pre">'-bb</span> <span class="pre">1000',</span> <span class="pre">'-seed</span> <span class="pre">847202098']</span></code></p>
 </p>
@@ -588,7 +588,7 @@
 </p></li>
 </ul>
 </dd>
-<dt class="field-even" id="rule-tree-conda">Conda<a class="headerlink" href="#rule-tree-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-tree-conda">Conda<a class="headerlink" href="#rule-tree-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bioconda</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
@@ -607,16 +607,16 @@
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">render_mltree</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-render_mltree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the maximum likelihood tree from iqtree in SVG and HTML format.</p>
 <dl class="field-list">
-<dt class="field-odd" id="rule-render_mltree-input">Input<a class="headerlink" href="#rule-render_mltree-input" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-render_mltree-input">Input<a class="headerlink" href="#rule-render_mltree-input" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><p>the tree file produced by the <a class="reference internal" href="#rule-tree" title="rule-tree"><code class="xref smk smk-ref docutils literal notranslate"><span class="pre">tree</span></code></a> rule</p>
 </dd>
-<dt class="field-even" id="rule-render_mltree-output">Output<a class="headerlink" href="#rule-render_mltree-output" title="Permalink to this headline">¶</a></dt>
+<dt class="field-even" id="rule-render_mltree-output">Output<a class="headerlink" href="#rule-render_mltree-output" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>svg</strong> – the maximum likeihood tree (svg)</p></li>
 <li><p><strong>html</strong> – the maximum likeihood tree (html)</p></li>
 </ul>
 </dd>
-<dt class="field-odd" id="rule-render_mltree-conda">Conda<a class="headerlink" href="#rule-render_mltree-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-render_mltree-conda">Conda<a class="headerlink" href="#rule-render_mltree-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
@@ -638,7 +638,7 @@
 <span class="desctype"><span class="pre">Rule</span> </span><span class="sig-name descname"><span class="pre">render_consensus_mltree</span></span><a class="reference external" href="https://github.com/mccoy-devs/mccoy/blob/main/mccoy/workflow/rules/tree.smk#L74"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rule-render_consensus_mltree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renders the consensus maximum likelihood tree from iqtree in SVG and HTML format.</p>
 <dl class="field-list">
-<dt class="field-odd" id="rule-render_consensus_mltree-conda">Conda<a class="headerlink" href="#rule-render_consensus_mltree-conda" title="Permalink to this headline">¶</a></dt>
+<dt class="field-odd" id="rule-render_consensus_mltree-conda">Conda<a class="headerlink" href="#rule-render_consensus_mltree-conda" title="Permalink to this headline">¶</a><span class="colon">:</span></dt>
 <dd class="field-odd"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
 <span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
@@ -716,7 +716,7 @@
   
     Created using
     <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
-    4.5.0.
+    5.3.0.
      and
     <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
   
@@ -735,6 +735,7 @@
     
     
       <script src="_static/javascripts/bundle.dc1bded0.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     
