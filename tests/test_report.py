@@ -36,7 +36,7 @@ def test_alignment_stats(run_workflow):
 def test_pairwise_identity_histogram(run_workflow):
     workflow = run_workflow(
         [
-            "results/aligned/expected-1.pairwise_identity_verbose.svg",
+            # "results/aligned/expected-1.pairwise_identity_verbose.svg",
             "results/aligned/expected-1.pairwise_identity_verbose.html",
         ]
     )
@@ -67,7 +67,7 @@ def test_phytest(run_workflow):
 def test_render_mltree(run_workflow):
     workflow = run_workflow(
         [
-            "results/tree/expected-1-mltree.svg",
+            # "results/tree/expected-1-mltree.svg",
             "results/tree/expected-1-mltree.html",
         ]
     )
@@ -81,7 +81,7 @@ def test_render_mltree(run_workflow):
 def test_render_consensus_mltree(run_workflow):
     workflow = run_workflow(
         [
-            "results/tree/expected-1-mltree-consensus.svg",
+            # "results/tree/expected-1-mltree-consensus.svg",
             "results/tree/expected-1-mltree-consensus.html",
         ]
     )
@@ -102,17 +102,18 @@ def test_plot_traces(run_workflow):
     workflow = run_workflow("results/traces/")
 
     for expected_path in (workflow.expected_dir / workflow.targets[0]).iterdir():
-        expected = _strip_idents(expected_path.read_text())
-        result = _strip_idents((workflow.work_dir.joinpath(*expected_path.parts[-3:])).read_text())
-        assert expected == result
+        if expected_path.suffix != ".svg":
+            expected = _strip_idents(expected_path.read_text())
+            result = _strip_idents((workflow.work_dir.joinpath(*expected_path.parts[-3:])).read_text())
+            assert expected == result
 
 
 def test_arviz(run_workflow):
     workflow = run_workflow(
         [
             "results/beast/expected-1-summary.html",
-            "results/beast/expected-1-posterior.svg",
-            "results/beast/expected-1-pairplot.svg",
+            # "results/beast/expected-1-posterior.svg",
+            # "results/beast/expected-1-pairplot.svg",
         ]
     )
 
@@ -133,7 +134,7 @@ def test_max_clade_credibility_tree_newick(run_workflow):
 def test_max_clade_credibility_tree_render(run_workflow):
     workflow = run_workflow(
         [
-            "results/beast/expected-1-maxcladecredibility.svg",
+            # "results/beast/expected-1-maxcladecredibility.svg",
             "results/beast/expected-1-maxcladecredibility.html",
         ]
     )
