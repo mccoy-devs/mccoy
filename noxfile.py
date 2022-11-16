@@ -8,7 +8,7 @@ from nox_poetry import session
 nox.options.sessions = ["test"]
 
 
-@session(python=["3.7", "3.8", "3.9", "3.10"])
+@session(python=["3.7", "3.8", "3.9", "3.10", "3.11"])
 def test(session):
     if platform.system() == "Darwin" and platform.processor() == "arm":
         session.env["CONDA_SUBDIR"] = "osx-64"
