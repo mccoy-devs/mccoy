@@ -68,7 +68,7 @@ rule render_mltree:
     log:
         "logs/render_tree-{id}.txt",
     shell:
-        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
 
 
 rule render_consensus_mltree:
@@ -78,9 +78,9 @@ rule render_consensus_mltree:
     input:
         "results/tree/{id}.fasta.contree",
     output:
-        svg="results/tree/{id}-consensus-mltree.svg",
-        html="results/tree/{id}-consensus-mltree.html",
+        svg="results/tree/{id}-mltree-consensus.svg",
+        html="results/tree/{id}-mltree-consensus.html",
     conda:
         "../envs/toytree.yml"
     shell:
-        "python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
+        "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"

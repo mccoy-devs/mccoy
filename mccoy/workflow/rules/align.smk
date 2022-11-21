@@ -74,5 +74,5 @@ rule pairwise_identity_histogram:
         html="results/aligned/{id}.pairwise_identity_verbose.html",
     shell:
         """
-        python {SCRIPT_DIR}/pairwise_identity_histogram.py {input} {output.svg} {output.html}
+        ${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/pairwise_identity_histogram.py {input} {output.svg} {output.html}
         """
