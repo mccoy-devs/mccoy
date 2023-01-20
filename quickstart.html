@@ -431,21 +431,21 @@
 <p>If you haven’t done so yet, install McCoy and <a class="reference external" href="https://github.com/mamba-org/mamba">Mamba</a> following the <a class="reference internal" href="installation.html"><span class="doc">installation</span></a> instructions.</p>
 <h2 id="create-a-project">Create a project<a class="headerlink" href="#create-a-project" title="Permalink to this heading">¶</a></h2>
 <p>A new project can be created using:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
-    --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
-    --template &lt;beast2_template_file&gt;
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>create<span class="w"> </span>&lt;project_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--reference<span class="w"> </span>&lt;reference_fasta_file&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--template<span class="w"> </span>&lt;beast2_template_file&gt;
 </code></pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;reference_fasta_file&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;beast2_template_file&gt;</span></code> are replaced appropriately.</p>
 <p>A new directory will be created with the following contents:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>├── config.yaml            <span class="c1"># &lt;- A configuration file, used to tweak the</span>
-│                          <span class="c1">#    parameters of each step in the pipeline</span>
-├── resources
-│   ├── reference.fasta    <span class="c1"># &lt;- Copy of the reference genome</span>
-│   └── template.xml       <span class="c1"># &lt;- Copy of the Beast2 template</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>├──<span class="w"> </span>config.yaml<span class="w">            </span><span class="c1"># &lt;- A configuration file, used to tweak the</span>
+│<span class="w">                          </span><span class="c1">#    parameters of each step in the pipeline</span>
+├──<span class="w"> </span>resources
+│<span class="w">   </span>├──<span class="w"> </span>reference.fasta<span class="w">    </span><span class="c1"># &lt;- Copy of the reference genome</span>
+│<span class="w">   </span>└──<span class="w"> </span>template.xml<span class="w">       </span><span class="c1"># &lt;- Copy of the Beast2 template</span>
 │
-├── runs                   <span class="c1"># &lt;- An empty directory where runs will be stored</span>
-└── tests.py               <span class="c1"># &lt;- Bare-bones quality control test suite</span>
+├──<span class="w"> </span>runs<span class="w">                   </span><span class="c1"># &lt;- An empty directory where runs will be stored</span>
+└──<span class="w"> </span>tests.py<span class="w">               </span><span class="c1"># &lt;- Bare-bones quality control test suite</span>
 </code></pre></div>
 </div>
 <h2 id="configure-your-project">Configure your project<a class="headerlink" href="#configure-your-project" title="Permalink to this heading">¶</a></h2>
@@ -498,48 +498,48 @@ Config options applied to all workflow rules<a class="headerlink" href="#id3" ti
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># TODO: check this out...</span><span class="w"></span>
-<span class="w">  </span><span class="nt">threads_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">                 </span><span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span><span class="w"></span>
-<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">  </span><span class="c1"># Additional default-resources to extend those defined in the profile being used</span><span class="w"></span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">all</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># TODO: check this out...</span>
+<span class="w">  </span><span class="nt">threads_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">                 </span><span class="c1"># If a rule does not have `threads` specified below then **never** use more than this for a single rule, even if more cores are available.</span>
+<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">  </span><span class="c1"># Additional default-resources to extend those defined in the profile being used</span>
 <span class="w"> </span>
-<span class="nt">align</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the alignemnt rule</span><span class="w"></span>
-<span class="w">  </span><span class="nt">mafft</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to mafft</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--6merpair&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--keeplength&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--addfragments&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                   </span><span class="c1"># minutes</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w"></span>
+<span class="nt">align</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the alignemnt rule</span>
+<span class="w">  </span><span class="nt">mafft</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to mafft</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--6merpair&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--keeplength&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--addfragments&quot;</span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                   </span><span class="c1"># minutes</span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
-<span class="nt">tree</span><span class="p">:</span><span class="w">                             </span><span class="c1"># Options for the tree rule</span><span class="w"></span>
-<span class="w">  </span><span class="nt">iqtree2</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Command line options passed directly to iqtree2</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-nt</span><span class="nv"> </span><span class="s">AUTO&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-m</span><span class="nv"> </span><span class="s">HKY+G&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-bb</span><span class="nv"> </span><span class="s">1000&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">847202098&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                     </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used when called with --cluster</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># minutes</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
+<span class="nt">tree</span><span class="p">:</span><span class="w">                             </span><span class="c1"># Options for the tree rule</span>
+<span class="w">  </span><span class="nt">iqtree2</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Command line options passed directly to iqtree2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-nt</span><span class="nv"> </span><span class="s">AUTO&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-m</span><span class="nv"> </span><span class="s">HKY+G&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-bb</span><span class="nv"> </span><span class="s">1000&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">847202098&quot;</span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w">                     </span><span class="c1"># Use up to this many threads</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used when called with --cluster</span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">                   </span><span class="c1"># minutes</span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
 
-<span class="nt">beast</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the beast rule</span><span class="w"></span>
-<span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to beast</span><span class="w"></span>
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_SSE&quot;</span><span class="w">              </span><span class="c1"># This will use the SSE extensions in BEAGLE if available</span><span class="w"></span>
-<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">98202873&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">dynamic</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Values for the dynamic template parameters</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ePopSize=0.3&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.dateFormat=yyyy/MM/dd&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.delimiter=_&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mutationRate=1.0&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mcmc.chainLength=10000&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;treelog.logEvery=1000&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;tracelog.logEvery=1000&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span><span class="w"></span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runtimtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200</span><span class="w">              </span><span class="c1"># minutes</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
+<span class="nt">beast</span><span class="p">:</span><span class="w">                            </span><span class="c1"># Options for the beast rule</span>
+<span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w">                          </span><span class="c1"># Command line options passed directly to beast</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_SSE&quot;</span><span class="w">              </span><span class="c1"># This will use the SSE extensions in BEAGLE if available</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-seed</span><span class="nv"> </span><span class="s">98202873&quot;</span>
+<span class="w">  </span><span class="nt">dynamic</span><span class="p">:</span><span class="w">                        </span><span class="c1"># Values for the dynamic template parameters</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ePopSize=0.3&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.dateFormat=yyyy/MM/dd&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Date.delimiter=_&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mutationRate=1.0&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mcmc.chainLength=10000&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;treelog.logEvery=1000&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;tracelog.logEvery=1000&quot;</span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span><span class="w">                      </span><span class="c1"># Use up to this many threads</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Only used for submission to an HPC queue</span>
+<span class="w">    </span><span class="nt">runtimtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200</span><span class="w">              </span><span class="c1"># minutes</span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -563,8 +563,8 @@ doing. This is the default definition in McCoy.</p>
 to set defaults for the requested resources of all of your jobs. This is very
 useful to, for example, set the default account to which your resource usage
 will be charged:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">account=&#39;proj00577&#39;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">update_default_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">account=&#39;proj00577&#39;</span>
 </code></pre></div>
 </div>
 <p>After this, we have one block for each rule of the workflow with config
@@ -585,12 +585,12 @@ information about running McCoy on HPC systems, check out the <a class="referenc
 </aside>
 <h2 id="run-the-mccoy-workflow">Run the McCoy workflow<a class="headerlink" href="#run-the-mccoy-workflow" title="Permalink to this heading">¶</a></h2>
 <p>Now that your project is configured, it’s time to run the McCoy workflow:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt;
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>run<span class="w"> </span>&lt;project_dir&gt;<span class="w"> </span>--data<span class="w"> </span>&lt;fasta_file&gt;
 </code></pre></div>
 </div>
 <p>All results will be stored in <code class="docutils literal notranslate"><span class="pre">&lt;project_dir&gt;/runs/run_1</span></code>.</p>
 <p>To see all of the available options for the <code class="docutils literal notranslate"><span class="pre">mccoy</span> <span class="pre">run</span></code> command use:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run --help
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>run<span class="w"> </span>--help
 </code></pre></div>
 </div>
 <p>A few notable options include:</p>
@@ -628,11 +628,11 @@ with a number of results and diagnostics from each stage of the workflow.</p>
 from the results of a previous run, without starting from scratch. This is
 achieved using <a class="reference external" href="https://github.com/Wytamma/online-beast">online-BEAST</a>.</p>
 <p>To inherit the results from the last run of McCoy, simply use:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit-last
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>run<span class="w"> </span>&lt;project_dir&gt;<span class="w"> </span>--data<span class="w"> </span>&lt;new_sequences_fasta&gt;<span class="w"> </span>--inherit-last
 </code></pre></div>
 </div>
 <p>To inherit from a different run:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;new_sequences_fasta&gt; --inherit &lt;project_dir&gt;/runs/run_&lt;N&gt;
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>run<span class="w"> </span>&lt;project_dir&gt;<span class="w"> </span>--data<span class="w"> </span>&lt;new_sequences_fasta&gt;<span class="w"> </span>--inherit<span class="w"> </span>&lt;project_dir&gt;/runs/run_&lt;N&gt;
 </code></pre></div>
 </div>
 

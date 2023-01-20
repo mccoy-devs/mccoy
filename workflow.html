@@ -649,10 +649,10 @@ flowchart TB
 <p>When creating a McCoy project, you can optionally create a local copy of the
 <a class="reference external" href="https://snakemake.github.io">Snakemake</a> workflow and use this for your runs. This allows complete control
 over every rule and arbitrary modification of the pipeline:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy create &lt;project_name&gt; <span class="se">\</span>
-    --reference &lt;reference_fasta_file&gt; <span class="se">\</span>
-    --template &lt;beast2_template_file&gt;
-    --copy-workflow
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>create<span class="w"> </span>&lt;project_name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--reference<span class="w"> </span>&lt;reference_fasta_file&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--template<span class="w"> </span>&lt;beast2_template_file&gt;
+<span class="w">    </span>--copy-workflow
 </code></pre></div>
 </div>
 <p>The addition of the <code class="docutils literal notranslate"><span class="pre">--copy-workflow</span></code> flag will result in a new directory

@@ -470,27 +470,27 @@ SLURM, you can look at <a class="reference external" href="https://github.com/mc
 <p>The following example shows how you would alter the project config to employ 16
 cores and 1 GPU with Beast2 on the University of Melbourne’s Spartan HPC
 System:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">all</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;my</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">id&gt;&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><code><span class="nt">all</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">update_default_resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;my</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">id&gt;&quot;</span>
 
-<span class="c1"># ...</span><span class="w"></span>
+<span class="c1"># ...</span>
 
-<span class="nt">beast</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">beast</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_GPU&quot;</span><span class="w">  </span><span class="c1"># This will use the GPU version of BEAGLE if available</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># ...</span><span class="w"></span>
-<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span><span class="w"></span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span><span class="w"></span>
-<span class="w">    </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpu</span><span class="w"></span>
-<span class="w">    </span><span class="nt">gres</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gpu:1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpumdhs</span><span class="w"></span>
-<span class="w">  </span><span class="nt">envmodules</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;gcccore/8.3.0&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;fosscuda/2019b&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;beagle-lib/3.1.2&quot;</span><span class="w"></span>
+<span class="nt">beast</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">beast</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-beagle_GPU&quot;</span><span class="w">  </span><span class="c1"># This will use the GPU version of BEAGLE if available</span>
+<span class="w">  </span><span class="c1"># ...</span>
+<span class="w">  </span><span class="nt">threads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">120</span>
+<span class="w">    </span><span class="nt">mem_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
+<span class="w">    </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpu</span>
+<span class="w">    </span><span class="nt">gres</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gpu:1&quot;</span>
+<span class="w">    </span><span class="nt">qos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpgpumdhs</span>
+<span class="w">  </span><span class="nt">envmodules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;gcccore/8.3.0&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;fosscuda/2019b&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;beagle-lib/3.1.2&quot;</span>
 </code></pre></div>
 </div>
 <p>Note the inclusion of the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> entry. This loads version of <a class="reference external" href="https://github.com/beagle-dev/beagle-lib">BEAGLE</a>
@@ -499,7 +499,7 @@ passing the <code class="docutils literal notranslate"><span class="pre">-beagle
 <h2 id="running-mccoy">Running McCoy<a class="headerlink" href="#running-mccoy" title="Permalink to this heading">¶</a></h2>
 <p>Once your <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> is all set up, you can run McCoy from the head-node
 of your HPC system using:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy run &lt;project_dir&gt; --data &lt;fasta_file&gt; --hpc
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><code>mccoy<span class="w"> </span>run<span class="w"> </span>&lt;project_dir&gt;<span class="w"> </span>--data<span class="w"> </span>&lt;fasta_file&gt;<span class="w"> </span>--hpc
 </code></pre></div>
 </div>
 <p>Snakemake will then run each rule as a SLURM batch job.</p>
