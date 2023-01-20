@@ -22,7 +22,7 @@ pytest = "^6.0"
 DendroPy = "^4.5.2"
 Sphinx = ">=5.0.0,<6.0.0"
 sphinx-immaterial = "^0.8.0"
-snakedoc = {git = "https://github.com/smutch/snakedoc.git", rev = "main"}
+snakedoc = "^0.1.1"
 sphinxcontrib-mermaid = "^0.7.1"
 
 [build-system]

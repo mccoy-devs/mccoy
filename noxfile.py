@@ -57,7 +57,7 @@ def docs(session):
         "sphinx",
         "sphinx-immaterial",
         "sphinxcontrib-mermaid",
-        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        "snakedoc",
         ".",
     )
     with session.chdir("docs"):
@@ -70,7 +70,7 @@ def docs_github(session):
         "sphinx",
         "sphinx-immaterial",
         "sphinxcontrib-mermaid",
-        "snakedoc@git+https://github.com/smutch/snakedoc.git@main",
+        "snakedoc",
         ".",
     )
     with session.chdir("docs"):
