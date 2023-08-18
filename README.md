@@ -2,7 +2,7 @@
 
 <div style="text-align: center; font-style: italic;">
 <img src="https://mccoy-devs.github.io/mccoy/_images/mccoy-logo.svg" width="30%"><br>
-<it>a complete workflow for close-to-real-time phylodynamic analyses</it>
+<it>a complete workflow for close-to-real-time bayesian phylodynamic analyses</it>
 </div>
 
 [![pypo](https://img.shields.io/pypi/v/mccoy.svg)](https://pypi.org/project/mccoy/)
