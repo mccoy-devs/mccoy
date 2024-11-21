@@ -14,7 +14,7 @@ python = ">=3.7,<4.0"
 typer = "^0.4.1"
 snakemake = "^7.18.2"
 tqdm = "^4.64.0"
-setuptools = "^63.4.1"
+setuptools = ">=63.4.1,<66.0.0"
 Jinja2 = "^3.1.2"
 
 [tool.poetry.dev-dependencies]
