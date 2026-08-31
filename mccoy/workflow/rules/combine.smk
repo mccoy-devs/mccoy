@@ -2,7 +2,7 @@ rule combine:
     """
     Combine multiple sequence files together into a single file.
 
-    :input data: the sequence files to be concatenated 
+    :input data: the sequence files to be concatenated
     :output:     a single concatenated fasta file
     """
     input:
@@ -15,5 +15,5 @@ rule combine:
         "../envs/combine.yml"
     shell:
         """
-        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output} 2> {log}
+        cat {input.data} | sed s/\@/_/g | seqkit rmdup -n -o {output} 2>{log}
         """
