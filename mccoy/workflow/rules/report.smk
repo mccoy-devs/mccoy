@@ -23,7 +23,7 @@ rule dag_svg:
         "../envs/graphviz.yml"
     shell:
         """
-        dot -Tsvg {input} > {output}
+        dot -Tsvg {input} >{output}
         """
 
 
@@ -53,18 +53,15 @@ rule report:
         loader = jinja2.FileSystemLoader(report_dir)
         env = jinja2.Environment(loader=loader, autoescape=jinja2.select_autoescape())
 
-
         def include_file_unsafe(name):
             if name:
                 return Path(str(name)).read_text()
             return ""
 
-
         def include_file(name):
             if name:
                 return markupsafe.Markup(include_file_unsafe(name))
             return ""
-
 
         def include_raw(name):
             if name:
@@ -72,13 +69,10 @@ rule report:
                 return markupsafe.Markup(file.read_text())
             return ""
 
-
         env.globals['include_file_unsafe'] = include_file_unsafe
         env.globals['include_file'] = include_file
         env.globals['include_raw'] = include_raw
-
         output_path = Path(output.html).resolve()
-
         template = env.get_template("report-template.html")
         try:
             result = template.render(
@@ -89,8 +83,6 @@ rule report:
             )
         except Exception as err:
             print(f"could not render template: {err}")
-
-
         with open(output_path, 'w') as f:
             print(f"Writing result to {output_path}")
             f.write(result)

@@ -51,7 +51,7 @@ rule beast:
         the code will crash when using the bioconda package. To avoid this, either:
 
         1. ensure you pass ``--use-envmodules`` to McCoy and set the ``envmodules`` directives of this rule appropriately, or
-        2. remove the ``-beagle_GPU`` flag from the  ``beast.beast`` entry in your McCoy config file. 
+        2. remove the ``-beagle_GPU`` flag from the  ``beast.beast`` entry in your McCoy config file.
 
     :input alignment:         the aligned fasta file output from :smk:ref:`align`
     :input template:          the Beast 2 input XML file, templated with `feast <https://github.com/tgvaughan/feast>`_.
@@ -71,6 +71,7 @@ rule beast:
     ..note::
         GPU acceleration is **not** requested by default. If you are running on a machine with a compatible GPU then
         please replace ``-beagle`` with ``-beagle_GPU`` in the ``beast.beast`` entry in your McCoy ``config.yaml`` file.
+
     """
     input:
         alignment=rules.align.output,
@@ -84,18 +85,18 @@ rule beast:
         "logs/{id}_beast.log",
     conda:
         "../envs/beast.yml"
-    params:
-        dynamic=lambda wildcards: ",".join(config["beast"]["dynamic"]),
-        beast=beast_params,
+    envmodules:
+        *config["beast"].get("envmodules", []),
     threads: config["beast"].get("threads", config["all"]["threads_max"])
     resources:
         **config["beast"].get("resources", {}),
-    envmodules:
-        *config["beast"].get("envmodules", []),
+    params:
+        dynamic=lambda wildcards: ",".join(config["beast"]["dynamic"]),
+        beast=beast_params,
     shell:
         """
         if [[ -n "{input.statefile}" ]]; then cp {input.statefile} {output.statefile}; fi
-        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2> {log}
+        beast -D 'alignment={input.alignment},tracelog={output.tracelog},treelog={output.treelog},mcmc.threads={threads},{params.dynamic}' {params.beast} -statefile {output.statefile} {input.template} 1>&2 2>{log}
         """
 
 
