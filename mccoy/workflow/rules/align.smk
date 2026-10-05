@@ -24,16 +24,16 @@ rule align:
         "logs/align-{id}.txt",
     conda:
         "../envs/mafft.yml"
-    params:
-        lambda wildcards: " ".join(config["align"]["mafft"]),
     threads: config["align"].get("threads", config["all"]["threads_max"])
     resources:
         **config["align"].get("resources", {}),
+    params:
+        lambda wildcards: " ".join(config["align"]["mafft"]),
     shell:
         """
         REFNAME=$(head -n1 {input.reference} | tr -d '>')
-        mafft --thread {threads} {params} {input.original} {input.reference} 2> {log} \
-            | seqkit grep -rvip "^$REFNAME" > {output} 2> {log}
+        mafft --thread {threads} {params} {input.original} {input.reference} 2>{log} \
+            | seqkit grep -rvip "^$REFNAME" >{output} 2>{log}
         """
 
 
@@ -41,8 +41,6 @@ rule alignment_stats:
     input:
         alignment=rules.align.output,
         reference=RESOURCES_DIR / "reference.fasta",
-    conda:
-        "../envs/steenwyk.yml"
     output:
         summary="results/aligned/{id}.summary.txt",
         gc_content="results/aligned/{id}.gc_content.txt",
@@ -51,13 +49,15 @@ rule alignment_stats:
         pairwise_identity_verbose="results/aligned/{id}.pairwise_identity_verbose.txt",
         # position_specific_score_matrix="results/aligned/{id}.position_specific_score_matrix.txt",
         # sum_of_pairs_score="results/aligned/{id}.sum_of_pairs_score.txt",
+    conda:
+        "../envs/steenwyk.yml"
     shell:
         """
-        biokit alignment_summary {input.alignment} > {output.summary}
-        phykit gc_content {input.alignment} > {output.gc_content}
-        phykit relative_composition_variability {input.alignment} > {output.relative_composition_variability}
-        phykit pairwise_identity {input.alignment} > {output.pairwise_identity}
-        phykit pairwise_identity {input.alignment} --verbose > {output.pairwise_identity_verbose}
+        biokit alignment_summary {input.alignment} >{output.summary}
+        phykit gc_content {input.alignment} >{output.gc_content}
+        phykit relative_composition_variability {input.alignment} >{output.relative_composition_variability}
+        phykit pairwise_identity {input.alignment} >{output.pairwise_identity}
+        phykit pairwise_identity {input.alignment} --verbose >{output.pairwise_identity_verbose}
 
         # phykit sum_of_pairs_score {input.alignment} --reference {input.reference} > output.sum_of_pairs_score
         # biokit position_specific_score_matrix {input.alignment}  > output.position_specific_score_matrix
@@ -67,11 +67,11 @@ rule alignment_stats:
 rule pairwise_identity_histogram:
     input:
         rules.alignment_stats.output.pairwise_identity_verbose,
-    conda:
-        "../envs/plot_traces.yml"
     output:
         svg="results/aligned/{id}.pairwise_identity_verbose.svg",
         html="results/aligned/{id}.pairwise_identity_verbose.html",
+    conda:
+        "../envs/plot_traces.yml"
     shell:
         """
         ${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/pairwise_identity_histogram.py {input} {output.svg} {output.html}
