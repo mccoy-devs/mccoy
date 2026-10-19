@@ -4,7 +4,6 @@ import yaml
 import snakemake
 import pathlib
 
-
 PROJECT_DIR = Path(config['project_path'])
 RESOURCES_DIR = PROJECT_DIR / "resources"
 INPUT_DATA = config['data']
@@ -44,7 +43,6 @@ onstart:
     print("Workflow paths:")
     print(f"\t{'snakefile':20s} ➡  {workflow.snakefile}")
     print(f"\t{'working directory':20s} ➡  {workflow.basedir}")
-
     print("Environment:")
     shell = lambda cmd: subprocess.run(cmd, shell=True, stdout=subprocess.PIPE).stdout.decode().rstrip()
     print(f"\t{shell('python --version'):20s} ➡  {shell('which python')}")

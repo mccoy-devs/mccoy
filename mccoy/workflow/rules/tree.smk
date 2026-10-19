@@ -36,16 +36,16 @@ rule tree:
         "logs/tree-{id}.txt",
     conda:
         "../envs/iqtree.yml"
+    threads: config["tree"].get("threads", config["all"]["threads_max"])
+    resources:
+        **config['tree'].get('resources', {}),
     params:
         config=lambda wildcards: " ".join(config["tree"]["iqtree2"]),
         pre=lambda wildcards, output: Path(output[0]).with_suffix(''),
         seed=iqtree_random_seed,
-    threads: config["tree"].get("threads", config["all"]["threads_max"])
-    resources:
-        **config['tree'].get('resources', {}),
     shell:
         """
-        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} {params.seed} -ntmax {threads} 2>&1 > {log}
+        iqtree2 -s {input} -st DNA -pre {params.pre} {params.config} {params.seed} -ntmax {threads} 2>&1 >{log}
         """
 
 
@@ -63,10 +63,10 @@ rule render_mltree:
     output:
         svg="results/tree/{id}-mltree.svg",
         html="results/tree/{id}-mltree.html",
-    conda:
-        "../envs/toytree.yml"
     log:
         "logs/render_tree-{id}.txt",
+    conda:
+        "../envs/toytree.yml"
     shell:
         "${{CONDA_PREFIX}}/bin/python {SCRIPT_DIR}/render_tree.py {input} --svg {output.svg} --html {output.html}"
 
