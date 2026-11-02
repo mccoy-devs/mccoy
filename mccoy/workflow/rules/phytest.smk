@@ -20,5 +20,5 @@ rule phytest:
         "../envs/phytest.yml"
     shell:
         """
-        phytest {input.phytest_file} -s {input.alignment} -t {input.tree} --report {output} -v > {log}
+        phytest {input.phytest_file} -s {input.alignment} -t {input.tree} --report {output} -v >{log}
         """
