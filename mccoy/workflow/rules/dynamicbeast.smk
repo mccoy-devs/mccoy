@@ -22,5 +22,5 @@ rule dynamicbeast:
         "../envs/dynamicbeast.yml"
     shell:
         """
-        dynamic-beast {input.template} > {output} 2> {log}
+        dynamic-beast {input.template} >{output} 2>{log}
         """
